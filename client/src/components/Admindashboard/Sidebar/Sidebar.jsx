@@ -69,6 +69,7 @@
 import React, { useState } from 'react';
 import './sidebar.css';
 import Dashboard from './Dashboard/Dashboard';
+import Employee from './Employee/Employee';
 
 const Sidebar = () => {
     const [show, setShow] = useState(false);
@@ -99,7 +100,7 @@ const Sidebar = () => {
                     <div>
                         <div className='nav-logo'>
                             <i className={`fas fa-home-alt nav-logo-icon`}></i>
-                            <span className='nav-logo-name'>Evaluator</span>
+                            <span className='nav-logo-name'>Admin</span>
                         </div>
 
                         <div className='nav-list'>
@@ -107,17 +108,17 @@ const Sidebar = () => {
                                 <i className='fas fa-tachometer-alt nav-link-icon'></i>
                                 <span className='nav-link-name'>Dashboard</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Chart' ? 'active' : ''}`} onClick={() => handleClick('Chart')}>
+                            <div className={`nav-link ${activeComponent === 'Principle' ? 'active' : ''}`} onClick={() => handleClick('Principle')}>
                                 <i className='fas fa-hotel nav-link-icon'></i>
-                                <span className='nav-link-name'>Chart</span>
+                                <span className='nav-link-name'>Principle</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Help' ? 'active' : ''}`} onClick={() => handleClick('Help')}>
+                            <div className={`nav-link ${activeComponent === 'HOD' ? 'active' : ''}`} onClick={() => handleClick('HOD')}>
                                 <i className='fas fa-image nav-link-icon'></i>
-                                <span className='nav-link-name'>Help</span>
+                                <span className='nav-link-name'>HOD</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Create' ? 'active' : ''}`} onClick={() => handleClick('Create')}>
+                            <div className={`nav-link ${activeComponent === 'Employee' ? 'active' : ''}`} onClick={() => handleClick('Employee')}>
                                 <i className='fas fa-image nav-link-icon'></i>
-                                <span className='nav-link-name'>create</span>
+                                <span className='nav-link-name'>Employee</span>
                             </div>
                         </div>
                     </div>
@@ -132,8 +133,8 @@ const Sidebar = () => {
 
             <div className="main-content">
                 {activeComponent === 'Dashboard' && <Dashboard />}
-                {/* {activeComponent === 'Chart' && <Chart />}
-                {activeComponent === 'Help' && <Help />}
+                {activeComponent === 'Employee' && <Employee />}
+                {/* {activeComponent === 'Help' && <Help />}
                 {activeComponent === 'Create' && <Create />} */}
             </div>
 

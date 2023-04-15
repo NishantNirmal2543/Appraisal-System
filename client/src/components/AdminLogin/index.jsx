@@ -22,7 +22,7 @@ const Adminsignin = (props) => {
 			// console.log(res)
 			if(res.role === "hod"){window.location = "/Hoddashboard";}
 			else if(res.role === "principle"){window.location = "/Principaldashboard";}
-			else if(res.role === "Evaluator"){window.location = "/Evaluatordashboard";}
+			else if(res.role === "Admin"){window.location = "/Admindashboard";}
 
 			
 		} catch (error) {
@@ -40,7 +40,7 @@ const Adminsignin = (props) => {
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
 					<h1>Employee</h1>
-					<Link to="/login">
+					<Link to="/">
 						<button type="button" className={styles.white_btn}>
 							Sing in
 						</button>
