@@ -16,11 +16,11 @@ app.use(express.json());
 app.use(cors());
 
 // routes
-// app.use("/api/users", userRoutes);
 app.use("/api/userauth", userauthRoutes);
 app.use("/api/adminauth", adminauthRoutes);
-// app.use('/api',adminauthRoutes);  
-// app.use("/api/admin", adminRoutes);
+
+
+
 
 
 const port = process.env.PORT || 8080;
