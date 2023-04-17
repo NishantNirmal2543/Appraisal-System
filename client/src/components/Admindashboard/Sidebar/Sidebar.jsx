@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import './sidebar.css';
 import Dashboard from './Dashboard/Dashboard';
 import Employee from './Employee/Employee';
-import Hod from './HOD/Hod'
+import Hod from './HOD/Hod';
+import Principle from './Principle/Principle'
 const Sidebar = () => {
     const [show, setShow] = useState(false);
     const [activeComponent, setActiveComponent] = useState('Dashboard');
@@ -69,7 +70,7 @@ const Sidebar = () => {
                 {activeComponent === 'Dashboard' && <Dashboard />}
                 {activeComponent === 'Employee' && <Employee />}
                 {activeComponent === 'HOD' && <Hod />}
-                {/* {activeComponent === 'Create' && <Create />} */}
+                {activeComponent === 'Principle' && <Principle />}
             </div>
 
         </main>
