@@ -1,6 +1,7 @@
 
 
 import React, { useState } from 'react';
+import axios from "axios";
 
 const AddEmployee = () => {
     const [name, setName] = useState('');
@@ -38,50 +39,69 @@ const AddEmployee = () => {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+      
         const errors = {};
-
+      
         if (!name) {
-            errors.name = 'Name is required';
+          errors.name = 'Name is required';
         }
-
+      
         if (!college) {
-            errors.college = 'College is required';
+          errors.college = 'College is required';
         }
-
+      
         if (!department) {
-            errors.department = 'Department is required';
+          errors.department = 'Department is required';
         }
-
+      
         if (!designation) {
-            errors.designation = 'Designation is required';
+          errors.designation = 'Designation is required';
         }
-
+      
         if (!email) {
-            errors.email = 'Email is required';
+          errors.email = 'Email is required';
         } else if (!/\S+@\S+\.\S+/.test(email)) {
-            errors.email = 'Email is invalid';
+          errors.email = 'Email is invalid';
         }
-
+      
         if (!mobile) {
-            errors.mobile = 'Mobile is required';
+          errors.mobile = 'Mobile is required';
         } else if (!/^\d{10}$/.test(mobile)) {
-            errors.mobile = 'Mobile must be a 10 digit number';
+          errors.mobile = 'Mobile must be a 10 digit number';
         }
+      
         if (!password.trim()) {
-            errors.password = 'Password is required';
+          errors.password = 'Password is required';
         } else if (password.length < 8) {
-            errors.password = 'Password must be at least 8 characters long';
+          errors.password = 'Password must be at least 8 characters long';
         }
+      
         setErrors(errors);
-
+      
         if (Object.keys(errors).length === 0) {
-            // Perform form submission logic
+          try {
+            const response = await axios.post("http://localhost:8080/api/employee", { 
+              name, 
+              college, 
+              department, 
+              designation, 
+              email, 
+              mobile, 
+              password 
+            });
+      
+            // handle the success response
+            alert(response.data.message);
+      
+          } catch (error) {
+            // handle the error response
+            alert(error.response.data.message);
+          }
         }
-    };
-
+      };
+      
     return (
         <div>
             <div className="card">

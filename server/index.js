@@ -3,11 +3,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const connection = require("./db");
-// const userRoutes = require("./routes/users");
 const userauthRoutes = require("./routes/userauth");
-// const adminRoutes = require("./routes/admin");
 const adminauthRoutes = require("./routes/adminauth");
+const employeeRoutes = require("./routes/employee");
 
+const fetchemployeeRoutes = require("./routes/fetchemployee")
 // database connection
 connection();
 
@@ -19,8 +19,9 @@ app.use(cors());
 app.use("/api/userauth", userauthRoutes);
 app.use("/api/adminauth", adminauthRoutes);
 
+app.use("/api/employee" , employeeRoutes );
 
-
+app.use("/api/fetchemployee", fetchemployeeRoutes);
 
 
 const port = process.env.PORT || 8080;
