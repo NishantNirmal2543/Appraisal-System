@@ -9,6 +9,10 @@ import Adminsignin from "./components/AdminLogin";
 import Login from "./components/UserLogin";
 import { useState } from "react";
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function App() {
 	const [adminState, setAdminState] = useState('');
 
@@ -20,6 +24,8 @@ function App() {
 	const admin = localStorage.getItem("token");
 
 	return (
+		<>
+		<ToastContainer position="top-center" />
 		<Routes>
 			{user && <Route path="/Employeedashboard" exact element={<Main1 />} />}
 			{admin && <Route path="/Hoddashboard" exact element={<Main2 />} />}
@@ -37,6 +43,7 @@ function App() {
 			<Route path="/Admindashboard" element={<Navigate replace to="/adminsignin" />} />
 
 		</Routes>
+		</>
 	);
 }
 

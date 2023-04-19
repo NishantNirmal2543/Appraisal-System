@@ -6,6 +6,10 @@ import { BsPencil } from "react-icons/bs";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "./Employee.css";
 
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const ManageEmployee = () => {
   const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -30,6 +34,7 @@ const ManageEmployee = () => {
       try {
         await axios.delete(`http://localhost:8080/api/deleteemployee/${id}`);
         setEmployees(employees.filter((employee) => employee._id !== id));
+        toast.success("Employee deleted successfully");
       } catch (error) {
         console.error(error);
       }
@@ -71,8 +76,10 @@ const ManageEmployee = () => {
         setMode('');
         fetchEmployees();
       }
+      toast.success("Employee updated successfully");
     } catch (err) {
       console.log(err);
+      toast.error("Failed to update student, please try again later");
     }
   };
 

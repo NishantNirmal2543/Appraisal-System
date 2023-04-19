@@ -4,6 +4,10 @@ import React, { useState } from 'react';
 import axios from "axios";
 import "./Employee.css";
 
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const AddEmployee = () => {
     const [name, setName] = useState('');
     const [college, setCollege] = useState('');
@@ -93,8 +97,8 @@ const AddEmployee = () => {
               password 
             });
       
-            // handle the success response
-            alert(response.data.message);
+            // handle the success response       
+            toast.success("Employee Added successfully");
       
           } catch (error) {
             // handle the error response
