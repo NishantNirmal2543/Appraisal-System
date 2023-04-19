@@ -5,9 +5,12 @@ const cors = require("cors");
 const connection = require("./db");
 const userauthRoutes = require("./routes/userauth");
 const adminauthRoutes = require("./routes/adminauth");
+
 const employeeRoutes = require("./routes/employee");
 
 const fetchemployeeRoutes = require("./routes/fetchemployee")
+
+const deleteemployeeRoutes = require("./routes/deleteemployee");
 // database connection
 connection();
 
@@ -23,6 +26,7 @@ app.use("/api/employee" , employeeRoutes );
 
 app.use("/api/fetchemployee", fetchemployeeRoutes);
 
+app.use("/api/deleteemployee" , deleteemployeeRoutes);
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));
