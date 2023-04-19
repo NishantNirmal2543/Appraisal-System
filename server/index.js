@@ -11,6 +11,8 @@ const employeeRoutes = require("./routes/employee");
 const fetchemployeeRoutes = require("./routes/fetchemployee")
 
 const deleteemployeeRoutes = require("./routes/deleteemployee");
+
+const updateemployeeRoutes = require("./routes/updateemployee")
 // database connection
 connection();
 
@@ -27,6 +29,8 @@ app.use("/api/employee" , employeeRoutes );
 app.use("/api/fetchemployee", fetchemployeeRoutes);
 
 app.use("/api/deleteemployee" , deleteemployeeRoutes);
+
+app.use("/api/updateemployee" , updateemployeeRoutes)
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

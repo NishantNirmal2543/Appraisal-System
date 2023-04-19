@@ -4,39 +4,77 @@ import axios from 'axios';
 import { AiOutlineEye } from "react-icons/ai";
 import { BsPencil } from "react-icons/bs";
 import { RiDeleteBinLine } from "react-icons/ri";
+import "./Employee.css";
 
 const ManageEmployee = () => {
   const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [mode, setMode] = useState("");
 
   const handleViewClick = (employee) => {
     setSelectedEmployee(employee);
+    setMode("view");
   };
+
+  const handleEditClick = (employee) => {
+    setSelectedEmployee(employee);
+    setMode("edit");
+  };
+
+
+
 
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this employee?");
     if (confirmDelete) {
-        try {
-          await axios.delete(`http://localhost:8080/api/deleteemployee/${id}`);
-          setEmployees(employees.filter((employee) => employee._id !== id));
-        } catch (error) {
-          console.error(error);
-        }
+      try {
+        await axios.delete(`http://localhost:8080/api/deleteemployee/${id}`);
+        setEmployees(employees.filter((employee) => employee._id !== id));
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
 
+  const fetchEmployees = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/fetchemployee');
+      setEmployees(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        const response = await axios.get('http://localhost:8080/api/fetchemployee');
-        setEmployees(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
     fetchEmployees();
   }, []);
+
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const updatedEmployee = {
+      name: selectedEmployee.name,
+      college: selectedEmployee.college,
+      department: selectedEmployee.department,
+      designation: selectedEmployee.designation,
+      email: selectedEmployee.email,
+      mobile: selectedEmployee.mobile,
+    };
+    try {
+      const res = await axios.put(`http://localhost:8080/api/updateemployee/${selectedEmployee._id}`, updatedEmployee);
+      const data = res.data;
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        setSelectedEmployee({});
+        setMode('');
+        fetchEmployees();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className='card'>
@@ -65,24 +103,58 @@ const ManageEmployee = () => {
                 >
                   <AiOutlineEye />
                 </button>
-                <button style={{ marginRight: "10px", color: "#6a14a3" }} ><BsPencil /></button>
+                <button style={{ marginRight: "10px", color: "#6a14a3" }} onClick={() => handleEditClick(employee)}><BsPencil /></button>
                 <button style={{ marginRight: "10px", color: "#6a14a3" }} onClick={() => handleDelete(employee._id)}><RiDeleteBinLine /></button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      {selectedEmployee && (
-        <div className='card'>
+      {mode === "view" && (
+        <div className='card1'>
           <h2>{selectedEmployee.name}</h2>
           <p>College: {selectedEmployee.college}</p>
           <p>Department: {selectedEmployee.department}</p>
           <p>Designation: {selectedEmployee.designation}</p>
           <p>Email: {selectedEmployee.email}</p>
           <p>Mobile: {selectedEmployee.mobile}</p>
-         
+
         </div>
       )}
+      {mode === "edit" && (
+        <div className='card1'>
+          <h2>Edit Employee</h2>
+          <form onSubmit={handleUpdate}>
+            <div className='form-group'>
+              <label htmlFor='name'>Name:</label>
+              <input type='text' id='name' name='name' value={selectedEmployee.name} onChange={(e) => setSelectedEmployee({ ...selectedEmployee, name: e.target.value })} />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='college'>College:</label>
+              <input type='text' id='college' name='college' value={selectedEmployee.college} onChange={(e) => setSelectedEmployee({ ...selectedEmployee, college: e.target.value })} />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='department'>Department:</label>
+              <input type='text' id='department' name='department' value={selectedEmployee.department} onChange={(e) => setSelectedEmployee({ ...selectedEmployee, department: e.target.value })} />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='designation'>Designation:</label>
+              <input type='text' id='designation' name='designation' value={selectedEmployee.designation} onChange={(e) => setSelectedEmployee({ ...selectedEmployee, designation: e.target.value })} />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='email'>Email:</label>
+              <input type='email' id='email' name='email' value={selectedEmployee.email} onChange={(e) => setSelectedEmployee({ ...selectedEmployee, email: e.target.value })} />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='mobile'>Mobile:</label>
+              <input type='text' id='mobile' name='mobile' value={selectedEmployee.mobile} onChange={(e) => setSelectedEmployee({ ...selectedEmployee, mobile: e.target.value })} />
+            </div>
+            <button className='button3' type='submit'>Update</button>
+
+          </form>
+        </div>
+      )}
+
     </div>
   )
 };

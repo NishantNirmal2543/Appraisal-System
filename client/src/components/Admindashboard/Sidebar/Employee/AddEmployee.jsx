@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from "axios";
+import "./Employee.css";
 
 const AddEmployee = () => {
     const [name, setName] = useState('');
@@ -145,7 +146,7 @@ const AddEmployee = () => {
 
 
 
-                    <button className='button1' type="submit">Add</button>
+                    <button className='buttonA' type="submit">Add</button>
                 </form>
             </div>
         </div>

@@ -37,8 +37,8 @@
     text-align: left;
   }
   
-  .button1 {
-    background-color: #007bff;
+  .buttonA {
+    background-color:  #007bff;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -47,7 +47,7 @@
     font-size: 1rem;
   }
   
-  .button2 {
+  .buttonB {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -55,11 +55,14 @@
     padding: 10px 20px;
     cursor: pointer;
     font-size: 1rem;
+    margin-bottom: 10px;
   }
-  .button1:hover {
+
+
+  .buttonA:hover {
     background-color: #0062cc;
   }
-  .button2:hover {
+  .buttonB:hover {
     background-color: #0062cc;
   }
   
@@ -93,4 +96,37 @@
   }
   
   
+
+
+  .card1 {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(11, 11, 11, 0.3);
+  }
   
+  .card1 h2 {
+    
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .card1 p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .card1 .button3 {
+    background-color: #ba005d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .card1 .button3:hover {
+    background-color: #0077b3;
+  }
