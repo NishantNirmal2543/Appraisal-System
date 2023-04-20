@@ -1,4 +1,3 @@
-// models/employee.js
 
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
