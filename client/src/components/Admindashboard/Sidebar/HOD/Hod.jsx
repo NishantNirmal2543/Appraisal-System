@@ -17,7 +17,7 @@ const Employee = () => {
                 {isAddHod ? <AddHod /> : <ManageHod />}
             </div>
             <div className="card-actions">
-                <button className='button2' onClick={handleAddHodClick}>
+                <button className='buttonB' onClick={handleAddHodClick}>
                     {isAddHod ? <span ><i class="fas fa-tasks faa-pulse animated-icon"></i>  </span> : <span class="icon-container"><i class="fas fa-plus-circle faa-tada animated-icon"></i></span>}
                     <span style={{ marginLeft: "10px" }}>{isAddHod ? 'Manage Hod' : 'Add Hod'}</span>
                 </button>

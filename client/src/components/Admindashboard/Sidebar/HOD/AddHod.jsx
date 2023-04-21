@@ -1,11 +1,19 @@
 
 
 import React, { useState } from 'react';
+import "./Hod.css";
+import axios from "axios";
 
-const AddHod= () => {
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const AddHod = () => {
     const [name, setName] = useState('');
     const [college, setCollege] = useState('');
     const [department, setDepartment] = useState('');
+    const [role, setRole] = useState('');
+
     const [email, setEmail] = useState('');
     const [mobile, setMobile] = useState('');
     const [errors, setErrors] = useState({});
@@ -23,7 +31,9 @@ const AddHod= () => {
         setDepartment(e.target.value);
     };
 
-    
+    const handleRoleChange = (e) => {
+        setRole(e.target.value);
+    };
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -35,7 +45,7 @@ const AddHod= () => {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const errors = {};
@@ -51,8 +61,10 @@ const AddHod= () => {
         if (!department) {
             errors.department = 'Department is required';
         }
+        if (!role) {
+            errors.role = 'Role is required';
+        }
 
-        
 
         if (!email) {
             errors.email = 'Email is required';
@@ -73,9 +85,27 @@ const AddHod= () => {
         setErrors(errors);
 
         if (Object.keys(errors).length === 0) {
-            // Perform form submission logic
+            try {
+                const response = await axios.post("http://localhost:8080/api/adminhod", {
+                    name,
+                    college,
+                    department,
+                    role,
+                    email,
+                    mobile,
+                    password
+                });
+
+                // handle the success response       
+                toast.success("Hod Added successfully");
+
+            } catch (error) {
+                // handle the error response
+                alert(error.response.data.message);
+            }
         }
     };
+
 
     return (
         <div>
@@ -97,7 +127,13 @@ const AddHod= () => {
                         <input type="text" id="department" value={department} onChange={handleDepartmentChange} />
                         {errors.department && <div className="error">{errors.department}</div>}
                     </div>
-                   
+                    <div>
+                        <label htmlFor="role">Role:</label>
+                        <input type="text" id="role" value={role} onChange={handleRoleChange} pattern="^hod$" title="Please enter 'hod'" />
+                        {errors.role && <div className="error">{errors.role}</div>}
+                    </div>
+
+
                     <div>
                         <label htmlFor="email">Email:</label>
                         <input type="email" id="email" value={email} onChange={handleEmailChange} />
@@ -116,7 +152,7 @@ const AddHod= () => {
 
 
 
-                    <button className='button1' type="submit">Add</button>
+                    <button className='buttonA' type="submit">Add</button>
                 </form>
             </div>
         </div>

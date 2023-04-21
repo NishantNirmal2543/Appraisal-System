@@ -113,7 +113,7 @@ const ManageEmployee = () => {
         </tbody>
       </table>
       {mode === "view" && (
-        <div className='card1'>
+        <div className='card3'>
           <h2>{selectedEmployee.name}</h2>
           <p>College: {selectedEmployee.college}</p>
           <p>Department: {selectedEmployee.department}</p>

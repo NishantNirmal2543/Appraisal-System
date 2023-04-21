@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
+import axios from 'axios';
+
 const Dashboard = () => {
   const [departments, setDepartments] = useState([]);
   const [hods, setHods] = useState([]);
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    // fetch data from database and update state
     const fetchDashboardData = async () => {
-      const response = await fetch('/api/dashboard');
-      const data = await response.json();
-      setDepartments(data.departments);
-      setHods(data.hods);
-      setEmployees(data.employees);
+      try {
+        const response = await axios.get('/api/fetch');
+        const data = response.data;
+        setDepartments(data.departments);
+        setHods(data.hods);
+        setEmployees(data.employees);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     fetchDashboardData();
@@ -49,3 +54,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
