@@ -1,4 +1,4 @@
-.dashboard-container {
+/* .dashboard-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -28,5 +28,49 @@
   
   .dashboard-list li {
     margin-bottom: 5px;
+  }
+   */
+
+
+   .dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .dashboard-section {
+    width: 300px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .dashboard-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .dashboard-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .dashboard-list li {
+    margin: 0.5rem 0;
+  }
+  
+  
+  
+  .error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
   }
   

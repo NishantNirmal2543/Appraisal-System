@@ -69,12 +69,6 @@ const Dashboard = () => {
           ))}
         </ul>
       </div>
-      {/* <div className="dashboard-section">
-        <div className="dashboard-header">Employees</div>
-        <ul className="dashboard-list">
-          <li>{employees.length} </li>
-        </ul>
-      </div> */}
       <div className="dashboard-section">
         <div className="dashboard-header">Employees</div>
         <ul className="dashboard-list">
