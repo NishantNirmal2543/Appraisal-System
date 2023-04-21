@@ -3,24 +3,51 @@ import './Dashboard.css';
 import axios from 'axios';
 
 const Dashboard = () => {
-  const [departments, setDepartments] = useState([]);
   const [hods, setHods] = useState([]);
   const [employees, setEmployees] = useState([]);
+  const [principles, setprinciples] = useState([]);
+
+
+  const fetchEmployees = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/fetchemployee');
+      setEmployees(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchDashboardData = async () => {
-      try {
-        const response = await axios.get('/api/fetch');
-        const data = response.data;
-        setDepartments(data.departments);
-        setHods(data.hods);
-        setEmployees(data.employees);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+    fetchEmployees();
+  }, []);
 
-    fetchDashboardData();
+
+  const fetchHods = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/fetchhod');
+      setHods(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  useEffect(() => {
+    fetchHods();
+  }, []);
+
+  const fetchprinciples = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/fetchprinciple');
+      setprinciples(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  useEffect(() => {
+    fetchprinciples();
   }, []);
 
   return (
@@ -28,24 +55,50 @@ const Dashboard = () => {
       <div className="dashboard-section">
         <div className="dashboard-header">Departments</div>
         <ul className="dashboard-list">
-          {departments.map((department) => (
-            <li key={department.id}>{department.name}</li>
+          {[...new Set(hods.map((hod) => hod.department))].map((department) => (
+            <li key={department}>{department}</li>
           ))}
         </ul>
       </div>
+
       <div className="dashboard-section">
         <div className="dashboard-header">HODs</div>
         <ul className="dashboard-list">
           {hods.map((hod) => (
-            <li key={hod.id}>{hod.name}</li>
+            <li key={hod.id}>{hod.name} ({hod.department})</li>
+          ))}
+        </ul>
+      </div>
+      {/* <div className="dashboard-section">
+        <div className="dashboard-header">Employees</div>
+        <ul className="dashboard-list">
+          <li>{employees.length} </li>
+        </ul>
+      </div> */}
+      <div className="dashboard-section">
+        <div className="dashboard-header">Employees</div>
+        <ul className="dashboard-list">
+          <li>Total Employees: {employees.length}</li>
+          {Array.from(new Set(employees.map((employee) => employee.department))).map((department) => (
+            <li key={department}>{department}: {employees.filter((employee) => employee.department === department).length}</li>
           ))}
         </ul>
       </div>
       <div className="dashboard-section">
-        <div className="dashboard-header">Employees</div>
+        <div className="dashboard-header">Colleges</div>
         <ul className="dashboard-list">
-          {employees.map((employee) => (
-            <li key={employee.id}>{employee.name}</li>
+          {hods
+            .filter((hod, index, self) => self.findIndex((h) => h.college === hod.college) === index)
+            .map((hod) => (
+              <li key={hod.college}>{hod.college}</li>
+            ))}
+        </ul>
+      </div>
+      <div className="dashboard-section">
+        <div className="dashboard-header">Principles</div>
+        <ul className="dashboard-list">
+          {principles.map((principle) => (
+            <li key={principle.id}>{principle.name} ({principle.college}) </li>
           ))}
         </ul>
       </div>
