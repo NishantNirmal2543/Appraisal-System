@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AddPrinciple= () => {
+const AddPrinciple = () => {
     const [name, setName] = useState('');
     const [college, setCollege] = useState('');
     const [email, setEmail] = useState('');
@@ -37,7 +37,7 @@ const AddPrinciple= () => {
         setRole(e.target.value);
     };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const errors = {};
@@ -52,7 +52,7 @@ const AddPrinciple= () => {
         if (!role) {
             errors.role = 'Role is required';
         }
-        
+
 
         if (!email) {
             errors.email = 'Email is required';
@@ -77,7 +77,7 @@ const AddPrinciple= () => {
                 const response = await axios.post("http://localhost:8080/api/adminprinciple", {
                     name,
                     college,
-                    
+
                     role,
                     email,
                     mobile,
@@ -115,7 +115,8 @@ const AddPrinciple= () => {
                         <input type="text" id="role" value={role} onChange={handleRoleChange} pattern="^principle$" title="Please enter 'principle'" />
                         {errors.role && <div className="error">{errors.role}</div>}
                     </div>
-                   
+
+                  
                     <div>
                         <label htmlFor="email">Email:</label>
                         <input type="email" id="email" value={email} onChange={handleEmailChange} />

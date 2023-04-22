@@ -123,20 +123,20 @@ const AddEmployee = () => {
             {errors.college && <div className="error">{errors.college}</div>}
           </div>
           <div className="department-wrapper">
-  <label htmlFor="department" className="department-label">Department:</label>
-  <select id="department" value={department} onChange={handleDepartmentChange} className="department-select">
-    <option value="">-- Select Department --</option>
-    <option value="Computer Engineering">Computer Engineering</option>
-    <option value="Information Technology">Information Technology</option>
-    <option value="Artificial Intelligence & Data Science">Artificial Intelligence & Data Science</option>
-    <option value="Electronics & Telecommunication Engineering">Electronics & Telecommunication Engineering</option>
-    <option value="Instrumentation and Control Engineering">Instrumentation and Control Engineering</option>
-    <option value="Robotics and Automation">Robotics and Automation</option>
-    <option value="Mechanical Engineering">Mechanical Engineering</option>
-    <option value="Civil Engineering">Civil Engineering</option>
-  </select>
-  {errors.department && <div className="department-error">{errors.department}</div>}
-</div> 
+            <label htmlFor="department" className="department-label">Department:</label>
+            <select id="department" value={department} onChange={handleDepartmentChange} className="department-select">
+              <option value="">-- Select Department --</option>
+              <option value="Computer Engineering">Computer Engineering</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Artificial Intelligence & Data Science">Artificial Intelligence & Data Science</option>
+              <option value="Electronics & Telecommunication Engineering">Electronics & Telecommunication Engineering</option>
+              <option value="Instrumentation and Control Engineering">Instrumentation and Control Engineering</option>
+              <option value="Robotics and Automation">Robotics and Automation</option>
+              <option value="Mechanical Engineering">Mechanical Engineering</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+            </select>
+            {errors.department && <div className="department-error">{errors.department}</div>}
+          </div>
 
 
           <div>
