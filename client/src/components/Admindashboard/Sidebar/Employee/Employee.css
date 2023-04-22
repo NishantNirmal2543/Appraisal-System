@@ -35,7 +35,9 @@
     width: 100%;
     box-sizing: border-box;
     text-align: left;
+   
   }
+  
   
   .buttonA {
     background-color:  #007bff;
@@ -70,6 +72,7 @@
     color: red;
     font-size: 0.8rem;
     margin-top: 1px;
+    margin-bottom: 5px;
   }
   
 
@@ -150,5 +153,38 @@
   .card3 p {
     font-size: 18px;
     margin-bottom: 5px;
+  }
+  
+
+
+  .department-wrapper{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .department-label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .department-select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+  }
+  
+  .department-select:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .department-error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 1rem;
   }
   
