@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './sidebar.css';
 import Dashboard from './Dashboard/Dashboard';
-
+import Guidelines from './Guidelines/Guidelines';
 const Sidebar = () => {
     const [show, setShow] = useState(false);
     const [activeComponent, setActiveComponent] = useState('Dashboard');
@@ -40,18 +40,19 @@ const Sidebar = () => {
                                 <i className='fas fa-tachometer-alt nav-link-icon'></i>
                                 <span className='nav-link-name'>Dashboard</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Chart' ? 'active' : ''}`} onClick={() => handleClick('Chart')}>
+                            <div className={`nav-link ${activeComponent === 'Appraisal' ? 'active' : ''}`} onClick={() => handleClick('Appraisal')}>
                                 <i className='fas fa-hotel nav-link-icon'></i>
-                                <span className='nav-link-name'>Chart</span>
+                                <span className='nav-link-name'>Appraisal</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Help' ? 'active' : ''}`} onClick={() => handleClick('Help')}>
+                            <div className={`nav-link ${activeComponent === 'Guidelines' ? 'active' : ''}`} onClick={() => handleClick('Guidelines')}>
                                 <i className='fas fa-image nav-link-icon'></i>
-                                <span className='nav-link-name'>Help</span>
+                                <span className='nav-link-name'>Guidelines</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Create' ? 'active' : ''}`} onClick={() => handleClick('Create')}>
-                                <i className='fa-solid fa-spinner fa-pulse'></i>
-                                <span className='nav-link-name'>create</span>
+                            <div className={`nav-link ${activeComponent === 'Appraisal status' ? 'active' : ''}`} onClick={() => handleClick('Appraisal status')}>
+                                <i className='fas fa-clock nav-link-icon'></i>
+                                <span className='nav-link-name'>Appraisal status</span>
                             </div>
+                           
                         </div>
                     </div>
 
@@ -65,9 +66,9 @@ const Sidebar = () => {
 
             <div className="main-content">
                 {activeComponent === 'Dashboard' && <Dashboard />}
-                {/* {activeComponent === 'Chart' && <Chart />}
-                {activeComponent === 'Help' && <Help />}
-                {activeComponent === 'Create' && <Create />} */}
+                {/* {activeComponent === 'Appraisal' && <Appraisal />} */}
+                {activeComponent === 'Guidelines' && <Guidelines />}
+                {/* {activeComponent === 'Appraisal status' && <Appraisal status />} */}
             </div>
 
         </main>
