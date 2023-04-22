@@ -1,7 +1,6 @@
 const router = require("express").Router();
-const  {Employee}  = require('../models/employee');
+const { Employee } = require('../models/employee');
 
-const bcrypt = require("bcrypt");
 const Joi = require("joi");
 
 router.post("/", async (req, res) => {
@@ -9,15 +8,15 @@ router.post("/", async (req, res) => {
 		const { error } = validate(req.body);
 		if (error)
 			return res.status(400).send({ message: error.details[0].message });
-		
+
 		const employee = await Employee.findOne({ email: req.body.email });
-		
+
 		if (!employee)
 			return res.status(401).send({ message: "Invalid Email or Password" });
 
-		
-if (req.body.password !== employee.password)
-return res.status(401).send({ message: "Invalid Email or Password" });
+
+		if (req.body.password !== employee.password)
+			return res.status(401).send({ message: "Invalid Email or Password" });
 
 
 		const token = employee.generateAuthToken();
