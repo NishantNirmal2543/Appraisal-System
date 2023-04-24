@@ -117,9 +117,13 @@ const AddHod = () => {
                         <input type="text" id="name" value={name} onChange={handleNameChange} />
                         {errors.name && <div className="error">{errors.name}</div>}
                     </div>
-                    <div>
-                        <label htmlFor="college">College:</label>
-                        <input type="text" id="college" value={college} onChange={handleCollegeChange} />
+                    <div className="department-wrapper">
+                        <label htmlFor="college" className="department-label">College:</label>
+                        <select id="college" value={college} onChange={handleCollegeChange} className="department-select">
+                            <option value="">Select college</option>
+                            <option value="DYPCOE">DYPCOE</option>
+                            <option value="DYPIMER">DYPIMER</option>
+                        </select>
                         {errors.college && <div className="error">{errors.college}</div>}
                     </div>
                     <div className="department-wrapper">
@@ -142,7 +146,7 @@ const AddHod = () => {
                         <input type="text" id="role" value={role} onChange={handleRoleChange} pattern="^hod$" title="Please enter 'hod'" />
                         {errors.role && <div className="error">{errors.role}</div>}
                     </div>
-                    
+
 
                     <div>
                         <label htmlFor="email">Email:</label>

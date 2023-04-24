@@ -38,12 +38,15 @@ const employeeSchema = new mongoose.Schema({
 
 employeeSchema.methods.generateAuthToken = function () {
   	const token = jwt.sign({ _id: this._id }, process.env.JWTPRIVATEKEY, {
-  		expiresIn: "7d",
-  	});
+  		// expiresIn: "7d",
+     
+  	});	
+    	
+    	// console.log(token);
+
   	return token;
+    
   };
-
-
 
 
 const Employee = mongoose.model('employee', employeeSchema);
