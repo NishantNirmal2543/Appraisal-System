@@ -97,6 +97,7 @@ const Dashboard = () => {
           </div>
           </div>
         ) : (
+          <div className="container">
           <div className="card">
             <p>Name: {employee.name}</p>
             <p>College: {employee.college}</p>
@@ -104,6 +105,7 @@ const Dashboard = () => {
             <p>Mobile: {employee.mobile}</p>
             <p>Email: {employee.email}</p>
             <p>Department: {employee.department}</p>
+          </div>
           </div>
         )}
       </div>
