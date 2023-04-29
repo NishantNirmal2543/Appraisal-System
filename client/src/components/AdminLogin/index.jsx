@@ -42,7 +42,7 @@ const Adminsignin = (props) => {
 					<h1>Employee</h1>
 					<Link to="/">
 						<button type="button" className={styles.white_btn}>
-							Sing in
+							Sign in
 						</button>
 					</Link>
 				</div>
@@ -81,7 +81,7 @@ const Adminsignin = (props) => {
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sing In
+							Sign In
 						</button>
 					</form>
 				</div>

@@ -2,7 +2,14 @@ import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div>
+<h1>Dashboard</h1>
+<h3>HOD Profile</h3>
+<h3>Powerbi Vizualization</h3>
+
+ 
+
+    </div>
   )
 }
 
