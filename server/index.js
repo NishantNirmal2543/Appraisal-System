@@ -32,6 +32,7 @@ const deleteprincipleRoutes = require("./routes/deleteprinciple");
 
 const router = require("./routes/employeedash");
 
+const router1 = require("./routes/Admindash");
 
 // database connection
 connection();
@@ -84,6 +85,8 @@ app.use("/api/updateprinciple" , updateprincipleRoutes);
 
 
 app.use(router)
+
+app.use(router1)
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));
