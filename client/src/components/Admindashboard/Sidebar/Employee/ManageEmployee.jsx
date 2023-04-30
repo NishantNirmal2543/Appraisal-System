@@ -104,7 +104,7 @@ const ManageEmployee = () => {
               <td>{employee.designation}</td>
               <td>{employee.email}</td>
               <td>
-                <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewClick(employee)} >  <AiOutlineEye /> </button>
+                <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewClick(employee)} >  <AiOutlineEye  /> </button>
                 <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleEditClick(employee)}><BsPencil /></button>
                 <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleDelete(employee._id)}><RiDeleteBinLine /></button>
               </td>
