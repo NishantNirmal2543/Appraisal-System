@@ -44,7 +44,7 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="container">
-          <div className="card">
+          <div className="section">
             <p>Name: {admin.name}</p>
             <p>College: {admin.college}</p>
             <p>Role: {admin.role}</p>

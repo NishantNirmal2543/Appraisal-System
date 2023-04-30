@@ -43,8 +43,9 @@ const Dashboard = () => {
           </div>
           </div>
         ) : (
+         
           <div className="container">
-          <div className="card">
+          <div className="section">
             <p>Name: {employee.name}</p>
             <p>College: {employee.college}</p>
             <p>Designation: {employee.designation}</p>
@@ -53,6 +54,7 @@ const Dashboard = () => {
             <p>Department: {employee.department}</p>
           </div>
           </div>
+        
         )}
       </div>
     </>
