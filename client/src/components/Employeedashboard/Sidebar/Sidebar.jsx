@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './sidebar.css';
 import Dashboard from './Dashboard/Dashboard';
 import Guidelines from './Guidelines/Guidelines';
+import Appraisal from './Appraisal/Appraisal';
 const Sidebar = () => {
     const [show, setShow] = useState(false);
     const [activeComponent, setActiveComponent] = useState('Dashboard');
@@ -66,7 +67,7 @@ const Sidebar = () => {
 
             <div className="main-content">
                 {activeComponent === 'Dashboard' && <Dashboard />}
-                {/* {activeComponent === 'Appraisal' && <Appraisal />} */}
+                {activeComponent === 'Appraisal' && <Appraisal />}
                 {activeComponent === 'Guidelines' && <Guidelines />}
                 {/* {activeComponent === 'Appraisal status' && <Appraisal status />} */}
             </div>
