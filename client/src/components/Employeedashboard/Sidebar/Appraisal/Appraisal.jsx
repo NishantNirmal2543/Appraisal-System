@@ -25,6 +25,53 @@ const Appraisal = () => {
     const [citation2022, setCitation2022] = useState(0);
     const [totalScore8a, setTotalScore8a] = useState(0);
 
+    //8b.1
+
+    const [international, setInternational] = useState(0);
+    const [national, setNational] = useState(0);
+    const [chapter, setChapter] = useState(0);
+    const [editorInternational, setEditorInternational] = useState(0);
+    const [editorNational, setEditorNational] = useState(0);
+    const [researchPaper, setResearchPaper] = useState(0);
+    const [book, setBook] = useState(0);
+    const [totalScore8b1, setTotalScore8b1] = useState(0);
+
+
+    //8b.2
+
+    const [innovativePedagogy, setInnovativePedagogy] = useState(0);
+    const [eContentDevelopment, setEContentDevelopment] = useState(0);
+    const [totalScore8b2, setTotalScore8b2] = useState(0);
+
+    //8b.3
+
+    const [phdGuidance, setPhdGuidance] = useState(0);
+    const [pgDissertation, setPgDissertation] = useState(0);
+    const [completedResearchProjectMoreThan10Lakhs, setCompletedResearchProjectMoreThan10Lakhs] = useState(0);
+    const [completedResearchProjectLessThan10Lakhs, setCompletedResearchProjectLessThan10Lakhs] = useState(0);
+    const [ongoingResearchProjectMoreThan10Lakhs, setOngoingResearchProjectMoreThan10Lakhs] = useState(0);
+    const [ongoingResearchProjectLessThan10Lakhs, setOngoingResearchProjectLessThan10Lakhs] = useState(0);
+    const [inHouseProductDevelopment, setInHouseProductDevelopment] = useState(0);
+    const [consultancy, setConsultancy] = useState(0);
+    const [editorialBoardReviewer, setEditorialBoardReviewer] = useState(0);
+    const [paperPublishedWithIndustryPerson, setPaperPublishedWithIndustryPerson] = useState(0);
+    const [totalScore8b3, setTotalScore8b3] = useState(0);
+
+    //8b.4
+
+    const [internationalPatents, setInternationalPatents] = useState(0);
+    const [nationalPatents, setNationalPatents] = useState(0);
+    const [copyrights, setCopyrights] = useState(0);
+    const [awards, setAwards] = useState(0);
+    const [totalScore8b4, setTotalScore8b4] = useState(0);
+
+    //8b.5
+    const [intlAbroad, setIntlAbroad] = useState(0);
+    const [intlWithin, setIntlWithin] = useState(0);
+    const [Innational, setInNational] = useState(0);
+    const [stateUni, setStateUni] = useState(0);
+    const [totalScore8b5, setTotalScore8b5] = useState(0);
+
     //9
     const [sttpOrganized, setSttpOrganized] = useState(0);
     const [sttpAttended, setSttpAttended] = useState(0);
@@ -33,6 +80,15 @@ const Appraisal = () => {
     const [academicQualification, setAcademicQualification] = useState(0);
     const [mouWithIndustry, setMouWithIndustry] = useState(0);
     const [totalScore9, setTotalScore9] = useState(0);
+
+
+    //total
+    const [totalScoreformB, setTotalScoreformB] = useState(0);
+
+    const calculateScoreB = () => {
+        const scoreB = totalScore7a + totalScore7b + totalScore7c + totalScore8a + totalScore8b1 + totalScore8b2 + totalScore8b3 + totalScore8b4 + totalScore8b5 + totalScore9;
+        setTotalScoreformB(scoreB);
+    };
 
     //7
     const handleShortTermChange7a = (event) => {
@@ -100,6 +156,167 @@ const Appraisal = () => {
         const score8a = internationalJournal + citation2022;
         setTotalScore8a(score8a);
     };
+
+    //8b1
+
+    const handleInternationalChange = (event) => {
+        setInternational(Number(event.target.value));
+    };
+
+    const handleNationalChange = (event) => {
+        setNational(Number(event.target.value));
+    };
+
+    const handleChapterChange = (event) => {
+        setChapter(Number(event.target.value));
+    };
+
+    const handleEditorInternationalChange = (event) => {
+        setEditorInternational(Number(event.target.value));
+    };
+
+    const handleEditorNationalChange = (event) => {
+        setEditorNational(Number(event.target.value));
+    };
+
+    const handleResearchPaperChange = (event) => {
+        setResearchPaper(Number(event.target.value));
+    };
+
+    const handleBookChange = (event) => {
+        setBook(Number(event.target.value));
+    };
+
+    const calculateScore8b1 = () => {
+        const score8b1 = international + national + chapter + editorInternational + editorNational + researchPaper + book;
+        setTotalScore8b1(score8b1);
+    };
+
+    //8b2
+
+    const handleInnovativePedagogyChange = (event) => {
+        setInnovativePedagogy(Number(event.target.value));
+    };
+
+    const handleEContentDevelopmentChange = (event) => {
+        setEContentDevelopment(Number(event.target.value));
+    };
+
+    const calculateScore8b2 = () => {
+        const score8b2 = innovativePedagogy + eContentDevelopment;
+        setTotalScore8b2(score8b2);
+    };
+
+    //8b3
+
+    const handlePhdGuidanceChange = (event) => {
+        setPhdGuidance(Number(event.target.value));
+    };
+
+    const handlePgDissertationChange = (event) => {
+        setPgDissertation(Number(event.target.value));
+    };
+
+    const handleCompletedResearchProjectMoreThan10LakhsChange = (event) => {
+        setCompletedResearchProjectMoreThan10Lakhs(Number(event.target.value));
+    };
+
+    const handleCompletedResearchProjectLessThan10LakhsChange = (event) => {
+        setCompletedResearchProjectLessThan10Lakhs(Number(event.target.value));
+    };
+
+    const handleOngoingResearchProjectMoreThan10LakhsChange = (event) => {
+        setOngoingResearchProjectMoreThan10Lakhs(Number(event.target.value));
+    };
+
+    const handleOngoingResearchProjectLessThan10LakhsChange = (event) => {
+        setOngoingResearchProjectLessThan10Lakhs(Number(event.target.value));
+    };
+
+    const handleInHouseProductDevelopmentChange = (event) => {
+        setInHouseProductDevelopment(Number(event.target.value));
+    };
+
+    const handleConsultancyChange = (event) => {
+        setConsultancy(Number(event.target.value));
+    };
+
+    const handleEditorialBoardReviewerChange = (event) => {
+        setEditorialBoardReviewer(Number(event.target.value));
+    };
+
+    const handlePaperPublishedWithIndustryPersonChange = (event) => {
+        setPaperPublishedWithIndustryPerson(Number(event.target.value));
+    };
+
+    const calculateScore8b3 = () => {
+        const score8b3 =
+            phdGuidance +
+            pgDissertation +
+            completedResearchProjectMoreThan10Lakhs +
+            completedResearchProjectLessThan10Lakhs +
+            ongoingResearchProjectMoreThan10Lakhs +
+            ongoingResearchProjectLessThan10Lakhs +
+            inHouseProductDevelopment +
+            consultancy +
+            editorialBoardReviewer +
+            paperPublishedWithIndustryPerson;
+        setTotalScore8b3(score8b3);
+    };
+
+
+    //8b4
+
+    const handleInternationalPatentsChange = (event) => {
+        setInternationalPatents(Number(event.target.value));
+    };
+
+    const handleNationalPatentsChange = (event) => {
+        setNationalPatents(Number(event.target.value));
+    };
+
+    const handleCopyrightsChange = (event) => {
+        setCopyrights(Number(event.target.value));
+    };
+
+    const handleAwardsChange = (event) => {
+        setAwards(Number(event.target.value));
+    };
+
+    const calculateScore8b4 = () => {
+        const score8b4 =
+            internationalPatents +
+            nationalPatents +
+            copyrights +
+            awards;
+        setTotalScore8b4(score8b4);
+    };
+
+
+    //8b5
+
+    const handleIntlAbroadChange = (event) => {
+        setIntlAbroad(Number(event.target.value));
+    };
+
+    const handleIntlWithinChange = (event) => {
+        setIntlWithin(Number(event.target.value));
+    };
+
+    const handleInNationalChange = (event) => {
+        setInNational(Number(event.target.value));
+    };
+
+    const handleStateUniChange = (event) => {
+        setStateUni(Number(event.target.value));
+    };
+
+    const calculateScore8b5 = () => {
+        const score8b5 = intlAbroad + intlWithin + Innational + stateUni;
+        setTotalScore8b5(score8b5);
+    };
+
+
     //9
     const handleSttpOrganizedChange = (event) => {
         setSttpOrganized(Number(event.target.value));
@@ -139,176 +356,372 @@ const Appraisal = () => {
 
     return (
         <>
-            <h2 style={{ textAlign: "center" }}>PART-B : Research & Publication</h2>
+            <div style={{ border: "1px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
+                <h2 style={{ textAlign: "center" }}>PART-B : Research & Publication</h2>
 
-            <div>
-                <b>7. Faculty Contribution to Department, Institute and organization:</b>
-                <p>(Max marks 30 for Professor, Senior Associate Professor, Associate Professor and Max Marks 40 for Senior Assistant Professor and Assistant Professor - Refer Guideline for same)</p>
+                <div>
+                    <u><b>7. Faculty Contribution to Department, Institute and organization:</b></u>
+                    <p>(Max marks 30 for Professor, Senior Associate Professor, Associate Professor and Max Marks 40 for Senior Assistant Professor and Assistant Professor - Refer Guideline for same)</p>
+                </div>
+                <div className="form-group">
+                    <h2>7a) Faculty contribution at department level</h2>
+                    <label>
+                        Short Term based one time Activity:
+                        <input type="number" value={shortTerm7a} onChange={handleShortTermChange7a} />
+                    </label>
+                    <br />
+                    <label>
+                        Semester/ Term based (3 to 6 months):
+                        <input type="number" value={semester7a} onChange={handleSemesterChange7a} />
+                    </label>
+                    <br />
+                    <label>
+                        Academic Year Activity (more than 6 months to one year):
+                        <input type="number" value={academicYear7a} onChange={handleAcademicYearChange7a} />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore7a}>Calculate Score</button>
+                    <br />
+                    <p className="total-score">Total Score: {totalScore7a}</p>
+                </div>
+                <div className="form-group">
+                    <h2>7b) Faculty contribution at institute level</h2>
+                    <label>
+                        Short Term based one time Activity:
+                        <input type="number" value={shortTerm7b} onChange={handleShortTermChange7b} />
+                    </label>
+                    <br />
+                    <label>
+                        Semester/ Term based (3 to 6 months):
+                        <input type="number" value={semester7b} onChange={handleSemesterChange7b} />
+                    </label>
+                    <br />
+                    <label>
+                        Academic Year Activity (more than 6 months to one year):
+                        <input type="number" value={academicYear7b} onChange={handleAcademicYearChange7b} />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore7b}>Calculate Score</button>
+                    <br />
+                    <p className="total-score">Total Score: {totalScore7b}</p>
+                </div >
+                <div className="form-group">
+                    <h2>7c) Faculty contribution at Campus Level </h2>
+                    <label>
+                        Short Term based one time Activity:
+                        <input type="number" value={shortTerm7c} onChange={handleShortTermChange7c} />
+                    </label>
+                    <br />
+                    <label>
+                        Semester/ Term based (3 to 6 months):
+                        <input type="number" value={semester7c} onChange={handleSemesterChange7c} />
+                    </label>
+                    <br />
+                    <label>
+                        Academic Year Activity (more than 6 months to one year):
+                        <input type="number" value={academicYear7c} onChange={handleAcademicYearChange7c} />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore7c}>Calculate Score</button>
+                    <br />
+                    <p className="total-score">Total Score: {totalScore7c}</p>
+                </div>
+                <div className="form-group">
+                    <u><b>8. Faculty contribution in research and publication:</b></u>
+                    <h2>8a) Publication</h2>
+                    <p>(Max marks 60 - Refer Guideline for same)</p>
+                    <label>
+                        International Journal : Scopus, Web of Science, Thomson Router, Clarivate Analytics etc
+                        <input
+                            type="number"
+                            value={internationalJournal}
+                            onChange={handleInternationalJournalChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Citation in year :
+                        <input type="number" value={citation2022} onChange={handleCitation2022Change} />
+                    </label>
+
+                    <br />
+                    <button className="btn" onClick={calculateScore8a}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8a}</p>
+                </div>
+                <div className="form-group">
+                    <h2>8b) E-Learning, Books Published and Research Activity</h2>
+                    <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
+
+                    <p>8.b.1 Books authored which are published by International publishers National Publishers Chapter in Edited Book Editor of Book by International Publisher Editor of Book by National Publisher Chapter or Research paper Book</p>
+                    <br />
+                    <label>
+                        International Publishers
+                        <input type="number" value={international} onChange={handleInternationalChange} />
+                    </label>
+                    <br />
+                    <label>
+                        National Publishers
+                        <input type="number" value={national} onChange={handleNationalChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Chapter in Edited Book
+                        <input type="number" value={chapter} onChange={handleChapterChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Editor of Book by International Publisher
+                        <input type="number" value={editorInternational} onChange={handleEditorInternationalChange} />
+                    </label>
+
+                    <br />
+                    <label>
+                        Editor of Book by National Publisher
+                        <input type="number" value={editorNational} onChange={handleEditorNationalChange} />
+                    </label>
+                    <br />
+                    <label>Translation works in Indian and Foreign Languages by qualified faculties:
+                    </label>
+                    <br />
+                    <label>
+                        Chapter or Research Paper
+                        <input type="number" value={researchPaper} onChange={handleResearchPaperChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Book
+                        <input type="number" value={book} onChange={handleBookChange} />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore8b1}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8b1}</p>
+                    <br />
+                    <p>8.b.2 Creation of ICT mediated Teaching Learning pedagogy and content and development of new and innovative course and curricula</p>
+                    <br />
+                    <label>
+                        Development of innovative pedagogy
+                        <input
+                            type="number"
+                            value={innovativePedagogy}
+                            onChange={handleInnovativePedagogyChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Development of E-Content
+                        <input
+                            type="number"
+                            value={eContentDevelopment}
+                            onChange={handleEContentDevelopmentChange}
+                        />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore8b2}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8b2}</p>
+                    <br />
+
+                    <p>8.b.3 Research and Consultancy</p>
+                    <label>
+                        Research guidance Ph.D. (if applicable)
+                        <input type="number" value={phdGuidance} onChange={handlePhdGuidanceChange} />
+                    </label>
+                    <br />
+                    <label>
+                        P.G. dissertation/ BE project
+                        <input type="number" value={pgDissertation} onChange={handlePgDissertationChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Research Projects Completed ( Not Less than 50,000):
+                    </label>
+                    <br />
+                    <label >
+                        More than 10 lakhs
+                        <input type="number" value={completedResearchProjectMoreThan10Lakhs} onChange={handleCompletedResearchProjectMoreThan10LakhsChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Less than 10 lakhs
+                        <input type="number" value={completedResearchProjectLessThan10Lakhs} onChange={handleCompletedResearchProjectLessThan10LakhsChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Research Projects Ongoing ( Not Less than 50,000):
+                    </label>
+                    <br />
+                    <label >
+                        More than 10 lakhs
+                        <input type="number" value={ongoingResearchProjectMoreThan10Lakhs} onChange={handleOngoingResearchProjectMoreThan10LakhsChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Less than 10 lakhs
+                        <input type="number" value={ongoingResearchProjectLessThan10Lakhs} onChange={handleOngoingResearchProjectLessThan10LakhsChange} />
+                    </label>
+                    <br />
+                    <label>
+                        In-house Product Development
+                        <input type="number" value={inHouseProductDevelopment} onChange={handleInHouseProductDevelopmentChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Consultancy ( Any Amount)
+                        <input type="number" value={consultancy} onChange={handleConsultancyChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Editorial Board/Reviewer of Indexed Journals/Solicited Articles
+                        <input type="number" value={editorialBoardReviewer} onChange={handleEditorialBoardReviewerChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Paper Published with Industry person
+                        <input type="number" value={paperPublishedWithIndustryPerson} onChange={handlePaperPublishedWithIndustryPersonChange} />
+                    </label>
+                    <br />
+                    <button onClick={calculateScore8b3} className="btn btn-primary">Calculate Total Score</button>
+                    <p className="total-score" >Total Score: {totalScore8b3}</p>
+                    <br />
+                    <p>8.b.4 Patents, Copyrights etc</p>
+                    <label>
+                        Patents (International)
+                        <input
+                            type="number"
+                            value={internationalPatents}
+                            onChange={handleInternationalPatentsChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Patents (National)
+                        <input
+                            type="number"
+                            value={nationalPatents}
+                            onChange={handleNationalPatentsChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Copyrights
+                        <input
+                            type="number"
+                            value={copyrights}
+                            onChange={handleCopyrightsChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Awards/Fellowship
+                        <input
+                            type="number"
+                            value={awards}
+                            onChange={handleAwardsChange}
+                        />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore8b4}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8b4}</p>
+                    <br />
+                    <p> 8.b.5 Invited as Resource Persons for conference, seminar, workshop.</p>
+
+                    <label>
+                        International (abroad)
+                        <input type="number" value={intlAbroad} onChange={handleIntlAbroadChange} />
+                    </label>
+                    <br />
+                    <label>
+                        International (within country)
+                        <input type="number" value={intlWithin} onChange={handleIntlWithinChange} />
+                    </label>
+                    <br />
+                    <label>
+                        National
+                        <input type="number" value={Innational} onChange={handleInNationalChange} />
+                    </label>
+                    <br />
+                    <label>
+                        State/ University
+                        <input type="number" value={stateUni} onChange={handleStateUniChange} />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore8b5}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8b5}</p>
+
+
+                </div>
+
+                <div className="form-group">
+                    <u><b>9. Faculty value added courses:</b></u>
+                    <h1></h1>
+                    <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
+                    <label>
+                        9.a. STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc organized (one week/two weeks)
+                        <input
+                            type="number"
+                            value={sttpOrganized}
+                            onChange={handleSttpOrganizedChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.b. STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc attended (one week/two weeks)
+                        <input
+                            type="number"
+                            value={sttpAttended}
+                            onChange={handleSttpAttendedChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.c. Conferences/ Workshops/Symposium/Seminar attended (min. 5 days)
+                        <input
+                            type="number"
+                            value={conferenceAttended}
+                            onChange={handleConferenceAttendedChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.d. NPTEL or Equivalent Certification or Technical Graded Certification or ATAL FDP or Mooc's Courses
+                        <input
+                            type="number"
+                            value={nptelCertification}
+                            onChange={handleNptelCertificationChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.e. Improvement/Enhanced Academic Qualification (e.g. GATE Qualified, Ph.D registration/ Completion)
+                        <input
+                            type="number"
+                            value={academicQualification}
+                            onChange={handleAcademicQualificationChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.f. Active MoU with Industry/ Recognized Institution / University
+                        <input
+                            type="number"
+                            value={mouWithIndustry}
+                            onChange={handleMouWithIndustryChange}
+                        />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore9}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore9}</p>
+                </div>
+
+                <br />
+                <button className="btn" onClick={calculateScoreB}>Calculate Form B Score</button>
+                <br />
+                <p className="total-score">Total Score Form B: {totalScoreformB}</p>
             </div>
-            <div className="form-group">
-                <h2>7a) Faculty contribution at department level</h2>
-                <label>
-                    Short Term based one time Activity:
-                    <input type="number" value={shortTerm7a} onChange={handleShortTermChange7a} />
-                </label>
-                <br />
-                <label>
-                    Semester/ Term based (3 to 6 months):
-                    <input type="number" value={semester7a} onChange={handleSemesterChange7a} />
-                </label>
-                <br />
-                <label>
-                    Academic Year Activity (more than 6 months to one year):
-                    <input type="number" value={academicYear7a} onChange={handleAcademicYearChange7a} />
-                </label>
-                <br />
-                <button className="btn" onClick={calculateScore7a}>Calculate Score</button>
-                <br />
-                <p className="total-score">Total Score: {totalScore7a}</p>
-            </div>
-            <div className="form-group">
-                <h2>7b) Faculty contribution at institute level</h2>
-                <label>
-                    Short Term based one time Activity:
-                    <input type="number" value={shortTerm7b} onChange={handleShortTermChange7b} />
-                </label>
-                <br />
-                <label>
-                    Semester/ Term based (3 to 6 months):
-                    <input type="number" value={semester7b} onChange={handleSemesterChange7b} />
-                </label>
-                <br />
-                <label>
-                    Academic Year Activity (more than 6 months to one year):
-                    <input type="number" value={academicYear7b} onChange={handleAcademicYearChange7b} />
-                </label>
-                <br />
-                <button className="btn" onClick={calculateScore7b}>Calculate Score</button>
-                <br />
-                <p className="total-score">Total Score: {totalScore7b}</p>
-            </div >
-            <div className="form-group">
-                <h2>7c) Faculty contribution at Campus Level </h2>
-                <label>
-                    Short Term based one time Activity:
-                    <input type="number" value={shortTerm7c} onChange={handleShortTermChange7c} />
-                </label>
-                <br />
-                <label>
-                    Semester/ Term based (3 to 6 months):
-                    <input type="number" value={semester7c} onChange={handleSemesterChange7c} />
-                </label>
-                <br />
-                <label>
-                    Academic Year Activity (more than 6 months to one year):
-                    <input type="number" value={academicYear7c} onChange={handleAcademicYearChange7c} />
-                </label>
-                <br />
-                <button className="btn" onClick={calculateScore7c}>Calculate Score</button>
-                <br />
-                <p className="total-score">Total Score: {totalScore7c}</p>
-            </div>
-            <div className="form-group">
-                <b>8. Faculty contribution in research and publication:</b>
-                <h2>8a) Publication</h2>
-                <p>(Max marks 60 - Refer Guideline for same)</p>
-                <label>
-                    International Journal : Scopus, Web of Science, Thomson Router, Clarivate Analytics etc
-                    <input
-                        type="number"
-                        value={internationalJournal}
-                        onChange={handleInternationalJournalChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    Citation in year :
-                    <input type="number" value={citation2022} onChange={handleCitation2022Change} />
-                </label>
-
-                <br />
-                <button className="btn" onClick={calculateScore8a}>Calculate Total Score</button>
-                <p className="total-score">Total Score: {totalScore8a}</p>
-            </div>
-            {/* <div>
-                <h2>8b) E-Learning, Books Published and Research Activity</h2>
-                <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
-            </div> */}
-
-
-
-
-
-
-            <div className="form-group">
-                <b>9. Faculty value added courses:</b>
-                <h1></h1>
-                <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
-                <label>
-                    9.a. STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc organized (one week/two weeks)
-                    <input
-                        type="number"
-                        value={sttpOrganized}
-                        onChange={handleSttpOrganizedChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    9.b. STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc attended (one week/two weeks)
-                    <input
-                        type="number"
-                        value={sttpAttended}
-                        onChange={handleSttpAttendedChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    9.c. Conferences/ Workshops/Symposium/Seminar attended (min. 5 days)
-                    <input
-                        type="number"
-                        value={conferenceAttended}
-                        onChange={handleConferenceAttendedChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    9.d. NPTEL or Equivalent Certification or Technical Graded Certification or ATAL FDP or Mooc's Courses
-                    <input
-                        type="number"
-                        value={nptelCertification}
-                        onChange={handleNptelCertificationChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    9.e. Improvement/Enhanced Academic Qualification (e.g. GATE Qualified, Ph.D registration/ Completion)
-                    <input
-                        type="number"
-                        value={academicQualification}
-                        onChange={handleAcademicQualificationChange}
-                    />
-                </label>
-                <br />
-                <label>
-                    9.f. Active MoU with Industry/ Recognized Institution / University
-                    <input
-                        type="number"
-                        value={mouWithIndustry}
-                        onChange={handleMouWithIndustryChange}
-                    />
-                </label>
-                <br />
-                <button className="btn" onClick={calculateScore9}>Calculate Total Score</button>
-                <p className="total-score">Total Score: {totalScore9}</p>
-
-
-            </div>
-
         </>
     );
 }
 
-export default Appraisal
+export default Appraisal;
 
 
 
