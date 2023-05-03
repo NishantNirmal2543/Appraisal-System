@@ -1,6 +1,29 @@
 import React, { useState } from 'react'
 import "./Appraisal.css"
 const Appraisal = () => {
+    //1
+    const [classesTaught, setClassesTaught] = useState(0);
+    const [totalClasses, setTotalClasses] = useState(0);
+    const [totalScore1, setTotalScore1] = useState(0);
+
+    //2
+    const [paperEval, setPaperEval] = useState(0);
+    const [studentActivities, setStudentActivities] = useState(0);
+    const [totalScore2, setTotalScore2] = useState(0);
+
+
+    //5 
+    const [internalFeedback, setInternalFeedback] = useState(0);
+    const [externalFeedback, setExternalFeedback] = useState(0);
+    const [totalScore5, setTotalScore5] = useState(0);
+    //6
+
+    const [handwrittenNotes, setHandwrittenNotes] = useState(0);
+    const [otherContents, setOtherContents] = useState(0);
+    const [coPoPsoMapping, setCoPoPsoMapping] = useState(0);
+    const [totalScore6, setTotalScore6] = useState(0);
+
+
 
     //7a
     const [shortTerm7a, setShortTerm7a] = useState(0);
@@ -89,6 +112,103 @@ const Appraisal = () => {
         const scoreB = totalScore7a + totalScore7b + totalScore7c + totalScore8a + totalScore8b1 + totalScore8b2 + totalScore8b3 + totalScore8b4 + totalScore8b5 + totalScore9;
         setTotalScoreformB(scoreB);
     };
+
+
+    //1
+    const handleClassesTaughtChange = (event) => {
+        setClassesTaught(Number(event.target.value));
+    };
+
+    const handleTotalClassesChange = (event) => {
+        setTotalClasses(Number(event.target.value));
+    };
+
+    const calculateScore1 = () => {
+        const percentage = (classesTaught / totalClasses) * 100;
+        let score = 0;
+
+        if (percentage >= 80) {
+            score = 10;
+        } else if (percentage >= 70) {
+            score = 5;
+        }
+
+        setTotalScore1(score);
+    };
+
+
+    //2
+
+    const handlePaperEvalChange = (event) => {
+        setPaperEval(Number(event.target.value));
+    };
+
+    const handleStudentActivitiesChange = (event) => {
+        setStudentActivities(Number(event.target.value));
+    };
+
+    const calculateScore2 = () => {
+        const score2 = paperEval + studentActivities;
+        setTotalScore2(score2);
+    };
+
+
+    //5
+
+    const handleInternalFeedbackChange = (event) => {
+        setInternalFeedback(parseInt(event.target.value));
+    };
+
+    const handleExternalFeedbackChange = (event) => {
+        setExternalFeedback(parseInt(event.target.value));
+    };
+
+    const calculateScore5 = () => {
+        let score = 0;
+
+        if (internalFeedback >= 90) {
+            score += 10;
+        } else if (internalFeedback >= 81) {
+            score += 8;
+        } else if (internalFeedback >= 71) {
+            score += 6;
+        } else if (internalFeedback >= 61) {
+            score += 4;
+        }
+
+        if (externalFeedback >= 90) {
+            score += 20;
+        } else if (externalFeedback >= 81) {
+            score += 16;
+        } else if (externalFeedback >= 71) {
+            score += 12;
+        } else if (externalFeedback >= 61) {
+            score += 8;
+        }
+
+        setTotalScore5(score);
+    };
+
+    //6
+    const handleHandwrittenNotesChange = (event) => {
+        setHandwrittenNotes(Number(event.target.value));
+    };
+
+    const handleOtherContentsChange = (event) => {
+        setOtherContents(Number(event.target.value));
+    };
+
+    const handleCoPoPsoMappingChange = (event) => {
+        setCoPoPsoMapping(Number(event.target.value));
+    };
+
+    const calculateScore6 = () => {
+        const score6 = handwrittenNotes + otherContents + coPoPsoMapping;
+        setTotalScore6(score6);
+    };
+
+
+
 
     //7
     const handleShortTermChange7a = (event) => {
@@ -356,14 +476,170 @@ const Appraisal = () => {
 
     return (
         <>
+            {/* form A */}
+            <div style={{ border: "1px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
+                <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
+
+                <div className="form-group">
+                    <u><b>1.Teaching load assessment :</b></u>
+                    <p>(Max marks : 10)</p>
+                    <label>
+                        Number of classes taught:
+                        <input type="number" value={classesTaught} onChange={handleClassesTaughtChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Total classes assigned:
+                        <input type="number" value={totalClasses} onChange={handleTotalClassesChange} />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore1}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore1}</p>
+                </div>
+                <div className="form-group">
+                    <u><b>2. Examination and evaluation duties assigned by university/institute :</b></u>
+                    <p>(Max marks : 2. a- 10, 2. B-20)</p>
+                    <label>Involvement in the student related activities :</label>
+                    <br />
+                    <label>
+                        2.a. Paper evaluation duties
+                        <input type="number" value={paperEval} onChange={handlePaperEvalChange} />
+                    </label>
+                    <br />
+                    <label>
+                        2.b. Student related activities (clubs, counseling, seminars, etc.)
+                        <input type="number" value={studentActivities} onChange={handleStudentActivitiesChange} />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore2}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore2}</p>
+                </div>
+
+
+                <div className="form-group">
+                    <u><b>3.Teacher Guardian performance : </b></u>
+                    <p>(Max marks 50 for Professor, Senior Professor, Associate Professor and Max marks 65 for Senior Assistant Professor, Assistant Professor- Refer Guideline for same)</p>
+
+
+
+                </div>
+
+
+                <div className="form-group">
+                    <u><b>4. University result analysis:  </b></u>
+                    <p>(Max marks 80)</p>
+
+
+
+                </div>
+
+
+                
+                <div className="form-group">
+                    <u><b>5. Course file and Remedial classes assessment : </b></u>
+                    <p>(Max marks : 30)</p>
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>Score (Internal Feedback)</th>
+                                    <th>Score (External Feedback)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A+ (90 & above)</td>
+                                    <td>10</td>
+                                    <td>20</td>
+                                </tr>
+                                <tr>
+                                    <td>A (81 to 89)</td>
+                                    <td>8</td>
+                                    <td>16</td>
+                                </tr>
+                                <tr>
+                                    <td>B+ (71 to 80)</td>
+                                    <td>6</td>
+                                    <td>12</td>
+                                </tr>
+                                <tr>
+                                    <td>B (61 to 70)</td>
+                                    <td>4</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>C  (less than 60)</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <br />
+                    <label>
+                        Internal Feedback Grade Score
+                        <input type="number" value={internalFeedback} onChange={handleInternalFeedbackChange} />
+                    </label>
+                    <br />
+                    <label>
+                        External Feedback Grade Score
+                        <input type="number" value={externalFeedback} onChange={handleExternalFeedbackChange} />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore5}>Calculate Score</button>
+                    <p className="total-score">Total Score: {totalScore5}</p>
+
+                </div>
+                <div className="form-group">
+                    <u><b>6. Course file and Remedial classes assessment :</b></u>
+                    <p>(Max marks :30)</p>
+                    <label>
+                        6.a.Handwritten Notes of 03 (three) units*
+                        <input
+                            type="number"
+                            value={handwrittenNotes}
+                            onChange={handleHandwrittenNotesChange}
+                            className="form-control"
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        6.b.Other contents as Accreditation Board
+                        <input
+                            type="number"
+                            value={otherContents}
+                            onChange={handleOtherContentsChange}
+                            className="form-control"
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        6.c.CO-PO-PSO Mapping and Attainment
+                        <input
+                            type="number"
+                            value={coPoPsoMapping}
+                            onChange={handleCoPoPsoMappingChange}
+                            className="form-control"
+                        />
+                    </label>
+                    <br />
+                    <button className="btn" onClick={calculateScore6}>Calculate Total Score</button>
+                    <p className="total-score" >Total Score: {totalScore6}</p>
+
+                </div>
+            </div>
+
+            {/* form B */}
+
             <div style={{ border: "1px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
                 <h2 style={{ textAlign: "center" }}>PART-B : Research & Publication</h2>
 
-                <div>
+
+                <div className="form-group">
                     <u><b>7. Faculty Contribution to Department, Institute and organization:</b></u>
                     <p>(Max marks 30 for Professor, Senior Associate Professor, Associate Professor and Max Marks 40 for Senior Assistant Professor and Assistant Professor - Refer Guideline for same)</p>
-                </div>
-                <div className="form-group">
                     <h2>7a) Faculty contribution at department level</h2>
                     <label>
                         Short Term based one time Activity:
