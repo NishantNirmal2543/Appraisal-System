@@ -20,6 +20,19 @@ const Appraisal = () => {
     const [totalScore2, setTotalScore2] = useState(0);
 
 
+
+    //3a
+
+    const [attendanceRecordFESE, setAttendanceRecordFESE] = useState(0);
+    const [meetingsConductedFESE, setMeetingsConductedFESE] = useState(0);
+    const [communicationFESE, setCommunicationFESE] = useState(0);
+    const [counselingFESE, setCounselingFESE] = useState(0);
+
+    const [rankScore, setRankScore] = useState(0);
+    const [coCurricularScore, setCoCurricularScore] = useState(0);
+    const [percentageIncreaseScore, setPercentageIncreaseScore] = useState(0);
+    const [totalScoreFESE, setTotalScoreFESE] = useState(0);
+
     //5 
     const [internalFeedback, setInternalFeedback] = useState();
     const [externalFeedback, setExternalFeedback] = useState();
@@ -119,7 +132,7 @@ const Appraisal = () => {
     const [totalScoreformA, setTotalScoreformA] = useState(0);
 
     const calculateScoreA = () => {
-        const scoreA = totalScore1 + totalScore2 + totalScore5 + totalScore6;
+        const scoreA = totalScore1 + totalScore2 + totalScore5 + totalScore6 +totalScoreFESE;
         setTotalScoreformA(scoreA);
     };
 
@@ -131,6 +144,7 @@ const Appraisal = () => {
         setTotalScoreformB(scoreB);
     };
 
+    //grand total
     const [totalScore, setTotalScore] = useState(0);
 
     const calculateScore = () => {
@@ -175,6 +189,67 @@ const Appraisal = () => {
     const calculateScore2 = () => {
         const score2 = paperEval + studentActivities;
         setTotalScore2(score2);
+    };
+
+
+    //3a
+
+    const handleAttendanceRecordChangeFESE = (event) => {
+        setAttendanceRecordFESE(parseInt(event.target.value));
+    };
+
+    const handleMeetingsConductedChangeFESE = (event) => {
+        setMeetingsConductedFESE(parseInt(event.target.value));
+    };
+
+    const handleCommunicationChangeFESE = (event) => {
+        setCommunicationFESE(parseInt(event.target.value));
+    };
+
+    const handleCounselingChangeFESE = (event) => {
+        setCounselingFESE(parseInt(event.target.value));
+    };
+
+    const handleCoCurricularScoreChange = (event) => {
+        setCoCurricularScore(parseInt(event.target.value));
+    };
+
+
+
+    const handleRankScoreChange = (event) => {
+        setRankScore(parseInt(event.target.value));
+    };
+
+
+
+    const handlePercentageIncreaseScoreChange = (event) => {
+        setPercentageIncreaseScore(parseInt(event.target.value));
+    };
+
+    const calculateScoreFESE = () => {
+        let score = 0;
+
+
+        if (rankScore == 100) {
+            score += 15;
+        } else if (rankScore >= 90) {
+            score += 10;
+        } else if (rankScore >= 80) {
+            score += 5;
+        }
+
+
+
+        if (percentageIncreaseScore >= 15) {
+            score += 5;
+        } else if (percentageIncreaseScore >= 10) {
+            score += 3;
+        } else if (percentageIncreaseScore >= 5) {
+            score += 2;
+        }
+        score += coCurricularScore + attendanceRecordFESE + meetingsConductedFESE + communicationFESE + counselingFESE;
+
+        setTotalScoreFESE(score);
     };
 
 
@@ -552,6 +627,47 @@ const Appraisal = () => {
                     <p>(Max marks 50 for Professor, Senior Professor, Associate Professor and Max marks 65 for Senior Assistant Professor, Assistant Professor- Refer Guideline for same)</p>
 
 
+                    <label>3a) For FE and SE faculty:</label>
+                    <br />
+                    <label>
+                        Attendance Record
+                        <input type="number" value={attendanceRecordFESE} onChange={handleAttendanceRecordChangeFESE} />
+                    </label>
+                    <br />
+                    <label>
+                        Meetings Conducted
+                        <input type="number" value={meetingsConductedFESE} onChange={handleMeetingsConductedChangeFESE} />
+                    </label>
+                    <br />
+                    <label>
+                        Phone Calls, Letter Communication and Parent Connect
+                        <input type="number" value={communicationFESE} onChange={handleCommunicationChangeFESE} />
+                    </label>
+                    <br />
+                    <label>
+                        Counseling
+                        <input type="number" value={counselingFESE} onChange={handleCounselingChangeFESE} />
+                    </label>
+                    <br />
+
+
+                    <label>
+                        All clear with first class(%) :
+                        <input type="number" value={rankScore} onChange={handleRankScoreChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Percentage increase in overall results(%) :
+                        <input type="number" value={percentageIncreaseScore} onChange={handlePercentageIncreaseScoreChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Co-curricular activity score :
+                        <input type="number" value={coCurricularScore} onChange={handleCoCurricularScoreChange} />
+                    </label>
+                    <button className="btn" onClick={calculateScoreFESE}>Calculate Score</button>
+                    <p className='total-score'>Total Score: {totalScoreFESE}</p>
+
 
                 </div>
 
@@ -610,12 +726,12 @@ const Appraisal = () => {
                     </div>
                     <br />
                     <label>
-                        Internal Feedback Grade Score
+                        Internal Feedback Grade Score(%) :
                         <input type="number" value={internalFeedback} onChange={handleInternalFeedbackChange} />
                     </label>
                     <br />
                     <label>
-                        External Feedback Grade Score
+                        External Feedback Grade Score(%) :
                         <input type="number" value={externalFeedback} onChange={handleExternalFeedbackChange} />
                     </label>
                     <br />
