@@ -7,6 +7,8 @@ const Appraisal = () => {
         setYear(event.target.value);
     };
 
+
+
     //1
     const [classesTaught, setClassesTaught] = useState();
     const [totalClasses, setTotalClasses] = useState();
@@ -127,6 +129,13 @@ const Appraisal = () => {
     const calculateScoreB = () => {
         const scoreB = totalScore7a + totalScore7b + totalScore7c + totalScore8a + totalScore8b1 + totalScore8b2 + totalScore8b3 + totalScore8b4 + totalScore8b5 + totalScore9;
         setTotalScoreformB(scoreB);
+    };
+
+    const [totalScore, setTotalScore] = useState(0);
+
+    const calculateScore = () => {
+        const score = totalScoreformA + totalScoreformB;
+        setTotalScore(score);
     };
 
 
@@ -1021,6 +1030,10 @@ const Appraisal = () => {
                 <br />
                 <p className="total-scoreAB">Total Score Form B: {totalScoreformB}</p>
             </div>
+            <br />
+            <button className="btnAB" onClick={calculateScore}>Calculate Form Score</button>
+            <br />
+            <p className="total-scoreAB">Total Score : {totalScore}</p>
         </>
     );
 }
