@@ -34,7 +34,31 @@
     width: 150px;
     border: solid 2px rgb(30, 120, 210);
     border-radius: 5px;
+    padding: 2px;
   }
   
 
+  .btnAB {
+    background-color: #6341c8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
   
+  .btnAB:hover {
+    background-color: #d9007b;
+  }
+  
+  .total-scoreAB {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    width: 250px;
+    border: solid 2px rgb(30, 180, 210);
+    border-radius: 5px;
+    padding: 2px;
+  }

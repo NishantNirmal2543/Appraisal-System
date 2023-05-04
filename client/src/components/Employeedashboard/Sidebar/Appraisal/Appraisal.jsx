@@ -1,111 +1,127 @@
 import React, { useState } from 'react'
 import "./Appraisal.css"
 const Appraisal = () => {
+
+    const [year, setYear] = useState("");
+    const handleYearChange = (event) => {
+        setYear(event.target.value);
+    };
+
     //1
-    const [classesTaught, setClassesTaught] = useState(0);
-    const [totalClasses, setTotalClasses] = useState(0);
+    const [classesTaught, setClassesTaught] = useState();
+    const [totalClasses, setTotalClasses] = useState();
     const [totalScore1, setTotalScore1] = useState(0);
 
     //2
-    const [paperEval, setPaperEval] = useState(0);
-    const [studentActivities, setStudentActivities] = useState(0);
+    const [paperEval, setPaperEval] = useState();
+    const [studentActivities, setStudentActivities] = useState();
     const [totalScore2, setTotalScore2] = useState(0);
 
 
     //5 
-    const [internalFeedback, setInternalFeedback] = useState(0);
-    const [externalFeedback, setExternalFeedback] = useState(0);
+    const [internalFeedback, setInternalFeedback] = useState();
+    const [externalFeedback, setExternalFeedback] = useState();
     const [totalScore5, setTotalScore5] = useState(0);
     //6
 
-    const [handwrittenNotes, setHandwrittenNotes] = useState(0);
-    const [otherContents, setOtherContents] = useState(0);
-    const [coPoPsoMapping, setCoPoPsoMapping] = useState(0);
+    const [handwrittenNotes, setHandwrittenNotes] = useState();
+    const [otherContents, setOtherContents] = useState();
+    const [coPoPsoMapping, setCoPoPsoMapping] = useState();
     const [totalScore6, setTotalScore6] = useState(0);
 
 
 
     //7a
-    const [shortTerm7a, setShortTerm7a] = useState(0);
-    const [semester7a, setSemester7a] = useState(0);
-    const [academicYear7a, setAcademicYear7a] = useState(0);
+    const [shortTerm7a, setShortTerm7a] = useState();
+    const [semester7a, setSemester7a] = useState();
+    const [academicYear7a, setAcademicYear7a] = useState();
     const [totalScore7a, setTotalScore7a] = useState(0);
 
     //7b
-    const [shortTerm7b, setShortTerm7b] = useState(0);
-    const [semester7b, setSemester7b] = useState(0);
-    const [academicYear7b, setAcademicYear7b] = useState(0);
+    const [shortTerm7b, setShortTerm7b] = useState();
+    const [semester7b, setSemester7b] = useState();
+    const [academicYear7b, setAcademicYear7b] = useState();
     const [totalScore7b, setTotalScore7b] = useState(0);
 
     //7c
-    const [shortTerm7c, setShortTerm7c] = useState(0);
-    const [semester7c, setSemester7c] = useState(0);
-    const [academicYear7c, setAcademicYear7c] = useState(0);
+    const [shortTerm7c, setShortTerm7c] = useState();
+    const [semester7c, setSemester7c] = useState();
+    const [academicYear7c, setAcademicYear7c] = useState();
     const [totalScore7c, setTotalScore7c] = useState(0);
     //8a
 
-    const [internationalJournal, setInternationalJournal] = useState(0);
-    const [citation2022, setCitation2022] = useState(0);
+    const [internationalJournal, setInternationalJournal] = useState();
+    const [citation2022, setCitation2022] = useState();
     const [totalScore8a, setTotalScore8a] = useState(0);
 
     //8b.1
 
-    const [international, setInternational] = useState(0);
-    const [national, setNational] = useState(0);
-    const [chapter, setChapter] = useState(0);
-    const [editorInternational, setEditorInternational] = useState(0);
-    const [editorNational, setEditorNational] = useState(0);
-    const [researchPaper, setResearchPaper] = useState(0);
-    const [book, setBook] = useState(0);
+    const [international, setInternational] = useState();
+    const [national, setNational] = useState();
+    const [chapter, setChapter] = useState();
+    const [editorInternational, setEditorInternational] = useState();
+    const [editorNational, setEditorNational] = useState();
+    const [researchPaper, setResearchPaper] = useState();
+    const [book, setBook] = useState();
     const [totalScore8b1, setTotalScore8b1] = useState(0);
 
 
     //8b.2
 
-    const [innovativePedagogy, setInnovativePedagogy] = useState(0);
-    const [eContentDevelopment, setEContentDevelopment] = useState(0);
+    const [innovativePedagogy, setInnovativePedagogy] = useState();
+    const [eContentDevelopment, setEContentDevelopment] = useState();
     const [totalScore8b2, setTotalScore8b2] = useState(0);
 
     //8b.3
 
-    const [phdGuidance, setPhdGuidance] = useState(0);
-    const [pgDissertation, setPgDissertation] = useState(0);
-    const [completedResearchProjectMoreThan10Lakhs, setCompletedResearchProjectMoreThan10Lakhs] = useState(0);
-    const [completedResearchProjectLessThan10Lakhs, setCompletedResearchProjectLessThan10Lakhs] = useState(0);
-    const [ongoingResearchProjectMoreThan10Lakhs, setOngoingResearchProjectMoreThan10Lakhs] = useState(0);
-    const [ongoingResearchProjectLessThan10Lakhs, setOngoingResearchProjectLessThan10Lakhs] = useState(0);
-    const [inHouseProductDevelopment, setInHouseProductDevelopment] = useState(0);
-    const [consultancy, setConsultancy] = useState(0);
-    const [editorialBoardReviewer, setEditorialBoardReviewer] = useState(0);
-    const [paperPublishedWithIndustryPerson, setPaperPublishedWithIndustryPerson] = useState(0);
+    const [phdGuidance, setPhdGuidance] = useState();
+    const [pgDissertation, setPgDissertation] = useState();
+    const [completedResearchProjectMoreThan10Lakhs, setCompletedResearchProjectMoreThan10Lakhs] = useState();
+    const [completedResearchProjectLessThan10Lakhs, setCompletedResearchProjectLessThan10Lakhs] = useState();
+    const [ongoingResearchProjectMoreThan10Lakhs, setOngoingResearchProjectMoreThan10Lakhs] = useState();
+    const [ongoingResearchProjectLessThan10Lakhs, setOngoingResearchProjectLessThan10Lakhs] = useState();
+    const [inHouseProductDevelopment, setInHouseProductDevelopment] = useState();
+    const [consultancy, setConsultancy] = useState();
+    const [editorialBoardReviewer, setEditorialBoardReviewer] = useState();
+    const [paperPublishedWithIndustryPerson, setPaperPublishedWithIndustryPerson] = useState();
     const [totalScore8b3, setTotalScore8b3] = useState(0);
 
     //8b.4
 
-    const [internationalPatents, setInternationalPatents] = useState(0);
-    const [nationalPatents, setNationalPatents] = useState(0);
-    const [copyrights, setCopyrights] = useState(0);
-    const [awards, setAwards] = useState(0);
-    const [totalScore8b4, setTotalScore8b4] = useState(0);
+    const [internationalPatents, setInternationalPatents] = useState();
+    const [nationalPatents, setNationalPatents] = useState();
+    const [copyrights, setCopyrights] = useState();
+    const [awards, setAwards] = useState();
+    const [totalScore8b4, setTotalScore8b4] = useState();
 
     //8b.5
-    const [intlAbroad, setIntlAbroad] = useState(0);
-    const [intlWithin, setIntlWithin] = useState(0);
-    const [Innational, setInNational] = useState(0);
-    const [stateUni, setStateUni] = useState(0);
-    const [totalScore8b5, setTotalScore8b5] = useState(0);
+    const [intlAbroad, setIntlAbroad] = useState();
+    const [intlWithin, setIntlWithin] = useState();
+    const [Innational, setInNational] = useState();
+    const [stateUni, setStateUni] = useState();
+    const [totalScore8b5, setTotalScore8b5] = useState();
 
     //9
-    const [sttpOrganized, setSttpOrganized] = useState(0);
-    const [sttpAttended, setSttpAttended] = useState(0);
-    const [conferenceAttended, setConferenceAttended] = useState(0);
-    const [nptelCertification, setNptelCertification] = useState(0);
-    const [academicQualification, setAcademicQualification] = useState(0);
-    const [mouWithIndustry, setMouWithIndustry] = useState(0);
+    const [sttpOrganized, setSttpOrganized] = useState();
+    const [sttpAttended, setSttpAttended] = useState();
+    const [conferenceAttended, setConferenceAttended] = useState();
+    const [nptelCertification, setNptelCertification] = useState();
+    const [academicQualification, setAcademicQualification] = useState();
+    const [mouWithIndustry, setMouWithIndustry] = useState();
     const [totalScore9, setTotalScore9] = useState(0);
 
 
-    //total
+
+
+    //total form A
+    const [totalScoreformA, setTotalScoreformA] = useState(0);
+
+    const calculateScoreA = () => {
+        const scoreA = totalScore1 + totalScore2 + totalScore5 + totalScore6;
+        setTotalScoreformA(scoreA);
+    };
+
+    //total form B
     const [totalScoreformB, setTotalScoreformB] = useState(0);
 
     const calculateScoreB = () => {
@@ -479,6 +495,12 @@ const Appraisal = () => {
             {/* form A */}
             <div style={{ border: "1px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
                 <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
+                <div>
+                    <label>
+                        Year of Performance Appraisal :
+                        <input type="text" value={year} onChange={handleYearChange} />
+                    </label>
+                </div>
 
                 <div className="form-group">
                     <u><b>1.Teaching load assessment :</b></u>
@@ -534,7 +556,7 @@ const Appraisal = () => {
                 </div>
 
 
-                
+
                 <div className="form-group">
                     <u><b>5. Course file and Remedial classes assessment : </b></u>
                     <p>(Max marks : 30)</p>
@@ -629,6 +651,11 @@ const Appraisal = () => {
                     <p className="total-score" >Total Score: {totalScore6}</p>
 
                 </div>
+
+                <br />
+                <button className="btnAB" onClick={calculateScoreA}>Calculate Form A Score</button>
+                <br />
+                <p className="total-scoreAB">Total Score Form A: {totalScoreformA}</p>
             </div>
 
             {/* form B */}
@@ -930,6 +957,7 @@ const Appraisal = () => {
                     <u><b>9. Faculty value added courses:</b></u>
                     <h1></h1>
                     <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
+                    <br />
                     <label>
                         9.a. STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc organized (one week/two weeks)
                         <input
@@ -989,9 +1017,9 @@ const Appraisal = () => {
                 </div>
 
                 <br />
-                <button className="btn" onClick={calculateScoreB}>Calculate Form B Score</button>
+                <button className="btnAB" onClick={calculateScoreB}>Calculate Form B Score</button>
                 <br />
-                <p className="total-score">Total Score Form B: {totalScoreformB}</p>
+                <p className="total-scoreAB">Total Score Form B: {totalScoreformB}</p>
             </div>
         </>
     );
