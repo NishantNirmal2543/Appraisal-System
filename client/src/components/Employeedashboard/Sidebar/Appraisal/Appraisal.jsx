@@ -33,6 +33,34 @@ const Appraisal = () => {
     const [percentageIncreaseScore, setPercentageIncreaseScore] = useState(0);
     const [totalScoreFESE, setTotalScoreFESE] = useState(0);
 
+
+    //3b
+
+    const [attendanceRecordTE, setAttendanceRecordTE] = useState(0);
+    const [meetingsConductedTE, setMeetingsConductedTE] = useState(0);
+    const [communicationTE, setCommunicationTE] = useState(0);
+    const [counselingTE, setCounselingTE] = useState(0);
+
+    const [adhonScore, setAdhonScore] = useState(0);
+    const [otherScore, setOtherScore] = useState(0);
+    const [allClearScore, setAllClearScore] = useState(0);
+    const [totalScoreTE, setTotalScoreTE] = useState(0);
+
+
+    //3c
+
+    const [attendanceRecordBE, setAttendanceRecordBE] = useState(0);
+    const [meetingsConductedBE, setMeetingsConductedBE] = useState(0);
+    const [communicationBE, setCommunicationBE] = useState(0);
+    const [counselingBE, setCounselingBE] = useState(0);
+
+    const [adhonCompleted, setAdhonCompleted] = useState(0);
+    const [placementPercentage, setPlacementPercentage] = useState(0);
+    const [batchEvaluation, setBatchEvaluation] = useState(0);
+    const [actionTaken, setActionTaken] = useState(0);
+    const [totalScoreBE, setTotalScoreBE] = useState(0);
+
+
     //5 
     const [internalFeedback, setInternalFeedback] = useState();
     const [externalFeedback, setExternalFeedback] = useState();
@@ -132,7 +160,7 @@ const Appraisal = () => {
     const [totalScoreformA, setTotalScoreformA] = useState(0);
 
     const calculateScoreA = () => {
-        const scoreA = totalScore1 + totalScore2 + totalScore5 + totalScore6 +totalScoreFESE;
+        const scoreA = totalScore1 + totalScore2 + totalScore5 + totalScore6 + totalScoreFESE + totalScoreTE + totalScoreBE;
         setTotalScoreformA(scoreA);
     };
 
@@ -230,7 +258,7 @@ const Appraisal = () => {
         let score = 0;
 
 
-        if (rankScore == 100) {
+        if (rankScore === 100) {
             score += 15;
         } else if (rankScore >= 90) {
             score += 10;
@@ -250,6 +278,139 @@ const Appraisal = () => {
         score += coCurricularScore + attendanceRecordFESE + meetingsConductedFESE + communicationFESE + counselingFESE;
 
         setTotalScoreFESE(score);
+    };
+
+
+    //3b
+    const handleAttendanceRecordChangeTE = (event) => {
+        setAttendanceRecordTE(parseInt(event.target.value));
+    };
+
+    const handleMeetingsConductedChangeTE = (event) => {
+        setMeetingsConductedTE(parseInt(event.target.value));
+    };
+
+    const handleCommunicationChangeTE = (event) => {
+        setCommunicationTE(parseInt(event.target.value));
+    };
+
+    const handleCounselingChangeTE = (event) => {
+        setCounselingTE(parseInt(event.target.value));
+    };
+
+    const handleAdhonScoreChange = (event) => {
+        setAdhonScore(parseInt(event.target.value));
+    };
+
+    const handleOtherScoreChange = (event) => {
+        setOtherScore(parseInt(event.target.value));
+    };
+
+    const handleAllClearScoreChange = (event) => {
+        setAllClearScore(parseInt(event.target.value));
+    };
+
+    const calculateTotalScoreTE = () => {
+        let score = 0;
+
+        if (adhonScore === 100) {
+            score += 15;
+        } else if (adhonScore >= 90) {
+            score += 10;
+        } else if (adhonScore >= 80) {
+            score += 5;
+        }
+
+        if (otherScore === 80) {
+            score += 15;
+        } else if (otherScore >= 70) {
+            score += 10;
+        } else if (otherScore >= 60) {
+            score += 5;
+        }
+
+        if (allClearScore === 100) {
+            score += 15;
+        } else if (allClearScore >= 90) {
+            score += 10;
+        } else if (allClearScore >= 80) {
+            score += 5;
+        }
+
+        score += attendanceRecordTE + meetingsConductedTE + communicationTE + counselingTE;
+
+        setTotalScoreTE(score);
+    };
+
+
+    //3c
+    const handleAttendanceRecordChangeBE = (event) => {
+        setAttendanceRecordBE(parseInt(event.target.value));
+    };
+
+    const handleMeetingsConductedChangeBE = (event) => {
+        setMeetingsConductedBE(parseInt(event.target.value));
+    };
+
+    const handleCommunicationChangeBE = (event) => {
+        setCommunicationBE(parseInt(event.target.value));
+    };
+
+    const handleCounselingChangeBE = (event) => {
+        setCounselingBE(parseInt(event.target.value));
+    };
+
+
+    const handleAdhonCompletedChange = (event) => {
+        setAdhonCompleted(parseInt(event.target.value));
+    };
+
+    const handlePlacementPercentageChange = (event) => {
+        setPlacementPercentage(parseInt(event.target.value));
+    };
+
+    const handleBatchEvaluationChange = (event) => {
+        setBatchEvaluation(parseInt(event.target.value));
+    };
+
+    const handleActionTakenChange = (event) => {
+        setActionTaken(parseInt(event.target.value));
+    };
+
+    const calculateTotalScoreBE = () => {
+        let score = 0;
+
+        // Adhon courses completed as per guidelines
+        if (adhonCompleted === 100) {
+            score += 10;
+        } else if (adhonCompleted >= 90) {
+            score += 7;
+        } else if (adhonCompleted >= 80) {
+            score += 5;
+        }
+
+        // Percentage of students placed
+        if (placementPercentage === 100) {
+            score += 15;
+        } else if (placementPercentage >= 90) {
+            score += 10;
+        } else if (placementPercentage >= 80) {
+            score += 5;
+        }
+
+        // Batch wise evaluation by institute and department T and P coordinator
+        if (batchEvaluation >= 2) {
+            score += 2;
+        }
+
+        // Action taken based on evaluation report
+        if (actionTaken >= 3) {
+            score += 3;
+        }
+
+        score += attendanceRecordBE + meetingsConductedBE + communicationBE + counselingBE;
+
+        setTotalScoreBE(score);
     };
 
 
@@ -667,6 +828,105 @@ const Appraisal = () => {
                     </label>
                     <button className="btn" onClick={calculateScoreFESE}>Calculate Score</button>
                     <p className='total-score'>Total Score: {totalScoreFESE}</p>
+                    <br />
+                    <label>3b) For TE faculty:</label>
+                    <br />
+                    <label>
+                        Attendance Record
+                        <input type="number" value={attendanceRecordTE} onChange={handleAttendanceRecordChangeTE} />
+                    </label>
+                    <br />
+                    <label>
+                        Meetings Conducted
+                        <input type="number" value={meetingsConductedTE} onChange={handleMeetingsConductedChangeTE} />
+                    </label>
+                    <br />
+                    <label>
+                        Phone Calls, Letter Communication and Parent Connect
+                        <input type="number" value={communicationTE} onChange={handleCommunicationChangeTE} />
+                    </label>
+                    <br />
+                    <label>
+                        Counseling
+                        <input type="number" value={counselingTE} onChange={handleCounselingChangeTE} />
+                    </label>
+                    <br />
+                    <label>
+                        Percentage of Adhon courses completed as per guidelines of central/institute T and P department (%) :
+                        <input type="number" value={adhonScore} onChange={handleAdhonScoreChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Other courses completed/efforts taken as per T.G observation (%) :
+                        <input type="number" value={otherScore} onChange={handleOtherScoreChange} />
+                    </label>
+                    <label>
+                        All clear with first class (%) :
+                        <input type="number" value={allClearScore} onChange={handleAllClearScoreChange} />
+                    </label>
+                    <button className="btn" onClick={calculateTotalScoreTE}>Calculate Score</button>
+                    <p className="total-score">Total Score: {totalScoreTE}</p>
+                    <br />
+                    <label>3c) For BE faculty:</label>
+                    <br />
+                    <label>
+                        Attendance Record
+                        <input type="number" value={attendanceRecordBE} onChange={handleAttendanceRecordChangeBE} />
+                    </label>
+                    <br />
+                    <label>
+                        Meetings Conducted
+                        <input type="number" value={meetingsConductedBE} onChange={handleMeetingsConductedChangeBE} />
+                    </label>
+                    <br />
+                    <label>
+                        Phone Calls, Letter Communication and Parent Connect
+                        <input type="number" value={communicationBE} onChange={handleCommunicationChangeBE} />
+                    </label>
+                    <br />
+                    <label>
+                        Counseling
+                        <input type="number" value={counselingBE} onChange={handleCounselingChangeBE} />
+                    </label>
+                    <br />
+                    <label>
+                        Percentage of Adhon courses completed as per guidelines (%):
+                        <input
+                            type="number"
+                            value={adhonCompleted}
+                            onChange={handleAdhonCompletedChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Percentage of students placed (%):
+                        <input
+                            type="number"
+                            value={placementPercentage}
+                            onChange={handlePlacementPercentageChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Batch wise evaluation by institute and department T and P coordinator:
+                        <input
+                            type="number"
+                            value={batchEvaluation}
+                            onChange={handleBatchEvaluationChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Action taken based on evaluation report:
+                        <input
+                            type="number"
+                            value={actionTaken}
+                            onChange={handleActionTakenChange}
+                        />
+                    </label>
+                    <br />
+                    <button className='btn' onClick={calculateTotalScoreBE}>Calculate Score</button>
+                    <p className='total-score'>Total Score: {totalScoreBE}</p>
 
 
                 </div>
