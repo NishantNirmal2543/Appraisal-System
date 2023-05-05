@@ -61,6 +61,13 @@ const Appraisal = () => {
     const [totalScoreBE, setTotalScoreBE] = useState(0);
 
 
+    //4
+
+    const [latestResult, setLatestResult] = useState('');
+    const [prevYearResult1, setPrevYearResult1] = useState('');
+    const [prevYearResult2, setPrevYearResult2] = useState('');
+    const [prevYearResult3, setPrevYearResult3] = useState('');
+    const [totalscore4, setTotalScore4] = useState(0);
     //5 
     const [internalFeedback, setInternalFeedback] = useState();
     const [externalFeedback, setExternalFeedback] = useState();
@@ -160,7 +167,7 @@ const Appraisal = () => {
     const [totalScoreformA, setTotalScoreformA] = useState(0);
 
     const calculateScoreA = () => {
-        const scoreA = totalScore1 + totalScore2 + totalScore5 + totalScore6 + totalScoreFESE + totalScoreTE + totalScoreBE;
+        const scoreA = totalScore1 + totalScore2 + totalscore4 + totalScore5 + totalScore6 + totalScoreFESE + totalScoreTE + totalScoreBE;
         setTotalScoreformA(scoreA);
     };
 
@@ -380,7 +387,6 @@ const Appraisal = () => {
     const calculateTotalScoreBE = () => {
         let score = 0;
 
-        // Adhon courses completed as per guidelines
         if (adhonCompleted === 100) {
             score += 10;
         } else if (adhonCompleted >= 90) {
@@ -389,7 +395,6 @@ const Appraisal = () => {
             score += 5;
         }
 
-        // Percentage of students placed
         if (placementPercentage === 100) {
             score += 15;
         } else if (placementPercentage >= 90) {
@@ -398,12 +403,10 @@ const Appraisal = () => {
             score += 5;
         }
 
-        // Batch wise evaluation by institute and department T and P coordinator
         if (batchEvaluation >= 2) {
             score += 2;
         }
 
-        // Action taken based on evaluation report
         if (actionTaken >= 3) {
             score += 3;
         }
@@ -413,6 +416,16 @@ const Appraisal = () => {
         setTotalScoreBE(score);
     };
 
+
+    //4
+
+    const calculateScore4 = () => {
+        const lr = parseFloat(latestResult);
+        const ap = (parseFloat(prevYearResult1) + parseFloat(prevYearResult2) + parseFloat(prevYearResult3)) / 3;
+        const calculatedPercentage = 60 + ((lr - ap) * 100) / ap;
+        const calculatedScore4 = (calculatedPercentage * 0.8).toFixed(2);
+        setTotalScore4(calculatedScore4);
+    }
 
     //5
 
@@ -935,6 +948,29 @@ const Appraisal = () => {
                 <div className="form-group">
                     <u><b>4. University result analysis:  </b></u>
                     <p>(Max marks 80)</p>
+                    <label>
+                        Latest Result:
+                        <input type="number" step="0.01" value={latestResult} onChange={(e) => setLatestResult(e.target.value)} />
+                    </label>
+                    <br />
+                    <label>
+                        Previous Year Result 1:
+                        <input type="number" step="0.01" value={prevYearResult1} onChange={(e) => setPrevYearResult1(e.target.value)} />
+                    </label>
+                    <br />
+                    <label>
+                        Previous Year Result 2:
+                        <input type="number" step="0.01" value={prevYearResult2} onChange={(e) => setPrevYearResult2(e.target.value)} />
+                    </label>
+                    <br />
+                    <label>
+                        Previous Year Result 3:
+                        <input type="number" step="0.01" value={prevYearResult3} onChange={(e) => setPrevYearResult3(e.target.value)} />
+                    </label>
+                    <br />
+                    <button className='btn' type="button" onClick={calculateScore4}>Calculate Score</button>
+
+                    <p className='total-score'>Score: {totalscore4}</p>
 
 
 
