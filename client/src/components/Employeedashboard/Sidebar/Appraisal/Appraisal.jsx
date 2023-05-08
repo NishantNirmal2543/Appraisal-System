@@ -746,10 +746,11 @@ const Appraisal = () => {
             mouWithIndustry;
         setTotalScore9(score9);
     };
-
+    const handleSubmit = () => { }
 
     return (
         <>
+            {/* <form onSubmit={handleSubmit}> */}
             {/* form A */}
             <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
                 <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
@@ -759,10 +760,10 @@ const Appraisal = () => {
                         <option value="">Select Year</option>
                         <option value="2023">2023</option>
                         <option value="2024">2024</option>
-                        <option value="2025">2025</option>              
+                        <option value="2025">2025</option>
                     </select>
                 </label>
-                <br/>
+                <br />
 
                 <div className="form-group">
                     <u><b>1.Teaching load assessment :</b></u>
@@ -1455,6 +1456,11 @@ const Appraisal = () => {
             <button className="btnAB" onClick={calculateScore}>Calculate Form Score</button>
             <br />
             <p className="total-scoreAB">Total Score : {totalScore}</p>
+
+
+            <button className='btnAB' type="submit">Submit</button>
+
+            {/* </form> */}
         </>
     );
 }
