@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1>Dashboard</h1>
+     
       <div className="dashboard">
         {error && <div className="error">{error}</div>}
         {isLoading ? (

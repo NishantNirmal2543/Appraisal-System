@@ -751,7 +751,7 @@ const Appraisal = () => {
     return (
         <>
             {/* form A */}
-            <div style={{ border: "1px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
+            <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
                 <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
                 <div>
                     <label>
@@ -1081,14 +1081,15 @@ const Appraisal = () => {
 
             {/* form B */}
 
-            <div style={{ border: "1px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
+            <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
                 <h2 style={{ textAlign: "center" }}>PART-B : Research & Publication</h2>
 
 
                 <div className="form-group">
                     <u><b>7. Faculty Contribution to Department, Institute and organization:</b></u>
                     <p>(Max marks 30 for Professor, Senior Associate Professor, Associate Professor and Max Marks 40 for Senior Assistant Professor and Assistant Professor - Refer Guideline for same)</p>
-                    <h2>7a) Faculty contribution at department level</h2>
+                    <label>7a) Faculty contribution at department level</label>
+                    <br />
                     <label>
                         Short Term based one time Activity:
                         <input type="number" value={shortTerm7a} onChange={handleShortTermChange7a} />
@@ -1109,7 +1110,8 @@ const Appraisal = () => {
                     <p className="total-score">Total Score: {totalScore7a}</p>
                 </div>
                 <div className="form-group">
-                    <h2>7b) Faculty contribution at institute level</h2>
+                    <label>7b) Faculty contribution at institute level</label>
+                    <br />
                     <label>
                         Short Term based one time Activity:
                         <input type="number" value={shortTerm7b} onChange={handleShortTermChange7b} />
@@ -1130,7 +1132,8 @@ const Appraisal = () => {
                     <p className="total-score">Total Score: {totalScore7b}</p>
                 </div >
                 <div className="form-group">
-                    <h2>7c) Faculty contribution at Campus Level </h2>
+                    <label>7c) Faculty contribution at Campus Level </label>
+                    <br />
                     <label>
                         Short Term based one time Activity:
                         <input type="number" value={shortTerm7c} onChange={handleShortTermChange7c} />
@@ -1152,7 +1155,9 @@ const Appraisal = () => {
                 </div>
                 <div className="form-group">
                     <u><b>8. Faculty contribution in research and publication:</b></u>
-                    <h2>8a) Publication</h2>
+                    <p></p>
+                    <br />
+                    <label>8a) Publication</label>
                     <p>(Max marks 60 - Refer Guideline for same)</p>
                     <label>
                         International Journal : Scopus, Web of Science, Thomson Router, Clarivate Analytics etc
@@ -1173,7 +1178,7 @@ const Appraisal = () => {
                     <p className="total-score">Total Score: {totalScore8a}</p>
                 </div>
                 <div className="form-group">
-                    <h2>8b) E-Learning, Books Published and Research Activity</h2>
+                    <label>8b) E-Learning, Books Published and Research Activity</label>
                     <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
 
                     <p>8.b.1 Books authored which are published by International publishers National Publishers Chapter in Edited Book Editor of Book by International Publisher Editor of Book by National Publisher Chapter or Research paper Book</p>

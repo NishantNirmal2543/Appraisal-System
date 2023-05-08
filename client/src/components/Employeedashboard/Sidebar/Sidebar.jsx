@@ -49,10 +49,10 @@ const Sidebar = () => {
                                 <i className='fas fa-image nav-link-icon'></i>
                                 <span className='nav-link-name'>Guidelines</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Appraisal status' ? 'active' : ''}`} onClick={() => handleClick('Appraisal status')}>
+                            {/* <div className={`nav-link ${activeComponent === 'Appraisal status' ? 'active' : ''}`} onClick={() => handleClick('Appraisal status')}>
                                 <i className='fas fa-clock nav-link-icon'></i>
                                 <span className='nav-link-name'>Appraisal status</span>
-                            </div>
+                            </div> */}
                            
                         </div>
                     </div>
