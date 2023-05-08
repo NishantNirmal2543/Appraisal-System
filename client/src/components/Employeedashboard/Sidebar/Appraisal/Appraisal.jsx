@@ -753,12 +753,16 @@ const Appraisal = () => {
             {/* form A */}
             <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
                 <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
-                <div>
-                    <label>
-                        Year of Performance Appraisal :
-                        <input type="text" value={year} onChange={handleYearChange} />
-                    </label>
-                </div>
+                <label className="department-label">
+                    Year of Performance Appraisal:
+                    <select className="department-select" value={year} onChange={handleYearChange}>
+                        <option value="">Select Year</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>              
+                    </select>
+                </label>
+                <br/>
 
                 <div className="form-group">
                     <u><b>1.Teaching load assessment :</b></u>

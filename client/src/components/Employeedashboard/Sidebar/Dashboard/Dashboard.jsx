@@ -35,7 +35,7 @@ const Dashboard = () => {
       {isLoading ? (
         <div className="loader"></div>
       ) : (
-        <div className="container">
+        <div className="container1">
           <div className="profile">
             <div className="cover-photo">
               <img src={coverPhoto} alt="Cover" />

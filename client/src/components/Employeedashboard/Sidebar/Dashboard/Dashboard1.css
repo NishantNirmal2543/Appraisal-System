@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; 
+    min-height: 80vh; 
   }
 
   .error {
@@ -40,10 +40,11 @@
     }
   }
   
-  .container {
+  .container1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -50px;
    
  }
   
@@ -74,7 +75,7 @@
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
-    border: 3px solid #fff;
+    border: 3px solid #bfb8b8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   

@@ -69,7 +69,7 @@ const Sidebar = () => {
                 {activeComponent === 'Dashboard' && <Dashboard />}
                 {activeComponent === 'Appraisal' && <Appraisal />}
                 {activeComponent === 'Guidelines' && <Guidelines />}
-                {/* {activeComponent === 'Appraisal status' && <Appraisal status />} */}
+                {/* {activeComponent === 'Appraisal status' && <Appraisalstatus />} */}
             </div>
 
         </main>

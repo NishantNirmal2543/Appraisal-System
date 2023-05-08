@@ -54,6 +54,7 @@
     background-color: var(--first-color);
     padding-top: 1rem;
     transition: 0.5s;
+    
   }
   
   .nav {
@@ -70,10 +71,12 @@
     grid-template-columns: max-content max-content;
     column-gap: 2rem;
     padding: 0.5rem 0 0.5rem 1.5rem;
+    
   }
   
   .nav-logo {
     margin-bottom: 2rem;
+    cursor: pointer;
   }
   
   .nav-logo-icon {
@@ -84,6 +87,7 @@
   
   .nav-logo-name {
     font-weight: 700;
+    cursor: pointer;
     color: var(--white-color);
   }
   
