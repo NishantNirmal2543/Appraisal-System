@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import "./Appraisal.css"
 import axios from "axios";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Appraisal = () => {
 
     const [year, setYear] = useState("");
@@ -864,12 +867,12 @@ const Appraisal = () => {
 
             const response = await axios.post('http://localhost:8080/api/employeeappraisal', formData);
             console.log(response.data.message);
-
+            toast.success("Employee Appraisal Submitted successfully");
 
         } catch (error) {
             console.error('An error occurred while saving the appraisal data:', error);
 
-            alert(error.response.data.message);
+            toast.error("Please Fill All Fields Carefully")
         }
     };
 
@@ -880,7 +883,7 @@ const Appraisal = () => {
                 <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
                     <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
                     <label className="department-label">
-                        Year of Performance Appraisal:
+                        <h3>Year of Performance Appraisal:</h3>
                         <select className="department-select" value={year} onChange={handleYearChange}>
                             <option value="">Select Year</option>
                             <option value="2023">2023</option>
@@ -891,7 +894,7 @@ const Appraisal = () => {
                     <br />
 
                     <div className="form-group">
-                        <u><b>1.Teaching load assessment :</b></u>
+                        <h3>1.Teaching load assessment : </h3>
                         <p>(Max marks : 10)</p>
                         <label>
                             Number of classes taught:
@@ -907,7 +910,7 @@ const Appraisal = () => {
                         <p className="total-score">Total Score: {totalScore1}</p>
                     </div>
                     <div className="form-group">
-                        <u><b>2. Examination and evaluation duties assigned by university/institute :</b></u>
+                        <h3>2. Examination and evaluation duties assigned by university/institute :</h3>
                         <p>(Max marks : 2. a- 10, 2. B-20)</p>
                         <label>Involvement in the student related activities :</label>
                         <br />
@@ -927,7 +930,7 @@ const Appraisal = () => {
 
 
                     <div className="form-group">
-                        <u><b>3.Teacher Guardian performance : </b></u>
+                        <h3>3.Teacher Guardian performance : </h3>
                         <p>(Max marks 50 for Professor, Senior Professor, Associate Professor and Max marks 65 for Senior Assistant Professor, Assistant Professor- Refer Guideline for same)</p>
 
 
@@ -1076,7 +1079,7 @@ const Appraisal = () => {
 
 
                     <div className="form-group">
-                        <u><b>4. University result analysis:  </b></u>
+                        <h3> 4. University result analysis:  </h3>
                         <p>(Max marks 80)</p>
                         <label>
                             Latest Result:
@@ -1109,7 +1112,7 @@ const Appraisal = () => {
 
 
                     <div className="form-group">
-                        <u><b>5. Course file and Remedial classes assessment : </b></u>
+                        <h3>5. Course file and Remedial classes assessment : </h3>
                         <p>(Max marks : 30)</p>
                         <div>
                             <table>
@@ -1166,7 +1169,7 @@ const Appraisal = () => {
 
                     </div>
                     <div className="form-group">
-                        <u><b>6. Course file and Remedial classes assessment :</b></u>
+                        <h3>6. Course file and Remedial classes assessment :</h3>
                         <p>(Max marks :30)</p>
                         <label>
                             6.a.Handwritten Notes of 03 (three) units*
@@ -1216,7 +1219,7 @@ const Appraisal = () => {
 
 
                     <div className="form-group">
-                        <u><b>7. Faculty Contribution to Department, Institute and organization:</b></u>
+                        <h3>7. Faculty Contribution to Department, Institute and organization:</h3>
                         <p>(Max marks 30 for Professor, Senior Associate Professor, Associate Professor and Max Marks 40 for Senior Assistant Professor and Assistant Professor - Refer Guideline for same)</p>
                         <label>7a) Faculty contribution at department level</label>
                         <br />
@@ -1284,7 +1287,7 @@ const Appraisal = () => {
                         <p className="total-score">Total Score: {totalScore7c}</p>
                     </div>
                     <div className="form-group">
-                        <u><b>8. Faculty contribution in research and publication:</b></u>
+                        <h3>8. Faculty contribution in research and publication:</h3>
                         <p></p>
                         <br />
                         <label>8a) Publication</label>
@@ -1311,7 +1314,7 @@ const Appraisal = () => {
                         <label>8b) E-Learning, Books Published and Research Activity</label>
                         <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
 
-                        <p>8.b.1 Books authored which are published by International publishers National Publishers Chapter in Edited Book Editor of Book by International Publisher Editor of Book by National Publisher Chapter or Research paper Book</p>
+                        <h2>8.b.1 Books authored which are published by International publishers National Publishers Chapter in Edited Book Editor of Book by International Publisher Editor of Book by National Publisher Chapter or Research paper Book</h2>
                         <br />
                         <label>
                             International Publishers
@@ -1355,7 +1358,7 @@ const Appraisal = () => {
                         <button type="button" className="btn" onClick={calculateScore8b1}>Calculate Total Score</button>
                         <p className="total-score">Total Score: {totalScore8b1}</p>
                         <br />
-                        <p>8.b.2 Creation of ICT mediated Teaching Learning pedagogy and content and development of new and innovative course and curricula</p>
+                        <h2>8.b.2 Creation of ICT mediated Teaching Learning pedagogy and content and development of new and innovative course and curricula</h2>
                         <br />
                         <label>
                             Development of innovative pedagogy
@@ -1379,7 +1382,7 @@ const Appraisal = () => {
                         <p className="total-score">Total Score: {totalScore8b2}</p>
                         <br />
 
-                        <p>8.b.3 Research and Consultancy</p>
+                        <h2>8.b.3 Research and Consultancy</h2>
                         <label>
                             Research guidance Ph.D. (if applicable)
                             <input type="number" value={phdGuidance} onChange={handlePhdGuidanceChange} />
@@ -1441,7 +1444,7 @@ const Appraisal = () => {
                         <button type="button" onClick={calculateScore8b3} className="btn btn-primary">Calculate Total Score</button>
                         <p className="total-score" >Total Score: {totalScore8b3}</p>
                         <br />
-                        <p>8.b.4 Patents, Copyrights etc</p>
+                        <h2>8.b.4 Patents, Copyrights etc</h2>
                         <label>
                             Patents (International)
                             <input
@@ -1481,7 +1484,7 @@ const Appraisal = () => {
                         <button type="button" className="btn" onClick={calculateScore8b4}>Calculate Total Score</button>
                         <p className="total-score">Total Score: {totalScore8b4}</p>
                         <br />
-                        <p> 8.b.5 Invited as Resource Persons for conference, seminar, workshop.</p>
+                        <h2> 8.b.5 Invited as Resource Persons for conference, seminar, workshop.</h2>
 
                         <label>
                             International (abroad)
@@ -1510,7 +1513,7 @@ const Appraisal = () => {
                     </div>
 
                     <div className="form-group">
-                        <u><b>9. Faculty value added courses:</b></u>
+                        <h3> 9. Faculty value added courses:</h3>
                         <h1></h1>
                         <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
                         <br />
@@ -1578,11 +1581,13 @@ const Appraisal = () => {
                     <p className="total-scoreAB">Total Score Form B: {totalScoreformB}</p>
                 </div>
                 <br />
+
                 <button type="button" className="btnAB" onClick={calculateScore}>Calculate Form Score</button>
+
+                <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score : {totalScore}</span>
+
+
                 <br />
-                <p className="total-scoreAB">Total Score : {totalScore}</p>
-
-
                 <button className='btnAB' type="submit">Submit</button>
 
             </form>

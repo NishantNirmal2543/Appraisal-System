@@ -40,6 +40,7 @@
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    margin-bottom: 10px;
   }
   
   .btnAB:hover {
@@ -55,3 +56,18 @@
     border-radius: 5px;
     padding: 2px;
   }
+
+
+
+  .form-group h3 {
+    color: #13ab4b;
+    margin-top: 5px;
+    font-size: 20px;
+  }
+  
+  .form-group h2 {
+    color: #138aab;
+    margin-top: 5px;
+    font-size: 15px;
+  }
+  
