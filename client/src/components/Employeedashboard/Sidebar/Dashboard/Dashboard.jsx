@@ -21,11 +21,14 @@ const Dashboard = () => {
           },
         });
         setEmployee(response.data.employee);
+        console.log(response.data)
+        localStorage.setItem('employeeid',response.data.employee.employeeid)
         setIsLoading(false);
       } catch (error) {
         setError(error.response.data.message);
       }
     };
+    
     fetchEmployee();
   }, []);
 

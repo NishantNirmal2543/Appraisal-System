@@ -12,6 +12,7 @@ router.get("/validuser", authenticate, async (req, res) => {
       res.status(200).send({
        
         employee: {
+            employeeid:req.userId,
             name: employee.name,
             email: employee.email,
             department: employee.department,

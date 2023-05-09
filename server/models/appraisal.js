@@ -1,9 +1,9 @@
+const { string } = require('joi');
 const mongoose = require('mongoose');
 
 const appraisalSchema = new mongoose.Schema({
-  employee: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'employee',
+  employeeid: {
+    type:  String,
     required: true,
   },
   year: {
@@ -416,4 +416,4 @@ const appraisalSchema = new mongoose.Schema({
 
 const Appraisal = mongoose.model('appraisal', appraisalSchema);
 
-module.exports = { Appraisal };
+module.exports = {Appraisal};

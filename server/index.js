@@ -30,10 +30,11 @@ const updateprincipleRoutes =  require("./routes/updateprinciple");
 
 const deleteprincipleRoutes = require("./routes/deleteprinciple");
 
-const router = require("./routes/employeedash");
+const router = require("./routes/Employeedash");
 
 const router1 = require("./routes/Admindash");
 
+const employeeappraisalRoutes = require("./routes/employeeappraisal")
 // database connection
 connection();
 
@@ -87,6 +88,10 @@ app.use("/api/updateprinciple" , updateprincipleRoutes);
 app.use(router)
 
 app.use(router1)
+
+//appraisal
+
+app.use("/api/employeeappraisal",employeeappraisalRoutes)
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));
