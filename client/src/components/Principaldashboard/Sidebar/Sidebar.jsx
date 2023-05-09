@@ -44,14 +44,14 @@ const Sidebar = () => {
                                 <i className='fas fa-hotel nav-link-icon'></i>
                                 <span className='nav-link-name'>Chart</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Help' ? 'active' : ''}`} onClick={() => handleClick('Help')}>
+                            <div className={`nav-link ${activeComponent === 'Appraisals' ? 'active' : ''}`} onClick={() => handleClick('Appraisals')}>
                                 <i className='fas fa-image nav-link-icon'></i>
                                 <span className='nav-link-name'>Appraisals</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Create' ? 'active' : ''}`} onClick={() => handleClick('Create')}>
+                            {/* <div className={`nav-link ${activeComponent === 'Create' ? 'active' : ''}`} onClick={() => handleClick('Create')}>
                                 <i className='fa-solid fa-spinner fa-pulse'></i>
                                 <span className='nav-link-name'>Status</span>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
@@ -66,8 +66,8 @@ const Sidebar = () => {
             <div className="main-content">
                 {activeComponent === 'Dashboard' && <Dashboard />}
                 {/* {activeComponent === 'Chart' && <Chart />}
-                {activeComponent === 'Help' && <Help />}
-                {activeComponent === 'Create' && <Create />} */}
+                {activeComponent === 'Appraisals' && <Appraisals />} */}
+                {/* {activeComponent === 'Create' && <Create />} */}
             </div>
 
         </main>

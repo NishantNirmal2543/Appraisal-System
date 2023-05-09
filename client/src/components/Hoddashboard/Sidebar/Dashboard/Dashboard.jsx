@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Dashboard.css";
+import "./Dashboard2.css";
+import profilePhoto from "../Dashboard/download.jpeg"
+import coverPhoto from "../Dashboard/images.jpeg"
 
 const Dashboard = () => {
   const [admin, setAdmin] = useState(null);
@@ -29,32 +31,49 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1>Dashboard</h1>
-      <div className="dashboard">
-        {error && <div className="error">{error}</div>}
-        {isLoading ? (
-          <div className="container">
-          <div className="card ">
-            <div className="card-img skeleton"></div>
-            <div className="card-body">
-              <h2 className="card-title skeleton"> </h2>
-              <p className="card-intro skeleton"></p>
+     
+     <div className="dashboard">
+      {error && <div className="error">{error}</div>}
+      {isLoading ? (
+        <div className="loader"></div>
+      ) : (
+        <div className="container2">
+          <div className="profile">
+            <div className="cover-photo">
+              <img src={coverPhoto} alt="Cover" />
+            </div>
+            <div className="profile-details">
+              <div className="profile-photo">
+                <img src={profilePhoto} alt="Profile" />
+              </div>
+              <h1>{admin.name}</h1>
+              <h3>{admin.role}</h3>
+
+             
+              <hr />
+              <div className="info">
+                <div className="info-item">
+                  <h4>College</h4>
+                  <p>{admin.college}</p>
+                </div>
+                <div className="info-item">
+                  <h4>Department</h4>
+                  <p>{admin.department}</p>
+                </div>
+                <div className="info-item">
+                  <h4>Email</h4>
+                  <p>{admin.email}</p>
+                </div>
+                <div className="info-item">
+                  <h4>Mobile</h4>
+                  <p>{admin.mobile}</p>
+                </div>
+              </div>
             </div>
           </div>
-          </div>
-        ) : (
-          <div className="container">
-          <div className="section">
-            <p>Name: {admin.name}</p>
-            <p>College: {admin.college}</p>
-            <p>Role: {admin.role}</p>
-            <p>Mobile: {admin.mobile}</p>
-            <p>Email: {admin.email}</p>
-            <p>Department: {admin.department}</p>
-          </div>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
+    </div>
     </>
   );
 };
