@@ -993,7 +993,7 @@ const Appraisal = () => {
         } catch (error) {
             console.error('An error occurred while saving the appraisal data:', error);
 
-            toast.error('An appraisal entry already exists for the given employee and appraisal year.');
+            toast.error('An error occurred while saving the appraisal data.');
         }
     };
 
