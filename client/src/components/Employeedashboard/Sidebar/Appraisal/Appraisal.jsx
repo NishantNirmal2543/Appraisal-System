@@ -757,6 +757,127 @@ const Appraisal = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         // console.log(localStorage.getItem("employeeid"))
+
+        const requiredFields = [
+            year,
+            classesTaught,
+            totalClasses,
+
+            paperEval,
+            studentActivities,
+
+            attendanceRecordFESE,
+            meetingsConductedFESE,
+            communicationFESE,
+            counselingFESE,
+            rankScore,
+            coCurricularScore,
+            percentageIncreaseScore,
+
+            attendanceRecordTE,
+            meetingsConductedTE,
+            communicationTE,
+            counselingTE,
+            adhonScore,
+            otherScore,
+            allClearScore,
+
+            attendanceRecordBE,
+            meetingsConductedBE,
+            communicationBE,
+            counselingBE,
+            adhonCompleted,
+            placementPercentage,
+            batchEvaluation,
+            actionTaken,
+
+            latestResult,
+            prevYearResult1,
+            prevYearResult2,
+            prevYearResult3,
+
+            internalFeedback,
+            externalFeedback,
+
+            handwrittenNotes,
+            otherContents,
+            coPoPsoMapping,
+
+            shortTerm7a,
+            semester7a,
+            academicYear7a,
+
+            shortTerm7b,
+            semester7b,
+            academicYear7b,
+
+            shortTerm7c,
+            semester7c,
+            academicYear7c,
+
+            internationalJournal,
+            citation2022,
+
+            international,
+            national,
+            chapter,
+            editorInternational,
+            editorNational,
+            researchPaper,
+            book,
+
+            innovativePedagogy,
+            eContentDevelopment,
+
+            phdGuidance,
+            pgDissertation,
+            completedResearchProjectMoreThan10Lakhs,
+            completedResearchProjectLessThan10Lakhs,
+            ongoingResearchProjectMoreThan10Lakhs,
+            ongoingResearchProjectLessThan10Lakhs,
+            inHouseProductDevelopment,
+            consultancy,
+            editorialBoardReviewer,
+            paperPublishedWithIndustryPerson,
+
+            internationalPatents,
+            nationalPatents,
+            copyrights,
+            awards,
+            totalScore8b4,
+            intlAbroad,
+            intlWithin,
+            Innational,
+            stateUni,
+
+            sttpOrganized,
+            sttpAttended,
+            conferenceAttended,
+            nptelCertification,
+            academicQualification,
+            mouWithIndustry,
+
+
+
+        ];
+
+        const isAnyFieldEmpty = requiredFields.some((field) => {
+            if (field === null || field === undefined) {
+                return true;
+            }
+            if (typeof field === 'string' && field.trim() === '') {
+                return true;
+            }
+            return false;
+        });
+
+        if (isAnyFieldEmpty) {
+            toast.error('Please fill in all the required fields.');
+            return;
+        }
+
+
+
         const formData = {
             employeeid: localStorage.getItem("employeeid"),
             year,
@@ -862,11 +983,9 @@ const Appraisal = () => {
             totalScore
 
         };
-        
+
 
         try {
-            
-
             const response = await axios.post('http://localhost:8080/api/employeeappraisal', formData);
             console.log(response.data.message);
             toast.success("Employee Appraisal Submitted successfully");
@@ -874,7 +993,7 @@ const Appraisal = () => {
         } catch (error) {
             console.error('An error occurred while saving the appraisal data:', error);
 
-            toast.error('An error occurred while saving the appraisal data. Please try again later.');
+            toast.error('An appraisal entry already exists for the given employee and appraisal year.');
         }
     };
 

@@ -122,11 +122,11 @@ router.post('/', async (req, res) => {
         if (!employee) {
             return res.status(404).json({ error: 'Employee not found.' });
         }
-        // const existingAppraisal = await Appraisal.findOne({ employeeid, year });
-
-        // if (existingAppraisal) {
-        //     return res.status(400).json({ error: 'An appraisal entry already exists for the given employee and appraisal year.' });
-        // }
+        const existingAppraisal = await Appraisal.findOne({ employeeid, year });
+        // console.log(existingAppraisal)
+        if (existingAppraisal) {
+            return res.status(400).json({ error: 'An appraisal entry already exists for the given employee and appraisal year.' });
+        }
 
         // Create the appraisal and associate it with the employee
         const appraisal = new Appraisal({
