@@ -586,11 +586,7 @@ router.post('/', async (req, res) => {
 
            
         }
-
-
-
         await appraisal.save();
-
         res.status(201).json({ message: 'Appraisal data saved successfully.' });
     } catch (error) {
         console.log(error)
