@@ -5,7 +5,7 @@ const { Employee } = require('../models/employee');
 
 router.post('/', async (req, res) => {
     // console.log(req.body)
-  // Extract the _id from the decoded token
+    // Extract the _id from the decoded token
     const {
         employeeid,
         year,
@@ -110,17 +110,24 @@ router.post('/', async (req, res) => {
         totalScoreformB,
         totalScore,
     } = req.body;
-    
-    
+
+
 
     try {
         // Find the employee by employeeId
         // console.log(employeeid)
+
         const employee = await Employee.findById(employeeid);
 
         if (!employee) {
             return res.status(404).json({ error: 'Employee not found.' });
         }
+        // const existingAppraisal = await Appraisal.findOne({ employeeid, year });
+
+        // if (existingAppraisal) {
+        //     return res.status(400).json({ error: 'An appraisal entry already exists for the given employee and appraisal year.' });
+        // }
+
         // Create the appraisal and associate it with the employee
         const appraisal = new Appraisal({
             employeeid,
@@ -226,7 +233,7 @@ router.post('/', async (req, res) => {
             totalScoreformB,
             totalScore
 
-           
+
         });
 
         await appraisal.save();

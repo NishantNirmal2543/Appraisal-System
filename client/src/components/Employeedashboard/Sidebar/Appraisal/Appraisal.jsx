@@ -862,8 +862,10 @@ const Appraisal = () => {
             totalScore
 
         };
+        
 
         try {
+            
 
             const response = await axios.post('http://localhost:8080/api/employeeappraisal', formData);
             console.log(response.data.message);
@@ -872,7 +874,7 @@ const Appraisal = () => {
         } catch (error) {
             console.error('An error occurred while saving the appraisal data:', error);
 
-            toast.error("Please Fill All Fields Carefully")
+            toast.error('An error occurred while saving the appraisal data. Please try again later.');
         }
     };
 
