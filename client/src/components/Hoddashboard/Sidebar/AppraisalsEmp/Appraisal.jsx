@@ -1,14 +1,16 @@
 
 
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import "./AppraisalEmp.css"
+import { AiOutlineEye } from "react-icons/ai";
+
 
 const EmployeeTable = () => {
   const [employees, setEmployees] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedEmployee, setSelectedEmployee] = useState(null);
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -42,41 +44,93 @@ const EmployeeTable = () => {
     fetchEmployees();
   }, []);
 
+  const handleViewDetails = (employee) => {
+    setSelectedEmployee(employee);
+  };
+
+  const handleGoBack = () => {
+    setSelectedEmployee(null);
+  };
 
   return (
-    
-    <div className='cardEmp'>
-            {error && <div className="error">{error}</div>}
-       {isLoading ? (
-        <div className="loaderEmp"></div>
-      ) : (
- <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-         
-          <th>Email</th>
-          {/* Add more table headers as needed */}
-        </tr>
-      </thead>
-      <tbody>
-        {employees.map((employee) => (
-          <tr key={employee._id}>
-            <td>{employee.name}</td>
-           
-            <td>{employee.email}</td>
+    <div >
+      {error && <div className="error">{error}</div>}
 
-            {/* Add more table cells based on employee data */}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+      {!selectedEmployee ? (
+        <>
+          {isLoading ? (
+            <div className="loaderEmp"></div>
+          ) : (
+           <>
+            <h1>Employee Appraisals</h1>
+            <div className='cardEmp'>
+              
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>View</th>
+                  {/* Add more table headers as needed */}
+                </tr>
+              </thead>
+              <tbody>
+                {employees.map((employee) => (
+                  <tr key={employee._id}>
+                    <td>{employee.name}</td>
+                    <td>{employee.email}</td>
+                    <td>
+                      <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewDetails(employee)} >  <AiOutlineEye /> </button>
+                    </td>
+                    {/* Add more table cells based on employee data */}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            </div>
+            </>
+          )}
+        </>
+      ) : (
+       
+          <div className="containerEmpl">
+            <div className="profile">
+              <div className="cover-photo">
+                {/* <img src={coverPhoto} alt="Cover" /> */}
+              </div>
+              <div className="profile-details">
+                <div className="profile-photo">
+                  {/* <img src={profilePhoto} alt="Profile" /> */}
+                </div>
+                <h1>{selectedEmployee.name}</h1>
+                <h3>{selectedEmployee.designation}</h3>
+                <hr />
+                <div className="info">
+                  <div className="info-item">
+                    <h4>College</h4>
+                    <p>{selectedEmployee.college}</p>
+                  </div>
+                  <div className="info-item">
+                    <h4>Department</h4>
+                    <p>{selectedEmployee.department}</p>
+                  </div>
+                  <div className="info-item">
+                    <h4>Email</h4>
+                    <p>{selectedEmployee.email}</p>
+                  </div>
+                  <div className="info-item">
+                    <h4>Mobile</h4>
+                    <p>{selectedEmployee.mobile}</p>
+                  </div>
+                </div>
+              </div>
+          <button className='btnZ' onClick={handleGoBack}>Go Back</button>
+            </div>
+         
+        </div>
       )}
     </div>
-    
   );
 };
 
 export default EmployeeTable;
-
-
