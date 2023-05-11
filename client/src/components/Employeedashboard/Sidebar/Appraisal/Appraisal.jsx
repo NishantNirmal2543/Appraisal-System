@@ -23,7 +23,6 @@ const Appraisal = () => {
     const [totalScore2, setTotalScore2] = useState(0);
 
 
-
     //3a
 
     const [attendanceRecordFESE, setAttendanceRecordFESE] = useState(0);

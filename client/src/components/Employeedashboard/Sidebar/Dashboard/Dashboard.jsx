@@ -21,7 +21,7 @@ const Dashboard = () => {
           },
         });
         setEmployee(response.data.employee);
-        console.log(response.data)
+        // console.log(response.data)
         localStorage.setItem('employeeid',response.data.employee.employeeid)
         setIsLoading(false);
       } catch (error) {
