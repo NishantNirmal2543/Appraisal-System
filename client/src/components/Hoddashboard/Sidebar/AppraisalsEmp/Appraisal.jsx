@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import "./AppraisalEmp.css"
 
 const EmployeeTable = () => {
   const [employees, setEmployees] = useState([]);
@@ -41,20 +42,20 @@ const EmployeeTable = () => {
     fetchEmployees();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
 
   return (
-    <table>
+    
+    <div className='cardEmp'>
+            {error && <div className="error">{error}</div>}
+       {isLoading ? (
+        <div className="loaderEmp"></div>
+      ) : (
+ <table>
       <thead>
         <tr>
           <th>Name</th>
-          <th>Department</th>
+         
+          <th>Email</th>
           {/* Add more table headers as needed */}
         </tr>
       </thead>
@@ -62,12 +63,17 @@ const EmployeeTable = () => {
         {employees.map((employee) => (
           <tr key={employee._id}>
             <td>{employee.name}</td>
-            <td>{employee.department}</td>
+           
+            <td>{employee.email}</td>
+
             {/* Add more table cells based on employee data */}
           </tr>
         ))}
       </tbody>
     </table>
+      )}
+    </div>
+    
   );
 };
 
