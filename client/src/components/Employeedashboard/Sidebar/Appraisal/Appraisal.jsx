@@ -1,15 +1,235 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./Appraisal.css"
 import axios from "axios";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Appraisal = () => {
+    const employeeId = localStorage.getItem("employeeid")
+    const [year, setYear] = useState("2023"); // Initialize the 'year' variable
 
-    const [year, setYear] = useState("");
     const handleYearChange = (event) => {
         setYear(event.target.value);
     };
+
+    useEffect(() => {
+        const fetchAppraisalData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/api/fetchappraisal/${employeeId}/${year}`);
+                const appraisalData = response.data.appraisal;
+                if (appraisalData) {
+                    // Update the state with the fetched appraisal data
+                    setClassesTaught(appraisalData.classesTaught);
+                    setTotalClasses(appraisalData.totalClasses);
+                    setTotalScore1(appraisalData.totalScore1);
+                    setPaperEval(appraisalData.paperEval);
+                    setStudentActivities(appraisalData.studentActivities);
+                    setTotalScore2(appraisalData.totalScore2);
+                    setAttendanceRecordFESE(appraisalData.attendanceRecordFESE);
+                    setMeetingsConductedFESE(appraisalData.meetingsConductedFESE);
+                    setCommunicationFESE(appraisalData.communicationFESE);
+                    setCounselingFESE(appraisalData.counselingFESE);
+                    setRankScore(appraisalData.rankScore);
+                    setCoCurricularScore(appraisalData.coCurricularScore);
+                    setPercentageIncreaseScore(appraisalData.percentageIncreaseScore);
+                    setTotalScoreFESE(appraisalData.totalScoreFESE);
+                    setAttendanceRecordTE(appraisalData.attendanceRecordTE);
+                    setMeetingsConductedTE(appraisalData.meetingsConductedTE);
+                    setCommunicationTE(appraisalData.communicationTE);
+                    setCounselingTE(appraisalData.counselingTE);
+                    setAdhonScore(appraisalData.adhonScore);
+                    setOtherScore(appraisalData.otherScore);
+                    setAllClearScore(appraisalData.allClearScore);
+                    setTotalScoreTE(appraisalData.totalScoreTE);
+                    setAttendanceRecordBE(appraisalData.attendanceRecordBE);
+                    setMeetingsConductedBE(appraisalData.meetingsConductedBE);
+                    setCommunicationBE(appraisalData.communicationBE);
+                    setCounselingBE(appraisalData.counselingBE);
+                    setAdhonCompleted(appraisalData.adhonCompleted);
+                    setPlacementPercentage(appraisalData.placementPercentage);
+                    setBatchEvaluation(appraisalData.batchEvaluation);
+                    setActionTaken(appraisalData.actionTaken);
+                    setTotalScoreBE(appraisalData.totalScoreBE);
+                    setLatestResult(appraisalData.latestResult);
+                    setPrevYearResult1(appraisalData.prevYearResult1);
+                    setPrevYearResult2(appraisalData.prevYearResult2);
+                    setPrevYearResult3(appraisalData.prevYearResult3);
+                    setTotalScore4(appraisalData.totalscore4);
+                    setInternalFeedback(appraisalData.internalFeedback);
+                    setExternalFeedback(appraisalData.externalFeedback);
+                    setTotalScore5(appraisalData.totalScore5);
+                    setHandwrittenNotes(appraisalData.handwrittenNotes);
+                    setOtherContents(appraisalData.otherContents);
+                    setCoPoPsoMapping(appraisalData.coPoPsoMapping);
+                    setTotalScore6(appraisalData.totalScore6);
+                    setShortTerm7a(appraisalData.shortTerm7a);
+                    setSemester7a(appraisalData.semester7a);
+                    setAcademicYear7a(appraisalData.academicYear7a);
+                    setTotalScore7a(appraisalData.totalScore7a);
+                    setShortTerm7b(appraisalData.shortTerm7b);
+                    setSemester7b(appraisalData.semester7b);
+                    setAcademicYear7b(appraisalData.academicYear7b);
+                    setTotalScore7b(appraisalData.totalScore7b);
+                    setShortTerm7c(appraisalData.shortTerm7c);
+                    setSemester7c(appraisalData.semester7c);
+                    setAcademicYear7c(appraisalData.academicYear7c);
+                    setTotalScore7c(appraisalData.totalScore7c);
+                    setInternationalJournal(appraisalData.internationalJournal);
+                    setCitation2022(appraisalData.citation2022);
+                    setTotalScore8a(appraisalData.totalScore8a);
+                    setInternational(appraisalData.international);
+                    setNational(appraisalData.national);
+                    setChapter(appraisalData.chapter);
+                    setEditorInternational(appraisalData.editorInternational);
+                    setEditorNational(appraisalData.editorNational);
+                    setResearchPaper(appraisalData.researchPaper);
+                    setBook(appraisalData.book);
+                    setTotalScore8b1(appraisalData.totalScore8b1);
+                    setInnovativePedagogy(appraisalData.innovativePedagogy);
+                    setEContentDevelopment(appraisalData.eContentDevelopment);
+                    setTotalScore8b2(appraisalData.totalScore8b2);
+                    setPhdGuidance(appraisalData.phdGuidance);
+                    setPgDissertation(appraisalData.pgDissertation);
+                    setCompletedResearchProjectMoreThan10Lakhs(appraisalData.completedResearchProjectMoreThan10Lakhs);
+                    setCompletedResearchProjectLessThan10Lakhs(appraisalData.completedResearchProjectLessThan10Lakhs);
+                    setOngoingResearchProjectMoreThan10Lakhs(appraisalData.ongoingResearchProjectMoreThan10Lakhs);
+                    setOngoingResearchProjectLessThan10Lakhs(appraisalData.ongoingResearchProjectLessThan10Lakhs);
+                    setInHouseProductDevelopment(appraisalData.inHouseProductDevelopment);
+                    setConsultancy(appraisalData.consultancy);
+                    setEditorialBoardReviewer(appraisalData.editorialBoardReviewer);
+                    setPaperPublishedWithIndustryPerson(appraisalData.paperPublishedWithIndustryPerson);
+                    setTotalScore8b3(appraisalData.totalScore8b3);
+                    setInternationalPatents(appraisalData.internationalPatents);
+                    setNationalPatents(appraisalData.nationalPatents);
+                    setCopyrights(appraisalData.copyrights);
+                    setAwards(appraisalData.awards);
+                    setTotalScore8b4(appraisalData.totalScore8b4);
+                    setIntlAbroad(appraisalData.intlAbroad);
+                    setIntlWithin(appraisalData.intlWithin);
+                    setInNational(appraisalData.Innational);
+                    setStateUni(appraisalData.stateUni);
+                    setTotalScore8b5(appraisalData.totalScore8b5);
+                    setSttpOrganized(appraisalData.sttpOrganized);
+                    setSttpAttended(appraisalData.sttpAttended);
+                    setConferenceAttended(appraisalData.conferenceAttended);
+                    setNptelCertification(appraisalData.nptelCertification);
+                    setAcademicQualification(appraisalData.academicQualification);
+                    setMouWithIndustry(appraisalData.mouWithIndustry);
+                    setTotalScore9(appraisalData.totalScore9);
+                    setTotalScoreformA(appraisalData.totalScoreformA);
+                    setTotalScoreformB(appraisalData.totalScoreformB);
+                    setTotalScore(appraisalData.totalScore);
+                } else {
+                    setClassesTaught('');
+                    setTotalClasses('');
+                    setTotalScore1('');
+                    setPaperEval('');
+                    setStudentActivities('');
+                    setTotalScore2('');
+                    setAttendanceRecordFESE('');
+                    setMeetingsConductedFESE('');
+                    setCommunicationFESE('');
+                    setCounselingFESE('');
+                    setRankScore('');
+                    setCoCurricularScore('');
+                    setPercentageIncreaseScore('');
+                    setTotalScoreFESE('');
+                    setAttendanceRecordTE('');
+                    setMeetingsConductedTE('');
+                    setCommunicationTE('');
+                    setCounselingTE('');
+                    setAdhonScore('');
+                    setOtherScore('');
+                    setAllClearScore('');
+                    setTotalScoreTE('');
+                    setAttendanceRecordBE('');
+                    setMeetingsConductedBE('');
+                    setCommunicationBE('');
+                    setCounselingBE('');
+                    setAdhonCompleted('');
+                    setPlacementPercentage('');
+                    setBatchEvaluation('');
+                    setActionTaken('');
+                    setTotalScoreBE('');
+                    setLatestResult('');
+                    setPrevYearResult1('');
+                    setPrevYearResult2('');
+                    setPrevYearResult3('');
+                    setTotalScore4('');
+                    setInternalFeedback('');
+                    setExternalFeedback('');
+                    setTotalScore5('');
+                    setHandwrittenNotes('');
+                    setOtherContents('');
+                    setCoPoPsoMapping('');
+                    setTotalScore6('');
+                    setShortTerm7a('');
+                    setSemester7a('');
+                    setAcademicYear7a('');
+                    setTotalScore7a('');
+                    setShortTerm7b('');
+                    setSemester7b('');
+                    setAcademicYear7b('');
+                    setTotalScore7b('');
+                    setShortTerm7c('');
+                    setSemester7c('');
+                    setAcademicYear7c('');
+                    setTotalScore7c('');
+                    setInternationalJournal('');
+                    setCitation2022('');
+                    setTotalScore8a('');
+                    setInternational('');
+                    setNational('');
+                    setChapter('');
+                    setEditorInternational('');
+                    setEditorNational('');
+                    setResearchPaper('');
+                    setBook('');
+                    setTotalScore8b1('');
+                    setInnovativePedagogy('');
+                    setEContentDevelopment('');
+                    setTotalScore8b2('');
+                    setPhdGuidance('');
+                    setPgDissertation('');
+                    setCompletedResearchProjectMoreThan10Lakhs('');
+                    setCompletedResearchProjectLessThan10Lakhs('');
+                    setOngoingResearchProjectMoreThan10Lakhs('');
+                    setOngoingResearchProjectLessThan10Lakhs('');
+                    setInHouseProductDevelopment('');
+                    setConsultancy('');
+                    setEditorialBoardReviewer('');
+                    setPaperPublishedWithIndustryPerson('');
+                    setTotalScore8b3('');
+                    setInternationalPatents('');
+                    setNationalPatents('');
+                    setCopyrights('');
+                    setAwards('');
+                    setTotalScore8b4('');
+                    setIntlAbroad('');
+                    setIntlWithin('');
+                    setInNational('');
+                    setStateUni('');
+                    setTotalScore8b5('');
+                    setSttpOrganized('');
+                    setSttpAttended('');
+                    setConferenceAttended('');
+                    setNptelCertification('');
+                    setAcademicQualification('');
+                    setMouWithIndustry('');
+                    setTotalScore9('');
+                    setTotalScoreformA('');
+                    setTotalScoreformB('');
+                    setTotalScore('');
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchAppraisalData();
+    }, [employeeId, year]);
+
+
 
 
     //1
@@ -1004,7 +1224,7 @@ const Appraisal = () => {
                     <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
                     <label className="department-label">
                         <h3>Year of Performance Appraisal:</h3>
-                        <input type="number" value={year} onChange={handleYearChange}>        
+                        <input type="number" value={year} onChange={handleYearChange}>
                         </input>
                     </label>
                     <br />
@@ -1324,8 +1544,8 @@ const Appraisal = () => {
 
                     <br />
                     <button type="button" className="btnAB" onClick={calculateScoreA}>Calculate Form A Score</button>
-                   
-                    <span style={{marginLeft:"25px"}} className="total-scoreAB">Total Score Form A: {totalScoreformA}</span>
+
+                    <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score Form A: {totalScoreformA}</span>
                 </div>
 
                 {/* form B */}
