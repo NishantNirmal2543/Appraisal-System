@@ -255,8 +255,7 @@ const { Appraisal } = require('../models/appraisal');
 const { Employee } = require('../models/employee');
 
 router.post('/', async (req, res) => {
-    // console.log(req.body)
-    // Extract the _id from the decoded token
+   
     const {
         employeeid,
         year,
@@ -486,7 +485,7 @@ router.post('/', async (req, res) => {
             appraisal.classesTaught = classesTaught;
             appraisal.totalClasses = totalClasses;
             appraisal.totalScore1 = totalScore1;
-            appraisal.paperEva = paperEval;
+            appraisal.paperEval = paperEval;
             appraisal.studentActivities = studentActivities;
             appraisal.totalScore2 = totalScore2;
             appraisal.attendanceRecordFESE = attendanceRecordFESE;
@@ -548,7 +547,7 @@ router.post('/', async (req, res) => {
             appraisal.editorNational = editorNational;
             appraisal.researchPaper = researchPaper;
             appraisal.book = book;
-            appraisal.totalScore8b1,
+            appraisal.totalScore8b1=totalScore8b1,
             appraisal.innovativePedagogy = innovativePedagogy;
             appraisal.eContentDevelopment = eContentDevelopment;
             appraisal.totalScore8b2 = totalScore8b2;
