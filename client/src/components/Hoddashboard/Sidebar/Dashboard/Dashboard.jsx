@@ -21,6 +21,7 @@ const Dashboard = () => {
           },
         });
         setAdmin(response.data.admin);
+        console.log(response.data.admin)
         setIsLoading(false);
       } catch (error) {
         setError(error.response.data.message);

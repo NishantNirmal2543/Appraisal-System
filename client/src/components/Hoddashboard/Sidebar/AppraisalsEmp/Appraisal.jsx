@@ -1,94 +1,76 @@
-// import React from 'react'
 
-// const Appraisal = () => {
-//   return (
-//     <div>Appraisal</div>
-//   )
-// }
 
-// export default Appraisal
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-// Define your components
-const Home = ({ goToComponent }) => (
-  <div>
-    <h1>Home</h1>
-   
-                    <u><b>5. Course file and Remedial classes assessment : </b></u>
-                    <p>(Max marks : 30)</p>
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Grade</th>
-                                    <th>Score (Internal Feedback)</th>
-                                    <th>Score (External Feedback)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>A+ (90 & above)</td>
-                                    <td>10</td>
-                                    <td>20</td>
-                                </tr>
-                                <tr>
-                                    <td>A (81 to 89)</td>
-                                    <td>8</td>
-                                    <td>16</td>
-                                </tr>
-                                <tr>
-                                    <td>B+ (71 to 80)</td>
-                                    <td>6</td>
-                                    <td>12</td>
-                                </tr>
-                                <tr>
-                                    <td>B (61 to 70)</td>
-                                    <td>4</td>
-                                    <td>8</td>
-                                </tr>
-                                <tr>
-                                    <td>C  (less than 60)</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                </tr>
-                            </tbody>
-                        </table>
+const EmployeeTable = () => {
+  const [employees, setEmployees] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-                    </div>
-    <button onClick={() => goToComponent('About')}>Go to About</button>
-  </div>
-);
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:8080/validadmin', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-const About = ({ goBack }) => (
-  <div>
-    <h1>About</h1>
-    <button onClick={goBack}>Go Back</button>
-  </div>
-);
+        const admin = response.data.admin;
+        const department = admin.department;
+        const college = admin.college;
 
-const App = () => {
-  const [currentComponent, setCurrentComponent] = useState('Home');
+        const employeesResponse = await axios.get('http://localhost:8080/api/fetchappraisalhod', {
+          params: {
+            department,
+            college,
+          },
+        });
 
-  // Function to handle component navigation
-  const goToComponent = (componentName) => {
-    setCurrentComponent(componentName);
-  };
+        setEmployees(employeesResponse.data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.response.data.message);
+        setIsLoading(false);
+      }
+    };
 
-  // Function to go back to the previous component
-  const goBack = () => {
-    setCurrentComponent('Home');
-  };
+    fetchEmployees();
+  }, []);
 
-  // Render the current component based on the state
-  let component;
-  if (currentComponent === 'Home') {
-    component = <Home goToComponent={goToComponent} />;
-  } else if (currentComponent === 'About') {
-    component = <About goBack={goBack} />;
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-  return <div>{component}</div>;
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Department</th>
+          {/* Add more table headers as needed */}
+        </tr>
+      </thead>
+      <tbody>
+        {employees.map((employee) => (
+          <tr key={employee._id}>
+            <td>{employee.name}</td>
+            <td>{employee.department}</td>
+            {/* Add more table cells based on employee data */}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 };
 
-export default App;
+export default EmployeeTable;
+
+
