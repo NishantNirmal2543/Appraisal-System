@@ -1328,8 +1328,8 @@ const Appraisal = () => {
 
                     <br />
                     <button type="button" className="btnAB" onClick={calculateScoreA}>Calculate Form A Score</button>
-                    <br />
-                    <p className="total-scoreAB">Total Score Form A: {totalScoreformA}</p>
+                   
+                    <span style={{marginLeft:"25px"}} className="total-scoreAB">Total Score Form A: {totalScoreformA}</span>
                 </div>
 
                 {/* form B */}
@@ -1697,8 +1697,7 @@ const Appraisal = () => {
 
                     <br />
                     <button type="button" className="btnAB" onClick={calculateScoreB}>Calculate Form B Score</button>
-                    <br />
-                    <p className="total-scoreAB">Total Score Form B: {totalScoreformB}</p>
+                    <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score Form B: {totalScoreformB}</span>
                 </div>
                 <br />
 
