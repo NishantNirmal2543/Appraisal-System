@@ -35,7 +35,7 @@ const Dashboard = () => {
      <div className="dashboard">
       {error && <div className="error">{error}</div>}
       {isLoading ? (
-        <div className="loader"></div>
+        <div className="loaderEmp"></div>
       ) : (
         <div className="container3">
           <div className="profile">

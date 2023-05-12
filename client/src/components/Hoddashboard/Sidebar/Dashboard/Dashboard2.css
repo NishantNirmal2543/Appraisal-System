@@ -11,34 +11,78 @@
     color: red;
   }
   
-  .loader {
-    display: inline-block;
+  .loaderEmp {
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 2.5em;
+    height: 2.5em;
+    transform: rotate(165deg);
   }
   
-  .loader:after {
-    content: " ";
+  .loaderEmp:before,
+  .loaderEmp:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
     display: block;
-    border-radius: 50%;
-    width: 0;
-    height: 0;
-    margin: 6px;
-    box-sizing: border-box;
-    border: 32px solid #e5e5e5;
-    border-color: #2fb52f transparent #a62525 transparent;
-    animation: loader 1.2s infinite;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 0.25em;
+    transform: translate(-50%, -50%);
   }
   
-  @keyframes loader {
+  .loaderEmp:before {
+    animation: before8 2s infinite;
+  }
+  
+  .loaderEmp:after {
+    animation: after6 2s infinite;
+  }
+  
+  @keyframes before8 {
     0% {
-      transform: rotate(0deg);
+      width: 0.5em;
+      box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75),
+        -1em 0.5em rgba(111, 202, 220, 0.75);
+    }
+    35% {
+      width: 2.5em;
+      box-shadow: 0 -0.5em rgba(225, 20, 98, 0.75),
+        0 0.5em rgba(111, 202, 220, 0.75);
+    }
+    70% {
+      width: 0.5em;
+      box-shadow: -1em -0.5em rgba(225, 20, 98, 0.75),
+        1em 0.5em rgba(111, 202, 220, 0.75);
     }
     100% {
-      transform: rotate(360deg);
+      box-shadow: 1em -0.5em rgba(225, 20, 98, 0.75),
+        -1em 0.5em rgba(111, 202, 220, 0.75);
     }
   }
+  
+  @keyframes after6 {
+    0% {
+      height: 0.5em;
+      box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75),
+        -0.5em -1em rgba(233, 169, 32, 0.75);
+    }
+    35% {
+      height: 2.5em;
+      box-shadow: 0.5em 0 rgba(61, 184, 143, 0.75),
+        -0.5em 0 rgba(233, 169, 32, 0.75);
+    }
+    70% {
+      height: 0.5em;
+      box-shadow: 0.5em -1em rgba(61, 184, 143, 0.75),
+        -0.5em 1em rgba(233, 169, 32, 0.75);
+    }
+    100% {
+      box-shadow: 0.5em 1em rgba(61, 184, 143, 0.75),
+        -0.5em -1em rgba(233, 169, 32, 0.75);
+    }
+  }
+  
   
   .container2 {
     display: flex;
