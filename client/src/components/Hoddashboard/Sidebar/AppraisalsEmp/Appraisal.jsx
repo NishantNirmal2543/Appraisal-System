@@ -59,7 +59,9 @@ const EmployeeTable = () => {
       {!selectedEmployee ? (
         <>
           {isLoading ? (
+             <div className="loader-container">
             <div className="loaderEmp"></div>
+            </div>
           ) : (
             <>
               <h1>Employee Appraisals</h1>

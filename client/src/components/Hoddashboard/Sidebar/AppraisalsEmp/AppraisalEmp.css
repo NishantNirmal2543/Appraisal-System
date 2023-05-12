@@ -165,3 +165,11 @@ hr {
 .btnZ:hover {
   background-color: #d9007b;
 }
+
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
