@@ -47,7 +47,7 @@ const Sidebar = () => {
                             </div>
                             <div className={`nav-link ${activeComponent === 'Appraisal' ? 'active' : ''}`} onClick={() => handleClick('Appraisal')}>
                                 <i className='fas fa-image nav-link-icon'></i>
-                                <span className='nav-link-name'>EmployAppraisal</span>
+                                <span className='nav-link-name'>Appraisal</span>
                             </div>
                             {/* <div className={`nav-link ${activeComponent === 'Create' ? 'active' : ''}`} onClick={() => handleClick('Create')}>
                                 <i className='fa-solid fa-spinner fa-pulse'></i>

@@ -54,6 +54,8 @@
     background-color: var(--first-color);
     padding-top: 1rem;
     transition: 0.5s;
+    border-top-right-radius: 55px;
+    border-bottom-right-radius: 55px;
   }
   
   .nav {
