@@ -390,9 +390,20 @@ const Appraisal = () => {
     const [totalScoreformA, setTotalScoreformA] = useState(0);
 
     const calculateScoreA = () => {
-        const scoreA = parseFloat(totalScore1) + parseFloat(totalScore2) + parseFloat(totalscore4) + parseFloat(totalScore5) + parseFloat(totalScore6) + parseFloat(totalScoreFESE) + parseFloat(totalScoreTE) + parseFloat(totalScoreBE);
-        setTotalScoreformA(scoreA);
+      const scoreA =
+        parseFloat(totalScore1) +
+        parseFloat(totalScore2) +
+        parseFloat(totalscore4) +
+        parseFloat(totalScore5) +
+        parseFloat(totalScore6) +
+        parseFloat(totalScoreFESE) +
+        parseFloat(totalScoreTE) +
+        parseFloat(totalScoreBE);
+        
+      const roundedScoreA = scoreA.toFixed(2); // Round the score to 2 decimal places
+      setTotalScoreformA(roundedScoreA);
     };
+    
 
 
     //total form B

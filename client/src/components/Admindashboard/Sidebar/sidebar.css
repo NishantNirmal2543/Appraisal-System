@@ -100,7 +100,27 @@
     color: var(--white-color);
     background-color: rgba(0, 0, 0, 0.1);
   }
+  /* logout */
+
+  .nav-logo,
+  .nav-linkLog {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    column-gap: 2rem;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+  }
+  .nav-linkLog {
+    position: relative;
+    color: var(--first-color-alt);
+    transition: 0.5s;
+    margin-bottom: 1.5rem;
+  }
   
+  .nav-linkLog:hover {
+    color: var(--white-color);
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom-right-radius: 22px;
+  }
   .active {
     color: var(--white-color);
     background-color: rgba(0, 0, 0, 0.1);
