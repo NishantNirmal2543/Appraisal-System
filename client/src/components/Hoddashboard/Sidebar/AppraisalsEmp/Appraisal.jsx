@@ -153,7 +153,6 @@ const EmployeeTable = () => {
                   </div>
                   <div className="info-item">
                     <h4>Appraisal classesTaught</h4>
-
                     <p>{appraisals.classesTaught}</p>
                   </div>
 
