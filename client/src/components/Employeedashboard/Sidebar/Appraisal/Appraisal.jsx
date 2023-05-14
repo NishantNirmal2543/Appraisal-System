@@ -1932,8 +1932,8 @@ const Appraisal = () => {
 
                 <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score : {totalScore}</span>
 
-                <br />
-                <button className='btnAB' type="submit">Submit</button>
+                {/* <br /> */}
+                <button className='btnAB' style={{ marginLeft: "25px" }} type="submit">Submit</button>
 
             </form>
         </>
