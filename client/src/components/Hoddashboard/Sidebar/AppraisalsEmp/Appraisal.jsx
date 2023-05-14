@@ -11,6 +11,7 @@ const EmployeeTable = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [appraisals, setAppraisals] = useState([]);
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -44,14 +45,25 @@ const EmployeeTable = () => {
     fetchEmployees();
   }, []);
 
-  const handleViewDetails = (employee) => {
+  const handleViewDetails = async (employee) => {
     setSelectedEmployee(employee);
+
+    try {
+      // console.log(employee._id)
+      const appraisalResponse = await axios.get(`http://localhost:8080/api/hodfetchappraisal/${employee._id}`);
+      // console.log(appraisalResponse)
+      const filter = appraisalResponse.data.appraisals.find((data) => data.year === 2024)
+      setAppraisals(filter);
+      // console.log(appraisalResponse.data.appraisals)
+
+    } catch (error) {
+      setError(error.response.data.message);
+    }
   };
 
   const handleGoBack = () => {
     setSelectedEmployee(null);
   };
-
   return (
     <div >
       {error && <div className="error">{error}</div>}
@@ -59,8 +71,8 @@ const EmployeeTable = () => {
       {!selectedEmployee ? (
         <>
           {isLoading ? (
-             <div className="loader-container">
-            <div className="loaderEmp"></div>
+            <div className="loader-container">
+              <div className="loaderEmp"></div>
             </div>
           ) : (
             <>
@@ -125,11 +137,39 @@ const EmployeeTable = () => {
               </div>
             </div>
             <button className='btnZ' onClick={handleGoBack}>Go Back</button>
-          </div>
 
+            <div className="appraisal-details">
+              <h2>Appraisal Details</h2>
+              {appraisals ? (
+                <div className="appraisal-details">
+                  <h3>Appraisal Details</h3>
+                  <div className="info-item">
+                    <h4>Employee ID</h4>
+                    <p>{appraisals.employeeid}</p>
+                  </div>
+                  <div className="info-item">
+                    <h4>Appraisal Date</h4>
+                    <p>{appraisals.year}</p>
+                  </div>
+                  <div className="info-item">
+                    <h4>Appraisal classesTaught</h4>
+
+                    <p>{appraisals.classesTaught}</p>
+                  </div>
+
+                </div>
+              ) : (
+                <div className="appraisal-details">
+                  <p>No appraisal details available for this employee.</p>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       )}
+
     </div>
+
   );
 };
 

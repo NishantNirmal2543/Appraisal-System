@@ -36,9 +36,11 @@ const router1 = require("./routes/Admindash");
 
 const employeeappraisalRoutes = require("./routes/employeeappraisal");
 
-const fetchappraisalhodRoutes = require("./routes/fetchappraisalhod");
+const fetchappraisalhodRoutes = require("./routes/fetchemployeehod");
 
-const fetchappraisalRoutes = require("./routes/fetchappraisal")
+const fetchappraisalRoutes = require("./routes/fetchappraisal");
+
+const hodfetchappraisalRoutes = require("./routes/hodfetchappraisal")
 // database connection
 connection();
 
@@ -102,6 +104,8 @@ app.use("/api/employeeappraisal",employeeappraisalRoutes)
 app.use("/api/fetchappraisalhod",fetchappraisalhodRoutes)
 
 app.use("/api/fetchappraisal",fetchappraisalRoutes)
+
+app.use("/api/hodfetchappraisal",hodfetchappraisalRoutes)
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

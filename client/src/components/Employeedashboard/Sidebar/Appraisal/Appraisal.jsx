@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Appraisal = () => {
     const employeeId = localStorage.getItem("employeeid")
-    const [year, setYear] = useState("2023"); 
+    const [year, setYear] = useState("2023");
 
     const handleYearChange = (event) => {
         setYear(event.target.value);
@@ -389,20 +389,20 @@ const Appraisal = () => {
     const [totalScoreformA, setTotalScoreformA] = useState(0);
 
     const calculateScoreA = () => {
-      const scoreA =
-        parseFloat(totalScore1) +
-        parseFloat(totalScore2) +
-        parseFloat(totalscore4) +
-        parseFloat(totalScore5) +
-        parseFloat(totalScore6) +
-        parseFloat(totalScoreFESE) +
-        parseFloat(totalScoreTE) +
-        parseFloat(totalScoreBE);
-        
-      const roundedScoreA = scoreA.toFixed(2); // Round the score to 2 decimal places
-      setTotalScoreformA(roundedScoreA);
+        const scoreA =
+            parseFloat(totalScore1) +
+            parseFloat(totalScore2) +
+            parseFloat(totalscore4) +
+            parseFloat(totalScore5) +
+            parseFloat(totalScore6) +
+            parseFloat(totalScoreFESE) +
+            parseFloat(totalScoreTE) +
+            parseFloat(totalScoreBE);
+
+        const roundedScoreA = scoreA.toFixed(2); // Round the score to 2 decimal places
+        setTotalScoreformA(roundedScoreA);
     };
-    
+
 
 
     //total form B
@@ -1234,9 +1234,13 @@ const Appraisal = () => {
                     <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
                     <label className="department-label">
                         <h3>Year of Performance Appraisal:</h3>
-                        <input type="number" value={year} onChange={handleYearChange}>
-                        </input>
+                        <select className="department-select" value={year} onChange={handleYearChange}>
+                            <option value={2023}>2023</option>
+                            <option value={2024}>2024</option>
+                            <option value={2025}>2025</option>
+                        </select>
                     </label>
+
                     <br />
 
                     <div className="form-group">
