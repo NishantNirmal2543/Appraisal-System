@@ -45,21 +45,18 @@ const EmployeeTable = () => {
     fetchEmployees();
   }, []);
 
-  const handleViewDetails = async (employee) => {
+  const handleViewDetails = async (employee, year) => {
     setSelectedEmployee(employee);
 
     try {
-      // console.log(employee._id)
       const appraisalResponse = await axios.get(`http://localhost:8080/api/hodfetchappraisal/${employee._id}`);
-      // console.log(appraisalResponse)
-      const filter = appraisalResponse.data.appraisals.find((data) => data.year === 2024)
+      const filter = appraisalResponse.data.appraisals.find((data) => data.year === year);
       setAppraisals(filter);
-      // console.log(appraisalResponse.data.appraisals)
-
     } catch (error) {
       setError(error.response.data.message);
     }
   };
+
 
   const handleGoBack = () => {
     setSelectedEmployee(null);
@@ -137,6 +134,16 @@ const EmployeeTable = () => {
               </div>
             </div>
             <button className='btnZ' onClick={handleGoBack}>Go Back</button>
+            <label className="department-label">
+            <select className="department-select" onChange={(e) => handleViewDetails(selectedEmployee, parseInt(e.target.value))}>
+              <option value={2023}>2023</option>
+              <option value={2024}>2024</option>
+              <option value={2025}>2025</option>
+            </select>
+
+            </label>
+           
+
 
             <div className="appraisal-details">
               <h2>Appraisal Details</h2>
