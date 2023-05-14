@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Appraisal = () => {
     const employeeId = localStorage.getItem("employeeid")
-    const [year, setYear] = useState("2023"); // Initialize the 'year' variable
+    const [year, setYear] = useState("2023"); 
 
     const handleYearChange = (event) => {
         setYear(event.target.value);
@@ -18,7 +18,6 @@ const Appraisal = () => {
                 const response = await axios.get(`http://localhost:8080/api/fetchappraisal/${employeeId}/${year}`);
                 const appraisalData = response.data.appraisal;
                 if (appraisalData) {
-                    // Update the state with the fetched appraisal data
                     setClassesTaught(appraisalData.classesTaught);
                     setTotalClasses(appraisalData.totalClasses);
                     setTotalScore1(appraisalData.totalScore1);
