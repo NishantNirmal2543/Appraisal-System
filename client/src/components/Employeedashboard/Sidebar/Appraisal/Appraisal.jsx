@@ -1462,7 +1462,7 @@ const Appraisal = () => {
 
 
                     <div className="form-group">
-                        <h3>5. Course file and Remedial classes assessment : </h3>
+                        <h3>5. Feedback Analysis : </h3>
                         <p>(Max marks : 30)</p>
                         <div>
                             <table>
