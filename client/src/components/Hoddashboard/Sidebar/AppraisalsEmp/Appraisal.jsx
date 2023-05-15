@@ -534,7 +534,7 @@ const EmployeeTable = () => {
                         <td>{appraisals.totalScore8b5}</td>
                       </tr>
                       <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff', whiteSpace: 'nowrap' }}>STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc organized (one week/two weeks)</th>
+                        <th style={{ backgroundColor: '#f5e6ff' }}>STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc organized (one week/two weeks)</th>
                         <td>{appraisals.sttpOrganized}</td>
                       </tr>
                       <tr style={{ backgroundColor: '#f5e6ff' }}>
