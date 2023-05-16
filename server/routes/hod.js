@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
 	try {
 	  const admin = new Admin({ name, college, department,  email, mobile, password ,role});
 	  await admin.save();
-	  res.status(201).json({ success: true, message: 'Employee added successfully' });
+	  res.status(201).json({ success: true, message: 'Hod added successfully' });
 	} catch (err) {
 	  res.status(400).json({ success: false, message: err.message });
 	}
