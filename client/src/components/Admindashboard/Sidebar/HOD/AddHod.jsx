@@ -51,37 +51,47 @@ const AddHod = () => {
         const errors = {};
 
         if (!name) {
-            errors.name = 'Name is required';
+            toast.error('Please enter your name');
+            return;
         }
 
         if (!college) {
-            errors.college = 'College is required';
+            toast.error('Please select your college');
+            return;
         }
 
         if (!department) {
-            errors.department = 'Department is required';
+            toast.error('Please select your department');
+            return;
         }
         if (!role) {
-            errors.role = 'Role is required';
+            toast.error('Please select your role');
+            return;
         }
 
 
         if (!email) {
-            errors.email = 'Email is required';
+            toast.error('Please enter your email');
+            return;
         } else if (!/\S+@\S+\.\S+/.test(email)) {
-            errors.email = 'Email is invalid';
+            toast.error('Please enter a valid email');
+            return;
         }
-
         if (!mobile) {
-            errors.mobile = 'Mobile is required';
+            toast.error('Please enter your mobile number');
+            return;
         } else if (!/^\d{10}$/.test(mobile)) {
-            errors.mobile = 'Mobile must be a 10 digit number';
+            toast.error('Mobile number must be a 10 digit number');
+            return;
         }
         if (!password.trim()) {
-            errors.password = 'Password is required';
+            toast.error('Please enter a password');
+            return;
         } else if (password.length < 8) {
-            errors.password = 'Password must be at least 8 characters long';
+            toast.error('Password must be at least 8 characters long');
+            return;
         }
+
         setErrors(errors);
 
         if (Object.keys(errors).length === 0) {
