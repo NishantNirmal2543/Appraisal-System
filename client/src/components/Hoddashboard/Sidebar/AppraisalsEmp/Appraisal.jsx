@@ -60,6 +60,7 @@ const EmployeeTable = () => {
 
   const handleGoBack = () => {
     setSelectedEmployee(null);
+    setAppraisals([]);
   };
   return (
     <div >
@@ -79,9 +80,9 @@ const EmployeeTable = () => {
                 <table>
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>View</th>
+                      <th>Employee Name</th>
+                      <th>Enployee Email</th>
+                      <th>View Appraisal</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -150,67 +151,67 @@ const EmployeeTable = () => {
               <h3>Appraisal Details</h3>
               {appraisals ? (
                 <div className="appraisal-details">
-                  <table>
+                  <table style={{ border:"solid #99ff99 2px"}}>
                     <tbody>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Employee ID</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Employee ID</th>
                         <td>{appraisals.employeeid}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Appraisal Year</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Appraisal Year</th>
                         <td>{appraisals.year}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Number of classes taught</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Number of classes taught</th>
                         <td>{appraisals.classesTaught}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Total classes assigned</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Total classes assigned</th>
                         <td>{appraisals.totalClasses}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Teaching load assessment Teaching Engagement</th>
                         <td>{appraisals.totalScore1}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}> Paper evaluation duties</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}> Paper evaluation duties</th>
                         <td>{appraisals.paperEval}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}> Student related activities (clubs, counseling, seminars, etc.)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}> Student related activities (clubs, counseling, seminars, etc.)</th>
                         <td>{appraisals.studentActivities}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Examination and evaluation duties assigned by university/institute</th>
                         <td>{appraisals.totalScore2}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}><th >a) For FE and SE faculty:</th><td></td></tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Attendance Record</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>a) For FE and SE faculty:</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Attendance Record</th>
                         <td>{appraisals.attendanceRecordFESE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Meetings Conducted </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Meetings Conducted </th>
                         <td>{appraisals.meetingsConductedFESE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Phone Calls, Letter Communication and Parent Connect</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Phone Calls, Letter Communication and Parent Connect</th>
                         <td>{appraisals.communicationFESE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Counseling </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Counseling </th>
                         <td>{appraisals.counselingFESE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>All clear with first class(%) </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>All clear with first class(%) </th>
                         <td>{appraisals.rankScore}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Appraisal coCurricularScore </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Appraisal coCurricularScore </th>
                         <td>{appraisals.coCurricularScore}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Percentage increase in overall results(%)  </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Percentage increase in overall results(%)  </th>
                         <td>{appraisals.percentageIncreaseScore}</td>
                       </tr>
 
@@ -218,227 +219,227 @@ const EmployeeTable = () => {
                         <th style={{ backgroundColor: 'lightgreen' }}>Teacher Guardian performance for FE and SE faculty: </th>
                         <td>{appraisals.totalScoreFESE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}><th>b) For TE faculty:</th><td></td></tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Attendance Record</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>b) For TE faculty:</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Attendance Record</th>
                         <td>{appraisals.attendanceRecordTE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Meetings Conducted </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Meetings Conducted </th>
                         <td>{appraisals.meetingsConductedTE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Phone Calls, Letter Communication and Parent Connect</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Phone Calls, Letter Communication and Parent Connect</th>
                         <td>{appraisals.communicationTE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Counseling </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Counseling </th>
                         <td>{appraisals.counselingTE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Percentage of Adhon courses completed as per guidelines of central/institute T and P department (%)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Percentage of Adhon courses completed as per guidelines of central/institute T and P department (%)</th>
                         <td>{appraisals.adhonScore}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Other courses completed/efforts taken as per T.G observation (%)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Other courses completed/efforts taken as per T.G observation (%)</th>
                         <td>{appraisals.otherScore}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>All clear with first class (%)  </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>All clear with first class (%)  </th>
                         <td>{appraisals.allClearScore}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Teacher Guardian Performance for TE faculty : </th>
                         <td>{appraisals.totalScoreTE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}><th>c) For BE faculty</th><td></td></tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}> Attendance Record</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>c) For BE faculty</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}> Attendance Record</th>
                         <td>{appraisals.attendanceRecordBE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Meetings Conducted</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Meetings Conducted</th>
                         <td>{appraisals.meetingsConductedBE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Phone Calls, Letter Communication and Parent Connect</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Phone Calls, Letter Communication and Parent Connect</th>
                         <td>{appraisals.communicationBE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Counseling </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Counseling </th>
                         <td>{appraisals.counselingBE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Percentage of Add-on courses completed as per guidelines of central / institute T and P department</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Percentage of Add-on courses completed as per guidelines of central / institute T and P department</th>
                         <td>{appraisals.adhonCompleted}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Percentage of students placed </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Percentage of students placed </th>
                         <td>{appraisals.placementPercentage}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Batch wise evaluation by institute and department T and P coordinator</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Batch wise evaluation by institute and department T and P coordinator</th>
                         <td>{appraisals.batchEvaluation}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Action taken based on evaluation report:</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Action taken based on evaluation report:</th>
                         <td>{appraisals.actionTaken}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Teacher Guardian Performance for BE faculty : </th>
                         <td>{appraisals.totalScoreBE}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>  LatestResult </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>  LatestResult </th>
                         <td>{appraisals.latestResult}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}> Previous Year Result 1</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}> Previous Year Result 1</th>
                         <td>{appraisals.prevYearResult1}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Previous Year Result 2</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Previous Year Result 2</th>
                         <td>{appraisals.prevYearResult2}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Previous Year Result 3</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Previous Year Result 3</th>
                         <td>{appraisals.prevYearResult3}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>University result analysis</th>
                         <td>{appraisals.totalscore4}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Internal Feedback Grade Score(%)  </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Internal Feedback Grade Score(%)  </th>
                         <td>{appraisals.internalFeedback}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>External Feedback Grade Score(%) </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>External Feedback Grade Score(%) </th>
                         <td>{appraisals.externalFeedback}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Feedback Analysis  </th>
                         <td>{appraisals.totalScore5}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Handwritten Notes of 03 (three) units*</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Handwritten Notes of 03 (three) units*</th>
                         <td>{appraisals.handwrittenNotes}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Other contents as Accreditation Board</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Other contents as Accreditation Board</th>
                         <td>{appraisals.otherContents}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>CO-PO-PSO Mapping and Attainment </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>CO-PO-PSO Mapping and Attainment </th>
                         <td>{appraisals.coPoPsoMapping}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Course file and Remedial classes assessment</th>
                         <td>{appraisals.totalScore6}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Short Term based one time Activity</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Short Term based one time Activity</th>
                         <td>{appraisals.shortTerm7a}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Semester/ Term based (3 to 6 months)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Semester/ Term based (3 to 6 months)</th>
                         <td>{appraisals.semester7a}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Academic Year Activity (more than 6 months to one year) </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Academic Year Activity (more than 6 months to one year) </th>
                         <td>{appraisals.academicYear7a}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Faculty contribution at department level</th>
                         <td>{appraisals.totalScore7a}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Short Term based one time Activity</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Short Term based one time Activity</th>
                         <td>{appraisals.shortTerm7b}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Semester/ Term based (3 to 6 months)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Semester/ Term based (3 to 6 months)</th>
                         <td>{appraisals.semester7b}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Academic Year Activity (more than 6 months to one year)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Academic Year Activity (more than 6 months to one year)</th>
                         <td>{appraisals.academicYear7b}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Faculty contribution at institute level</th>
                         <td>{appraisals.totalScore7b}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Short Term based one time Activity</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Short Term based one time Activity</th>
                         <td>{appraisals.shortTerm7c}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Semester/ Term based (3 to 6 months)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Semester/ Term based (3 to 6 months)</th>
                         <td>{appraisals.semester7c}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Academic Year Activity (more than 6 months to one year)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Academic Year Activity (more than 6 months to one year)</th>
                         <td>{appraisals.academicYear7c}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Faculty contribution at Campus Level </th>
                         <td>{appraisals.totalScore7c}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}><th> Faculty contribution in research and publication:</th><td></td></tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}><th> Publication :</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}> Faculty contribution in research and publication:</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}> Publication :</th><td></td></tr>
 
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>International Journal : Scopus, Web of Science, Thomson Router, Clarivate Analytics etc</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>International Journal : Scopus, Web of Science, Thomson Router, Clarivate Analytics etc</th>
                         <td>{appraisals.internationalJournal}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Citation in year </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Citation in year </th>
                         <td>{appraisals.citation2022}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Publication</th>
                         <td>{appraisals.totalScore8a}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}><th> E-Learning, Books Published and Research Activity :</th><td></td></tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>International Publishers </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}> E-Learning, Books Published and Research Activity :</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>International Publishers </th>
                         <td>{appraisals.international}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>National Publishers </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>National Publishers </th>
                         <td>{appraisals.national}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Chapter in Edited Book</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Chapter in Edited Book</th>
                         <td>{appraisals.chapter}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Editor of Book by International Publisher</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Editor of Book by International Publisher</th>
                         <td>{appraisals.editorInternational}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Editor of Book by National Publisher</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Editor of Book by National Publisher</th>
                         <td>{appraisals.editorNational}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}><th>Translation works in Indian and Foreign Languages by qualified faculties:</th><td></td></tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Chapter or Research Paper </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>Translation works in Indian and Foreign Languages by qualified faculties:</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Chapter or Research Paper </th>
                         <td>{appraisals.researchPaper}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Book </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Book </th>
                         <td>{appraisals.book}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Books authored which are published by International publishers National Publishers Chapter in Edited Book Editor of Book by International Publisher Editor of Book by National Publisher Chapter or Research paper Book</th>
                         <td>{appraisals.totalScore8b1}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Development of innovative pedagogy</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Development of innovative pedagogy</th>
                         <td>{appraisals.innovativePedagogy}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th>Development of E-Content</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Development of E-Content</th>
                         <td>{appraisals.eContentDevelopment}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
@@ -446,115 +447,115 @@ const EmployeeTable = () => {
                         <td>{appraisals.totalScore8b2}</td>
                       </tr>
 
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Research guidance Ph.D. (if applicable) </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Research guidance Ph.D. (if applicable) </th>
                         <td>{appraisals.phdGuidance}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>P.G. dissertation/ BE project</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>P.G. dissertation/ BE project</th>
                         <td>{appraisals.pgDissertation}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}><th>Research Projects Completed ( Not Less than 50,000):</th><td></td></tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>More than 10 lakhs</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>Research Projects Completed ( Not Less than 50,000):</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>More than 10 lakhs</th>
                         <td>{appraisals.completedResearchProjectMoreThan10Lakhs}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Less than 10 lakhs</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Less than 10 lakhs</th>
                         <td>{appraisals.completedResearchProjectLessThan10Lakhs}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}><th>Research Projects Ongoing ( Not Less than 50,000):</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>Research Projects Ongoing ( Not Less than 50,000):</th><td></td></tr>
 
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>More than 10 lakhs</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>More than 10 lakhs</th>
                         <td>{appraisals.ongoingResearchProjectMoreThan10Lakhs}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Less than 10 lakhs </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Less than 10 lakhs </th>
                         <td>{appraisals.ongoingResearchProjectLessThan10Lakhs}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>In-house Product Development</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>In-house Product Development</th>
                         <td>{appraisals.inHouseProductDevelopment}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Consultancy ( Any Amount) </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Consultancy ( Any Amount) </th>
                         <td>{appraisals.consultancy}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Editorial Board/Reviewer of Indexed Journals/Solicited Articles </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Editorial Board/Reviewer of Indexed Journals/Solicited Articles </th>
                         <td>{appraisals.editorialBoardReviewer}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Paper Published with Industry person</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Paper Published with Industry person</th>
                         <td>{appraisals.paperPublishedWithIndustryPerson}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Research and Consultancy</th>
                         <td>{appraisals.totalScore8b3}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Patents (International) </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Patents (International) </th>
                         <td>{appraisals.internationalPatents}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Patents (National)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Patents (National)</th>
                         <td>{appraisals.nationalPatents}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Copyrights</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Copyrights</th>
                         <td>{appraisals.copyrights}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th>Awards/Fellowship</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Awards/Fellowship</th>
                         <td>{appraisals.awards}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}> Patents, Copyrights etc.</th>
                         <td>{appraisals.totalScore8b4}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>International (abroad)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>International (abroad)</th>
                         <td>{appraisals.intlAbroad}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>International (within country) </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>International (within country) </th>
                         <td>{appraisals.intlWithin}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>National </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>National </th>
                         <td>{appraisals.Innational}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>State/ University </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>State/ University </th>
                         <td>{appraisals.stateUni}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
                         <th style={{ backgroundColor: 'lightgreen' }}>Invited as Resource Persons for conference, seminar, workshop.</th>
                         <td>{appraisals.totalScore8b5}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc organized (one week/two weeks)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc organized (one week/two weeks)</th>
                         <td>{appraisals.sttpOrganized}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}> STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc attended (one week/two weeks)</th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}> STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc attended (one week/two weeks)</th>
                         <td>{appraisals.sttpAttended}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}>Conferences/ Workshops/Symposium/Seminar attended (min. 5 days) </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}>Conferences/ Workshops/Symposium/Seminar attended (min. 5 days) </th>
                         <td>{appraisals.conferenceAttended}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}> NPTEL or Equivalent Certification or Technical Graded Certification or ATAL FDP or Mooc's Courses </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}> NPTEL or Equivalent Certification or Technical Graded Certification or ATAL FDP or Mooc's Courses </th>
                         <td>{appraisals.nptelCertification}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}> Improvement/Enhanced Academic Qualification (e.g. GATE Qualified, Ph.D registration/ Completion) </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}> Improvement/Enhanced Academic Qualification (e.g. GATE Qualified, Ph.D registration/ Completion) </th>
                         <td>{appraisals.academicQualification}</td>
                       </tr>
-                      <tr style={{ backgroundColor: '#f5e6ff' }}>
-                        <th style={{ backgroundColor: '#f5e6ff' }}> Active MoU with Industry/ Recognized Institution / University </th>
+                      <tr style={{ backgroundColor: '#ffffff' }}>
+                        <th style={{ backgroundColor: '#ffffff' }}> Active MoU with Industry/ Recognized Institution / University </th>
                         <td>{appraisals.mouWithIndustry}</td>
                       </tr>
                       <tr style={{ backgroundColor: 'lightgreen' }}>
