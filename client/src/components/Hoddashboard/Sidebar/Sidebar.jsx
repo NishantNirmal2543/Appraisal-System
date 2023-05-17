@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import './sidebar.css';
 import Dashboard from './Dashboard/Dashboard';
-import Chart from './Chart/Chart'
-import Appraisal from './AppraisalsEmp/Appraisal'
+import AppraisalHod from './AppraisalHod/AppraisalHod'
+import AppraisalSummary from './AppraisalSummary/AppraisalSummary'
 const Sidebar = () => {
     const [show, setShow] = useState(false);
     const [activeComponent, setActiveComponent] = useState('Dashboard');
@@ -41,13 +41,13 @@ const Sidebar = () => {
                                 <i className='fas fa-tachometer-alt nav-link-icon'></i>
                                 <span className='nav-link-name'>Dashboard</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Chart' ? 'active' : ''}`} onClick={() => handleClick('Chart')}>
+                            <div className={`nav-link ${activeComponent === 'Appraisal' ? 'Appraisal' : ''}`} onClick={() => handleClick('Appraisal')}>
                                 <i className='fas fa-hotel nav-link-icon'></i>
-                                <span className='nav-link-name'>Chart</span>
-                            </div>
-                            <div className={`nav-link ${activeComponent === 'Appraisal' ? 'active' : ''}`} onClick={() => handleClick('Appraisal')}>
-                                <i className='fas fa-image nav-link-icon'></i>
                                 <span className='nav-link-name'>Appraisal</span>
+                            </div>
+                            <div className={`nav-link ${activeComponent === 'AppraisalSummary' ? 'active' : ''}`} onClick={() => handleClick('AppraisalSummary')}>
+                                <i className='fas fa-image nav-link-icon'></i>
+                                <span className='nav-link-name'>Summary</span>
                             </div>
                             {/* <div className={`nav-link ${activeComponent === 'Create' ? 'active' : ''}`} onClick={() => handleClick('Create')}>
                                 <i className='fa-solid fa-spinner fa-pulse'></i>
@@ -66,8 +66,8 @@ const Sidebar = () => {
 
             <div className="main-content">
                 {activeComponent === 'Dashboard' && <Dashboard />}
-                {activeComponent === 'Chart' && <Chart />}
-                {activeComponent === 'Appraisal' && <Appraisal />}
+                {activeComponent === 'Appraisal' && <AppraisalHod />}
+                {activeComponent === 'AppraisalSummary' && <AppraisalSummary/>}
                 {/* {activeComponent === 'Create' && <Create />} */}
             </div>
 

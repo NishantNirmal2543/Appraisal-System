@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import "./AppraisalEmp.css"
+import "./AppraisalSummary.css"
 import { AiOutlineEye } from "react-icons/ai";
 
 
@@ -81,7 +81,7 @@ const EmployeeTable = () => {
                   <thead>
                     <tr>
                       <th>Employee Name</th>
-                      <th>Enployee Email</th>
+                      <th>Employee Email</th>
                       <th>View Appraisal</th>
                     </tr>
                   </thead>
@@ -149,18 +149,25 @@ const EmployeeTable = () => {
 
             <div className="appraisal-details">
               <h3>Appraisal Details</h3>
-              {appraisals ? (
+              {appraisals && appraisals.year ? (
                 <div className="appraisal-details">
                   <table style={{ border:"solid #99ff99 2px"}}>
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Score claimed by Employee </th>
+                      <th>Score claimed by Hod</th>
+                    </tr>
+                  </thead>
                     <tbody>
-                      <tr style={{ backgroundColor: '#ffffff' }}>
+                      {/* <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>Employee ID</th>
                         <td>{appraisals.employeeid}</td>
-                      </tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}>
+                      </tr> */}
+                      {/* <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>Appraisal Year</th>
                         <td>{appraisals.year}</td>
-                      </tr>
+                      </tr> */}
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>Number of classes taught</th>
                         <td>{appraisals.classesTaught}</td>
