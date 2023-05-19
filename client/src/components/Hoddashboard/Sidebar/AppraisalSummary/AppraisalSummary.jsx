@@ -27,7 +27,7 @@ const EmployeeTable = () => {
         const department = admin.department;
         const college = admin.college;
 
-        const employeesResponse = await axios.get('http://localhost:8080/api/fetchappraisalhod', {
+        const employeesResponse = await axios.get('http://localhost:8080/api/fetchemployeehod', {
           params: {
             department,
             college,

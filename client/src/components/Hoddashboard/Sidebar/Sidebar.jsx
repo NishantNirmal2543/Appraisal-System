@@ -41,7 +41,7 @@ const Sidebar = () => {
                                 <i className='fas fa-tachometer-alt nav-link-icon'></i>
                                 <span className='nav-link-name'>Dashboard</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Appraisal' ? 'Appraisal' : ''}`} onClick={() => handleClick('Appraisal')}>
+                            <div className={`nav-link ${activeComponent === 'Appraisal' ? 'active' : ''}`} onClick={() => handleClick('Appraisal')}>
                                 <i className='fas fa-hotel nav-link-icon'></i>
                                 <span className='nav-link-name'>Appraisal</span>
                             </div>
