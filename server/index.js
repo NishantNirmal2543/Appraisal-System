@@ -43,6 +43,8 @@ const fetchappraisalRoutes = require("./routes/fetchappraisal");
 const hodfetchappraisalRoutes = require("./routes/hodfetchappraisal")
 
 const hodappraisalRoutes = require("./routes/hodappraisal")
+
+const fetchhodappraisalRoutes = require("./routes/fetchhodappraisal")
 // database connection
 connection();
 
@@ -110,6 +112,9 @@ app.use("/api/fetchappraisal",fetchappraisalRoutes)
 app.use("/api/hodfetchappraisal",hodfetchappraisalRoutes)
 
 app.use("/api/hodappraisal",hodappraisalRoutes)
+
+app.use("/api/fetchhodappraisal",fetchhodappraisalRoutes)
+
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

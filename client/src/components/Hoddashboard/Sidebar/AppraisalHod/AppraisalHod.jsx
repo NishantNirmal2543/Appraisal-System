@@ -1129,7 +1129,7 @@ const EmployeeTable = () => {
 
 
     const formData = {
-      employeeid: localStorage.getItem("employeeid"),
+      employeeid: selectedEmployee._id,
       year,
       classesTaught,
       totalClasses,
@@ -1315,7 +1315,7 @@ const EmployeeTable = () => {
             </div>
           ) : (
             <>
-              <h1>Employee Appraisals</h1>
+              <h1>Hod Appraisals</h1>
               <div className='cardEmp'>
 
                 <table>
