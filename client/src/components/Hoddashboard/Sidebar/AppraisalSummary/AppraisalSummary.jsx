@@ -209,7 +209,7 @@ const EmployeeTable = () => {
                         <td>{appraisalshod.totalScore2}</td>
 
                       </tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>a) For FE and SE faculty:</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>a) For FE and SE faculty:</th><td></td><td></td></tr>
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>Attendance Record</th>
                         <td>{appraisals.attendanceRecordFESE}</td>
@@ -259,7 +259,7 @@ const EmployeeTable = () => {
                         <td>{appraisalshod.totalScoreFESE}</td>
 
                       </tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>b) For TE faculty:</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>b) For TE faculty:</th><td></td><td></td></tr>
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>Attendance Record</th>
                         <td>{appraisals.attendanceRecordTE}</td>
@@ -308,7 +308,7 @@ const EmployeeTable = () => {
                         <td>{appraisalshod.totalScoreTE}</td>
 
                       </tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>c) For BE faculty</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>c) For BE faculty</th><td></td><td></td></tr>
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}> Attendance Record</th>
                         <td>{appraisals.attendanceRecordBE}</td>
@@ -507,8 +507,8 @@ const EmployeeTable = () => {
                         <td>{appraisalshod.totalScore7c}</td>
 
                       </tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}> Faculty contribution in research and publication:</th><td></td></tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}> Publication :</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}> Faculty contribution in research and publication:</th><td></td><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}> Publication :</th><td></td><td></td></tr>
 
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>International Journal : Scopus, Web of Science, Thomson Router, Clarivate Analytics etc</th>
@@ -528,7 +528,7 @@ const EmployeeTable = () => {
                         <td>{appraisalshod.totalScore8a}</td>
 
                       </tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}> E-Learning, Books Published and Research Activity :</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}> E-Learning, Books Published and Research Activity :</th><td></td><td></td></tr>
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>International Publishers </th>
                         <td>{appraisals.international}</td>
@@ -559,7 +559,7 @@ const EmployeeTable = () => {
                         <td>{appraisalshod.editorNational}</td>
 
                       </tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>Translation works in Indian and Foreign Languages by qualified faculties:</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>Translation works in Indian and Foreign Languages by qualified faculties:</th><td></td><td></td></tr>
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>Chapter or Research Paper </th>
                         <td>{appraisals.researchPaper}</td>
@@ -609,7 +609,7 @@ const EmployeeTable = () => {
                         <td>{appraisalshod.pgDissertation}</td>
 
                       </tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>Research Projects Completed ( Not Less than 50,000):</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>Research Projects Completed ( Not Less than 50,000):</th><td></td><td></td></tr>
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>More than 10 lakhs</th>
                         <td>{appraisals.completedResearchProjectMoreThan10Lakhs}</td>
@@ -622,7 +622,7 @@ const EmployeeTable = () => {
                         <td>{appraisalshod.completedResearchProjectLessThan10Lakhs}</td>
 
                       </tr>
-                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>Research Projects Ongoing ( Not Less than 50,000):</th><td></td></tr>
+                      <tr style={{ backgroundColor: '#ffffff' }}><th style={{ backgroundColor: '#ffffff' }}>Research Projects Ongoing ( Not Less than 50,000):</th><td></td><td></td></tr>
 
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>More than 10 lakhs</th>

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { AiOutlineEye } from "react-icons/ai";
+import { BsPencil } from "react-icons/bs";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,8 +14,7 @@ const EmployeeTable = () => {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [selectedEmployeeAppraisal, setSelectedEmployeeAppraisal] = useState(null);
 
-  // const [appraisals, setAppraisals] = useState([]);
-  // const employeeId = localStorage.getItem("employeeid")
+ 
   const [year, setYear] = useState("2023");
 
   const handleYearChange = async (event, employee) => {
@@ -1333,7 +1332,7 @@ const EmployeeTable = () => {
                         <td>{employee.name}</td>
                         <td>{employee.email}</td>
                         <td>
-                          <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewDetails(employee)} >  <AiOutlineEye /> </button>
+                          <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewDetails(employee)} >  <BsPencil /> </button>
                         </td>
                         <td> <label className="department-label">
 
