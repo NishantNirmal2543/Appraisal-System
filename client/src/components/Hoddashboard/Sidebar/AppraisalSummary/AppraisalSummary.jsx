@@ -159,7 +159,7 @@ const EmployeeTable = () => {
               <h3>Appraisal Details</h3>
               {appraisals && appraisals.year && appraisalshod && appraisalshod.year ? (
                 <div className="appraisal-details">
-                  <table style={{ border: "solid #99ff99 2px" }}>
+                  <table >
                     <thead>
                       <tr>
                         <th>Title</th>
