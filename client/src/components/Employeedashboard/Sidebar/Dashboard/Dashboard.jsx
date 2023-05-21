@@ -10,6 +10,33 @@ const Dashboard = () => {
   const [employee, setEmployee] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [appraisals, setAppraisals] = useState([]);
+  const employeeId = localStorage.getItem('employeeid');
+
+  useEffect(() => {
+    const fetchAppraisals = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/fetchhodappraisal/${employeeId}`);
+        const data = await response.json();
+        // console.log(response)
+        if (response.ok) {
+          const updatedAppraisals = data.appraisals.map(appraisals => ({
+            ...appraisals,
+            progress: 100, 
+          }));
+
+          setAppraisals(updatedAppraisals);
+        } else {
+          console.error(data.message);
+        }
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+
+    fetchAppraisals();
+  }, [employeeId]);
+
 
   useEffect(() => {
     const fetchEmployee = async () => {
@@ -22,13 +49,13 @@ const Dashboard = () => {
         });
         setEmployee(response.data.employee);
         // console.log(response.data)
-        localStorage.setItem('employeeid',response.data.employee.employeeid)
+        localStorage.setItem('employeeid', response.data.employee.employeeid)
         setIsLoading(false);
       } catch (error) {
         setError(error.response.data.message);
       }
     };
-    
+
     fetchEmployee();
   }, []);
 
@@ -38,8 +65,11 @@ const Dashboard = () => {
       {isLoading ? (
         <div className="loaderEmp"></div>
       ) : (
-        <div className="container1">
-          <div className="profile">
+        <div className="profile">
+          <div className="container1">
+
+
+
             <div className="cover-photo">
               <img src={coverPhoto} alt="Cover" />
             </div>
@@ -67,6 +97,35 @@ const Dashboard = () => {
                   <h4>Mobile</h4>
                   <p>{employee.mobile}</p>
                 </div>
+
+
+                <div className="progress-bar-container">
+                 
+                  {appraisals.length > 0 ? (
+                    <div className="progress-bar">
+                      <div
+                        className={`progress-bar-fill ${appraisals[0].progress === 100
+                            ? "animated"
+                            : ""
+                          }`}
+                        style={{ width: `${appraisals[0].progress}%` }}
+                      ></div>
+                      {appraisals[0].progress === 100 && (
+                        <span className="appraisal-done">Appraisal done!</span>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="progress-bar">
+                      <div
+                        className="progress-bar-fill"
+                        style={{ width: "0%" }}
+                      ></div>
+                            <span className="appraisal-pending">Appraisal pending</span>
+
+                    </div>
+                  )}
+                </div>
+
               </div>
             </div>
           </div>
