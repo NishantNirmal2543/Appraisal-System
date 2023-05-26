@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import './sidebar.css';
 import Dashboard from './Dashboard/Dashboard';
+import Appraisalprinciple from './Appraisalprinciple/Appraisalprinciple'
+import AppraisalSummary from './AppraisalSummary/AppraisalSummary'
 
 const Sidebar = () => {
     const [show, setShow] = useState(false);
@@ -40,13 +42,13 @@ const Sidebar = () => {
                                 <i className='fas fa-tachometer-alt nav-link-icon'></i>
                                 <span className='nav-link-name'>Dashboard</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Chart' ? 'active' : ''}`} onClick={() => handleClick('Chart')}>
+                            <div className={`nav-link ${activeComponent === 'Appraisal' ? 'active' : ''}`} onClick={() => handleClick('Appraisal')}>
                                 <i className='fas fa-hotel nav-link-icon'></i>
-                                <span className='nav-link-name'>Chart</span>
+                                <span className='nav-link-name'>Appraisal</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Appraisals' ? 'active' : ''}`} onClick={() => handleClick('Appraisals')}>
+                            <div className={`nav-link ${activeComponent === 'AppraisalSummary' ? 'active' : ''}`} onClick={() => handleClick('AppraisalSummary')}>
                                 <i className='fas fa-image nav-link-icon'></i>
-                                <span className='nav-link-name'>Appraisals</span>
+                                <span className='nav-link-name'>Summary</span>
                             </div>
                             {/* <div className={`nav-link ${activeComponent === 'Create' ? 'active' : ''}`} onClick={() => handleClick('Create')}>
                                 <i className='fa-solid fa-spinner fa-pulse'></i>
@@ -65,6 +67,8 @@ const Sidebar = () => {
 
             <div className="main-content">
                 {activeComponent === 'Dashboard' && <Dashboard />}
+                {activeComponent === 'Appraisal' && <Appraisalprinciple />}
+                {activeComponent === 'AppraisalSummary' && <AppraisalSummary/>}
                 {/* {activeComponent === 'Chart' && <Chart />}
                 {activeComponent === 'Appraisals' && <Appraisals />} */}
                 {/* {activeComponent === 'Create' && <Create />} */}
