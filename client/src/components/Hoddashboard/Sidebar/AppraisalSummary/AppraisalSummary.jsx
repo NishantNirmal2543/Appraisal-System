@@ -168,7 +168,7 @@ const EmployeeTable = () => {
                       </tr>
                     </thead>
                     <tbody>
-                     
+
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>Number of classes taught</th>
                         <td>{appraisals.classesTaught}</td>
