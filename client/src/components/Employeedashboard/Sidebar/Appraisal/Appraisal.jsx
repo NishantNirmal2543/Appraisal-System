@@ -1246,6 +1246,11 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>1.Teaching load assessment : </h3>
                         <p>(Max marks : 10)</p>
+                        <label for="file-input" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" accept="image/*" required="" id="file-input" />
+                        </label>
                         <label>
                             Number of classes taught:
                             <input type="number" value={classesTaught} onChange={handleClassesTaughtChange} />
@@ -1262,6 +1267,11 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>2. Examination and evaluation duties assigned by university/institute :</h3>
                         <p>(Max marks : 2. a- 10, 2. B-20)</p>
+                        <label for="file-input" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" accept="image/*" required="" id="file-input" />
+                        </label>
                         <label>Involvement in the student related activities :</label>
                         <br />
                         <label>
@@ -1282,7 +1292,11 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>3.Teacher Guardian performance : </h3>
                         <p>(Max marks 50 for Professor, Senior Professor, Associate Professor and Max marks 65 for Senior Assistant Professor, Assistant Professor- Refer Guideline for same)</p>
-
+                        <label for="file-input" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" accept="image/*" required="" id="file-input" />
+                        </label>
 
                         <label>3a) For FE and SE faculty:</label>
                         <br />
@@ -1431,6 +1445,11 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3> 4. University result analysis:  </h3>
                         <p>(Max marks 80)</p>
+                        <label for="file-input" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" accept="image/*" required="" id="file-input" />
+                        </label>
                         <label>
                             Latest Result:
                             <input type="number" step="0.01" value={latestResult} onChange={(e) => setLatestResult(e.target.value)} />
@@ -1464,6 +1483,11 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>5. Feedback Analysis : </h3>
                         <p>(Max marks : 30)</p>
+                        <label for="file-input" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" accept="image/*" required="" id="file-input" />
+                        </label>
                         <div>
                             <table>
                                 <thead>
@@ -1521,6 +1545,11 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>6. Course file and Remedial classes assessment :</h3>
                         <p>(Max marks :30)</p>
+                        <label for="file-input" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" accept="image/*" required="" id="file-input" />
+                        </label>
                         <label>
                             6.a.Handwritten Notes of 03 (three) units*
                             <input
@@ -1571,6 +1600,11 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>7. Faculty Contribution to Department, Institute and organization:</h3>
                         <p>(Max marks 30 for Professor, Senior Associate Professor, Associate Professor and Max Marks 40 for Senior Assistant Professor and Assistant Professor - Refer Guideline for same)</p>
+                        <label for="file-input" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" accept="image/*" required="" id="file-input" />
+                        </label>
                         <label>7a) Faculty contribution at department level</label>
                         <br />
                         <label>
@@ -1639,6 +1673,11 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>8. Faculty contribution in research and publication:</h3>
                         <p></p>
+                        <label for="file-input" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" accept="image/*" required="" id="file-input" />
+                        </label>
                         <br />
                         <label>8a) Publication</label>
                         <p>(Max marks 60 - Refer Guideline for same)</p>
@@ -1865,6 +1904,11 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3> 9. Faculty value added courses:</h3>
                         <h1></h1>
+                        <label for="file-input" class="drop-container">
+                            <span class="drop-title">Drop files here</span>
+                            or
+                            <input type="file" accept="image/*" required="" id="file-input" />
+                        </label>
                         <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
                         <br />
                         <label>
