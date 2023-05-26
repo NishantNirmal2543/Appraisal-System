@@ -168,14 +168,7 @@ const EmployeeTable = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {/* <tr style={{ backgroundColor: '#ffffff' }}>
-                        <th style={{ backgroundColor: '#ffffff' }}>Employee ID</th>
-                        <td>{appraisals.employeeid}</td>
-                      </tr> */}
-                      {/* <tr style={{ backgroundColor: '#ffffff' }}>
-                        <th style={{ backgroundColor: '#ffffff' }}>Appraisal Year</th>
-                        <td>{appraisals.year}</td>
-                      </tr> */}
+                     
                       <tr style={{ backgroundColor: '#ffffff' }}>
                         <th style={{ backgroundColor: '#ffffff' }}>Number of classes taught</th>
                         <td>{appraisals.classesTaught}</td>
