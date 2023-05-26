@@ -129,7 +129,7 @@ const EmployeeTable = () => {
               </div>
 
               <button className='buttonX' onClick={handleFilter}>Apply Filter</button>
-
+              {employees.length > 0 ? (
               <div className='cardEmp'>
                 <table>
                   <thead>
@@ -152,8 +152,19 @@ const EmployeeTable = () => {
                   </tbody>
                 </table>
               </div>
+               ) : (
+                <>
+                <div className='cardEmp'>
+                <h3>No employees found.</h3>
+
+                </div>
+               
+                </>
+               
+              )}
             </>
           )}
+          
         </>
       ) : (
         <div className="containerEmpl">
