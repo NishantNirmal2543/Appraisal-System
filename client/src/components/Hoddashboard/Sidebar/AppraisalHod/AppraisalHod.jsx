@@ -2062,7 +2062,7 @@ const EmployeeTable = () => {
 
               </form>
             ) : (
-              <p>No appraisal data available for the selected year.</p>
+              <p>No appraisal data available for the selected  or employee.</p>
             )}
 
           </div>
