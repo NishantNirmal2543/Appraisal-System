@@ -1323,7 +1323,7 @@ const EmployeeTable = () => {
                       <th>Employee Name</th>
                       <th>Employee Email</th>
                       <th>Score Appraisal</th>
-                      <th><h3>Year of Performance Appraisal:</h3></th>
+                      <th>Year of Performance Appraisal:</th>
                     </tr>
                   </thead>
                   <tbody>
