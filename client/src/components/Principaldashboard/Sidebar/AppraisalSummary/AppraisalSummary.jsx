@@ -107,9 +107,9 @@ const EmployeeTable = () => {
                 <label htmlFor="department" className="department-label">Department:</label>
                 <select id="department" value={selectedDepartment} onChange={(e) => setSelectedDepartment(e.target.value)} className="department-select">
                   <option value="">Select Department</option>
+                  <option value="Artificial Intelligence & Data Science">Artificial Intelligence & Data Science</option>
                   <option value="Computer Engineering">Computer Engineering</option>
                   <option value="Information Technology">Information Technology</option>
-                  <option value="Artificial Intelligence & Data Science">Artificial Intelligence & Data Science</option>
                   <option value="Electronics & Telecommunication Engineering">Electronics & Telecommunication Engineering</option>
                   <option value="Instrumentation and Control Engineering">Instrumentation and Control Engineering</option>
                   <option value="Robotics and Automation">Robotics and Automation</option>
