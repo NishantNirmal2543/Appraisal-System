@@ -101,7 +101,7 @@ const EmployeeTable = () => {
             </div>
           ) : (
             <>
-              <h1>Employee Appraisals</h1>
+              <h1 style={{color:'brown' , marginTop:"90px" ,marginBottom:"30px"}}>Employee Appraisals</h1>
 
               <div className="department-wrapper">
                 <label htmlFor="department" className="department-label">Department:</label>
@@ -169,6 +169,8 @@ const EmployeeTable = () => {
       ) : (
         <div className="containerEmpl">
           <div className="profile1">
+          <button className='btnZ' onClick={handleGoBack}>Go Back</button>
+
             <div className="cover-photo">
               {/* <img src={coverPhoto} alt="Cover" /> */}
             </div>
@@ -845,7 +847,7 @@ const EmployeeTable = () => {
                 </div>
               )}
               <br />
-              <button className='btnZ' onClick={handleGoBack}>Go Back</button>
+              {/* <button className='btnZ' onClick={handleGoBack}>Go Back</button> */}
             </div>
           </div>
         </div>

@@ -1314,7 +1314,7 @@ const EmployeeTable = () => {
             </div>
           ) : (
             <>
-              <h1>Hod Appraisals</h1>
+              <h1 style={{color:'brown' , marginTop:"100px"}}>Hod Appraisals</h1>
               <div className='cardEmp'>
 
                 <table>

@@ -82,7 +82,7 @@ const EmployeeTable = () => {
             </div>
           ) : (
             <>
-              <h1>Employee Appraisals</h1>
+              <h1 style={{color:'brown' , marginTop:"100px"}}>Employee Appraisals</h1>
               <div className='cardEmp'>
 
                 <table>
