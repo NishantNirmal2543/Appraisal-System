@@ -11,3 +11,33 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
+
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .employee-table th,
+  .employee-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .employee-table th {
+    background-color: #f2f2f2;
+  }
+
+  /* Styles for mobile devices */
+  @media (max-width: 768px) {
+    .employee-table {
+      display: block;
+      overflow-x: auto;
+    }
+
+    .employee-table th,
+    .employee-table td {
+      white-space: nowrap;
+    }
+  }

@@ -1489,7 +1489,7 @@ const Appraisal = () => {
                             <input type="file" accept="image/*" required="" id="file-input" />
                         </label>
                         <div>
-                            <table>
+                            <table class="employee-table">
                                 <thead>
                                     <tr>
                                         <th>Grade</th>

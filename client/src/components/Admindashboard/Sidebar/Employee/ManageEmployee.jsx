@@ -86,7 +86,7 @@ const ManageEmployee = () => {
   return (
     <div className='card'>
       <h1>Manage Employees</h1>
-      <table>
+      <table class="employee-table">
         <thead>
           <tr>
             <th>Name</th>

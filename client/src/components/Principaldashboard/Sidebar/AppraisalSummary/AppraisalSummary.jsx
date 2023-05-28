@@ -131,7 +131,7 @@ const EmployeeTable = () => {
               <button className='buttonX' onClick={handleFilter}>Apply Filter</button>
               {employees.length > 0 ? (
               <div className='cardEmp'>
-                <table>
+                <table class="employee-table">
                   <thead>
                     <tr>
                       <th>Employee Name</th>

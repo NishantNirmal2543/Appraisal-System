@@ -85,7 +85,7 @@ const EmployeeTable = () => {
               <h1 style={{color:'brown' , marginTop:"100px"}}>Employee Appraisals</h1>
               <div className='cardEmp'>
 
-                <table>
+                <table class="employee-table">
                   <thead>
                     <tr>
                       <th>Employee Name</th>
