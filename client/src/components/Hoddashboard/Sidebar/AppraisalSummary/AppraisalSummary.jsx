@@ -82,7 +82,7 @@ const EmployeeTable = () => {
             </div>
           ) : (
             <>
-              <h1 style={{color:'brown' , marginTop:"100px"}}>Employee Appraisals</h1>
+              <h1 style={{ color: 'brown', marginTop: "100px" }}>Employee Appraisals</h1>
               <div className='cardEmp'>
 
                 <table class="employee-table">
@@ -157,8 +157,9 @@ const EmployeeTable = () => {
 
 
               <div className="appraisal-details">
-                <h3 style={{ marginTop: "50px" }}>Appraisal Details</h3>
                 {appraisals && appraisals.year && appraisalshod && appraisalshod.year ? (
+                  <>
+                <h3 style={{ marginTop: "50px" }}>Appraisal Details</h3>
                   <div className="appraisal-details">
                     <table >
                       <thead>
@@ -783,14 +784,13 @@ const EmployeeTable = () => {
                       </tbody>
                     </table>
                   </div>
+                  </>
                 ) : (
-                  <div className="appraisal-details">
 
-                    <p>No appraisal details available for this employee for this Year.  </p>
-                  </div>
+                  <p>No appraisal details available for this employee for this Year.  </p>
+
                 )}
-                <br />
-                {/* <button className='btnZ' onClick={handleGoBack}>Go Back</button> */}
+
               </div>
             </div>
           </div>

@@ -214,8 +214,9 @@ const EmployeeTable = () => {
 
 
             <div className="appraisal-details">
-              <h3>Appraisal Details</h3>
               {appraisals && appraisals.year && appraisalshod && appraisalshod.year ? (
+                 <>
+              <h3>Appraisal Details</h3>
                 <div className="appraisal-details">
                   <table >
                     <thead>
@@ -840,14 +841,13 @@ const EmployeeTable = () => {
                     </tbody>
                   </table>
                 </div>
+                </>
               ) : (
-                <div className="appraisal-details">
-
-                  <p>No appraisal details available for this employee for this Year.  </p>
-                </div>
+                <>
+                  <h2>No appraisal details available for this employee for this Year.  </h2>
+                </>
               )}
-              <br />
-              {/* <button className='btnZ' onClick={handleGoBack}>Go Back</button> */}
+             
             </div>
           </div>
         </div>
