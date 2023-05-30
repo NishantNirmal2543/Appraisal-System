@@ -12,7 +12,7 @@ const Employee = () => {
 
     return (
         <>
-            <h1 style={{ color: 'brown' }}>Principle Management</h1>
+            <h1 style={{ color: 'brown' ,marginTop:"100px"}}>Principle Management</h1>
             <div className="card-content">
                 {isAddPrinciple ? <AddPrinciple /> : <ManagePrinciple />}
             </div>

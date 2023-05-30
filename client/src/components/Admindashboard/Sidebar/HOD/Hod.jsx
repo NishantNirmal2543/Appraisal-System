@@ -12,7 +12,7 @@ const Employee = () => {
 
     return (
         <>
-            <h1 style={{ color: 'brown' }}>Hod Management</h1>
+            <h1 style={{ color: 'brown', marginTop:"100px" }}>Hod Management</h1>
             <div className="card-content">
                 {isAddHod ? <AddHod /> : <ManageHod />}
             </div>
