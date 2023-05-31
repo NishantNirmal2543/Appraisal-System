@@ -6,12 +6,15 @@ const Dashboard = () => {
   const [hods, setHods] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [principles, setprinciples] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
 
   const fetchEmployees = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/fetchemployee');
       setEmployees(response.data);
+      setIsLoading(false);
+
     } catch (error) {
       console.error(error);
     }
@@ -26,6 +29,8 @@ const Dashboard = () => {
     try {
       const response = await axios.get('http://localhost:8080/api/fetchhod');
       setHods(response.data);
+      setIsLoading(false);
+
     } catch (error) {
       console.error(error);
     }
@@ -40,6 +45,8 @@ const Dashboard = () => {
     try {
       const response = await axios.get('http://localhost:8080/api/fetchprinciple');
       setprinciples(response.data);
+      setIsLoading(false);
+
     } catch (error) {
       console.error(error);
     }
@@ -51,7 +58,13 @@ const Dashboard = () => {
   }, []);
 
   return (
+    <>
+      <div className="dashboard">
+   {isLoading ? (
+        <div className="loaderEmp"></div>
+      ) : (
     <div className="dashboard-container">
+      
       <div className="dashboard-section">
         <div className="dashboard-header">Departments</div>
         <ul className="dashboard-list">
@@ -61,7 +74,7 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      <div className="dashboard-section">
+      <div className="dashboard-section1">
         <div className="dashboard-header">HODs</div>
         <ul className="dashboard-list">
           {hods.map((hod) => (
@@ -69,7 +82,7 @@ const Dashboard = () => {
           ))}
         </ul>
       </div>
-      <div className="dashboard-section">
+      <div className="dashboard-section2">
         <div className="dashboard-header">Employees</div>
         <ul className="dashboard-list">
           <li>Total Employees: {employees.length}</li>
@@ -78,7 +91,7 @@ const Dashboard = () => {
           ))}
         </ul>
       </div>
-      <div className="dashboard-section">
+      <div className="dashboard-section3">
         <div className="dashboard-header">Colleges</div>
         <ul className="dashboard-list">
           {hods
@@ -88,7 +101,7 @@ const Dashboard = () => {
             ))}
         </ul>
       </div>
-      <div className="dashboard-section">
+      <div className="dashboard-section4">
         <div className="dashboard-header">Principles</div>
         <ul className="dashboard-list">
           {principles.map((principle) => (
@@ -97,6 +110,9 @@ const Dashboard = () => {
         </ul>
       </div>
     </div>
+      )}
+   </div>
+    </>
   );
 };
 
