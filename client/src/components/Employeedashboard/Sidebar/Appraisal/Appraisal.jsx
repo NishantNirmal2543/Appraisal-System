@@ -1,16 +1,47 @@
-import React, { useState, useEffect } from 'react'
-import "./Appraisal.css"
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./Appraisal.css"
+import { ref, uploadBytes } from "firebase/storage"
+import { storage } from '../../../firebase';
 
 const Appraisal = () => {
-    const employeeId = localStorage.getItem("employeeid")
+    const employeeId = localStorage.getItem("employeeid");
     const [year, setYear] = useState("2023");
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [uploading, setUploading] = useState(false);
+
+    const handleFileChange = (e) => {
+        setSelectedFile(e.target.files[0]);
+    };
 
     const handleYearChange = (event) => {
         setYear(event.target.value);
     };
+
+    const handleUpload = () => {
+        if (selectedFile) {
+            const storageRef = ref(storage, `images/${employeeId}/${selectedFile.name}`);
+            uploadBytes(storageRef, selectedFile)
+                .then(() => {
+                    console.log("Image uploaded");
+                    toast.success("File uploaded successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error uploading image:", error);
+                    toast.error("File upload failed!");
+                })
+                .finally(() => {
+                    setUploading(false);
+                });
+
+            setUploading(true);
+        } else {
+            toast.error("No file selected!");
+        }
+    };
+
 
     useEffect(() => {
         const fetchAppraisalData = async () => {
@@ -1226,6 +1257,8 @@ const Appraisal = () => {
         }
     };
 
+
+
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -1246,10 +1279,21 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>1.Teaching load assessment : </h3>
                         <p>(Max marks : 10)</p>
-                        <label for="file-input" class="drop-container">
-                            <span class="drop-title">Drop files here</span>
+                        <label htmlFor="file-input" className="drop-container">
+                            <span className="drop-title">Drop files here</span>
                             or
-                            <input type="file" accept="image/*" required="" id="file-input" />
+                            <input
+                                type="file"
+                                accept="image/*, application/pdf"
+                                required
+                                id="file-input"
+                                onChange={handleFileChange}
+                            />
+
+                            <button onClick={handleUpload} disabled={uploading}>
+                                Upload
+                            </button>
+                            {uploading && <span>Uploading...</span>}
                         </label>
                         <label>
                             Number of classes taught:
