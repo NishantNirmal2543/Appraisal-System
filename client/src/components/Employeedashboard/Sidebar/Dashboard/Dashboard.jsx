@@ -177,7 +177,7 @@ const Dashboard = () => {
               {uploading && <span>Uploading...</span>}
 
 
-              <button class="buttonDownload" onClick={handleUpload} disabled={uploading}>
+              <button className="buttonDownload" onClick={handleUpload} disabled={uploading}>
                 Upload Profile Photo
               </button>
               <h1>{employee.name}</h1>
