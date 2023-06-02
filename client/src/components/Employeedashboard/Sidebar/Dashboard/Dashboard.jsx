@@ -18,7 +18,6 @@ const Dashboard = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
-  const [profilePhotoUploadProgress, setProfilePhotoUploadProgress] = useState(0);
 
 
   const handleUpload = async () => {
