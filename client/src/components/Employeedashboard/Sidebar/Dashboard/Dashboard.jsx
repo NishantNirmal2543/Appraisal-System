@@ -33,19 +33,15 @@ const Dashboard = () => {
       );
 
       try {
+        setUploading(true);
         await uploadBytes(storageRef, selectedFile);
         console.log("Image uploaded");
-        toast.success("File uploaded successfully!");
 
-        // Get the download URL of the uploaded image
         const downloadURL = await getDownloadURL(storageRef);
-        // Update the employee object with the image URL
         const updatedEmployee = { ...employee, profilePhotoURL: downloadURL };
-        console.log(updatedEmployee)
-        console.log(employeeId)
+
 
         try {
-          // Send a PUT request to update the employee in the MongoDB schema
           const response = await axios.put(
             `http://localhost:8080/api/updateemployee/${employeeId}`,
             updatedEmployee
@@ -54,7 +50,6 @@ const Dashboard = () => {
           if (data.error) {
             console.log(data.error);
           } else {
-            // Fetch the updated employee data
             fetchEmployee();
           }
         } catch (error) {
@@ -65,6 +60,8 @@ const Dashboard = () => {
         toast.error("File upload failed!");
       } finally {
         setUploading(false);
+        toast.success("File uploaded successfully!");
+
       }
     } else {
       toast.error("No file selected!");
