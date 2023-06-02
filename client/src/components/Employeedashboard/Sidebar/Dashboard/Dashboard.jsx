@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Dashboard1.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import profilePhoto from "../Dashboard/1630354322427.jpeg";
+import profilePhoto from "../Dashboard/profile.jpg";
 import coverPhoto from "../Dashboard/images.jpeg";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
@@ -18,12 +18,8 @@ const Dashboard = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
+  const [profilePhotoUploadProgress, setProfilePhotoUploadProgress] = useState(0);
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedFile(file);
-    setProfilePhotoURL(URL.createObjectURL(file));
-  };
 
   const handleUpload = async () => {
     if (selectedFile) {
@@ -39,7 +35,6 @@ const Dashboard = () => {
 
         const downloadURL = await getDownloadURL(storageRef);
         const updatedEmployee = { ...employee, profilePhotoURL: downloadURL };
-
 
         try {
           const response = await axios.put(
@@ -60,8 +55,7 @@ const Dashboard = () => {
         toast.error("File upload failed!");
       } finally {
         setUploading(false);
-        toast.success("File uploaded successfully!");
-
+        toast.success("Image uploaded successfully!");
       }
     } else {
       toast.error("No file selected!");
@@ -102,7 +96,7 @@ const Dashboard = () => {
       });
       const data = response.data;
       setEmployee(data.employee);
-      localStorage.setItem('employeeid', response.data.employee.employeeid)
+      localStorage.setItem("employeeid", response.data.employee.employeeid);
 
       setIsLoading(false);
     } catch (error) {
@@ -125,7 +119,7 @@ const Dashboard = () => {
         } else {
           setEmployee(data.employee);
           setProfilePhotoURL(data.employee.profilePhotoURL);
-          localStorage.setItem('employeeid', response.data.employee.employeeid)
+          localStorage.setItem("employeeid", response.data.employee.employeeid);
           setIsLoading(false);
         }
       } catch (error) {
@@ -136,6 +130,21 @@ const Dashboard = () => {
 
     fetchEmployeeData();
   }, [employeeId]);
+
+  const handleImageClick = (e) => {
+    if (e.target.className === 'profile-photo') {
+      const fileInput = document.getElementById('file-input');
+      if (fileInput) {
+        fileInput.click();
+      }
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+    setProfilePhotoURL(URL.createObjectURL(file));
+  };
 
   return (
     <div className="dashboard">
@@ -149,21 +158,29 @@ const Dashboard = () => {
               <img src={coverPhoto} alt="Cover" />
             </div>
             <div className="profile-details">
+              <label htmlFor="file-input">
+                <div
+                  className="profile-photo"
+                  onClick={handleImageClick}
+                  style={{ cursor: "pointer" }}
+                >
+                  <img src={profilePhotoURL || profilePhoto} alt="Profile" />
+                </div>
+              </label>
               <input
                 type="file"
                 accept="image/*"
                 required
                 id="file-input"
+                style={{ display: "none" }}
                 onChange={handleFileChange}
               />
+              {uploading && <span>Uploading...</span>}
 
-              <button onClick={handleUpload} disabled={uploading}>
+
+              <button class="buttonDownload" onClick={handleUpload} disabled={uploading}>
                 Upload Profile Photo
               </button>
-              {uploading && <span>Uploading...</span>}
-              <div className="profile-photo">
-                <img src={profilePhotoURL || profilePhoto} alt="Profile" />
-              </div>
               <h1>{employee.name}</h1>
               <h3>{employee.designation}</h3>
               <hr />
