@@ -3,10 +3,10 @@ const {Employee} = require('../models/employee')
 
 
 router.post('/', async (req, res) => {
-	const { name, college, department, designation, email, mobile, password } = req.body;
+	const { name, college, department, designation, email, mobile, password , profilePhotoURL} = req.body;
   
 	try {
-	  const employee = new Employee({ name, college, department, designation, email, mobile, password });
+	  const employee = new Employee({ name, college, department, designation, email, mobile, password , profilePhotoURL });
 	  await employee.save();
 	  res.status(201).json({ success: true, message: 'Employee added successfully' });
 	} catch (err) {

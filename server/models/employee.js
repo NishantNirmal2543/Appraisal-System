@@ -34,6 +34,9 @@ const employeeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  profilePhotoURL: {
+    type: String,
+  },
 });
 
 employeeSchema.methods.generateAuthToken = function () {
