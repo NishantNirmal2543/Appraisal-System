@@ -22,7 +22,7 @@ const Appraisal = () => {
 
     const handleUpload = () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal/${employeeId}/${selectedFile.name}`);
+            const storageRef = ref(storage, `Appraisal 1)/${employeeId}/${selectedFile.name}`);
             uploadBytes(storageRef, selectedFile)
                 .then(() => {
                     console.log("Image uploaded");
