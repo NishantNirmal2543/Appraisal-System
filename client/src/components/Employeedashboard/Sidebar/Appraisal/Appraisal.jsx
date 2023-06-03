@@ -10,7 +10,18 @@ const Appraisal = () => {
     const employeeId = localStorage.getItem("employeeid");
     const [year, setYear] = useState("2023");
     const [selectedFile, setSelectedFile] = useState(null);
-    const [uploading, setUploading] = useState(false);
+    const [uploading1, setUploading1] = useState(false);
+    const [uploading2, setUploading2] = useState(false);
+    const [uploading3, setUploading3] = useState(false);
+    const [uploading4, setUploading4] = useState(false);
+    const [uploading5, setUploading5] = useState(false);
+    const [uploading6, setUploading6] = useState(false);
+    const [uploading7, setUploading7] = useState(false);
+    const [uploading8, setUploading8] = useState(false);
+    const [uploading9, setUploading9] = useState(false);
+
+
+
 
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
@@ -20,7 +31,7 @@ const Appraisal = () => {
         setYear(event.target.value);
     };
 
-    const handleUpload = () => {
+    const handleUpload1 = () => {
         if (selectedFile) {
             const storageRef = ref(storage, `Appraisal 1)/${employeeId}/${selectedFile.name}`);
             uploadBytes(storageRef, selectedFile)
@@ -33,16 +44,193 @@ const Appraisal = () => {
                     toast.error("File upload failed!");
                 })
                 .finally(() => {
-                    setUploading(false);
+                    setUploading1(false);
                 });
 
-            setUploading(true);
+            setUploading1(true);
+        } else {
+            toast.error("No file selected!");
+        }
+    };
+
+    const handleUpload2 = () => {
+        if (selectedFile) {
+            const storageRef = ref(storage, `Appraisal 2)/${employeeId}/${selectedFile.name}`);
+            uploadBytes(storageRef, selectedFile)
+                .then(() => {
+                    console.log("Image uploaded");
+                    toast.success("File uploaded successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error uploading image:", error);
+                    toast.error("File upload failed!");
+                })
+                .finally(() => {
+                    setUploading2(false);
+                });
+
+            setUploading2(true);
+        } else {
+            toast.error("No file selected!");
+        }
+    };
+
+    const handleUpload3 = () => {
+        if (selectedFile) {
+            const storageRef = ref(storage, `Appraisal 3)/${employeeId}/${selectedFile.name}`);
+            uploadBytes(storageRef, selectedFile)
+                .then(() => {
+                    console.log("Image uploaded");
+                    toast.success("File uploaded successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error uploading image:", error);
+                    toast.error("File upload failed!");
+                })
+                .finally(() => {
+                    setUploading3(false);
+                });
+
+            setUploading3(true);
+        } else {
+            toast.error("No file selected!");
+        }
+    };
+
+    const handleUpload4 = () => {
+        if (selectedFile) {
+            const storageRef = ref(storage, `Appraisal 4)/${employeeId}/${selectedFile.name}`);
+            uploadBytes(storageRef, selectedFile)
+                .then(() => {
+                    console.log("Image uploaded");
+                    toast.success("File uploaded successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error uploading image:", error);
+                    toast.error("File upload failed!");
+                })
+                .finally(() => {
+                    setUploading4(false);
+                });
+
+            setUploading4(true);
+        } else {
+            toast.error("No file selected!");
+        }
+    };
+
+    const handleUpload5 = () => {
+        if (selectedFile) {
+            const storageRef = ref(storage, `Appraisal 5)/${employeeId}/${selectedFile.name}`);
+            uploadBytes(storageRef, selectedFile)
+                .then(() => {
+                    console.log("Image uploaded");
+                    toast.success("File uploaded successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error uploading image:", error);
+                    toast.error("File upload failed!");
+                })
+                .finally(() => {
+                    setUploading5(false);
+                });
+
+            setUploading5(true);
+        } else {
+            toast.error("No file selected!");
+        }
+    };
+
+    const handleUpload6 = () => {
+        if (selectedFile) {
+            const storageRef = ref(storage, `Appraisal 6)/${employeeId}/${selectedFile.name}`);
+            uploadBytes(storageRef, selectedFile)
+                .then(() => {
+                    console.log("Image uploaded");
+                    toast.success("File uploaded successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error uploading image:", error);
+                    toast.error("File upload failed!");
+                })
+                .finally(() => {
+                    setUploading6(false);
+                });
+
+            setUploading6(true);
         } else {
             toast.error("No file selected!");
         }
     };
 
 
+    const handleUpload7 = () => {
+        if (selectedFile) {
+            const storageRef = ref(storage, `Appraisal 7)/${employeeId}/${selectedFile.name}`);
+            uploadBytes(storageRef, selectedFile)
+                .then(() => {
+                    console.log("Image uploaded");
+                    toast.success("File uploaded successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error uploading image:", error);
+                    toast.error("File upload failed!");
+                })
+                .finally(() => {
+                    setUploading7(false);
+                });
+
+            setUploading7(true);
+        } else {
+            toast.error("No file selected!");
+        }
+    };
+
+
+    const handleUpload8 = () => {
+        if (selectedFile) {
+            const storageRef = ref(storage, `Appraisal 8)/${employeeId}/${selectedFile.name}`);
+            uploadBytes(storageRef, selectedFile)
+                .then(() => {
+                    console.log("Image uploaded");
+                    toast.success("File uploaded successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error uploading image:", error);
+                    toast.error("File upload failed!");
+                })
+                .finally(() => {
+                    setUploading8(false);
+                });
+
+            setUploading8(true);
+        } else {
+            toast.error("No file selected!");
+        }
+    };
+
+
+    const handleUpload9 = () => {
+        if (selectedFile) {
+            const storageRef = ref(storage, `Appraisal 9)/${employeeId}/${selectedFile.name}`);
+            uploadBytes(storageRef, selectedFile)
+                .then(() => {
+                    console.log("Image uploaded");
+                    toast.success("File uploaded successfully!");
+                })
+                .catch((error) => {
+                    console.error("Error uploading image:", error);
+                    toast.error("File upload failed!");
+                })
+                .finally(() => {
+                    setUploading9(false);
+                });
+
+            setUploading9(true);
+        } else {
+            toast.error("No file selected!");
+        }
+    };
     useEffect(() => {
         const fetchAppraisalData = async () => {
             try {
@@ -1290,10 +1478,10 @@ const Appraisal = () => {
                                 onChange={handleFileChange}
                             />
 
-                            <button className='buttonDownload' onClick={handleUpload} disabled={uploading}>
+                            <button className='buttonDownload' onClick={handleUpload1} disabled={uploading1}>
                                 Upload
                             </button>
-                            {uploading && <span>Uploading...</span>}
+                            {uploading1 && <span>Uploading...</span>}
                         </label>
                         <label>
                             Number of classes taught:
@@ -1311,10 +1499,21 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>2. Examination and evaluation duties assigned by university/institute :</h3>
                         <p>(Max marks : 2. a- 10, 2. B-20)</p>
-                        <label for="file-input" class="drop-container">
-                            <span class="drop-title">Drop files here</span>
+                        <label htmlFor="file-input" className="drop-container">
+                            <span className="drop-title">Drop files here</span>
                             or
-                            <input type="file" accept="image/*" required="" id="file-input" />
+                            <input
+                                type="file"
+                                accept="image/*, application/pdf"
+                                required
+                                id="file-input"
+                                onChange={handleFileChange}
+                            />
+
+                            <button className='buttonDownload' onClick={handleUpload2} disabled={uploading2}>
+                                Upload
+                            </button>
+                            {uploading2 && <span>Uploading...</span>}
                         </label>
                         <label>Involvement in the student related activities :</label>
                         <br />
@@ -1336,10 +1535,21 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>3.Teacher Guardian performance : </h3>
                         <p>(Max marks 50 for Professor, Senior Professor, Associate Professor and Max marks 65 for Senior Assistant Professor, Assistant Professor- Refer Guideline for same)</p>
-                        <label for="file-input" class="drop-container">
-                            <span class="drop-title">Drop files here</span>
+                        <label htmlFor="file-input" className="drop-container">
+                            <span className="drop-title">Drop files here</span>
                             or
-                            <input type="file" accept="image/*" required="" id="file-input" />
+                            <input
+                                type="file"
+                                accept="image/*, application/pdf"
+                                required
+                                id="file-input"
+                                onChange={handleFileChange}
+                            />
+
+                            <button className='buttonDownload' onClick={handleUpload3} disabled={uploading3}>
+                                Upload
+                            </button>
+                            {uploading3 && <span>Uploading...</span>}
                         </label>
 
                         <label>3a) For FE and SE faculty:</label>
@@ -1489,10 +1699,21 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3> 4. University result analysis:  </h3>
                         <p>(Max marks 80)</p>
-                        <label for="file-input" class="drop-container">
-                            <span class="drop-title">Drop files here</span>
+                        <label htmlFor="file-input" className="drop-container">
+                            <span className="drop-title">Drop files here</span>
                             or
-                            <input type="file" accept="image/*" required="" id="file-input" />
+                            <input
+                                type="file"
+                                accept="image/*, application/pdf"
+                                required
+                                id="file-input"
+                                onChange={handleFileChange}
+                            />
+
+                            <button className='buttonDownload' onClick={handleUpload4} disabled={uploading4}>
+                                Upload
+                            </button>
+                            {uploading4 && <span>Uploading...</span>}
                         </label>
                         <label>
                             Latest Result:
@@ -1527,10 +1748,21 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>5. Feedback Analysis : </h3>
                         <p>(Max marks : 30)</p>
-                        <label for="file-input" class="drop-container">
-                            <span class="drop-title">Drop files here</span>
+                        <label htmlFor="file-input" className="drop-container">
+                            <span className="drop-title">Drop files here</span>
                             or
-                            <input type="file" accept="image/*" required="" id="file-input" />
+                            <input
+                                type="file"
+                                accept="image/*, application/pdf"
+                                required
+                                id="file-input"
+                                onChange={handleFileChange}
+                            />
+
+                            <button className='buttonDownload' onClick={handleUpload5} disabled={uploading5}>
+                                Upload
+                            </button>
+                            {uploading5 && <span>Uploading...</span>}
                         </label>
                         <div>
                             <table class="employee-table">
@@ -1589,10 +1821,21 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>6. Course file and Remedial classes assessment :</h3>
                         <p>(Max marks :30)</p>
-                        <label for="file-input" class="drop-container">
-                            <span class="drop-title">Drop files here</span>
+                        <label htmlFor="file-input" className="drop-container">
+                            <span className="drop-title">Drop files here</span>
                             or
-                            <input type="file" accept="image/*" required="" id="file-input" />
+                            <input
+                                type="file"
+                                accept="image/*, application/pdf"
+                                required
+                                id="file-input"
+                                onChange={handleFileChange}
+                            />
+
+                            <button className='buttonDownload' onClick={handleUpload6} disabled={uploading6}>
+                                Upload
+                            </button>
+                            {uploading6 && <span>Uploading...</span>}
                         </label>
                         <label>
                             6.a.Handwritten Notes of 03 (three) units*
@@ -1644,10 +1887,21 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>7. Faculty Contribution to Department, Institute and organization:</h3>
                         <p>(Max marks 30 for Professor, Senior Associate Professor, Associate Professor and Max Marks 40 for Senior Assistant Professor and Assistant Professor - Refer Guideline for same)</p>
-                        <label for="file-input" class="drop-container">
-                            <span class="drop-title">Drop files here</span>
+                        <label htmlFor="file-input" className="drop-container">
+                            <span className="drop-title">Drop files here</span>
                             or
-                            <input type="file" accept="image/*" required="" id="file-input" />
+                            <input
+                                type="file"
+                                accept="image/*, application/pdf"
+                                required
+                                id="file-input"
+                                onChange={handleFileChange}
+                            />
+
+                            <button className='buttonDownload' onClick={handleUpload7} disabled={uploading7}>
+                                Upload
+                            </button>
+                            {uploading7 && <span>Uploading...</span>}
                         </label>
                         <label>7a) Faculty contribution at department level</label>
                         <br />
@@ -1717,10 +1971,21 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3>8. Faculty contribution in research and publication:</h3>
                         <p></p>
-                        <label for="file-input" class="drop-container">
-                            <span class="drop-title">Drop files here</span>
+                        <label htmlFor="file-input" className="drop-container">
+                            <span className="drop-title">Drop files here</span>
                             or
-                            <input type="file" accept="image/*" required="" id="file-input" />
+                            <input
+                                type="file"
+                                accept="image/*, application/pdf"
+                                required
+                                id="file-input"
+                                onChange={handleFileChange}
+                            />
+
+                            <button className='buttonDownload' onClick={handleUpload8} disabled={uploading8}>
+                                Upload
+                            </button>
+                            {uploading8 && <span>Uploading...</span>}
                         </label>
                         <br />
                         <label>8a) Publication</label>
@@ -1948,10 +2213,21 @@ const Appraisal = () => {
                     <div className="form-group">
                         <h3> 9. Faculty value added courses:</h3>
                         <h1></h1>
-                        <label for="file-input" class="drop-container">
-                            <span class="drop-title">Drop files here</span>
+                        <label htmlFor="file-input" className="drop-container">
+                            <span className="drop-title">Drop files here</span>
                             or
-                            <input type="file" accept="image/*" required="" id="file-input" />
+                            <input
+                                type="file"
+                                accept="image/*, application/pdf"
+                                required
+                                id="file-input"
+                                onChange={handleFileChange}
+                            />
+
+                            <button className='buttonDownload' onClick={handleUpload9} disabled={uploading9}>
+                                Upload
+                            </button>
+                            {uploading9 && <span>Uploading...</span>}
                         </label>
                         <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
                         <br />
