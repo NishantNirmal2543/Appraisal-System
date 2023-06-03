@@ -37,6 +37,8 @@
     background-color: var(--white-color);
     padding: 0 1rem;
     transition: 0.5s;
+    z-index: 1;
+
   }
   
   .header-toggle {
@@ -54,7 +56,8 @@
     background-color: var(--first-color);
     padding-top: 1rem;
     transition: 0.5s;
-    
+    z-index: 1;
+
   }
   
   .nav {
