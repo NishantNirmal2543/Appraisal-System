@@ -22,7 +22,7 @@ const Appraisal = () => {
 
     const handleUpload = () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `images/${employeeId}/${selectedFile.name}`);
+            const storageRef = ref(storage, `Appraisal/${employeeId}/${selectedFile.name}`);
             uploadBytes(storageRef, selectedFile)
                 .then(() => {
                     console.log("Image uploaded");
@@ -1290,7 +1290,7 @@ const Appraisal = () => {
                                 onChange={handleFileChange}
                             />
 
-                            <button onClick={handleUpload} disabled={uploading}>
+                            <button className='buttonDownload' onClick={handleUpload} disabled={uploading}>
                                 Upload
                             </button>
                             {uploading && <span>Uploading...</span>}
