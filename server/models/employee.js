@@ -37,6 +37,33 @@ const employeeSchema = new mongoose.Schema({
   profilePhotoURL: {
     type: String,
   },
+  URL1: {
+    type: String,
+  },
+  URL2: {
+    type: String,
+  },
+  URL3: {
+    type: String,
+  },
+  URL4: {
+    type: String,
+  },
+  URL5: {
+    type: String,
+  },
+  URL6: {
+    type: String,
+  },
+  URL7: {
+    type: String,
+  },
+  URL8: {
+    type: String,
+  },
+  URL9: {
+    type: String,
+  },
 });
 
 employeeSchema.methods.generateAuthToken = function () {

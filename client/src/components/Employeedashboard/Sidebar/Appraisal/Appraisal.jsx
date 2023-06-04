@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./Appraisal.css"
-import { ref, uploadBytes } from "firebase/storage"
+import { ref, uploadBytes,getDownloadURL } from "firebase/storage"
 import { storage } from '../../../firebase';
 
 const Appraisal = () => {
@@ -21,6 +21,7 @@ const Appraisal = () => {
     const [uploading9, setUploading9] = useState(false);
 
 
+    const [employee, setEmployee] = useState(null);
 
 
     const handleFileChange = (e) => {
@@ -31,206 +32,352 @@ const Appraisal = () => {
         setYear(event.target.value);
     };
 
-    const handleUpload1 = () => {
+    const handleUpload1 = async () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal 1)/${employeeId}/${selectedFile.name}`);
-            uploadBytes(storageRef, selectedFile)
-                .then(() => {
-                    console.log("Image uploaded");
-                    toast.success("File uploaded successfully!");
-                })
-                .catch((error) => {
-                    console.error("Error uploading image:", error);
-                    toast.error("File upload failed!");
-                })
-                .finally(() => {
-                    setUploading1(false);
-                });
-
+          const storageRef = ref(
+            storage,
+            `Appraisal 1/${employeeId}/${selectedFile.name}`
+          );
+      
+          try {
             setUploading1(true);
+            await uploadBytes(storageRef, selectedFile);
+            console.log("Image uploaded");
+            toast.success("File uploaded successfully!");
+      
+            const downloadURL1 = await getDownloadURL(storageRef);
+            const updatedEmployee = { ...employee, URL1: downloadURL1 };
+
+            try {
+                const response = await axios.put(
+                  `http://localhost:8080/api/updateemployee/${employeeId}`,
+                  updatedEmployee
+                );
+                const data = response.data;
+                if (data.error) {
+                  console.log(data.error);
+                }
+              } catch (error) {
+                console.error("Failed to update employee:", error);
+              }
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            toast.error("File upload failed!");
+          } finally {
+            setUploading1(false);
+          }
         } else {
-            toast.error("No file selected!");
+          toast.error("No file selected!");
         }
-    };
+      };
+      
 
-    const handleUpload2 = () => {
+      const handleUpload2 = async () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal 2)/${employeeId}/${selectedFile.name}`);
-            uploadBytes(storageRef, selectedFile)
-                .then(() => {
-                    console.log("Image uploaded");
-                    toast.success("File uploaded successfully!");
-                })
-                .catch((error) => {
-                    console.error("Error uploading image:", error);
-                    toast.error("File upload failed!");
-                })
-                .finally(() => {
-                    setUploading2(false);
-                });
-
+          const storageRef = ref(storage, `Appraisal 2)/${employeeId}/${selectedFile.name}`);
+    
+      
+          try {
             setUploading2(true);
+            await uploadBytes(storageRef, selectedFile);
+            console.log("Image uploaded");
+            toast.success("File uploaded successfully!");
+      
+            const downloadURL2 = await getDownloadURL(storageRef);
+            const updatedEmployee = { ...employee, URL2: downloadURL2 };
+    
+            try {
+                const response = await axios.put(
+                  `http://localhost:8080/api/updateemployee/${employeeId}`,
+                  updatedEmployee
+                );
+                const data = response.data;
+                if (data.error) {
+                  console.log(data.error);
+                }
+              } catch (error) {
+                console.error("Failed to update employee:", error);
+              }
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            toast.error("File upload failed!");
+          } finally {
+            setUploading2(false);
+          }
         } else {
-            toast.error("No file selected!");
+          toast.error("No file selected!");
         }
-    };
+      };
+      
 
-    const handleUpload3 = () => {
+      const handleUpload3 = async () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal 3)/${employeeId}/${selectedFile.name}`);
-            uploadBytes(storageRef, selectedFile)
-                .then(() => {
-                    console.log("Image uploaded");
-                    toast.success("File uploaded successfully!");
-                })
-                .catch((error) => {
-                    console.error("Error uploading image:", error);
-                    toast.error("File upload failed!");
-                })
-                .finally(() => {
-                    setUploading3(false);
-                });
-
+          const storageRef = ref(storage, `Appraisal 3)/${employeeId}/${selectedFile.name}`);
+    
+      
+          try {
             setUploading3(true);
+            await uploadBytes(storageRef, selectedFile);
+            console.log("Image uploaded");
+            toast.success("File uploaded successfully!");
+      
+            const downloadURL3 = await getDownloadURL(storageRef);
+            const updatedEmployee = { ...employee, URL3: downloadURL3 };
+    
+            try {
+                const response = await axios.put(
+                  `http://localhost:8080/api/updateemployee/${employeeId}`,
+                  updatedEmployee
+                );
+                const data = response.data;
+                if (data.error) {
+                  console.log(data.error);
+                }
+              } catch (error) {
+                console.error("Failed to update employee:", error);
+              }
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            toast.error("File upload failed!");
+          } finally {
+            setUploading3(false);
+          }
         } else {
-            toast.error("No file selected!");
+          toast.error("No file selected!");
         }
-    };
+      };
+      
 
-    const handleUpload4 = () => {
+      const handleUpload4 = async () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal 4)/${employeeId}/${selectedFile.name}`);
-            uploadBytes(storageRef, selectedFile)
-                .then(() => {
-                    console.log("Image uploaded");
-                    toast.success("File uploaded successfully!");
-                })
-                .catch((error) => {
-                    console.error("Error uploading image:", error);
-                    toast.error("File upload failed!");
-                })
-                .finally(() => {
-                    setUploading4(false);
-                });
-
+          const storageRef = ref(storage, `Appraisal 4)/${employeeId}/${selectedFile.name}`);
+    
+      
+          try {
             setUploading4(true);
+            await uploadBytes(storageRef, selectedFile);
+            console.log("Image uploaded");
+            toast.success("File uploaded successfully!");
+      
+            const downloadURL4 = await getDownloadURL(storageRef);
+            const updatedEmployee = { ...employee, URL4: downloadURL4 };
+    
+            try {
+                const response = await axios.put(
+                  `http://localhost:8080/api/updateemployee/${employeeId}`,
+                  updatedEmployee
+                );
+                const data = response.data;
+                if (data.error) {
+                  console.log(data.error);
+                }
+              } catch (error) {
+                console.error("Failed to update employee:", error);
+              }
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            toast.error("File upload failed!");
+          } finally {
+            setUploading4(false);
+          }
         } else {
-            toast.error("No file selected!");
+          toast.error("No file selected!");
         }
-    };
+      };
+      
 
-    const handleUpload5 = () => {
+      const handleUpload5 = async () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal 5)/${employeeId}/${selectedFile.name}`);
-            uploadBytes(storageRef, selectedFile)
-                .then(() => {
-                    console.log("Image uploaded");
-                    toast.success("File uploaded successfully!");
-                })
-                .catch((error) => {
-                    console.error("Error uploading image:", error);
-                    toast.error("File upload failed!");
-                })
-                .finally(() => {
-                    setUploading5(false);
-                });
-
+          const storageRef = ref(storage, `Appraisal 5)/${employeeId}/${selectedFile.name}`);
+    
+      
+          try {
             setUploading5(true);
+            await uploadBytes(storageRef, selectedFile);
+            console.log("Image uploaded");
+            toast.success("File uploaded successfully!");
+      
+            const downloadURL5 = await getDownloadURL(storageRef);
+            const updatedEmployee = { ...employee, URL5: downloadURL5 };
+    
+            try {
+                const response = await axios.put(
+                  `http://localhost:8080/api/updateemployee/${employeeId}`,
+                  updatedEmployee
+                );
+                const data = response.data;
+                if (data.error) {
+                  console.log(data.error);
+                }
+              } catch (error) {
+                console.error("Failed to update employee:", error);
+              }
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            toast.error("File upload failed!");
+          } finally {
+            setUploading5(false);
+          }
         } else {
-            toast.error("No file selected!");
+          toast.error("No file selected!");
         }
-    };
+      };
+      
 
-    const handleUpload6 = () => {
+      const handleUpload6 = async () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal 6)/${employeeId}/${selectedFile.name}`);
-            uploadBytes(storageRef, selectedFile)
-                .then(() => {
-                    console.log("Image uploaded");
-                    toast.success("File uploaded successfully!");
-                })
-                .catch((error) => {
-                    console.error("Error uploading image:", error);
-                    toast.error("File upload failed!");
-                })
-                .finally(() => {
-                    setUploading6(false);
-                });
-
+          const storageRef = ref(storage, `Appraisal 6)/${employeeId}/${selectedFile.name}`);
+    
+      
+          try {
             setUploading6(true);
+            await uploadBytes(storageRef, selectedFile);
+            console.log("Image uploaded");
+            toast.success("File uploaded successfully!");
+      
+            const downloadURL6 = await getDownloadURL(storageRef);
+            const updatedEmployee = { ...employee, URL6: downloadURL6 };
+    
+            try {
+                const response = await axios.put(
+                  `http://localhost:8080/api/updateemployee/${employeeId}`,
+                  updatedEmployee
+                );
+                const data = response.data;
+                if (data.error) {
+                  console.log(data.error);
+                }
+              } catch (error) {
+                console.error("Failed to update employee:", error);
+              }
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            toast.error("File upload failed!");
+          } finally {
+            setUploading6(false);
+          }
         } else {
-            toast.error("No file selected!");
+          toast.error("No file selected!");
         }
-    };
+      };
+      
 
 
-    const handleUpload7 = () => {
+      const handleUpload7 = async () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal 7)/${employeeId}/${selectedFile.name}`);
-            uploadBytes(storageRef, selectedFile)
-                .then(() => {
-                    console.log("Image uploaded");
-                    toast.success("File uploaded successfully!");
-                })
-                .catch((error) => {
-                    console.error("Error uploading image:", error);
-                    toast.error("File upload failed!");
-                })
-                .finally(() => {
-                    setUploading7(false);
-                });
-
+          const storageRef = ref(storage, `Appraisal 7)/${employeeId}/${selectedFile.name}`);
+    
+      
+          try {
             setUploading7(true);
+            await uploadBytes(storageRef, selectedFile);
+            console.log("Image uploaded");
+            toast.success("File uploaded successfully!");
+      
+            const downloadURL7 = await getDownloadURL(storageRef);
+            const updatedEmployee = { ...employee, URL7: downloadURL7 };
+    
+            try {
+                const response = await axios.put(
+                  `http://localhost:8080/api/updateemployee/${employeeId}`,
+                  updatedEmployee
+                );
+                const data = response.data;
+                if (data.error) {
+                  console.log(data.error);
+                }
+              } catch (error) {
+                console.error("Failed to update employee:", error);
+              }
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            toast.error("File upload failed!");
+          } finally {
+            setUploading7(false);
+          }
         } else {
-            toast.error("No file selected!");
+          toast.error("No file selected!");
         }
-    };
+      };
+      
 
 
-    const handleUpload8 = () => {
+      const handleUpload8 = async () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal 8)/${employeeId}/${selectedFile.name}`);
-            uploadBytes(storageRef, selectedFile)
-                .then(() => {
-                    console.log("Image uploaded");
-                    toast.success("File uploaded successfully!");
-                })
-                .catch((error) => {
-                    console.error("Error uploading image:", error);
-                    toast.error("File upload failed!");
-                })
-                .finally(() => {
-                    setUploading8(false);
-                });
-
+          const storageRef = ref(storage, `Appraisal 8)/${employeeId}/${selectedFile.name}`);
+    
+      
+          try {
             setUploading8(true);
+            await uploadBytes(storageRef, selectedFile);
+            console.log("Image uploaded");
+            toast.success("File uploaded successfully!");
+      
+            const downloadURL8 = await getDownloadURL(storageRef);
+            const updatedEmployee = { ...employee, URL8: downloadURL8 };
+    
+            try {
+                const response = await axios.put(
+                  `http://localhost:8080/api/updateemployee/${employeeId}`,
+                  updatedEmployee
+                );
+                const data = response.data;
+                if (data.error) {
+                  console.log(data.error);
+                }
+              } catch (error) {
+                console.error("Failed to update employee:", error);
+              }
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            toast.error("File upload failed!");
+          } finally {
+            setUploading8(false);
+          }
         } else {
-            toast.error("No file selected!");
+          toast.error("No file selected!");
         }
-    };
+      };
+      
 
-
-    const handleUpload9 = () => {
+      const handleUpload9 = async () => {
         if (selectedFile) {
-            const storageRef = ref(storage, `Appraisal 9)/${employeeId}/${selectedFile.name}`);
-            uploadBytes(storageRef, selectedFile)
-                .then(() => {
-                    console.log("Image uploaded");
-                    toast.success("File uploaded successfully!");
-                })
-                .catch((error) => {
-                    console.error("Error uploading image:", error);
-                    toast.error("File upload failed!");
-                })
-                .finally(() => {
-                    setUploading9(false);
-                });
-
+          const storageRef = ref(storage, `Appraisal 9)/${employeeId}/${selectedFile.name}`);
+    
+      
+          try {
             setUploading9(true);
+            await uploadBytes(storageRef, selectedFile);
+            console.log("Image uploaded");
+            toast.success("File uploaded successfully!");
+      
+            const downloadURL9 = await getDownloadURL(storageRef);
+            const updatedEmployee = { ...employee, URL9: downloadURL9 };
+    
+            try {
+                const response = await axios.put(
+                  `http://localhost:8080/api/updateemployee/${employeeId}`,
+                  updatedEmployee
+                );
+                const data = response.data;
+                if (data.error) {
+                  console.log(data.error);
+                }
+              } catch (error) {
+                console.error("Failed to update employee:", error);
+              }
+          } catch (error) {
+            console.error("Error uploading image:", error);
+            toast.error("File upload failed!");
+          } finally {
+            setUploading9(false);
+          }
         } else {
-            toast.error("No file selected!");
+          toast.error("No file selected!");
         }
-    };
+      };
+  
+      
     useEffect(() => {
         const fetchAppraisalData = async () => {
             try {

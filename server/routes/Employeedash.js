@@ -20,6 +20,15 @@ router.get("/validuser", authenticate, async (req, res) => {
         designation: employee.designation,
         profilePhotoURL: employee.profilePhotoURL,
         mobile: employee.mobile,
+        URL1: employee.URL1 ,
+        URL2: employee.URL2 ,
+        URL3: employee.URL3 ,
+        URL4: employee.URL4 ,
+        URL5: employee.URL5 ,
+        URL6: employee.URL6 ,
+        URL7: employee.URL7 ,
+        URL8: employee.URL8 ,
+        URL9: employee.URL9 ,
       },
       message: "logged in successfully"
     });
