@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
-  const hodid = localStorage.getItem("hodid");
+  const Adminid = localStorage.getItem("Adminid");
 
 
 
@@ -37,7 +37,7 @@ const Dashboard = () => {
         const updatedHod = { ...admin, profilePhotoURL: downloadURL };
 
         try {
-          const response = await axios.put(`http://localhost:8080/api/updatehod/${hodid}`, updatedHod
+          const response = await axios.put(`http://localhost:8080/api/updatehod/${Adminid}`, updatedHod
 
           );
           const data = response.data;
@@ -91,7 +91,7 @@ const Dashboard = () => {
         setAdmin(response.data.admin);
         // console.log(response.data.admin);
         setProfilePhotoURL(response.data.admin.profilePhotoURL);
-        localStorage.setItem("hodid", response.data.admin.hodid);
+        localStorage.setItem("Adminid", response.data.admin.Adminid);
 
         // console.log(response.data)
         setIsLoading(false);

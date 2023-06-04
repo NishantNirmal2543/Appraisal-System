@@ -10,7 +10,7 @@ router.get("/validadmin", authenticate2, async (req, res) => {
     const admin = await Admin.findOne({ _id: req.userId });
     res.status(200).send({
       admin: {
-        hodid: req.userId,
+        Adminid: req.userId,
         name: admin.name,
         email: admin.email,
         department: admin.department,
