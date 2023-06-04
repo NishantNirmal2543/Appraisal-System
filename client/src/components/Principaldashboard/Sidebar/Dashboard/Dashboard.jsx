@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Dashboard3.css";
-import profilePhoto from "../Dashboard/images.jpeg"
+import profilePhoto from "../Dashboard/profile.jpg"
 import coverPhoto from "../Dashboard/images1.jpeg"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
