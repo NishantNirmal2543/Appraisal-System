@@ -5,7 +5,8 @@ import axios from 'axios';
 import { BsPencil } from "react-icons/bs";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import "./AppraisalHod.css";
+import hello from "../AppraisalHod/AdmissionCard-6658133-bd2674b6-eb6e-4ddc-87ba-306ad074af86-742.pdf"
 
 const EmployeeTable = () => {
   const [employees, setEmployees] = useState([]);
@@ -13,8 +14,17 @@ const EmployeeTable = () => {
   const [error, setError] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [selectedEmployeeAppraisal, setSelectedEmployeeAppraisal] = useState(null);
+  const [openDialog, setOpenDialog] = useState(false);
 
- 
+
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
   const [year, setYear] = useState("2023");
 
   const handleYearChange = async (event, employee) => {
@@ -1314,7 +1324,7 @@ const EmployeeTable = () => {
             </div>
           ) : (
             <>
-              <h1 style={{color:'brown' , marginTop:"100px"}}>Hod Appraisals</h1>
+              <h1 style={{ color: 'brown', marginTop: "100px" }}>Hod Appraisals</h1>
               <div className='cardEmp'>
 
                 <table class="employee-table">
@@ -1383,6 +1393,18 @@ const EmployeeTable = () => {
                     <br />
                     <button type="button" className="btn" onClick={calculateScore1}>Calculate Total Score</button>
                     <p className="total-score">Total Score: {totalScore1}</p>
+                    <button type="button" className="btn" onClick={handleOpenDialog}>
+                      View Document
+                    </button>
+
+                    {openDialog && (
+                      <dialog className="dialog" open>
+                        <iframe src={hello} title="Document Viewer"></iframe>
+                        <button type="button" className="btn" onClick={handleCloseDialog}>
+                          Close
+                        </button>
+                      </dialog>
+                    )}
                   </div>
                   <div className="form-group">
                     <h3>2. Examination and evaluation duties assigned by university/institute :</h3>
