@@ -1285,7 +1285,7 @@ const EmployeeTable = () => {
 
     try {
       const { _id: employeeId } = employee;
-      console.log(employeeId)
+      // console.log(employeeId)
       const appraisalResponse = await axios.get(`http://localhost:8080/api/fetchappraisal/${employeeId}/${year}`);
       setSelectedEmployeeAppraisal(appraisalResponse.data.appraisal);
       const selectedyear = appraisalResponse.data.appraisal.year;
