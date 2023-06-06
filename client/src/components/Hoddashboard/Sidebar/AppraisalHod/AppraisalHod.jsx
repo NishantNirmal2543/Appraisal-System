@@ -6,7 +6,8 @@ import { BsPencil } from "react-icons/bs";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./AppraisalHod.css";
-import hello from "../AppraisalHod/AdmissionCard-6658133-bd2674b6-eb6e-4ddc-87ba-306ad074af86-742.pdf"
+import { FcDocument } from 'react-icons/fc';
+import NoDoc from "../AppraisalHod/NoDoc.pdf";
 
 const EmployeeTable = () => {
   const [employees, setEmployees] = useState([]);
@@ -14,16 +15,71 @@ const EmployeeTable = () => {
   const [error, setError] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [selectedEmployeeAppraisal, setSelectedEmployeeAppraisal] = useState(null);
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openDialog1, setOpenDialog1] = useState(false);
+  const [openDialog2, setOpenDialog2] = useState(false);
+  const [openDialog3, setOpenDialog3] = useState(false);
+  const [openDialog4, setOpenDialog4] = useState(false);
+  const [openDialog5, setOpenDialog5] = useState(false);
+  const [openDialog6, setOpenDialog6] = useState(false);
+  const [openDialog7, setOpenDialog7] = useState(false);
+  const [openDialog8, setOpenDialog8] = useState(false);
+  const [openDialog9, setOpenDialog9] = useState(false);
 
 
 
-  const handleOpenDialog = () => {
-    setOpenDialog(true);
+  const handleOpenDialog1 = () => {
+    setOpenDialog1(true);
   };
-
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
+  const handleOpenDialog2 = () => {
+    setOpenDialog2(true);
+  };
+  const handleOpenDialog3 = () => {
+    setOpenDialog3(true);
+  };
+  const handleOpenDialog4 = () => {
+    setOpenDialog4(true);
+  };
+  const handleOpenDialog5 = () => {
+    setOpenDialog5(true);
+  };
+  const handleOpenDialog6 = () => {
+    setOpenDialog6(true);
+  };
+  const handleOpenDialog7 = () => {
+    setOpenDialog7(true);
+  };
+  const handleOpenDialog8 = () => {
+    setOpenDialog8(true);
+  };
+  const handleOpenDialog9 = () => {
+    setOpenDialog9(true);
+  };
+  const handleCloseDialog1 = () => {
+    setOpenDialog1(false);
+  };
+  const handleCloseDialog2 = () => {
+    setOpenDialog2(false);
+  };
+  const handleCloseDialog3 = () => {
+    setOpenDialog3(false);
+  };
+  const handleCloseDialog4 = () => {
+    setOpenDialog4(false);
+  };
+  const handleCloseDialog5 = () => {
+    setOpenDialog5(false);
+  };
+  const handleCloseDialog6 = () => {
+    setOpenDialog6(false);
+  };
+  const handleCloseDialog7 = () => {
+    setOpenDialog7(false);
+  };
+  const handleCloseDialog8 = () => {
+    setOpenDialog8(false);
+  };
+  const handleCloseDialog9 = () => {
+    setOpenDialog9(false);
   };
   const [year, setYear] = useState("2023");
 
@@ -1300,6 +1356,7 @@ const EmployeeTable = () => {
       setSelectedEmployeeAppraisal(appraisalResponse.data.appraisal);
       const selectedyear = appraisalResponse.data.appraisal.year;
       console.log(selectedyear)
+
     } catch (error) {
       setError(error.response.data.message);
     }
@@ -1393,14 +1450,18 @@ const EmployeeTable = () => {
                     <br />
                     <button type="button" className="btn" onClick={calculateScore1}>Calculate Total Score</button>
                     <p className="total-score">Total Score: {totalScore1}</p>
-                    <button type="button" className="btn" onClick={handleOpenDialog}>
-                      View Document
+                    <button type="button" className="btn" onClick={handleOpenDialog1}>
+                      <FcDocument size={24} />
                     </button>
 
-                    {openDialog && (
+                    {openDialog1 && (
                       <dialog className="dialog" open>
-                        <iframe src={hello} title="Document Viewer"></iframe>
-                        <button type="button" className="btn" onClick={handleCloseDialog}>
+                        {selectedEmployee.URL1 ? (
+                          <iframe src={selectedEmployee.URL1} title="Document Viewer"></iframe>
+                        ) : (
+                          <iframe src={NoDoc} title="Document Viewer"></iframe>
+                        )}
+                        <button type="button" className="btn" onClick={handleCloseDialog1}>
                           Close
                         </button>
                       </dialog>
@@ -1423,6 +1484,22 @@ const EmployeeTable = () => {
                     <br />
                     <button type="button" className="btn" onClick={calculateScore2}>Calculate Total Score</button>
                     <p className="total-score">Total Score: {totalScore2}</p>
+                    <button type="button" className="btn" onClick={handleOpenDialog2}>
+                      <FcDocument size={24} />
+                    </button>
+
+                    {openDialog2 && (
+                      <dialog className="dialog" open>
+                        {selectedEmployee.URL2 ? (
+                          <iframe src={selectedEmployee.URL2} title="Document Viewer"></iframe>
+                        ) : (
+                          <iframe src={NoDoc} title="Document Viewer"></iframe>
+                        )}
+                        <button type="button" className="btn" onClick={handleCloseDialog2}>
+                          Close
+                        </button>
+                      </dialog>
+                    )}
                   </div>
 
 
@@ -1570,6 +1647,22 @@ const EmployeeTable = () => {
                     <br />
                     <button type="button" className='btn' onClick={calculateTotalScoreBE}>Calculate Score</button>
                     <p className='total-score'>Total Score: {totalScoreBE}</p>
+                    <button type="button" className="btn" onClick={handleOpenDialog3}>
+                      <FcDocument size={24} />
+                    </button>
+
+                    {openDialog3 && (
+                      <dialog className="dialog" open>
+                        {selectedEmployee.URL3 ? (
+                          <iframe src={selectedEmployee.URL3} title="Document Viewer"></iframe>
+                        ) : (
+                          <iframe src={NoDoc} title="Document Viewer"></iframe>
+                        )}
+                        <button type="button" className="btn" onClick={handleCloseDialog3}>
+                          Close
+                        </button>
+                      </dialog>
+                    )}
 
 
                   </div>
@@ -1601,6 +1694,24 @@ const EmployeeTable = () => {
                     <button className='btn' type="button" onClick={calculateScore4}>Calculate Score</button>
 
                     <p className='total-score'>Score: {totalscore4}</p>
+
+                    <button type="button" className="btn" onClick={handleOpenDialog4}>
+                      <FcDocument size={24} />
+                    </button>
+
+                    {openDialog4 && (
+                      <dialog className="dialog" open>
+                        {selectedEmployee.URL4 ? (
+                          <iframe src={selectedEmployee.URL4} title="Document Viewer"></iframe>
+                        ) : (
+                          <iframe src={NoDoc} title="Document Viewer"></iframe>
+                        )}
+                        <button type="button" className="btn" onClick={handleCloseDialog4}>
+                          Close
+                        </button>
+                      </dialog>
+                    )}
+
                   </div>
 
 
@@ -1660,6 +1771,23 @@ const EmployeeTable = () => {
                     <br />
                     <button type="button" className="btn" onClick={calculateScore5}>Calculate Score</button>
                     <p className="total-score">Total Score: {totalScore5}</p>
+                    <button type="button" className="btn" onClick={handleOpenDialog5}>
+                      <FcDocument size={24} />
+                    </button>
+
+                    {openDialog5 && (
+                      <dialog className="dialog" open>
+                        {selectedEmployee.URL5 ? (
+                          <iframe src={selectedEmployee.URL5} title="Document Viewer"></iframe>
+                        ) : (
+                          <iframe src={NoDoc} title="Document Viewer"></iframe>
+                        )}
+                        <button type="button" className="btn" onClick={handleCloseDialog5}>
+                          Close
+                        </button>
+                      </dialog>
+                    )}
+
 
                   </div>
                   <div className="form-group">
@@ -1698,12 +1826,31 @@ const EmployeeTable = () => {
                     <button type="button" className="btn" onClick={calculateScore6}>Calculate Total Score</button>
                     <p className="total-score" >Total Score: {totalScore6}</p>
 
+                    <button type="button" className="btn" onClick={handleOpenDialog6}>
+                      <FcDocument size={24} />
+                    </button>
+
+                    {openDialog6 && (
+                      <dialog className="dialog" open>
+                        {selectedEmployee.URL6 ? (
+                          <iframe src={selectedEmployee.URL6} title="Document Viewer"></iframe>
+                        ) : (
+                          <iframe src={NoDoc} title="Document Viewer"></iframe>
+                        )}
+                        <button type="button" className="btn" onClick={handleCloseDialog6}>
+                          Close
+                        </button>
+                      </dialog>
+                    )}
+
                   </div>
 
                   <br />
                   <button type="button" className="btnAB" onClick={calculateScoreA}>Calculate Form A Score</button>
 
                   <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score Form A: {totalScoreformA}</span>
+
+
                 </div>
 
                 {/* form B */}
@@ -1779,6 +1926,24 @@ const EmployeeTable = () => {
                     <button type="button" className="btn" onClick={calculateScore7c}>Calculate Score</button>
                     <br />
                     <p className="total-score">Total Score: {totalScore7c}</p>
+                    <button type="button" className="btn" onClick={handleOpenDialog7}>
+                      <FcDocument size={24} />
+                    </button>
+
+                    {openDialog7 && (
+                      <dialog className="dialog" open>
+                        {selectedEmployee.URL7 ? (
+                          <iframe src={selectedEmployee.URL7} title="Document Viewer"></iframe>
+                        ) : (
+                          <iframe src={NoDoc} title="Document Viewer"></iframe>
+                        )}
+                        <button type="button" className="btn" onClick={handleCloseDialog7}>
+                          Close
+                        </button>
+                      </dialog>
+                    )}
+
+
                   </div>
                   <div className="form-group">
                     <h3>8. Faculty contribution in research and publication:</h3>
@@ -2002,6 +2167,22 @@ const EmployeeTable = () => {
                     <br />
                     <button type="button" className="btn" onClick={calculateScore8b5}>Calculate Total Score</button>
                     <p className="total-score">Total Score: {totalScore8b5}</p>
+                    <button type="button" className="btn" onClick={handleOpenDialog8}>
+                      <FcDocument size={24} />
+                    </button>
+
+                    {openDialog8 && (
+                      <dialog className="dialog" open>
+                        {selectedEmployee.URL8 ? (
+                          <iframe src={selectedEmployee.URL8} title="Document Viewer"></iframe>
+                        ) : (
+                          <iframe src={NoDoc} title="Document Viewer"></iframe>
+                        )}
+                        <button type="button" className="btn" onClick={handleCloseDialog8}>
+                          Close
+                        </button>
+                      </dialog>
+                    )}
 
 
                   </div>
@@ -2067,6 +2248,23 @@ const EmployeeTable = () => {
                     <br />
                     <button type="button" className="btn" onClick={calculateScore9}>Calculate Total Score</button>
                     <p className="total-score">Total Score: {totalScore9}</p>
+                    <button type="button" className="btn" onClick={handleOpenDialog9}>
+                      <FcDocument size={24} />
+                    </button>
+
+                    {openDialog9 && (
+                      <dialog className="dialog" open>
+                        {selectedEmployee.URL9 ? (
+                          <iframe src={selectedEmployee.URL9} title="Document Viewer"></iframe>
+                        ) : (
+                          <iframe src={NoDoc} title="Document Viewer"></iframe>
+                        )}
+                        <button type="button" className="btn" onClick={handleCloseDialog9}>
+                          Close
+                        </button>
+                      </dialog>
+                    )}
+
                   </div>
 
                   <br />
