@@ -1,10 +1,7 @@
 
-
 import React, { useState } from 'react';
 import axios from "axios";
 import "./Employee.css";
-
-
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,7 +13,6 @@ const AddEmployee = () => {
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
   const [errors, setErrors] = useState({});
-  const [password, setPassword] = useState('');
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -41,9 +37,7 @@ const AddEmployee = () => {
   const handleMobileChange = (e) => {
     setMobile(e.target.value);
   };
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -85,14 +79,6 @@ const AddEmployee = () => {
       return;
     }
 
-    if (!password.trim()) {
-      toast.error('Please enter a password');
-      return;
-    } else if (password.length < 8) {
-      toast.error('Password must be at least 8 characters long');
-      return;
-    }
-
     setErrors(errors);
 
     if (Object.keys(errors).length === 0) {
@@ -104,7 +90,6 @@ const AddEmployee = () => {
           designation,
           email,
           mobile,
-          password
         });
 
         // handle the success response       
@@ -119,7 +104,7 @@ const AddEmployee = () => {
 
   return (
     <div>
-      <div className="card">
+      <div className="cardE">
         <h1>Add Employee</h1>
         <form onSubmit={handleSubmit}>
           <div>
@@ -153,7 +138,6 @@ const AddEmployee = () => {
             {errors.department && <div className="department-error">{errors.department}</div>}
           </div>
 
-
           <div>
             <label htmlFor="designation">Designation:</label>
             <input type="text" id="designation" value={designation} onChange={handleDesignationChange}
@@ -173,18 +157,12 @@ const AddEmployee = () => {
             <input type="email" id="email" value={email} onChange={handleEmailChange} />
             {errors.email && <div className="error">{errors.email}</div>}
           </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" value={password} onChange={handlePasswordChange} />
-            {errors.password && <div className="error">{errors.password}</div>}
-          </div>
+
           <div>
             <label htmlFor="mobile">Mobile:</label>
             <input type="tel" id="mobile" value={mobile} onChange={handleMobileChange} />
             {errors.mobile && <div className="error">{errors.mobile}</div>}
           </div>
-
-
 
           <button className='buttonA' type="submit">Add</button>
         </form>

@@ -5,7 +5,10 @@ import './sidebar.css';
 import Dashboard from './Dashboard/Dashboard';
 import Employee from './Employee/Employee';
 import Hod from './HOD/Hod';
-import Principle from './Principle/Principle'
+import Principle from './Principle/Principle';
+import Appraisal from './Appraisal/Appraisal';
+
+
 const Sidebar = () => {
     const [show, setShow] = useState(false);
     const [activeComponent, setActiveComponent] = useState('Dashboard');
@@ -55,6 +58,10 @@ const Sidebar = () => {
                                 <i className='fas fa-user nav-link-icon'></i>
                                 <span className='nav-link-name'>Employee</span>
                             </div>
+                            <div className={`nav-link ${activeComponent === 'Appraisal' ? 'active' : ''}`} onClick={() => handleClick('Appraisal')}>
+                                <i className='fas fa-user nav-link-icon'></i>
+                                <span className='nav-link-name'>Appraisal</span>
+                            </div>
                         </div>
                     </div>
                     <div className="nav-linkLog">
@@ -71,6 +78,7 @@ const Sidebar = () => {
                 {activeComponent === 'Employee' && <Employee />}
                 {activeComponent === 'HOD' && <Hod />}
                 {activeComponent === 'Principle' && <Principle />}
+                {activeComponent === 'Appraisal' && <Appraisal />}
             </div>
 
         </main>

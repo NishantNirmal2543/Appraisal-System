@@ -44,7 +44,13 @@ const hodfetchappraisalRoutes = require("./routes/hodfetchappraisal")
 
 const hodappraisalRoutes = require("./routes/hodappraisal")
 
+
 const fetchhodappraisalRoutes = require("./routes/fetchhodappraisal")
+
+const fetchempdeptRoutes = require("./routes/fetchempdept")
+
+const changepasswordempRoutes = require("./routes/changepasswordemp")
+
 // database connection
 connection();
 
@@ -65,6 +71,12 @@ app.use("/api/fetchemployee", fetchemployeeRoutes);
 app.use("/api/deleteemployee" , deleteemployeeRoutes);
 
 app.use("/api/updateemployee" , updateemployeeRoutes)
+
+
+app.use("/api/department" , fetchempdeptRoutes);
+
+
+app.use("/api/changepasswordemp" , changepasswordempRoutes);
 
 
 //admin auth

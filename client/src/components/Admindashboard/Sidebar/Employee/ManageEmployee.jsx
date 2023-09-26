@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AiOutlineEye } from "react-icons/ai";
 import { BsPencil } from "react-icons/bs";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "./Employee.css";
-
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +12,7 @@ const ManageEmployee = () => {
   const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [mode, setMode] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState(""); // State for selected department filter
 
   const handleViewClick = (employee) => {
     setSelectedEmployee(employee);
@@ -24,9 +23,6 @@ const ManageEmployee = () => {
     setSelectedEmployee(employee);
     setMode("edit");
   };
-
-
-
 
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this employee?");
@@ -40,21 +36,6 @@ const ManageEmployee = () => {
       }
     }
   };
-
-
-  const fetchEmployees = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/api/fetchemployee');
-      setEmployees(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchEmployees();
-  }, []);
-
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -83,10 +64,66 @@ const ManageEmployee = () => {
     }
   };
 
+
+  const fetchEmployeesByDepartment = async (selectedDepartment) => {
+    try {
+      const encodedDepartment = encodeURIComponent(selectedDepartment);
+      const response = await axios.get(`http://localhost:8080/api/department?department=${encodedDepartment}`);
+      console.log(response.data);
+      setEmployees(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  const fetchEmployees = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/fetchemployee');
+      console.log(response.data)
+      setEmployees(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedDepartment !== "") {
+      fetchEmployeesByDepartment(selectedDepartment);
+    } else {
+      // If no department is selected, fetch all employees
+      fetchEmployees();
+    }
+  }, [selectedDepartment]); // Update the employee list when the selected department changes
+
+
+
+
+
   return (
-    <div className='card'>
-      <h1 >Manage Employees</h1>
-      <table class="employee-table">
+    <div className='cardE'>
+      <h1>Manage Employees</h1>
+      {/* Dropdown select for department filter */}
+      <div className="department-wrapper">
+
+        <select value={selectedDepartment} className="department-select" onChange={(e) => setSelectedDepartment(e.target.value)}>
+
+          <option value="">All Departments</option>
+          <option value="Computer Engineering">Computer Engineering</option>
+          <option value="Information Technology">Information Technology</option>
+          <option value="Artificial Intelligence & Data Science">Artificial Intelligence & Data Science</option>
+          <option value="Electronics & Telecommunication Engineering">Electronics & Telecommunication Engineering</option>
+          <option value="Instrumentation and Control Engineering">Instrumentation and Control Engineering</option>
+          <option value="Robotics and Automation">Robotics and Automation</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Civil Engineering">Civil Engineering</option>
+          {/* Add other department options here */}
+        </select>
+
+      </div>
+
+
+      <table className="employee-table">
         <thead>
           <tr>
             <th>Name</th>
@@ -104,7 +141,7 @@ const ManageEmployee = () => {
               <td>{employee.designation}</td>
               <td>{employee.email}</td>
               <td>
-                <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewClick(employee)} >  <AiOutlineEye  /> </button>
+                <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewClick(employee)} >  <AiOutlineEye /> </button>
                 <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleEditClick(employee)}><BsPencil /></button>
                 <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleDelete(employee._id)}><RiDeleteBinLine /></button>
               </td>
@@ -120,7 +157,6 @@ const ManageEmployee = () => {
           <p>Designation: {selectedEmployee.designation}</p>
           <p>Email: {selectedEmployee.email}</p>
           <p>Mobile: {selectedEmployee.mobile}</p>
-
         </div>
       )}
       {mode === "edit" && (
@@ -152,13 +188,11 @@ const ManageEmployee = () => {
               <input type='text' id='mobile' name='mobile' value={selectedEmployee.mobile} onChange={(e) => setSelectedEmployee({ ...selectedEmployee, mobile: e.target.value })} />
             </div>
             <button className='button3' type='submit'>Update</button>
-
           </form>
         </div>
       )}
-
     </div>
-  )
+  );
 };
 
 export default ManageEmployee;

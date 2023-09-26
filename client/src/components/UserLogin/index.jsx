@@ -54,6 +54,7 @@ const Login = () => {
               Sign In
             </button>
           </form>
+          
         </div>
         <div className={styles.right}>
           <h1>Admin</h1>

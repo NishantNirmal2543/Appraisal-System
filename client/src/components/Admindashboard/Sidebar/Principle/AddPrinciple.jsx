@@ -105,7 +105,7 @@ const AddPrinciple = () => {
 
     return (
         <div>
-            <div className="card">
+            <div className="cardP">
                 <h1>Add Principle</h1>
                 <form onSubmit={handleSubmit}>
                     <div>

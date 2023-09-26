@@ -85,7 +85,7 @@ const ManagePrinciple = () => {
   };
 
   return (
-    <div className='card'>
+    <div className='cardP'>
       <h1>Manage Principle</h1>
       <table class="employee-table">
         <thead>

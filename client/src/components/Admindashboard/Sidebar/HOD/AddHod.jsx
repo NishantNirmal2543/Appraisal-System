@@ -119,7 +119,7 @@ const AddHod = () => {
 
     return (
         <div>
-            <div className="card">
+            <div className="cardH">
                 <h1>Add Hod</h1>
                 <form onSubmit={handleSubmit}>
                     <div>

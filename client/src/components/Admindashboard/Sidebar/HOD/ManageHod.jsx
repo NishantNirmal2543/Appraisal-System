@@ -87,7 +87,7 @@ const ManageHod = () => {
   };
 
   return (
-    <div className='card'>
+    <div className='cardH'>
       <h1>Manage Hod</h1>
       <table class="employee-table">
         <thead>
