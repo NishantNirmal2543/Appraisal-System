@@ -23,9 +23,8 @@ const documentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  userPicturePath: {
+  profilePhotoURL: {
     type: String,
-    required: true,
   },
   likes: {
     type: Object,
