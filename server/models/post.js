@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Define a schema for your data
-const documentSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({
   _id: {
     type: String,
     required: true,
@@ -33,6 +33,6 @@ const documentSchema = new mongoose.Schema({
 });
 
 // Create a MongoDB model using the schema
-const Document = mongoose.model('Document', documentSchema);
+const Post = mongoose.model('post', postSchema);
 
-module.exports = Document;
+module.exports ={Post} ;
