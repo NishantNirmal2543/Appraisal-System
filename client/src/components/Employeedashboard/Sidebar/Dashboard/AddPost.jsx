@@ -9,14 +9,16 @@ import {
 
 } from "@mui/icons-material";
 import useTheme from '@mui/material/styles/useTheme';
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Dropzone from "react-dropzone";
-
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import { storage } from "../../../firebase";
 const employeeId = localStorage.getItem("employeeid");
 
 const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
     const { palette } = useTheme();
-    const [showDropzone, setShowDropzone] = useState(false); // Track whether to show the Dropzone
+    const [showDropzone, setShowDropzone] = useState(false);
 
     const [image, setImage] = useState(null);
     const [post, setPost] = useState({
@@ -37,26 +39,69 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
     };
 
 
+    // const handlePostSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     try {
+    //         const response = await axios.post("http://localhost:8080/api/createposts", {
+    //             ...post,
+    //             employeeid: employeeId,
+    //         });
+
+
+    //         setPost({
+
+    //             description: "",
+    //             // picturePath: "",
+
+    //         });
+
+    //     } catch (error) {
+    //         console.error("Error creating post:", error);
+
+    //     }
+    // };
     const handlePostSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:8080/api/createposts", {
-                ...post,
-                employeeid: employeeId,
-            });
+            if (image) {
+
+                const fileName = `${Date.now()}_${image.name}`;
+                const storageRef = ref(
+                    storage,
+                    `Socialimages/${fileName}`
+                );
+
+                // Upload the image using uploadBytes
+                await uploadBytes(storageRef, image);
+
+                // Get the download URL
+                const downloadURL = await getDownloadURL(storageRef);
+
+                // Send the post data, including the Firebase Storage URL, to your server
+                const response = await axios.post("http://localhost:8080/api/createposts", {
+                    ...post,
+                    employeeid: employeeId,
+                    picturePath: downloadURL, // Include the Firebase Storage URL
+                });
 
 
-            setPost({
+                //  Reset the form or perform any other actions
+                setPost((prevState) => ({
+                    ...prevState,
+                    description: "",
+                }));
 
-                description: "",
-                // picturePath: "",
-
-            });
-
+                setImage(null);
+                toast.success("Post created successfully!");
+            } else {
+                // Handle case where no image is selected
+                console.error("Please select an image to upload.");
+            }
         } catch (error) {
-            console.error("Error creating post:", error);
-
+            console.error("Error uploading image to Firebase or creating post:", error);
+            toast.error("Post failed!");
         }
     };
 
