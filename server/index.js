@@ -51,6 +51,8 @@ const fetchempdeptRoutes = require("./routes/fetchempdept")
 
 const changepasswordempRoutes = require("./routes/changepasswordemp")
 
+
+const createpostRoutes = require("./routes/posts")
 // database connection
 connection();
 
@@ -126,6 +128,11 @@ app.use("/api/hodfetchappraisal",hodfetchappraisalRoutes)
 app.use("/api/hodappraisal",hodappraisalRoutes)
 
 app.use("/api/fetchhodappraisal",fetchhodappraisalRoutes)
+
+// posts
+
+
+app.use('/api/createposts', createpostRoutes); 
 
 
 const port = process.env.PORT || 8080;

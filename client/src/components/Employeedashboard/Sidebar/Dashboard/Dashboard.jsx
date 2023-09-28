@@ -8,6 +8,8 @@ import coverPhoto from "../Dashboard/images.jpeg";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { v4 } from "uuid";
+import AddPost from "./AddPost";
+import Post from "./Post";
 
 const Dashboard = () => {
   const [employee, setEmployee] = useState(null);
@@ -18,7 +20,7 @@ const Dashboard = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
-
+  
 
   const handleUpload = async () => {
     if (selectedFile) {
@@ -229,7 +231,8 @@ const Dashboard = () => {
           </div>
         </div>
       )}
-     {/* social feed */}
+     
+     {!isLoading && employee && (
        <div
       style={{
         border: "1px solid #ddd",
@@ -245,102 +248,11 @@ const Dashboard = () => {
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <img
-          src="https://via.placeholder.com/40"
-          alt="User Profile"
-          style={{
-            borderRadius: "50%",
-            marginRight: "12px",
-            width: "40px",
-            height: "40px",
-          }}
-        />
-        <div>
-          <h3
-            style={{
-              margin: "0",
-              fontSize: "18px",
-            }}
-          >
-            John Doe
-          </h3>
-          <p
-            style={{
-              margin: "0",
-              fontSize: "14px",
-              color: "#555",
-            }}
-          >
-            Software Engineer
-          </p>
-        </div>
-      </div>
-      <p
-        style={{
-          marginTop: "16px",
-          fontSize: "16px",
-        }}
-      >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod
-        ligula et nibh commodo, at efficitur nunc bibendum. Nulla facilisi.
-      </p>
-      <div
-        style={{
-          marginTop: "16px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "100%",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <button
-            style={{
-              border: "none",
-              background: "none",
-              color: "#0073b1",
-              marginRight: "16px",
-              cursor: "pointer",
-              fontSize: "16px",
-            }}
-          >
-            Like
-          </button>
-          <button
-            style={{
-              border: "none",
-              background: "none",
-              color: "#0073b1",
-              cursor: "pointer",
-              fontSize: "16px",
-            }}
-          >
-            Comment
-          </button>
-        </div>
-        <p
-          style={{
-            fontSize: "14px",
-            color: "#555",
-            marginLeft: "auto",
-          }}
-        >
-          2 hours ago
-        </p>
-      </div>
+      <AddPost profilePhotoURL={profilePhotoURL} employeeName={employee.name} designation={employee.designation} />
+      <Post name="John Doe" title="Software Engineer" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod ligula et nibh commodo, at efficitur nunc bibendum. Nulla facilisi." timestamp="2 hours ago" />
+      {/* Add more posts as needed */}
     </div>
-  
+     )}
     </div>
     
   );

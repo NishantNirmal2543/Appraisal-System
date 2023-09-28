@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema({
   },
   name: {
     type: String,
-    required: true,
+   
   },
   
   description: {
@@ -21,7 +21,7 @@ const postSchema = new mongoose.Schema({
   },
   picturePath: {
     type: String,
-    required: true,
+    // required: true,
   },
   profilePhotoURL: {
     type: String,
