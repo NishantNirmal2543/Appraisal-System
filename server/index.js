@@ -51,6 +51,7 @@ const fetchempdeptRoutes = require("./routes/fetchempdept")
 
 const changepasswordempRoutes = require("./routes/changepasswordemp")
 
+const feedpostsRoutes = require("./routes/feedposts")
 
 const createpostRoutes = require("./routes/posts")
 // database connection
@@ -134,6 +135,6 @@ app.use("/api/fetchhodappraisal",fetchhodappraisalRoutes)
 
 app.use('/api/createposts', createpostRoutes); 
 
-
+app.use('/api/feedposts' , feedpostsRoutes)
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

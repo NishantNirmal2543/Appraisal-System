@@ -1,17 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { Post } = require('../models/post'); // Update the path
-const { v4: uuidv4 } = require('uuid'); // for generating unique IDs
+const { Post } = require('../models/post'); 
+const { v4: uuidv4 } = require('uuid'); 
 
 router.post('/', async (req, res) => {
     try {
       const { employeeid,  description, picturePath ,profilePhotoURL ,designation ,employeeName} = req.body;
   
-     
-  
-      // Create a new post
       const newPost = new Post({
-        _id: uuidv4(), // Generate a unique ID for the post
+        _id: uuidv4(),
         employeeid,
         profilePhotoURL,
         description,
@@ -21,7 +18,7 @@ router.post('/', async (req, res) => {
       
       });
   
-      // Save the post to the database
+    
       const savedPost = await newPost.save();
   
       res.status(201).json(savedPost);

@@ -16,7 +16,7 @@ import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 const employeeId = localStorage.getItem("employeeid");
 
-const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
+const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) => {
     const { palette } = useTheme();
     const [showDropzone, setShowDropzone] = useState(false);
 
@@ -69,8 +69,8 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
                     employeeName: employeeName
                 });
 
+                updatePosts(response.data);
 
-                //  Reset the form or perform any other actions
                 setPost((prevState) => ({
                     ...prevState,
                     description: "",
@@ -80,7 +80,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
                 setImage(null);
                 toast.success("Post created successfully!");
             } else {
-                // Handle case where no image is selected
+
                 console.error("Please select an image to upload.");
             }
         } catch (error) {
@@ -226,7 +226,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
                 disabled={!post.description}
                 onClick={handlePostSubmit}
                 style={{
-                    color: post.description ? '#fff' : 'black', 
+                    color: post.description ? '#fff' : 'black',
                     backgroundColor: '#0073b1',
                     borderRadius: '3rem',
                     marginTop: '16px',

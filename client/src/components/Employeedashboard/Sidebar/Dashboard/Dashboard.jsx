@@ -20,7 +20,28 @@ const Dashboard = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
-  
+  const [posts, setPosts] = useState([]);
+
+  const updatePosts = (newPost) => {
+    setPosts([newPost, ...posts]);
+  };
+
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/feedposts');
+      console.log(response.data)
+      setPosts(response.data);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+
+
 
   const handleUpload = async () => {
     if (selectedFile) {
@@ -153,7 +174,7 @@ const Dashboard = () => {
       {isLoading ? (
         <div className="loaderEmp"></div>
       ) : (
-        <div className="profile">
+        <div className="profileA">
           <div className="container1">
             <div className="cover-photo">
               <img src={coverPhoto} alt="Cover" />
@@ -231,30 +252,30 @@ const Dashboard = () => {
           </div>
         </div>
       )}
-     
-     {!isLoading && employee && (
-       <div
-      style={{
-        border: "1px solid #ddd",
-        borderRadius: "5px",
-        padding: "16px",
-        margin: "16px",
-        width: "1000px",
-        height:'700px',
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        background: "#fff",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      <AddPost profilePhotoURL={profilePhotoURL} employeeName={employee.name} designation={employee.designation} />
-      <Post name="John Doe" title="Software Engineer" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod ligula et nibh commodo, at efficitur nunc bibendum. Nulla facilisi." timestamp="2 hours ago" />
-      {/* Add more posts as needed */}
+      {!isLoading && employee && (
+        <div
+          className="social"
+        >
+          <AddPost profilePhotoURL={profilePhotoURL} employeeName={employee.name} designation={employee.designation} updatePosts={updatePosts} />
+
+          <div>
+            {posts.map((post, index) => (
+              <Post
+                key={index}
+                profilePhotoURL={post.profilePhotoURL}
+                description={post.description}
+                picturePath={post.picturePath}
+                designation={post.designation}
+                employeeName={post.employeeName}
+              />
+            ))}
+          </div>
+
+        </div>
+      )}
+
     </div>
-     )}
-    </div>
-    
+
   );
 };
 

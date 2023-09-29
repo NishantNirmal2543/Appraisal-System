@@ -10,14 +10,14 @@
 }
 
 
-.profile {
+.profileA {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   max-width: 800px;
   margin: 10px;
   padding: 20px;
-
+  margin-bottom: auto;
 }
 
 .cover-photo img {
@@ -134,7 +134,7 @@ hr {
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: bold;
-  color:#ffffff;
+  color: #ffffff;
   text-align: center;
   padding: 4px 8px;
   /* background-color: #ffffff; */
@@ -171,29 +171,30 @@ hr {
   text-indent: 15px;
   border: none;
   border-radius: 5px;
- }
- 
- .buttonDownload:hover {
+}
+
+.buttonDownload:hover {
   background-color: #45a21a;
   color: white;
- }
- 
- .buttonDownload:before, .buttonDownload:after {
+}
+
+.buttonDownload:before,
+.buttonDownload:after {
   content: ' ';
   display: block;
   position: absolute;
   left: 15px;
   top: 52%;
- }
- 
- .buttonDownload:before {
+}
+
+.buttonDownload:before {
   width: 10px;
   height: 2px;
   border-style: solid;
   border-width: 0 2px 2px;
- }
- 
- .buttonDownload:after {
+}
+
+.buttonDownload:after {
   width: 0;
   height: 0;
   margin-left: 3px;
@@ -204,36 +205,66 @@ hr {
   border-top-color: inherit;
   animation: downloadArrow 1s linear infinite;
   animation-play-state: paused;
- }
- 
- .buttonDownload:hover:before {
+}
+
+.buttonDownload:hover:before {
   border-color: #cdefbd;
- }
- 
- .buttonDownload:hover:after {
+}
+
+.buttonDownload:hover:after {
   border-top-color: #cdefbd;
   animation-play-state: running;
- }
- 
- @keyframes downloadArrow {
+}
+
+@keyframes downloadArrow {
   0% {
-   margin-top: -7px;
-   opacity: 1;
+    margin-top: -7px;
+    opacity: 1;
   }
- 
+
   0.001% {
-   margin-top: -15px;
-   opacity: 0.4;
+    margin-top: -15px;
+    opacity: 0.4;
   }
- 
+
   50% {
-   opacity: 1;
+    opacity: 1;
   }
- 
+
   100% {
-   margin-top: 0;
-   opacity: 0.4;
+    margin-top: 0;
+    opacity: 0.4;
   }
- }
+}
 
 
+.social {
+  margin: 10px;
+  flex-grow: 1;
+  border: "1px solid #ddd";
+  border-radius: "5px";
+  padding: "16px";
+  /* margin: "16px"; */
+  /* width: "1000px"; */
+  display: "flex";
+  flex-direction: "column";
+  align-items: "flex-start";
+  background: "#fff";
+  box-shadow: "0 2px 4px rgba(0, 0, 0, 0.1)";
+}
+
+/* 
+react style for classname:  social 
+style={{
+  border: "1px solid #ddd",
+  borderRadius: "5px",
+  padding: "16px",
+  margin: "16px",
+  width: "1000px",
+  // height:'700px',
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  background: "#fff",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+}} */
