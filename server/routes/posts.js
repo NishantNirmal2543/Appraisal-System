@@ -30,26 +30,6 @@ router.post('/', async (req, res) => {
   
 
   
-// Get feed posts
-// router.get('/getFeedPosts', async (req, res) => {
-//   try {
-//     const feedPosts = await Post.find().sort({ _id: -1 }); // Sort by most recent first
-//     res.status(200).json(feedPosts);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Could not fetch feed posts' });
-//   }
-// });
-
-// // Get user posts by employeeid
-// router.get('/getUserPosts/:employeeid', async (req, res) => {
-//   try {
-//     const { employeeid } = req.params;
-//     const userPosts = await Post.find({ employeeid }).sort({ _id: -1 }); // Sort by most recent first
-//     res.status(200).json(userPosts);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Could not fetch user posts' });
-//   }
-// });
 
 // // Like a post
 // router.post('/likePost/:postId', async (req, res) => {
