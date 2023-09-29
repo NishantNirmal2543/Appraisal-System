@@ -226,7 +226,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
                 disabled={!post.description}
                 onClick={handlePostSubmit}
                 style={{
-                    color: post.description ? '#fff' : 'black', // Change text color based on description
+                    color: post.description ? '#fff' : 'black', 
                     backgroundColor: '#0073b1',
                     borderRadius: '3rem',
                     marginTop: '16px',
