@@ -25,12 +25,13 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
         name: "",
         description: "",
         picturePath: "",
-        profilePhotoURL: "",
+        profilePhotoURL: profilePhotoURL,
+        designation: designation,
+        employeeName:employeeName
     });
 
 
     const handleCameraClick = () => {
-        // Show the Dropzone when the camera button is clicked
         setShowDropzone(!showDropzone);
     };
     const handleChange = (e) => {
@@ -39,28 +40,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
     };
 
 
-    // const handlePostSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     try {
-    //         const response = await axios.post("http://localhost:8080/api/createposts", {
-    //             ...post,
-    //             employeeid: employeeId,
-    //         });
-
-
-    //         setPost({
-
-    //             description: "",
-    //             // picturePath: "",
-
-    //         });
-
-    //     } catch (error) {
-    //         console.error("Error creating post:", error);
-
-    //     }
-    // };
+   
     const handlePostSubmit = async (e) => {
         e.preventDefault();
 
@@ -83,7 +63,10 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
                 const response = await axios.post("http://localhost:8080/api/createposts", {
                     ...post,
                     employeeid: employeeId,
-                    picturePath: downloadURL, // Include the Firebase Storage URL
+                    picturePath: downloadURL, 
+                    profilePhotoURL: profilePhotoURL,
+                    designation:designation,
+                    employeeName:employeeName
                 });
 
 

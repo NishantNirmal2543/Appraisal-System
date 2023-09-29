@@ -10,11 +10,13 @@ const postSchema = new mongoose.Schema({
     type:  String,
     required: true,
   },
-  name: {
+  employeeName: {
     type: String,
    
   },
-  
+  designation:{
+    type:String
+  },
   description: {
     type: String,
     required: true,

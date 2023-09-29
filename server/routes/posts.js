@@ -3,20 +3,21 @@ const router = express.Router();
 const { Post } = require('../models/post'); // Update the path
 const { v4: uuidv4 } = require('uuid'); // for generating unique IDs
 
-// Define a route for creating a new post
 router.post('/', async (req, res) => {
     try {
-      const { employeeid,  description, picturePath } = req.body;
+      const { employeeid,  description, picturePath ,profilePhotoURL ,designation ,employeeName} = req.body;
   
-      // You can add validation here if needed
+     
   
       // Create a new post
       const newPost = new Post({
         _id: uuidv4(), // Generate a unique ID for the post
         employeeid,
-       
+        profilePhotoURL,
         description,
         picturePath,
+        designation,
+        employeeName
       
       });
   
