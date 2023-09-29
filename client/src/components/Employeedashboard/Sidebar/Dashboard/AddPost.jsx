@@ -27,7 +27,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
         picturePath: "",
         profilePhotoURL: profilePhotoURL,
         designation: designation,
-        employeeName:employeeName
+        employeeName: employeeName
     });
 
 
@@ -40,7 +40,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
     };
 
 
-   
+
     const handlePostSubmit = async (e) => {
         e.preventDefault();
 
@@ -63,10 +63,10 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
                 const response = await axios.post("http://localhost:8080/api/createposts", {
                     ...post,
                     employeeid: employeeId,
-                    picturePath: downloadURL, 
+                    picturePath: downloadURL,
                     profilePhotoURL: profilePhotoURL,
-                    designation:designation,
-                    employeeName:employeeName
+                    designation: designation,
+                    employeeName: employeeName
                 });
 
 
@@ -75,6 +75,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
                     ...prevState,
                     description: "",
                 }));
+                setShowDropzone(false)
 
                 setImage(null);
                 toast.success("Post created successfully!");
@@ -222,11 +223,10 @@ const AddPost = ({ profilePhotoURL, employeeName, designation }) => {
                 </IconButton>
             </Box>
             <Button
-                disabled={!post}
+                disabled={!post.description}
                 onClick={handlePostSubmit}
-
                 style={{
-                    color: '#fff',
+                    color: post.description ? '#fff' : 'black', // Change text color based on description
                     backgroundColor: '#0073b1',
                     borderRadius: '3rem',
                     marginTop: '16px',
