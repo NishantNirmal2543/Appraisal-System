@@ -9,7 +9,7 @@ import ShareIcon from '@mui/icons-material/Share';
 const Post = ({ employeeName, description, designation, picturePath, profilePhotoURL }) => {
   // const { pfp ,name, title, content, image, timestamp, likes, comments } = attributes;
   const [isLiked, setIsLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState();
+  const [likeCount, setLikeCount] = useState(0);
   const [commentCount, setCommentCount] = useState();
   const handleLikeClick = () => {
     setIsLiked((prev) => !prev);
