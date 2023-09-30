@@ -121,7 +121,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
           </Typography>
         </div>
         <Typography variant="body2" style={{ color: '#555' }}>
-          {/* {timestamp} */}
+         
         </Typography>
       </div>
     </Box>
