@@ -146,7 +146,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
                     width={"850px"}
                 >
                     <Dropzone
-                        acceptedFiles=".jpg,.jpeg,.png"
+                        acceptedFiles=".jpg,.jpeg,.png,.pdf"
                         multiple={false}
                         onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
                     >
@@ -193,33 +193,33 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
             )}
             <Box display="flex" justifyContent="space-between" alignItems="center" >
                 <IconButton onClick={handleCameraClick}>
-                    {showDropzone ? <CameraAltOutlined style={{ color: '#0073b1' }} /> : <CameraAltOutlined style={{ color: '#0073b1' }} />}
+                    {showDropzone ? <CameraAltOutlined style={{ color: '#4CC713' }} /> : <CameraAltOutlined style={{ color: '#4CC713' }} />}
                 </IconButton>
-                <Typography style={{ fontSize: '16px', color: '#0073b1', cursor: 'pointer' }}>Post Image</Typography>
+                <Typography style={{ fontSize: '16px', color: '#4CC713', cursor: 'pointer' }}>Post Image</Typography>
             </Box>
 
             <Divider style={{ marginBottom: '16px' }} />
             <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
                 <Box display="flex" alignItems="center">
                     <IconButton>
-                        <EmojiEmotions style={{ color: '#0073b1' }} />
+                        <EmojiEmotions style={{ color: '#4CC713' }} />
                     </IconButton>
-                    <Typography style={{ fontSize: '16px', color: '#0073b1', cursor: 'pointer' }}>Feeling/Activity</Typography>
+                    <Typography style={{ fontSize: '16px', color: '#4CC713', cursor: 'pointer' }}>Feeling/Activity</Typography>
                 </Box>
                 <Box display="flex" alignItems="center">
                     <IconButton>
-                        <Attachment style={{ color: '#0073b1' }} />
+                        <Attachment style={{ color: '#4CC713' }} />
                     </IconButton>
-                    <Typography style={{ fontSize: '16px', color: '#0073b1', cursor: 'pointer' }}>Attach a file</Typography>
+                    <Typography style={{ fontSize: '16px', color: '#4CC713', cursor: 'pointer' }}>Attach a file</Typography>
                 </Box>
                 <Box display="flex" alignItems="center">
                     <IconButton>
-                        <Mic style={{ color: '#0073b1' }} />
+                        <Mic style={{ color: '#4CC713' }} />
                     </IconButton>
-                    <Typography style={{ fontSize: '16px', color: '#0073b1', cursor: 'pointer' }}>Record Audio</Typography>
+                    <Typography style={{ fontSize: '16px', color: '#4CC713', cursor: 'pointer' }}>Record Audio</Typography>
                 </Box>
                 <IconButton>
-                    <MoreHoriz style={{ color: '#0073b1' }} />
+                    <MoreHoriz style={{ color: '#4CC713' }} />
                 </IconButton>
             </Box>
             <Button
@@ -227,7 +227,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
                 onClick={handlePostSubmit}
                 style={{
                     color: post.description ? '#fff' : 'black',
-                    backgroundColor: '#0073b1',
+                    backgroundColor: '#4CC713',
                     borderRadius: '3rem',
                     marginTop: '16px',
                     width: '100%',

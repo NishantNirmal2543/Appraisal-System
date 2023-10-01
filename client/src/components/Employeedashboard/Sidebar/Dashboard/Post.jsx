@@ -7,7 +7,6 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ShareIcon from '@mui/icons-material/Share';
 
 const Post = ({ employeeName, description, designation, picturePath, profilePhotoURL }) => {
-  // const { pfp ,name, title, content, image, timestamp, likes, comments } = attributes;
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [commentCount, setCommentCount] = useState();
@@ -78,14 +77,14 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
             style={{
               border: 'none',
               background: 'none',
-              color: '#0073b1',
+              color: '#4CC713',
               marginRight: '16px',
               cursor: 'pointer',
             }}
           >
             {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
-          <Typography variant="subtitle1" style={{ color: '#0073b1' }}>
+          <Typography variant="subtitle1" style={{ color: '#4CC713' }}>
             Like ({likeCount})
           </Typography>
         </div>
@@ -94,14 +93,14 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
             style={{
               border: 'none',
               background: 'none',
-              color: '#0073b1',
+              color: '#4CC713',
               marginRight: '16px',
               cursor: 'pointer',
             }}
           >
             <ChatBubbleOutlineIcon />
           </IconButton>
-          <Typography variant="subtitle1" style={{ color: '#0073b1' }}>
+          <Typography variant="subtitle1" style={{ color: '#4CC713' }}>
             Comment ({commentCount})
           </Typography>
         </div>
@@ -110,13 +109,13 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
             style={{
               border: 'none',
               background: 'none',
-              color: '#0073b1',
+              color: '#4CC713',
               cursor: 'pointer',
             }}
           >
             <ShareIcon />
           </IconButton>
-          <Typography variant="subtitle1" style={{ color: '#0073b1' }}>
+          <Typography variant="subtitle1" style={{ color: '#4CC713' }}>
             Share
           </Typography>
         </div>
