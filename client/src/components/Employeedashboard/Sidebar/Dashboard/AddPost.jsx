@@ -102,6 +102,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
             background="#fff"
             backgroundColor="white"
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+            marginTop='-0.5px'
         >
             <Box display="flex" alignItems="center" marginBottom="16px">
                 <img

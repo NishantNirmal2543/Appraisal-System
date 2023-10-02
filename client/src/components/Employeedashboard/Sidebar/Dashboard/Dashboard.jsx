@@ -204,7 +204,7 @@ const Dashboard = () => {
               <button className="buttonDownload" onClick={handleUpload} disabled={uploading}>
                 Upload Profile Photo
               </button>
-              <h1> <Link to="/Employeedashboard/profile">{employee.name}</Link></h1>
+              <h1 > <Link style={{color:"black"}} to="/Employeedashboard/profile">{employee.name}</Link></h1>
               <h3>{employee.designation}</h3>
               <hr />
               <div className="info">

@@ -58,7 +58,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
 
   return (
     <Box
-      border="2px solid #ddd"
+      border="1px solid #ddd"
       borderRadius="5px"
       padding="16px"
       margin="16px"
@@ -69,6 +69,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
       background={'#fff'}
       backgroundColor="white"
       boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+      marginTop='40px'
     >
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <img
