@@ -54,13 +54,11 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
 
       <img
         src={picturePath}
-        alt="Post Image"
-        style={{
-          width: '300px',
-          borderRadius: '5px',
-          marginTop: '16px',
-        }}
-      />
+        width="100%"
+        height="500px"
+
+      ></img>
+
 
       <div
         style={{
@@ -120,7 +118,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
           </Typography>
         </div>
         <Typography variant="body2" style={{ color: '#555' }}>
-         
+
         </Typography>
       </div>
     </Box>
