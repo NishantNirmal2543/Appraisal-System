@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { IconButton, Box, Typography } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -9,23 +8,66 @@ import ShareIcon from '@mui/icons-material/Share';
 const Post = ({ employeeName, description, designation, picturePath, profilePhotoURL }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+  const [showFullDescription, setShowFullDescription] = useState(false);
   const [commentCount, setCommentCount] = useState();
+
   const handleLikeClick = () => {
     setIsLiked((prev) => !prev);
     setLikeCount((prevCount) => (isLiked ? prevCount - 1 : prevCount + 1));
   };
 
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
+  const renderDescription = () => {
+    if (showFullDescription) {
+      return (
+        <div>
+          <Typography variant="body1" style={{ marginTop: '16px', color: 'black' }}>
+            {description}
+          </Typography>
+          <button
+            onClick={toggleDescription}
+            style={{ border: 'none', background: 'none', color: '#4CC713', cursor: 'pointer' }}
+          >
+            Read Less
+          </button>
+        </div>
+      );
+    } else {
+      // Show a truncated description with a "Read More" button
+      const truncatedDescription = description.length > 200 ? `${description.slice(0, 200)}...` : description;
+      return (
+        <div>
+          <Typography variant="body1" style={{ marginTop: '16px', color: 'black' }}>
+            {truncatedDescription}
+          </Typography>
+          {description.length > 200 && (
+            <button
+              onClick={toggleDescription}
+              style={{ border: 'none', background: 'none', color: '#4CC713', cursor: 'pointer' }}
+            >
+              Read More
+            </button>
+          )}
+        </div>
+      );
+    }
+  };
+
   return (
     <Box
-      border="1px solid #ddd"
+      border="2px solid #ddd"
       borderRadius="5px"
       padding="16px"
       margin="16px"
+      width="900px"
       display="flex"
       flexDirection="column"
       alignItems="flex-start"
       background={'#fff'}
-      // color={isLiked ? '#fff' : '#000'}
+      backgroundColor="white"
       boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
     >
       <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -48,17 +90,17 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
           </Typography>
         </div>
       </div>
-      <Typography variant="body1" style={{ marginTop: '16px', color: 'black' }}>
-        {description}
-      </Typography>
+      {renderDescription()}
 
       <img
         src={picturePath}
         width="100%"
         height="500px"
-
-      ></img>
-
+        style={{
+          borderRadius: '15px',
+          marginRight: '12px',
+          
+        }}></img>
 
       <div
         style={{
@@ -118,7 +160,6 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
           </Typography>
         </div>
         <Typography variant="body2" style={{ color: '#555' }}>
-
         </Typography>
       </div>
     </Box>
@@ -126,9 +167,3 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
 };
 
 export default Post;
-
-
-
-
-
-

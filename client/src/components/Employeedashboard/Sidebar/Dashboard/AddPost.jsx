@@ -100,6 +100,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
             flexDirection="column"
             alignItems="flex-start"
             background="#fff"
+            backgroundColor="white"
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
         >
             <Box display="flex" alignItems="center" marginBottom="16px">
@@ -145,49 +146,52 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
                     // maxWidthwidth="100%"
                     width={"850px"}
                 >
-                    <Dropzone
-                        acceptedFiles=".jpg,.jpeg,.png,.pdf"
-                        multiple={false}
-                        onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
-                    >
-                        {({ getRootProps, getInputProps }) => (
-                            <div>
-                                <Box
-                                    {...getRootProps()}
-                                    border={`2px dashed ${palette.primary.main}`}
-                                    p="1rem"
-                                    // maxWidthwidth="100%"
-                                    width={"800px"}
-                                    sx={{ "&:hover": { cursor: "pointer" } }}
-                                >
-                                    <input {...getInputProps()} />
-                                    {!image ? (
-                                        <p>Add Image Here</p>
-                                    ) : (
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                            <Typography>{image.name}</Typography>
-                                            <IconButton
-                                                onClick={() => setImage(null)}
-                                                sx={{ width: "15%" }}
-                                            >
-                                                <EditOutlined />
-                                            </IconButton>
-                                            <IconButton
-                                                onClick={() => setImage(null)}
-                                                sx={{ width: "15%" }}
-                                            >
-                                                <DeleteOutlined />
-                                            </IconButton>
+                  <Dropzone
+  acceptedFiles=".jpg,.jpeg,.png,.pdf"
+  multiple={false}
+  onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
+>
+  {({ getRootProps, getInputProps }) => (
+    <div>
+      <Box
+        {...getRootProps()}
+        border={`2px dashed ${palette.primary.main}`}
+        p="1rem"
+        // maxWidthwidth="100%"
+        width={"800px"}
+        sx={{ "&:hover": { cursor: "pointer" } }}
+        display="flex" // Add this style to make the contents flex
+        justifyContent="space-between" // Add this to separate content and delete icon
+        alignItems="center" // Center content vertically
+      >
+        <input {...getInputProps()} />
+        {!image ? (
+          <p>Add Image Here</p>
+        ) : (
+          <>
+            <Typography>{image.name}</Typography>
+            <IconButton
+                onClick={() => setImage(null)}
+                sx={{ width: "15%" }}
+              >
+                <EditOutlined />
+              </IconButton>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <IconButton
+                onClick={() => setImage(null)}
+                sx={{ width: "15%" }}
+              >
+                <DeleteOutlined />
+              </IconButton>
+            </div>
+          </>
+        )}
+      </Box>
+    </div>
+  )}
+</Dropzone>
 
 
-                                        </div>
-                                    )}
-                                </Box>
-
-
-                            </div>
-                        )}
-                    </Dropzone>
 
                 </Box>
             )}

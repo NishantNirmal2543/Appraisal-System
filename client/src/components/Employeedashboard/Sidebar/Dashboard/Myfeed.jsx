@@ -166,11 +166,12 @@ const Myfeed = () => {
     };
 
 
-    return (
+    return (<>
+    <div style={{backgroundColor:"#F2F4F4"}}>
         <div className="dashboard">
             {error && <div className="error">{error}</div>}
             {isLoading ? (
-                <div className="loaderEmp"></div>
+                <div className="loaderEmp" ></div>
             ) : (
                 <div className="profileA">
                     <div className="container1">
@@ -274,6 +275,8 @@ const Myfeed = () => {
                 </div>
             )}
         </div>
+        </div>
+    </>
     );
 };
 
