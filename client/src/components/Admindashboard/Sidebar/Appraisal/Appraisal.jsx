@@ -2,7 +2,9 @@ import React from 'react'
 
 const Appraisal = () => {
   return (
-    <div>Appraisal</div>
+   <>
+   <h1>Under Development Custom Appraisal form</h1>
+   </>
   )
 }
 

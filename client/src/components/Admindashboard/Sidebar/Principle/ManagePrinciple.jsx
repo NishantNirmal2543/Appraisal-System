@@ -114,16 +114,22 @@ const ManagePrinciple = () => {
         </tbody>
       </table>
       {mode === "view" && (
-        <div className='card3'>
-          <h2>{selectedPrinciple.name}</h2>
-          <p>College: {selectedPrinciple.college}</p>
-
-          <p>Role: {selectedPrinciple.role}</p>
-          <p>Email: {selectedPrinciple.email}</p>
-          <p>Mobile: {selectedPrinciple.mobile}</p>
-
-        </div>
-      )}
+  <div className='card3' style={{ display: 'flex',  padding: '20px', border: '1px solid #ccc', borderRadius: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff' }}>
+    <div style={{ width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden', marginRight: '10px' }}>
+      <img src={selectedPrinciple.profilePhotoURL} alt={selectedPrinciple.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+    </div>
+    <div>
+      <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0', display: 'flex', alignItems: 'center' ,marginBottom:'4px' }}>
+        <span style={{ marginRight: '10px' }}>{selectedPrinciple.name}</span>
+        {/* Add any other icons or elements you want to include here */}
+      </h2>
+      <p style={{ margin: '0', color: '#555' ,marginBottom:'4px'}}>College: {selectedPrinciple.college}</p>
+      <p style={{ margin: '0', color: '#555' ,marginBottom:'4px'}}>Role: {selectedPrinciple.role}</p>
+      <p style={{ margin: '0', color: '#555' ,marginBottom:'4px'}}>Email: {selectedPrinciple.email}</p>
+      <p style={{ margin: '0', color: '#555' ,marginBottom:'4px'}}>Mobile: {selectedPrinciple.mobile}</p>
+    </div>
+  </div>
+)}
       {mode === "edit" && (
         <div className='card1'>
           <h2>Edit Principles</h2>
