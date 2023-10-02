@@ -51,6 +51,8 @@ const fetchempdeptRoutes = require("./routes/fetchempdept")
 
 const changepasswordempRoutes = require("./routes/changepasswordemp")
 
+const changepasswordhodRoutes = require("./routes/changepasswordhod")
+
 const feedpostsRoutes = require("./routes/feedposts")
 
 const createpostRoutes = require("./routes/posts")
@@ -99,6 +101,8 @@ app.use("/api/fetchhod" , fetchhodRoutes );
 app.use("/api/deletehod" , deletehodRoutes);
 
 app.use("/api/updatehod" , updatehodRoutes);
+
+app.use("/api/changepasswordhod" , changepasswordhodRoutes);
 
 
 //routes principle

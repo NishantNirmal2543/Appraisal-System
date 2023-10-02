@@ -84,13 +84,13 @@ const AddHod = () => {
             toast.error('Mobile number must be a 10 digit number');
             return;
         }
-        if (!password.trim()) {
-            toast.error('Please enter a password');
-            return;
-        } else if (password.length < 8) {
-            toast.error('Password must be at least 8 characters long');
-            return;
-        }
+        // if (!password.trim()) {
+        //     toast.error('Please enter a password');
+        //     return;
+        // } else if (password.length < 8) {
+        //     toast.error('Password must be at least 8 characters long');
+        //     return;
+        // }
 
         setErrors(errors);
 
@@ -163,11 +163,11 @@ const AddHod = () => {
                         <input type="email" id="email" value={email} onChange={handleEmailChange} />
                         {errors.email && <div className="error">{errors.email}</div>}
                     </div>
-                    <div>
+                    {/* <div>
                         <label htmlFor="password">Password:</label>
                         <input type="password" id="password" value={password} onChange={handlePasswordChange} />
                         {errors.password && <div className="error">{errors.password}</div>}
-                    </div>
+                    </div> */}
                     <div>
                         <label htmlFor="mobile">Mobile:</label>
                         <input type="tel" id="mobile" value={mobile} onChange={handleMobileChange} />

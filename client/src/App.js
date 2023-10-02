@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ResetPassword from "./components/Admindashboard/Sidebar/Employee/ResetPassword";
 import Myfeed from "./components/Employeedashboard/Sidebar/Dashboard/Myfeed";
+import ResetPasswordHod from "./components/Admindashboard/Sidebar/HOD/ResetPasswordHod";
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
 			{admin && <Route path="/Principaldashboard" exact element={<Main3 />} />}
 			{admin && <Route path="/Admindashboard" exact element={<Main4 />} />}
 
+			/ResetPasswordHod
+			<Route path="/ResetPasswordHod" exact element={<ResetPasswordHod />} />
 
 			<Route path="/ResetPassword" exact element={<ResetPassword />} />
 			<Route path="/Employeedashboard/profile" exact element={<Myfeed />} />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ResetPassword = () => {
+const ResetPasswordHod = () => {
     const [email, setEmail] = useState('');
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -15,7 +15,7 @@ const ResetPassword = () => {
     
       try {
        
-        const response = await axios.post('http://localhost:8080/api/changepasswordemp', {
+        const response = await axios.post('http://localhost:8080/api/changepasswordhod', {
           email,
           currentPassword,
           newPassword,
@@ -140,5 +140,5 @@ const styles = {
     },
   };
   
-  export default ResetPassword;
+  export default ResetPasswordHod;
   
