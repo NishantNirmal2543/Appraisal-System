@@ -24,13 +24,13 @@ const Sidebar = () => {
 
     return (
         <main className={show ? 'space-toggle' : null}>
-             
+
             <header className={`header ${show ? 'space-toggle' : null}`}>
-            
+
                 <div className='header-toggle' onClick={() => setShow(!show)}>
                     <i className={`fas fa-bars ${show ? 'fa-solid fa-xmark' : null}`}></i>
                 </div>
-               
+
             </header>
 
             <aside className={`sidebar ${show ? 'show' : null}`}>
@@ -59,7 +59,7 @@ const Sidebar = () => {
                                 <span className='nav-link-name'>Employee</span>
                             </div>
                             <div className={`nav-link ${activeComponent === 'Appraisal' ? 'active' : ''}`} onClick={() => handleClick('Appraisal')}>
-                                <i className='fas fa-user nav-link-icon'></i>
+                                <i className='fas fa-pencil-alt'></i>
                                 <span className='nav-link-name'>Appraisal</span>
                             </div>
                         </div>
