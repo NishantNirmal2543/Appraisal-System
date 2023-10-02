@@ -4,7 +4,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { BsPencil } from "react-icons/bs";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "./Employee.css";
-
+import profilePhoto from "../Employee/profile.jpg";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -150,15 +150,26 @@ const ManageEmployee = () => {
         </tbody>
       </table>
       {mode === "view" && (
-        <div className='card3'>
-          <h2>{selectedEmployee.name}</h2>
-          <p>College: {selectedEmployee.college}</p>
-          <p>Department: {selectedEmployee.department}</p>
-          <p>Designation: {selectedEmployee.designation}</p>
-          <p>Email: {selectedEmployee.email}</p>
-          <p>Mobile: {selectedEmployee.mobile}</p>
+        <div className='card3' style={{ display: 'flex', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff' }}>
+          <div style={{ width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden', marginRight: '10px' }}>
+            <img src={selectedEmployee.profilePhotoURL || profilePhoto} alt={selectedEmployee.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+          <div>
+            <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0', display: 'flex', alignItems: 'center', marginBottom: '4px' }}>
+              <span style={{ marginRight: '10px' }}>{selectedEmployee.name}</span>
+              {/* Add any other icons or elements you want to include here */}
+            </h2>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>College: {selectedEmployee.college}</p>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>Department: {selectedEmployee.department}</p>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>Designation: {selectedEmployee.designation}</p>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>Email: {selectedEmployee.email}</p>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>Mobile: {selectedEmployee.mobile}</p>
+          </div>
         </div>
       )}
+
+
+
       {mode === "edit" && (
         <div className='card1'>
           <h2>Edit Employee</h2>

@@ -1,11 +1,11 @@
 
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AiOutlineEye } from "react-icons/ai";
 import { BsPencil } from "react-icons/bs";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "./Hod.css";
+import profilePhoto from "../HOD/profile.jpg";
 
 
 import { toast } from 'react-toastify';
@@ -116,16 +116,24 @@ const ManageHod = () => {
         </tbody>
       </table>
       {mode === "view" && (
-        <div className='card3'>
-          <h2>{selectedHod.name}</h2>
-          <p>College: {selectedHod.college}</p>
-          <p>Department: {selectedHod.department}</p>
-          <p>Role: {selectedHod.role}</p>
-          <p>Email: {selectedHod.email}</p>
-          <p>Mobile: {selectedHod.mobile}</p>
-
+        <div className='card3' style={{ display: 'flex', padding: '20px', border: '1px solid #ccc', borderRadius: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', backgroundColor: '#fff' }}>
+          <div style={{ width: '40px', height: '40px', borderRadius: '50%', overflow: 'hidden', marginRight: '10px' }}>
+            <img src={selectedHod.profilePhotoURL || profilePhoto} alt={selectedHod.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </div>
+          <div>
+            <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0', display: 'flex', alignItems: 'center' }}>
+              <span style={{ marginRight: '10px' }}>{selectedHod.name}</span>
+              {/* Add any other icons or elements you want to include here */}
+            </h2>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>College: {selectedHod.college}</p>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>Department: {selectedHod.department}</p>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>Role: {selectedHod.role}</p>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>Email: {selectedHod.email}</p>
+            <p style={{ margin: '0', color: '#555', marginBottom: '2px' }}>Mobile: {selectedHod.mobile}</p>
+          </div>
         </div>
       )}
+
       {mode === "edit" && (
         <div className='card1'>
           <h2>Edit Hods</h2>
