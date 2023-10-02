@@ -12,6 +12,7 @@ import { useState } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ResetPassword from "./components/Admindashboard/Sidebar/Employee/ResetPassword";
+import Myfeed from "./components/Employeedashboard/Sidebar/Dashboard/Myfeed";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
 
 
 			<Route path="/ResetPassword" exact element={<ResetPassword />} />
+			<Route path="/Employeedashboard/profile" exact element={<Myfeed />} />
 
 			<Route path="/" exact element={<Login />} />
 			<Route path="/adminsignin" exact element={<Adminsignin  getAdminState = {getAdminState}/>} />

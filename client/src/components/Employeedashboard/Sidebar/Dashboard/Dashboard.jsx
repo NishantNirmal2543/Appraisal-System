@@ -10,6 +10,7 @@ import { storage } from "../../../firebase";
 import { v4 } from "uuid";
 import AddPost from "./AddPost";
 import Post from "./Post";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [employee, setEmployee] = useState(null);
@@ -203,7 +204,7 @@ const Dashboard = () => {
               <button className="buttonDownload" onClick={handleUpload} disabled={uploading}>
                 Upload Profile Photo
               </button>
-              <h1>{employee.name}</h1>
+              <h1> <Link to="/Employeedashboard/profile">{employee.name}</Link></h1>
               <h3>{employee.designation}</h3>
               <hr />
               <div className="info">
