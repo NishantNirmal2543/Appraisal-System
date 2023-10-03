@@ -2,7 +2,8 @@ import {  useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-
+import {toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 const Adminsignin = (props) => {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
@@ -31,7 +32,9 @@ const Adminsignin = (props) => {
 				error.response.status >= 400 &&
 				error.response.status <= 500
 			) {
-				setError(error.response.data.message);
+				toast.error("Invalid email or password");
+				// setError(error.response.data.message);
+
 			}
 		}
 	};
