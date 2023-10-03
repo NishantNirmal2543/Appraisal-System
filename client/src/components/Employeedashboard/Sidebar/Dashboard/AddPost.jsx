@@ -92,7 +92,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
     return (
         <Box
             border="1px solid #ddd"
-            borderRadius="5px"
+            borderRadius="30px"
             padding="16px"
             margin="16px"
             width="900px"
