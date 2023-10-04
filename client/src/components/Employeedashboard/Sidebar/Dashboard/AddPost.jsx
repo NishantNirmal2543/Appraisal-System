@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button, Typography, InputBase, Box, Divider, IconButton } from '@mui/material';
 import { EmojiEmotions, Attachment, Mic, MoreHoriz } from '@mui/icons-material';
 import axios from 'axios';
+import profilePhoto from "../Dashboard/profile.jpg";
+
 import {
     EditOutlined,
     CameraAltOutlined,
@@ -106,7 +108,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
         >
             <Box display="flex" alignItems="center" marginBottom="16px">
                 <img
-                    src={profilePhotoURL}
+                    src={profilePhotoURL || profilePhoto}
                     alt="User Profile"
                     style={{
                         borderRadius: '50%',

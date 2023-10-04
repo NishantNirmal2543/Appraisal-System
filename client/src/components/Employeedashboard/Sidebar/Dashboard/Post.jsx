@@ -4,6 +4,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ShareIcon from '@mui/icons-material/Share';
+import profilePhoto from "../Dashboard/profile.jpg";
 
 const Post = ({ employeeName, description, designation, picturePath, profilePhotoURL }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -72,8 +73,9 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
       marginTop='40px'
     >
       <div style={{ display: 'flex', alignItems: 'center' }}>
+        
         <img
-          src={profilePhotoURL}
+          src={profilePhotoURL || profilePhoto}
           alt="User Profile"
           style={{
             borderRadius: '50%',
