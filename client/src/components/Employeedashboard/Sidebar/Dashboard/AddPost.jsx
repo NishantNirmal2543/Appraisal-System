@@ -118,7 +118,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
                     }}
                 />
                 <div>
-                    <Typography variant="h6" style={{ margin: '0', fontSize: '18px' }}>
+                    <Typography variant="h6" style={{ margin: '0', fontSize: '18px' ,color:'black' ,fontWeight:'bold'}}>
                         {employeeName}
                     </Typography>
                     <Typography style={{ margin: '0', fontSize: '14px', color: '#555' }}>

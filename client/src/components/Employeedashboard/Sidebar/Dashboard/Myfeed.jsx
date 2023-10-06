@@ -201,7 +201,7 @@ const Myfeed = () => {
                             <button className="buttonDownload" onClick={handleUpload} disabled={uploading}>
                                 Upload Profile Photo
                             </button>
-                            <h1>
+                            <h1 style={{fontWeight:'bold',color:'black'}}>
                                 {employee.name}
                             </h1>
                             <h3>{employee.designation}</h3>

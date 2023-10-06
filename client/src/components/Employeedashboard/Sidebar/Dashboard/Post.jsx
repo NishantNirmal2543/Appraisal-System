@@ -85,7 +85,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
           }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '4px', color: 'black' }}>
+          <Typography variant="h6" style={{ marginBottom: '4px', color: 'black' ,fontWeight:'bold'}}>
             {employeeName}
           </Typography>
           <Typography variant="subtitle2" style={{ color: '#555' }}>
