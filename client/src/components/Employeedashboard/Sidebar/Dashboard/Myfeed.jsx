@@ -173,7 +173,7 @@ const Myfeed = () => {
             {isLoading ? (
                 <div className="loaderEmp" ></div>
             ) : (
-                <div className="profileA">
+                <div className="profileA" style={{marginLeft:"30px"}}>
                     <div className="container1">
                         <div className="cover-photo">
                             <img src={coverPhoto} alt="Cover" />
