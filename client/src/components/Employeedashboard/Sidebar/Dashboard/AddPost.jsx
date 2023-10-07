@@ -3,7 +3,7 @@ import { Button, Typography, InputBase, Box, Divider, IconButton } from '@mui/ma
 import { EmojiEmotions, Attachment, Mic, MoreHoriz } from '@mui/icons-material';
 import axios from 'axios';
 import profilePhoto from "../Dashboard/profile.jpg";
-
+import { Link } from 'react-router-dom';
 import {
     EditOutlined,
     CameraAltOutlined,
@@ -118,7 +118,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
                     }}
                 />
                 <div>
-                    <Typography variant="h6" style={{ margin: '0', fontSize: '18px' ,color:'black' ,fontWeight:'bold'}}>
+                    <Typography variant="h6" style={{ margin: '0', fontSize: '18px', color: 'black', fontWeight: 'bold' }}>
                         {employeeName}
                     </Typography>
                     <Typography style={{ margin: '0', fontSize: '14px', color: '#555' }}>
@@ -149,50 +149,50 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
                     // maxWidthwidth="100%"
                     width={"850px"}
                 >
-                  <Dropzone
-  acceptedFiles=".jpg,.jpeg,.png,.pdf"
-  multiple={false}
-  onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
->
-  {({ getRootProps, getInputProps }) => (
-    <div>
-      <Box
-        {...getRootProps()}
-        border={`2px dashed ${palette.primary.main}`}
-        p="1rem"
-        // maxWidthwidth="100%"
-        width={"800px"}
-        sx={{ "&:hover": { cursor: "pointer" } }}
-        display="flex" // Add this style to make the contents flex
-        justifyContent="space-between" // Add this to separate content and delete icon
-        alignItems="center" // Center content vertically
-      >
-        <input {...getInputProps()} />
-        {!image ? (
-          <p>Add Image Here</p>
-        ) : (
-          <>
-            <Typography>{image.name}</Typography>
-            <IconButton
-                onClick={() => setImage(null)}
-                sx={{ width: "15%" }}
-              >
-                <EditOutlined />
-              </IconButton>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <IconButton
-                onClick={() => setImage(null)}
-                sx={{ width: "15%" }}
-              >
-                <DeleteOutlined />
-              </IconButton>
-            </div>
-          </>
-        )}
-      </Box>
-    </div>
-  )}
-</Dropzone>
+                    <Dropzone
+                        acceptedFiles=".jpg,.jpeg,.png,.pdf"
+                        multiple={false}
+                        onDrop={(acceptedFiles) => setImage(acceptedFiles[0])}
+                    >
+                        {({ getRootProps, getInputProps }) => (
+                            <div>
+                                <Box
+                                    {...getRootProps()}
+                                    border={`2px dashed ${palette.primary.main}`}
+                                    p="1rem"
+                                    // maxWidthwidth="100%"
+                                    width={"800px"}
+                                    sx={{ "&:hover": { cursor: "pointer" } }}
+                                    display="flex" // Add this style to make the contents flex
+                                    justifyContent="space-between" // Add this to separate content and delete icon
+                                    alignItems="center" // Center content vertically
+                                >
+                                    <input {...getInputProps()} />
+                                    {!image ? (
+                                        <p>Add Image Here</p>
+                                    ) : (
+                                        <>
+                                            <Typography>{image.name}</Typography>
+                                            <IconButton
+                                                onClick={() => setImage(null)}
+                                                sx={{ width: "15%" }}
+                                            >
+                                                <EditOutlined />
+                                            </IconButton>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                <IconButton
+                                                    onClick={() => setImage(null)}
+                                                    sx={{ width: "15%" }}
+                                                >
+                                                    <DeleteOutlined />
+                                                </IconButton>
+                                            </div>
+                                        </>
+                                    )}
+                                </Box>
+                            </div>
+                        )}
+                    </Dropzone>
 
 
 
@@ -207,12 +207,14 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
 
             <Divider style={{ marginBottom: '16px' }} />
             <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
-                <Box display="flex" alignItems="center">
-                    <IconButton>
-                        <EmojiEmotions style={{ color: '#4CC713' }} />
-                    </IconButton>
-                    <Typography style={{ fontSize: '16px', color: '#4CC713', cursor: 'pointer' }}>Feeling/Activity</Typography>
-                </Box>
+                <Link to="/Employeedashboard/profile"> {/* Add this Link component */}
+                    <Box display="flex" alignItems="center">
+                        <IconButton>
+                            <EmojiEmotions style={{ color: '#4CC713' }} />
+                        </IconButton>
+                        <Typography style={{ fontSize: '16px', color: '#4CC713', cursor: 'pointer' }}>Feeling/Activity</Typography>
+                    </Box>
+                </Link>
                 <Box display="flex" alignItems="center">
                     <IconButton>
                         <Attachment style={{ color: '#4CC713' }} />
