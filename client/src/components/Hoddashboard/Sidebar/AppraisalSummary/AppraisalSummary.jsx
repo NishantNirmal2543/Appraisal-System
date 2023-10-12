@@ -20,7 +20,7 @@ const EmployeeTable = () => {
   const componentpdf = useRef();
   const handleDownloadPDF = useReactToPrint({
     content: () => componentpdf.current,
-    documentTitle: `${selectedEmployee.name}`,
+    documentTitle: selectedEmployee ? selectedEmployee.name : 'Default Title',
     onAfterPrint: () => {
       toast.success('Data saved in PDF');
     },
@@ -102,6 +102,7 @@ const EmployeeTable = () => {
 
                   <thead>
                     <tr>
+                   
                       <th>Employee Name</th>
                       <th>Employee Email</th>
                       <th>View Appraisal</th>

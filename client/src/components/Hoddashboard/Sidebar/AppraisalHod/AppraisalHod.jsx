@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./AppraisalHod.css";
 import { FcDocument } from 'react-icons/fc';
 import NoDoc from "../AppraisalHod/NoDoc.pdf";
+import profilePhoto from "../AppraisalHod/profile.jpg";
 
 const EmployeeTable = () => {
   const [employees, setEmployees] = useState([]);
@@ -1387,6 +1388,7 @@ const EmployeeTable = () => {
                 <table class="employee-table">
                   <thead>
                     <tr>
+
                       <th>Employee Name</th>
                       <th>Employee Email</th>
                       <th>Score Appraisal</th>
@@ -1396,7 +1398,24 @@ const EmployeeTable = () => {
                   <tbody>
                     {employees.map((employee) => (
                       <tr key={employee._id}>
-                        <td>{employee.name}</td>
+
+                        <td>
+                          <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <img
+                              src={employee.profilePhotoURL || profilePhoto}
+                              alt="User Profile"
+                              style={{
+                                borderRadius: '50%',
+
+                                marginRight: '10px',
+                                width: '30px',
+                                height: '30px',
+                              }}
+                            />
+                            {employee.name}
+                          </div>
+
+                        </td>
                         <td>{employee.email}</td>
                         <td>
                           <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewDetails(employee)} >  <BsPencil /> </button>
