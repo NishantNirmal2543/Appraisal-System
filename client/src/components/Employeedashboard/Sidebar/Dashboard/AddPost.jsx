@@ -97,7 +97,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
             borderRadius="30px"
             padding="16px"
             margin="16px"
-            width="900px"
+            width="600px"
             display="flex"
             flexDirection="column"
             alignItems="flex-start"
@@ -147,7 +147,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
                     mt="1rem"
                     p="1rem"
                     // maxWidthwidth="100%"
-                    width={"850px"}
+                    width={"566px"}
                 >
                     <Dropzone
                         acceptedFiles=".jpg,.jpeg,.png,.pdf"
@@ -161,11 +161,11 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
                                     border={`2px dashed ${palette.primary.main}`}
                                     p="1rem"
                                     // maxWidthwidth="100%"
-                                    width={"800px"}
+                                    width={"530px"}
                                     sx={{ "&:hover": { cursor: "pointer" } }}
-                                    display="flex" // Add this style to make the contents flex
-                                    justifyContent="space-between" // Add this to separate content and delete icon
-                                    alignItems="center" // Center content vertically
+                                    display="flex"
+                                    justifyContent="space-between"
+                                    alignItems="center"
                                 >
                                     <input {...getInputProps()} />
                                     {!image ? (
@@ -207,7 +207,7 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
 
             <Divider style={{ marginBottom: '16px' }} />
             <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
-                <Link to="/Employeedashboard/profile"> {/* Add this Link component */}
+                <Link to="/Employeedashboard/profile">
                     <Box display="flex" alignItems="center">
                         <IconButton>
                             <EmojiEmotions style={{ color: '#4CC713' }} />

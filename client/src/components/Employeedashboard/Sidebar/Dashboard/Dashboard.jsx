@@ -11,8 +11,13 @@ import { v4 } from "uuid";
 import AddPost from "./AddPost";
 import Post from "./Post";
 import { Link } from "react-router-dom";
+import Notification from "./Notification"
+
+import { FaEdit } from 'react-icons/fa'; // Import the edit icon from a library like react-icons
 
 const Dashboard = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const [employee, setEmployee] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -180,14 +185,27 @@ const Dashboard = () => {
             <div className="cover-photo">
               <img src={coverPhoto} alt="Cover" />
             </div>
-            <div className="profile-details">
+            <div className="profileA-details">
               <label htmlFor="file-input">
                 <div
-                  className="profile-photo"
+                  className="profileA-photo"
                   onClick={handleImageClick}
                   style={{ cursor: "pointer" }}
+
                 >
-                  <img src={profilePhotoURL || profilePhoto} alt="Profile" />
+                  <div
+                    className="image-container"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  > <img src={profilePhotoURL || profilePhoto} alt="Profile" />
+                    {isHovered && (
+                      <div className="image-overlay">
+                        <FaEdit className="edit-icon" />
+                      </div>
+                    )}
+                  </div>
+
+
                 </div>
               </label>
               <input
@@ -262,7 +280,7 @@ const Dashboard = () => {
           className="social"
         >
           <AddPost profilePhotoURL={profilePhotoURL} employeeName={employee.name} designation={employee.designation} updatePosts={updatePosts} />
-
+          {/* <Notification/> */}
           <div>
             {posts.map((post, index) => (
               <Post
@@ -275,6 +293,7 @@ const Dashboard = () => {
               />
             ))}
           </div>
+
 
         </div>
       )}

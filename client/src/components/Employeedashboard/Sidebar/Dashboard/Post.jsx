@@ -63,7 +63,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
       borderRadius="30px"
       padding="16px"
       margin="16px"
-      width="900px"
+      width="600px"
       display="flex"
       flexDirection="column"
       alignItems="flex-start"
@@ -73,7 +73,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
       marginTop='40px'
     >
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        
+
         <img
           src={profilePhotoURL || profilePhoto}
           alt="User Profile"
@@ -85,7 +85,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
           }}
         />
         <div>
-          <Typography variant="h6" style={{ marginBottom: '4px', color: 'black' ,fontWeight:'bold'}}>
+          <Typography variant="h6" style={{ marginBottom: '4px', color: 'black', fontWeight: 'bold' }}>
             {employeeName}
           </Typography>
           <Typography variant="subtitle2" style={{ color: '#555' }}>
@@ -102,7 +102,8 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
         style={{
           borderRadius: '15px',
           marginRight: '12px',
-          
+
+
         }}></img>
 
       <div
