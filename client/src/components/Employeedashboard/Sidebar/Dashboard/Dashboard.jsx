@@ -13,7 +13,7 @@ import Post from "./Post";
 import { Link } from "react-router-dom";
 import Notification from "./Notification"
 
-import { FaEdit } from 'react-icons/fa'; // Import the edit icon from a library like react-icons
+import { FaEdit } from 'react-icons/fa';
 
 const Dashboard = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -280,7 +280,7 @@ const Dashboard = () => {
           className="social"
         >
           <AddPost profilePhotoURL={profilePhotoURL} employeeName={employee.name} designation={employee.designation} updatePosts={updatePosts} />
-          {/* <Notification/> */}
+         
           <div>
             {posts.map((post, index) => (
               <Post
@@ -297,7 +297,9 @@ const Dashboard = () => {
 
         </div>
       )}
-
+       {!isLoading && employee && (
+      <Notification/>
+      )}
     </div>
 
   );

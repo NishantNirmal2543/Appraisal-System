@@ -10,8 +10,10 @@ import { storage } from "../../../firebase";
 import { v4 } from "uuid";
 import AddPost from "./AddPost";
 import Post from "./Post";
+import { FaEdit } from 'react-icons/fa';
 
 const Myfeed = () => {
+    const [isHovered, setIsHovered] = useState(false);
     const [employee, setEmployee] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -167,114 +169,125 @@ const Myfeed = () => {
 
 
     return (<>
-    <div style={{backgroundColor:"#F2F4F4"}}>
-        <div className="dashboard">
-            {error && <div className="error">{error}</div>}
-            {isLoading ? (
-                <div className="loaderEmp" ></div>
-            ) : (
-                <div className="profileA" style={{marginLeft:"30px"}}>
-                    <div className="container1">
-                        <div className="cover-photo">
-                            <img src={coverPhoto} alt="Cover" />
-                        </div>
-                        <div className="profile-details">
-                            <label htmlFor="file-input">
-                                <div
-                                    className="profile-photo"
-                                    onClick={handleImageClick}
-                                    style={{ cursor: "pointer" }}
-                                >
-                                    <img src={profilePhotoURL || profilePhoto} alt="Profile" />
-                                </div>
-                            </label>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                required
-                                id="file-input"
-                                style={{ display: "none" }}
-                                onChange={handleFileChange}
-                            />
-                            {uploading && <span>Uploading...</span>}
+        <div style={{ backgroundColor: "#F2F4F4" }}>
+            <div className="dashboard">
+                {error && <div className="error">{error}</div>}
+                {isLoading ? (
+                    <div className="loaderEmp" ></div>
+                ) : (
+                    <div className="profileA" style={{ marginLeft: "30px" }}>
+                        <div className="container1">
+                            <div className="cover-photo">
+                                <img src={coverPhoto} alt="Cover" />
+                            </div>
+                            <div className="profileA-details">
+                                <label htmlFor="file-input">
+                                    <div
+                                        className="profileA-photo"
+                                        onClick={handleImageClick}
+                                        style={{ cursor: "pointer" }}
 
-                            <button className="buttonDownload" onClick={handleUpload} disabled={uploading}>
-                                Upload Profile Photo
-                            </button>
-                            <h1 style={{fontWeight:'bold',color:'black'}}>
-                                {employee.name}
-                            </h1>
-                            <h3>{employee.designation}</h3>
-                            <hr />
-                            <div className="info">
-                                <div className="info-item">
-                                    <h4>College</h4>
-                                    <p>{employee.college}</p>
-                                </div>
-                                <div className="info-item">
-                                    <h4>Department</h4>
-                                    <p>{employee.department}</p>
-                                </div>
-                                <div className="info-item">
-                                    <h4>Email</h4>
-                                    <p>{employee.email}</p>
-                                </div>
-                                <div className="info-item">
-                                    <h4>Mobile</h4>
-                                    <p>{employee.mobile}</p>
-                                </div>
-                                <div className="progress-bar-container">
-                                    {appraisals.length > 0 ? (
-                                        <div className="progress-bar">
-                                            <div
-                                                className={`progress-bar-fill ${appraisals[0].progress === 100 ? "animated" : ""
-                                                    }`}
-                                                style={{ width: `${appraisals[0].progress}%` }}
-                                            ></div>
-                                            {appraisals[0].progress === 100 && (
-                                                <span className="appraisal-done">Appraisal done!</span>
+                                    >
+                                        <div
+                                            className="image-container"
+                                            onMouseEnter={() => setIsHovered(true)}
+                                            onMouseLeave={() => setIsHovered(false)}
+                                        > <img src={profilePhotoURL || profilePhoto} alt="Profile" />
+                                            {isHovered && (
+                                                <div className="image-overlay">
+                                                    <FaEdit className="edit-icon" />
+                                                </div>
                                             )}
                                         </div>
-                                    ) : (
-                                        <div className="progress-bar">
-                                            <div
-                                                className="progress-bar-fill"
-                                                style={{ width: "0%" }}
-                                            ></div>
-                                            <span className="appraisal-pending">
-                                                Appraisal pending
-                                            </span>
-                                        </div>
-                                    )}
+                                    </div>
+                                </label>
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    required
+                                    id="file-input"
+                                    style={{ display: "none" }}
+                                    onChange={handleFileChange}
+                                />
+                                {uploading && <span>Uploading...</span>}
+
+                                <button className="buttonDownload" onClick={handleUpload} disabled={uploading}>
+                                    Upload Profile Photo
+                                </button>
+                                <h1 style={{ fontWeight: 'bold', color: 'black' }}>
+                                    {employee.name}
+                                </h1>
+                                <h3>{employee.designation}</h3>
+                                <hr />
+                                <div className="info">
+                                    <div className="info-item">
+                                        <h4>College</h4>
+                                        <p>{employee.college}</p>
+                                    </div>
+                                    <div className="info-item">
+                                        <h4>Department</h4>
+                                        <p>{employee.department}</p>
+                                    </div>
+                                    <div className="info-item">
+                                        <h4>Email</h4>
+                                        <p>{employee.email}</p>
+                                    </div>
+                                    <div className="info-item">
+                                        <h4>Mobile</h4>
+                                        <p>{employee.mobile}</p>
+                                    </div>
+                                    <div className="progress-bar-container">
+                                        {appraisals.length > 0 ? (
+                                            <div className="progress-bar">
+                                                <div
+                                                    className={`progress-bar-fill ${appraisals[0].progress === 100 ? "animated" : ""
+                                                        }`}
+                                                    style={{ width: `${appraisals[0].progress}%` }}
+                                                ></div>
+                                                {appraisals[0].progress === 100 && (
+                                                    <span className="appraisal-done">Appraisal done!</span>
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <div className="progress-bar">
+                                                <div
+                                                    className="progress-bar-fill"
+                                                    style={{ width: "0%" }}
+                                                ></div>
+                                                <span className="appraisal-pending">
+                                                    Appraisal pending
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
-            {!isLoading && employee && (
-                <div className="social">
-                    <AddPost
-                        profilePhotoURL={profilePhotoURL}
-                        employeeName={employee.name}
-                        designation={employee.designation}
-                        updatePosts={updatePosts}
-                    />
-                    <div>
-                        {posts.map((post, index) => (
-                            <Post
-                                key={index}
-                                profilePhotoURL={post.profilePhotoURL}
-                                description={post.description}
-                                picturePath={post.picturePath}
-                                designation={post.designation}
-                                employeeName={post.employeeName}
-                            />
-                        ))}
+                )}
+                {!isLoading && employee && (
+                    <div className="social">
+                        <AddPost
+                            profilePhotoURL={profilePhotoURL}
+                            employeeName={employee.name}
+                            designation={employee.designation}
+                            updatePosts={updatePosts}
+                        />
+                        <div>
+                            {posts.map((post, index) => (
+                                <Post
+                                    key={index}
+                                    profilePhotoURL={post.profilePhotoURL}
+                                    description={post.description}
+                                    picturePath={post.picturePath}
+                                    designation={post.designation}
+                                    employeeName={post.employeeName}
+                                />
+                            ))}
+                        </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
         </div>
     </>
     );

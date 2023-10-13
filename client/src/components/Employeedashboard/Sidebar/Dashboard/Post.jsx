@@ -98,7 +98,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
       <img
         src={picturePath}
         width="100%"
-        height="500px"
+        height="400px"
         style={{
           borderRadius: '15px',
           marginRight: '12px',
