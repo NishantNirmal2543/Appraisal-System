@@ -8,9 +8,9 @@ const notifications = [
 
 const Dashboard = () => {
   return (
-    
+
     <div style={dashboardStyles}>
-     
+
       <div style={notificationContainerStyles}>
         {notifications.map((notification) => (
           <div key={notification.id} style={notificationCardStyles}>
@@ -24,11 +24,11 @@ const Dashboard = () => {
 };
 
 const dashboardStyles = {
-  margin:'10px',
+  margin: '10px',
   backgroundColor: '#fff',
   borderRadius: '20px',
   boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-  padding:'10px',
+  padding: '10px',
   marginBottom: 'auto',
 };
 
@@ -47,9 +47,9 @@ const notificationCardStyles = {
   border: '1px solid #ddd',
   borderRadius: '5px',
   // marginBottom: '10px',
-   width: '200px',
+  width: '200px',
 
- 
+
 };
 
 const iconStyles = {
