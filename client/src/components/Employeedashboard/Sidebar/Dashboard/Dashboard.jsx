@@ -153,6 +153,7 @@ const Dashboard = () => {
       } catch (error) {
         console.error("Failed to fetch employee data:", error);
         setError(error.message);
+
       }
     };
 

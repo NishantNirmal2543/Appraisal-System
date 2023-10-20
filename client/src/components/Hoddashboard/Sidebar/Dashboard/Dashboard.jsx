@@ -9,6 +9,8 @@ import coverPhoto from "../Dashboard/images.jpeg"
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { v4 } from "uuid";
+import Post from "../../../Employeedashboard/Sidebar/Dashboard/Post";
+import { FaEdit } from 'react-icons/fa';
 
 const Dashboard = () => {
   const [admin, setAdmin] = useState(null);
@@ -18,8 +20,22 @@ const Dashboard = () => {
   const [uploading, setUploading] = useState(false);
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
   const Adminid = localStorage.getItem("Adminid");
+  const [posts, setPosts] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
 
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/feedposts');
+      console.log(response.data)
+      setPosts(response.data);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  };
 
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const handleUpload = async () => {
     if (selectedFile) {
@@ -124,20 +140,33 @@ const Dashboard = () => {
         {isLoading ? (
           <div className="loaderEmp"></div>
         ) : (
-          <div className="container2">
-            <div className="profile">
+          <div className="profileH">
+              <div className="container">
               <div className="cover-photo">
                 <img src={coverPhoto} alt="Cover" />
               </div>
-              <div className="profile-details">
+              <div className="profileH-details">
                 <label htmlFor="file-input">
                   <div
-                    className="profile-photo"
+                    className="profileH-photo"
                     onClick={handleImageClick}
                     style={{ cursor: "pointer" }}
                   >
-                    <img src={profilePhotoURL || profilePhoto} alt="Profile" />
+                    <div
+                    className="image-container"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  > <img src={profilePhotoURL || profilePhoto} alt="Profile" />
+                    {isHovered && (
+                      <div className="image-overlay">
+                        <FaEdit className="edit-icon" />
+                      </div>
+                    )}
                   </div>
+
+
+                </div>
+                
                 </label>
                 <input
                   type="file"
@@ -180,6 +209,27 @@ const Dashboard = () => {
             </div>
           </div>
         )}
+         {!isLoading  && (
+        <div
+          className="social"
+        >
+         
+          <div>
+            {posts.map((post, index) => (
+              <Post
+                key={index}
+                profilePhotoURL={post.profilePhotoURL}
+                description={post.description}
+                picturePath={post.picturePath}
+                designation={post.designation}
+                employeeName={post.employeeName}
+              />
+            ))}
+          </div>
+
+
+        </div>
+      )}
       </div>
     </>
   );

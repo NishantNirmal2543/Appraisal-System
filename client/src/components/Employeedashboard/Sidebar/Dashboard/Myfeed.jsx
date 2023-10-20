@@ -11,6 +11,7 @@ import { v4 } from "uuid";
 import AddPost from "./AddPost";
 import Post from "./Post";
 import { FaEdit } from 'react-icons/fa';
+import Notification from "./Notification"
 
 const Myfeed = () => {
     const [isHovered, setIsHovered] = useState(false);
@@ -287,6 +288,9 @@ const Myfeed = () => {
                         </div>
                     </div>
                 )}
+                  {!isLoading && employee && (
+      <Notification/>
+      )}
             </div>
         </div>
     </>
