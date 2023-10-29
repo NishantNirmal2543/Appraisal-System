@@ -6,6 +6,7 @@ import { BsPencil } from "react-icons/bs";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "./Hod.css";
 import profilePhoto from "../HOD/profile.jpg";
+import LoadingBar from 'react-top-loading-bar'
 
 
 import { toast } from 'react-toastify';
@@ -15,7 +16,8 @@ const ManageHod = () => {
   const [hods, setHods] = useState([]);
   const [selectedHod, setSelectedHod] = useState(null);
   const [mode, setMode] = useState("");
-
+  const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(true);
   const handleViewClick = (hod) => {
     setSelectedHod(hod);
     setMode("view");
@@ -88,6 +90,12 @@ const ManageHod = () => {
 
   return (
     <div className='cardH'>
+        <LoadingBar
+        color="#f11946"
+        progress={isLoading ? 100 : 0} // Set progress to 100% when loading
+        onLoaderFinished={() => setProgress(0)}
+        height={4}
+      />
       <h1>Manage Hod</h1>
       <table class="employee-table">
         <thead>

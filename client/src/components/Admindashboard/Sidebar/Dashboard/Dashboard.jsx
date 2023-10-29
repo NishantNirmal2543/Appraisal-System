@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef} from "react";
 import "./Dashboard.css";
 import axios from "axios";
 import BarChart from "./barchart";
+import LoadingBar from 'react-top-loading-bar'
 
 const API_BASE_URL = "http://localhost:8080/api";
 
@@ -10,7 +11,8 @@ const Dashboard = () => {
   const [employees, setEmployees] = useState([]);
   const [principles, setPrinciples] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  const ref = useRef(null)
+  const [progress, setProgress] = useState(0)
   const fetchData = async () => {
     try {
       const [employeeResponse, hodResponse, principleResponse] =
@@ -71,11 +73,24 @@ const Dashboard = () => {
   return (
     <>
       <div className="dashboard">
+      <LoadingBar
+        color="#f11946"
+        progress={isLoading ? 100 : 0} // Set progress to 100% when loading
+        onLoaderFinished={() => setProgress(0)}
+        height={4}
+      />
+     
         {isLoading ? (
-          <div className="loaderEmp"></div>
+          <div className="loaderEmp">
+          
+          </div>
+          
         ) : (
+          
           <div className="dashboard-container">
+           
             <div className="dashboard-section">
+          
               <div className="dashboard-header">Departments</div>
               <ul className="dashboard-list">
                 {[...new Set(hods.map((hod) => hod.department))].map(

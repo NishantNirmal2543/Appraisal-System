@@ -5,6 +5,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { BsPencil } from "react-icons/bs";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "./Principle.css";
+import LoadingBar from 'react-top-loading-bar'
 
 
 import { toast } from 'react-toastify';
@@ -14,7 +15,8 @@ const ManagePrinciple = () => {
   const [principles, setprinciples] = useState([]);
   const [selectedPrinciple, setSelectedPrinciple] = useState(null);
   const [mode, setMode] = useState("");
-
+  const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(true);
   const handleViewClick = (principle) => {
     setSelectedPrinciple(principle);
     setMode("view");
@@ -86,6 +88,12 @@ const ManagePrinciple = () => {
 
   return (
     <div className='cardP'>
+        <LoadingBar
+        color="#f11946"
+        progress={isLoading ? 100 : 0} // Set progress to 100% when loading
+        onLoaderFinished={() => setProgress(0)}
+        height={4}
+      />
       <h1>Manage Principle</h1>
       <table class="employee-table">
         <thead>

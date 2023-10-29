@@ -7,12 +7,15 @@ import "./Employee.css";
 import profilePhoto from "../Employee/profile.jpg";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LoadingBar from 'react-top-loading-bar'
 
 const ManageEmployee = () => {
   const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [mode, setMode] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState(""); // State for selected department filter
+  const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleViewClick = (employee) => {
     setSelectedEmployee(employee);
@@ -102,6 +105,12 @@ const ManageEmployee = () => {
 
   return (
     <div className='cardE'>
+       <LoadingBar
+        color="#f11946"
+        progress={isLoading ? 100 : 0} // Set progress to 100% when loading
+        onLoaderFinished={() => setProgress(0)}
+        height={4}
+      />
       <h1>Manage Employees</h1>
       {/* Dropdown select for department filter */}
       <div className="department-wrapper">

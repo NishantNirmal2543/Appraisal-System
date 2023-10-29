@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import "./Appraisal.css"
 import { ref, uploadBytes,getDownloadURL } from "firebase/storage"
 import { storage } from '../../../firebase';
+import LoadingBar from 'react-top-loading-bar'
 
 const Appraisal = () => {
     const employeeId = localStorage.getItem("employeeid");
@@ -19,7 +20,8 @@ const Appraisal = () => {
     const [uploading7, setUploading7] = useState(false);
     const [uploading8, setUploading8] = useState(false);
     const [uploading9, setUploading9] = useState(false);
-
+    const [progress, setProgress] = useState(0)
+    const [isLoading, setIsLoading] = useState(true);
 
     const [employee, setEmployee] = useState(null);
 
@@ -1596,6 +1598,12 @@ const Appraisal = () => {
 
     return (
         <>
+         <LoadingBar
+        color="#f11946"
+        progress={isLoading ? 100 : 0} // Set progress to 100% when loading
+        onLoaderFinished={() => setProgress(0)}
+        height={4}
+      />
             <form onSubmit={handleSubmit}>
                 {/* form A */}
                 <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
