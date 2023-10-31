@@ -75,7 +75,7 @@ const Dashboard = () => {
       <div className="dashboard">
       <LoadingBar
         color="#f11946"
-        progress={isLoading ? 100 : 0} // Set progress to 100% when loading
+        progress={isLoading ? 100 : 0} 
         onLoaderFinished={() => setProgress(0)}
         height={4}
       />
