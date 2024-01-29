@@ -94,10 +94,18 @@ const AddEmployee = () => {
 
         // handle the success response       
         toast.success("Employee Added successfully");
+        setName('');
+        setCollege('');
+        setDepartment('');
+        setDesignation('');
+        setEmail('');
+        setMobile('');
 
       } catch (error) {
         // handle the error response
-        alert(error.response.data.message);
+        // alert(error.response.data.message);
+        toast.error("An error occurred while adding the employee. Please try again later .");
+
       }
     }
   };

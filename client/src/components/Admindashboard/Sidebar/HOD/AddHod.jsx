@@ -17,7 +17,7 @@ const AddHod = () => {
     const [email, setEmail] = useState('');
     const [mobile, setMobile] = useState('');
     const [errors, setErrors] = useState({});
-    const [password, setPassword] = useState('');
+   
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -42,9 +42,7 @@ const AddHod = () => {
     const handleMobileChange = (e) => {
         setMobile(e.target.value);
     };
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+   
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -103,15 +101,23 @@ const AddHod = () => {
                     role,
                     email,
                     mobile,
-                    password
+                  
                 });
 
                 // handle the success response       
                 toast.success("Hod Added successfully");
+                setName('');
+                setCollege('');
+                setDepartment('');
+                setRole('');
+                setEmail('');
+                setMobile('');
+             
 
             } catch (error) {
                 // handle the error response
-                alert(error.response.data.message);
+                // alert(error.response.data.message);
+                toast.error("An error occurred while adding the employee. Please try again later .");
             }
         }
     };
