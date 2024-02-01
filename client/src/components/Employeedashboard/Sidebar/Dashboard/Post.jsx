@@ -30,7 +30,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
           </Typography>
           <button
             onClick={toggleDescription}
-            style={{ border: 'none', background: 'none', color: '#4CC713', cursor: 'pointer' }}
+            style={{ border: 'none', background: 'none', color: '#000', cursor: 'pointer' }}
           >
             Read Less
           </button>
@@ -47,7 +47,7 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
           {description.length > 200 && (
             <button
               onClick={toggleDescription}
-              style={{ border: 'none', background: 'none', color: '#4CC713', cursor: 'pointer' }}
+              style={{ border: 'none', background: 'none', color: '#000', cursor: 'pointer' }}
             >
               Read More
             </button>
@@ -121,14 +121,14 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
             style={{
               border: 'none',
               background: 'none',
-              color: '#4CC713',
+              color: '#000',
               marginRight: '16px',
               cursor: 'pointer',
             }}
           >
             {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
-          <Typography variant="subtitle1" style={{ color: '#4CC713' }}>
+          <Typography variant="subtitle1" style={{ color: '#000' }}>
             Like ({likeCount})
           </Typography>
         </div>
@@ -137,14 +137,14 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
             style={{
               border: 'none',
               background: 'none',
-              color: '#4CC713',
+              color: '#000',
               marginRight: '16px',
               cursor: 'pointer',
             }}
           >
             <ChatBubbleOutlineIcon />
           </IconButton>
-          <Typography variant="subtitle1" style={{ color: '#4CC713' }}>
+          <Typography variant="subtitle1" style={{ color: '#000' }}>
             Comment ({commentCount})
           </Typography>
         </div>
@@ -153,13 +153,13 @@ const Post = ({ employeeName, description, designation, picturePath, profilePhot
             style={{
               border: 'none',
               background: 'none',
-              color: '#4CC713',
+              color: '#000',
               cursor: 'pointer',
             }}
           >
             <ShareIcon />
           </IconButton>
-          <Typography variant="subtitle1" style={{ color: '#4CC713' }}>
+          <Typography variant="subtitle1" style={{ color: '#000' }}>
             Share
           </Typography>
         </div>

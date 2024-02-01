@@ -193,7 +193,7 @@ hr {
   display: inline-block;
   position: relative;
   padding: 8px 20px;
-  background-color: #4CC713;
+  background-color: #000000;
   color: white;
   font-family: sans-serif;
   text-decoration: none;
@@ -205,7 +205,7 @@ hr {
 }
 
 .buttonDownload:hover {
-  background-color: #45a21a;
+  background-color: #000000;
   color: white;
 }
 

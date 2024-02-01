@@ -228,10 +228,10 @@ const Dashboard = () => {
                   {employee.name}
                 </Link>
               </h1>
-              <h3>{employee.designation}</h3>
+              {/* <h3>{employee.designation}</h3> */}
               <hr />
               <div className="info">
-                <div className="info-item">
+                {/* <div className="info-item">
                   <h4>College</h4>
                   <p>{employee.college}</p>
                 </div>
@@ -246,8 +246,8 @@ const Dashboard = () => {
                 <div className="info-item">
                   <h4>Mobile</h4>
                   <p>{employee.mobile}</p>
-                </div>
-                <div className="progress-bar-container">
+                </div> */}
+                {/* <div className="progress-bar-container">
                   {appraisals.length > 0 ? (
                     <div className="progress-bar">
                       <div
@@ -270,7 +270,7 @@ const Dashboard = () => {
                       </span>
                     </div>
                   )}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
