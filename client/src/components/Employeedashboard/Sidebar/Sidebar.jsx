@@ -5,7 +5,7 @@ import Dashboard from './Dashboard/Dashboard';
 import Guidelines from './Guidelines/Guidelines';
 import Appraisal from './Appraisal/Appraisal';
 import AppraisalTimeline from './Appraisal/AppraisalTimeline';
-
+import Feedback from './Feedback/Feedback';
 const Sidebar = () => {
     const [show, setShow] = useState(false);
     const [activeComponent, setActiveComponent] = useState('Dashboard');
@@ -55,10 +55,10 @@ const Sidebar = () => {
                                 <i className='fas fa-clock nav-link-icon'></i>
                                 <span className='nav-link-name'>Appraisal status</span>
                             </div>
-                             {/* <div className={`nav-link ${activeComponent === 'Appraisal status' ? 'active' : ''}`} onClick={() => handleClick('Appraisal status')}>
-                                <i className='fas fa-clock nav-link-icon'></i>
-                                <span className='nav-link-name'>Appraisal status</span>
-                            </div> */}
+                             <div className={`nav-link ${activeComponent === 'Feedback' ? 'active' : ''}`} onClick={() => handleClick('Feedback')}>
+                                <i className='fas fa-pen nav-link-icon'></i>
+                                <span className='nav-link-name'>Feedback</span>
+                            </div>
                            
                         </div>
                     </div>
@@ -76,6 +76,7 @@ const Sidebar = () => {
                 {activeComponent === 'Appraisal' && <Appraisal />}
                 {activeComponent === 'Guidelines' && <Guidelines />}
                 {activeComponent === 'Appraisal status' && <AppraisalTimeline />}
+                {activeComponent === 'Feedback' && <Feedback />}
             </div>
 
         </main>
