@@ -6,7 +6,7 @@ import "./Appraisal.css"
 import { ref, uploadBytes,getDownloadURL } from "firebase/storage"
 import { storage } from '../../../firebase';
 import LoadingBar from 'react-top-loading-bar'
-
+import AppraisalTimeline from './AppraisalTimeline';
 const Appraisal = () => {
     const employeeId = localStorage.getItem("employeeid");
     const [year, setYear] = useState("2023");
@@ -24,7 +24,6 @@ const Appraisal = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const [employee, setEmployee] = useState(null);
-
 
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
@@ -1598,866 +1597,869 @@ const Appraisal = () => {
 
     return (
         <>
-         <LoadingBar
-        color="#f11946"
-        progress={isLoading ? 100 : 0} // Set progress to 100% when loading
-        onLoaderFinished={() => setProgress(0)}
-        height={4}
-      />
-            <form onSubmit={handleSubmit}>
-                {/* form A */}
-                <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
-                    <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
-                    <label className="department-label">
-                        <h3>Year of Performance Appraisal:</h3>
-                        <select className="department-select" value={year} onChange={handleYearChange}>
-                            <option value={2023}>2023</option>
-                            <option value={2024}>2024</option>
-                            <option value={2025}>2025</option>
-                        </select>
+     
+      <LoadingBar
+    color="#f11946"
+    progress={isLoading ? 100 : 0} // Set progress to 100% when loading
+    onLoaderFinished={() => setProgress(0)}
+    height={4}
+    />
+  
+    
+        <form onSubmit={handleSubmit}>
+            {/* form A */}
+            <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
+                <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
+                <label className="department-label">
+                    <h3>Year of Performance Appraisal:</h3>
+                    <select className="department-select" value={year} onChange={handleYearChange}>
+                        <option value={2023}>2023</option>
+                        <option value={2024}>2024</option>
+                        <option value={2025}>2025</option>
+                    </select>
+                </label>
+
+                <br />
+
+                <div className="form-group">
+                    <h3>1.Teaching load assessment : </h3>
+                    <p>(Max marks : 10)</p>
+                    <label htmlFor="file-input" className="drop-container">
+                        <span className="drop-title">Drop files here</span>
+                        or
+                        <input
+                            type="file"
+                            accept="image/*, application/pdf"
+                            required
+                            id="file-input"
+                            onChange={handleFileChange}
+                        />
+
+                        <button className='buttonDownload' onClick={handleUpload1} disabled={uploading1}>
+                            Upload
+                        </button>
+                        {uploading1 && <span>Uploading...</span>}
+                    </label>
+                    <label>
+                        Number of classes taught:
+                        <input type="number" value={classesTaught} onChange={handleClassesTaughtChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Total classes assigned:
+                        <input type="number" value={totalClasses} onChange={handleTotalClassesChange} />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore1}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore1}</p>
+                </div>
+                <div className="form-group">
+                    <h3>2. Examination and evaluation duties assigned by university/institute :</h3>
+                    <p>(Max marks : 2. a- 10, 2. B-20)</p>
+                    <label htmlFor="file-input" className="drop-container">
+                        <span className="drop-title">Drop files here</span>
+                        or
+                        <input
+                            type="file"
+                            accept="image/*, application/pdf"
+                            required
+                            id="file-input"
+                            onChange={handleFileChange}
+                        />
+
+                        <button className='buttonDownload' onClick={handleUpload2} disabled={uploading2}>
+                            Upload
+                        </button>
+                        {uploading2 && <span>Uploading...</span>}
+                    </label>
+                    <label>Involvement in the student related activities :</label>
+                    <br />
+                    <label>
+                        2.a. Paper evaluation duties
+                        <input type="number" value={paperEval} onChange={handlePaperEvalChange} />
+                    </label>
+                    <br />
+                    <label>
+                        2.b. Student related activities (clubs, counseling, seminars, etc.)
+                        <input type="number" value={studentActivities} onChange={handleStudentActivitiesChange} />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore2}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore2}</p>
+                </div>
+
+
+                <div className="form-group">
+                    <h3>3.Teacher Guardian performance : </h3>
+                    <p>(Max marks 50 for Professor, Senior Professor, Associate Professor and Max marks 65 for Senior Assistant Professor, Assistant Professor- Refer Guideline for same)</p>
+                    <label htmlFor="file-input" className="drop-container">
+                        <span className="drop-title">Drop files here</span>
+                        or
+                        <input
+                            type="file"
+                            accept="image/*, application/pdf"
+                            required
+                            id="file-input"
+                            onChange={handleFileChange}
+                        />
+
+                        <button className='buttonDownload' onClick={handleUpload3} disabled={uploading3}>
+                            Upload
+                        </button>
+                        {uploading3 && <span>Uploading...</span>}
+                    </label>
+
+                    <label>3a) For FE and SE faculty:</label>
+                    <br />
+                    <label>
+                        Attendance Record
+                        <input type="number" value={attendanceRecordFESE} onChange={handleAttendanceRecordChangeFESE} />
+                    </label>
+                    <br />
+                    <label>
+                        Meetings Conducted
+                        <input type="number" value={meetingsConductedFESE} onChange={handleMeetingsConductedChangeFESE} />
+                    </label>
+                    <br />
+                    <label>
+                        Phone Calls, Letter Communication and Parent Connect
+                        <input type="number" value={communicationFESE} onChange={handleCommunicationChangeFESE} />
+                    </label>
+                    <br />
+                    <label>
+                        Counseling
+                        <input type="number" value={counselingFESE} onChange={handleCounselingChangeFESE} />
+                    </label>
+                    <br />
+
+
+                    <label>
+                        All clear with first class(%) :
+                        <input type="number" value={rankScore} onChange={handleRankScoreChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Percentage increase in overall results(%) :
+                        <input type="number" value={percentageIncreaseScore} onChange={handlePercentageIncreaseScoreChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Co-curricular activity score :
+                        <input type="number" value={coCurricularScore} onChange={handleCoCurricularScoreChange} />
+                    </label>
+                    <button type="button" className="btn" onClick={calculateScoreFESE}>Calculate Score</button>
+                    <p className='total-score'>Total Score: {totalScoreFESE}</p>
+                    <br />
+                    <label>3b) For TE faculty:</label>
+                    <br />
+                    <label>
+                        Attendance Record
+                        <input type="number" value={attendanceRecordTE} onChange={handleAttendanceRecordChangeTE} />
+                    </label>
+                    <br />
+                    <label>
+                        Meetings Conducted
+                        <input type="number" value={meetingsConductedTE} onChange={handleMeetingsConductedChangeTE} />
+                    </label>
+                    <br />
+                    <label>
+                        Phone Calls, Letter Communication and Parent Connect
+                        <input type="number" value={communicationTE} onChange={handleCommunicationChangeTE} />
+                    </label>
+                    <br />
+                    <label>
+                        Counseling
+                        <input type="number" value={counselingTE} onChange={handleCounselingChangeTE} />
+                    </label>
+                    <br />
+                    <label>
+                        Percentage of Adhon courses completed as per guidelines of central/institute T and P department (%) :
+                        <input type="number" value={adhonScore} onChange={handleAdhonScoreChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Other courses completed/efforts taken as per T.G observation (%) :
+                        <input type="number" value={otherScore} onChange={handleOtherScoreChange} />
+                    </label>
+                    <label>
+                        All clear with first class (%) :
+                        <input type="number" value={allClearScore} onChange={handleAllClearScoreChange} />
+                    </label>
+                    <button type="button" className="btn" onClick={calculateTotalScoreTE}>Calculate Score</button>
+                    <p className="total-score">Total Score: {totalScoreTE}</p>
+                    <br />
+                    <label>3c) For BE faculty:</label>
+                    <br />
+                    <label>
+                        Attendance Record
+                        <input type="number" value={attendanceRecordBE} onChange={handleAttendanceRecordChangeBE} />
+                    </label>
+                    <br />
+                    <label>
+                        Meetings Conducted
+                        <input type="number" value={meetingsConductedBE} onChange={handleMeetingsConductedChangeBE} />
+                    </label>
+                    <br />
+                    <label>
+                        Phone Calls, Letter Communication and Parent Connect
+                        <input type="number" value={communicationBE} onChange={handleCommunicationChangeBE} />
+                    </label>
+                    <br />
+                    <label>
+                        Counseling
+                        <input type="number" value={counselingBE} onChange={handleCounselingChangeBE} />
+                    </label>
+                    <br />
+                    <label>
+                        Percentage of Adhon courses completed as per guidelines (%):
+                        <input
+                            type="number"
+                            value={adhonCompleted}
+                            onChange={handleAdhonCompletedChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Percentage of students placed (%):
+                        <input
+                            type="number"
+                            value={placementPercentage}
+                            onChange={handlePlacementPercentageChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Batch wise evaluation by institute and department T and P coordinator:
+                        <input
+                            type="number"
+                            value={batchEvaluation}
+                            onChange={handleBatchEvaluationChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Action taken based on evaluation report:
+                        <input
+                            type="number"
+                            value={actionTaken}
+                            onChange={handleActionTakenChange}
+                        />
+                    </label>
+                    <br />
+                    <button type="button" className='btn' onClick={calculateTotalScoreBE}>Calculate Score</button>
+                    <p className='total-score'>Total Score: {totalScoreBE}</p>
+
+
+                </div>
+
+
+                <div className="form-group">
+                    <h3> 4. University result analysis:  </h3>
+                    <p>(Max marks 80)</p>
+                    <label htmlFor="file-input" className="drop-container">
+                        <span className="drop-title">Drop files here</span>
+                        or
+                        <input
+                            type="file"
+                            accept="image/*, application/pdf"
+                            required
+                            id="file-input"
+                            onChange={handleFileChange}
+                        />
+
+                        <button className='buttonDownload' onClick={handleUpload4} disabled={uploading4}>
+                            Upload
+                        </button>
+                        {uploading4 && <span>Uploading...</span>}
+                    </label>
+                    <label>
+                        Latest Result:
+                        <input type="number" step="0.01" value={latestResult} onChange={(e) => setLatestResult(e.target.value)} />
+                    </label>
+                    <br />
+                    <label>
+                        Previous Year Result 1:
+                        <input type="number" step="0.01" value={prevYearResult1} onChange={(e) => setPrevYearResult1(e.target.value)} />
+                    </label>
+                    <br />
+                    <label>
+                        Previous Year Result 2:
+                        <input type="number" step="0.01" value={prevYearResult2} onChange={(e) => setPrevYearResult2(e.target.value)} />
+                    </label>
+                    <br />
+                    <label>
+                        Previous Year Result 3:
+                        <input type="number" step="0.01" value={prevYearResult3} onChange={(e) => setPrevYearResult3(e.target.value)} />
+                    </label>
+                    <br />
+                    <button className='btn' type="button" onClick={calculateScore4}>Calculate Score</button>
+
+                    <p className='total-score'>Score: {totalscore4}</p>
+
+
+
+                </div>
+
+
+
+                <div className="form-group">
+                    <h3>5. Feedback Analysis : </h3>
+                    <p>(Max marks : 30)</p>
+                    <label htmlFor="file-input" className="drop-container">
+                        <span className="drop-title">Drop files here</span>
+                        or
+                        <input
+                            type="file"
+                            accept="image/*, application/pdf"
+                            required
+                            id="file-input"
+                            onChange={handleFileChange}
+                        />
+
+                        <button className='buttonDownload' onClick={handleUpload5} disabled={uploading5}>
+                            Upload
+                        </button>
+                        {uploading5 && <span>Uploading...</span>}
+                    </label>
+                    <div>
+                        <table class="employee-table">
+                            <thead>
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>Score (Internal Feedback)</th>
+                                    <th>Score (External Feedback)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A+ (90 & above)</td>
+                                    <td>10</td>
+                                    <td>20</td>
+                                </tr>
+                                <tr>
+                                    <td>A (81 to 89)</td>
+                                    <td>8</td>
+                                    <td>16</td>
+                                </tr>
+                                <tr>
+                                    <td>B+ (71 to 80)</td>
+                                    <td>6</td>
+                                    <td>12</td>
+                                </tr>
+                                <tr>
+                                    <td>B (61 to 70)</td>
+                                    <td>4</td>
+                                    <td>8</td>
+                                </tr>
+                                <tr>
+                                    <td>C  (less than 60)</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <br />
+                    <label>
+                        Internal Feedback Grade Score(%) :
+                        <input type="number" value={internalFeedback} onChange={handleInternalFeedbackChange} />
+                    </label>
+                    <br />
+                    <label>
+                        External Feedback Grade Score(%) :
+                        <input type="number" value={externalFeedback} onChange={handleExternalFeedbackChange} />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore5}>Calculate Score</button>
+                    <p className="total-score">Total Score: {totalScore5}</p>
+
+                </div>
+                <div className="form-group">
+                    <h3>6. Course file and Remedial classes assessment :</h3>
+                    <p>(Max marks :30)</p>
+                    <label htmlFor="file-input" className="drop-container">
+                        <span className="drop-title">Drop files here</span>
+                        or
+                        <input
+                            type="file"
+                            accept="image/*, application/pdf"
+                            required
+                            id="file-input"
+                            onChange={handleFileChange}
+                        />
+
+                        <button className='buttonDownload' onClick={handleUpload6} disabled={uploading6}>
+                            Upload
+                        </button>
+                        {uploading6 && <span>Uploading...</span>}
+                    </label>
+                    <label>
+                        6.a.Handwritten Notes of 03 (three) units*
+                        <input
+                            type="number"
+                            value={handwrittenNotes}
+                            onChange={handleHandwrittenNotesChange}
+                            className="form-control"
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        6.b.Other contents as Accreditation Board
+                        <input
+                            type="number"
+                            value={otherContents}
+                            onChange={handleOtherContentsChange}
+                            className="form-control"
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        6.c.CO-PO-PSO Mapping and Attainment
+                        <input
+                            type="number"
+                            value={coPoPsoMapping}
+                            onChange={handleCoPoPsoMappingChange}
+                            className="form-control"
+                        />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore6}>Calculate Total Score</button>
+                    <p className="total-score" >Total Score: {totalScore6}</p>
+
+                </div>
+
+                <br />
+                <button type="button" className="btnAB" onClick={calculateScoreA}>Calculate Form A Score</button>
+
+                <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score Form A: {totalScoreformA}</span>
+            </div>
+
+            {/* form B */}
+
+            <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
+                <h2 style={{ textAlign: "center" }}>PART-B : Research & Publication</h2>
+
+
+                <div className="form-group">
+                    <h3>7. Faculty Contribution to Department, Institute and organization:</h3>
+                    <p>(Max marks 30 for Professor, Senior Associate Professor, Associate Professor and Max Marks 40 for Senior Assistant Professor and Assistant Professor - Refer Guideline for same)</p>
+                    <label htmlFor="file-input" className="drop-container">
+                        <span className="drop-title">Drop files here</span>
+                        or
+                        <input
+                            type="file"
+                            accept="image/*, application/pdf"
+                            required
+                            id="file-input"
+                            onChange={handleFileChange}
+                        />
+
+                        <button className='buttonDownload' onClick={handleUpload7} disabled={uploading7}>
+                            Upload
+                        </button>
+                        {uploading7 && <span>Uploading...</span>}
+                    </label>
+                    <label>7a) Faculty contribution at department level</label>
+                    <br />
+                    <label>
+                        Short Term based one time Activity:
+                        <input type="number" value={shortTerm7a} onChange={handleShortTermChange7a} />
+                    </label>
+                    <br />
+                    <label>
+                        Semester/ Term based (3 to 6 months):
+                        <input type="number" value={semester7a} onChange={handleSemesterChange7a} />
+                    </label>
+                    <br />
+                    <label>
+                        Academic Year Activity (more than 6 months to one year):
+                        <input type="number" value={academicYear7a} onChange={handleAcademicYearChange7a} />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore7a}>Calculate Score</button>
+                    <br />
+                    <p className="total-score">Total Score: {totalScore7a}</p>
+                </div>
+                <div className="form-group">
+                    <label>7b) Faculty contribution at institute level</label>
+                    <br />
+                    <label>
+                        Short Term based one time Activity:
+                        <input type="number" value={shortTerm7b} onChange={handleShortTermChange7b} />
+                    </label>
+                    <br />
+                    <label>
+                        Semester/ Term based (3 to 6 months):
+                        <input type="number" value={semester7b} onChange={handleSemesterChange7b} />
+                    </label>
+                    <br />
+                    <label>
+                        Academic Year Activity (more than 6 months to one year):
+                        <input type="number" value={academicYear7b} onChange={handleAcademicYearChange7b} />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore7b}>Calculate Score</button>
+                    <br />
+                    <p className="total-score">Total Score: {totalScore7b}</p>
+                </div >
+                <div className="form-group">
+                    <label>7c) Faculty contribution at Campus Level </label>
+                    <br />
+                    <label>
+                        Short Term based one time Activity:
+                        <input type="number" value={shortTerm7c} onChange={handleShortTermChange7c} />
+                    </label>
+                    <br />
+                    <label>
+                        Semester/ Term based (3 to 6 months):
+                        <input type="number" value={semester7c} onChange={handleSemesterChange7c} />
+                    </label>
+                    <br />
+                    <label>
+                        Academic Year Activity (more than 6 months to one year):
+                        <input type="number" value={academicYear7c} onChange={handleAcademicYearChange7c} />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore7c}>Calculate Score</button>
+                    <br />
+                    <p className="total-score">Total Score: {totalScore7c}</p>
+                </div>
+                <div className="form-group">
+                    <h3>8. Faculty contribution in research and publication:</h3>
+                    <p></p>
+                    <label htmlFor="file-input" className="drop-container">
+                        <span className="drop-title">Drop files here</span>
+                        or
+                        <input
+                            type="file"
+                            accept="image/*, application/pdf"
+                            required
+                            id="file-input"
+                            onChange={handleFileChange}
+                        />
+
+                        <button className='buttonDownload' onClick={handleUpload8} disabled={uploading8}>
+                            Upload
+                        </button>
+                        {uploading8 && <span>Uploading...</span>}
+                    </label>
+                    <br />
+                    <label>8a) Publication</label>
+                    <p>(Max marks 60 - Refer Guideline for same)</p>
+                    <label>
+                        International Journal : Scopus, Web of Science, Thomson Router, Clarivate Analytics etc
+                        <input
+                            type="number"
+                            value={internationalJournal}
+                            onChange={handleInternationalJournalChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Citation in year :
+                        <input type="number" value={citation2022} onChange={handleCitation2022Change} />
                     </label>
 
                     <br />
+                    <button type="button" className="btn" onClick={calculateScore8a}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8a}</p>
+                </div>
+                <div className="form-group">
+                    <label>8b) E-Learning, Books Published and Research Activity</label>
+                    <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
 
-                    <div className="form-group">
-                        <h3>1.Teaching load assessment : </h3>
-                        <p>(Max marks : 10)</p>
-                        <label htmlFor="file-input" className="drop-container">
-                            <span className="drop-title">Drop files here</span>
-                            or
-                            <input
-                                type="file"
-                                accept="image/*, application/pdf"
-                                required
-                                id="file-input"
-                                onChange={handleFileChange}
-                            />
-
-                            <button className='buttonDownload' onClick={handleUpload1} disabled={uploading1}>
-                                Upload
-                            </button>
-                            {uploading1 && <span>Uploading...</span>}
-                        </label>
-                        <label>
-                            Number of classes taught:
-                            <input type="number" value={classesTaught} onChange={handleClassesTaughtChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Total classes assigned:
-                            <input type="number" value={totalClasses} onChange={handleTotalClassesChange} />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore1}>Calculate Total Score</button>
-                        <p className="total-score">Total Score: {totalScore1}</p>
-                    </div>
-                    <div className="form-group">
-                        <h3>2. Examination and evaluation duties assigned by university/institute :</h3>
-                        <p>(Max marks : 2. a- 10, 2. B-20)</p>
-                        <label htmlFor="file-input" className="drop-container">
-                            <span className="drop-title">Drop files here</span>
-                            or
-                            <input
-                                type="file"
-                                accept="image/*, application/pdf"
-                                required
-                                id="file-input"
-                                onChange={handleFileChange}
-                            />
-
-                            <button className='buttonDownload' onClick={handleUpload2} disabled={uploading2}>
-                                Upload
-                            </button>
-                            {uploading2 && <span>Uploading...</span>}
-                        </label>
-                        <label>Involvement in the student related activities :</label>
-                        <br />
-                        <label>
-                            2.a. Paper evaluation duties
-                            <input type="number" value={paperEval} onChange={handlePaperEvalChange} />
-                        </label>
-                        <br />
-                        <label>
-                            2.b. Student related activities (clubs, counseling, seminars, etc.)
-                            <input type="number" value={studentActivities} onChange={handleStudentActivitiesChange} />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore2}>Calculate Total Score</button>
-                        <p className="total-score">Total Score: {totalScore2}</p>
-                    </div>
-
-
-                    <div className="form-group">
-                        <h3>3.Teacher Guardian performance : </h3>
-                        <p>(Max marks 50 for Professor, Senior Professor, Associate Professor and Max marks 65 for Senior Assistant Professor, Assistant Professor- Refer Guideline for same)</p>
-                        <label htmlFor="file-input" className="drop-container">
-                            <span className="drop-title">Drop files here</span>
-                            or
-                            <input
-                                type="file"
-                                accept="image/*, application/pdf"
-                                required
-                                id="file-input"
-                                onChange={handleFileChange}
-                            />
-
-                            <button className='buttonDownload' onClick={handleUpload3} disabled={uploading3}>
-                                Upload
-                            </button>
-                            {uploading3 && <span>Uploading...</span>}
-                        </label>
-
-                        <label>3a) For FE and SE faculty:</label>
-                        <br />
-                        <label>
-                            Attendance Record
-                            <input type="number" value={attendanceRecordFESE} onChange={handleAttendanceRecordChangeFESE} />
-                        </label>
-                        <br />
-                        <label>
-                            Meetings Conducted
-                            <input type="number" value={meetingsConductedFESE} onChange={handleMeetingsConductedChangeFESE} />
-                        </label>
-                        <br />
-                        <label>
-                            Phone Calls, Letter Communication and Parent Connect
-                            <input type="number" value={communicationFESE} onChange={handleCommunicationChangeFESE} />
-                        </label>
-                        <br />
-                        <label>
-                            Counseling
-                            <input type="number" value={counselingFESE} onChange={handleCounselingChangeFESE} />
-                        </label>
-                        <br />
-
-
-                        <label>
-                            All clear with first class(%) :
-                            <input type="number" value={rankScore} onChange={handleRankScoreChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Percentage increase in overall results(%) :
-                            <input type="number" value={percentageIncreaseScore} onChange={handlePercentageIncreaseScoreChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Co-curricular activity score :
-                            <input type="number" value={coCurricularScore} onChange={handleCoCurricularScoreChange} />
-                        </label>
-                        <button type="button" className="btn" onClick={calculateScoreFESE}>Calculate Score</button>
-                        <p className='total-score'>Total Score: {totalScoreFESE}</p>
-                        <br />
-                        <label>3b) For TE faculty:</label>
-                        <br />
-                        <label>
-                            Attendance Record
-                            <input type="number" value={attendanceRecordTE} onChange={handleAttendanceRecordChangeTE} />
-                        </label>
-                        <br />
-                        <label>
-                            Meetings Conducted
-                            <input type="number" value={meetingsConductedTE} onChange={handleMeetingsConductedChangeTE} />
-                        </label>
-                        <br />
-                        <label>
-                            Phone Calls, Letter Communication and Parent Connect
-                            <input type="number" value={communicationTE} onChange={handleCommunicationChangeTE} />
-                        </label>
-                        <br />
-                        <label>
-                            Counseling
-                            <input type="number" value={counselingTE} onChange={handleCounselingChangeTE} />
-                        </label>
-                        <br />
-                        <label>
-                            Percentage of Adhon courses completed as per guidelines of central/institute T and P department (%) :
-                            <input type="number" value={adhonScore} onChange={handleAdhonScoreChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Other courses completed/efforts taken as per T.G observation (%) :
-                            <input type="number" value={otherScore} onChange={handleOtherScoreChange} />
-                        </label>
-                        <label>
-                            All clear with first class (%) :
-                            <input type="number" value={allClearScore} onChange={handleAllClearScoreChange} />
-                        </label>
-                        <button type="button" className="btn" onClick={calculateTotalScoreTE}>Calculate Score</button>
-                        <p className="total-score">Total Score: {totalScoreTE}</p>
-                        <br />
-                        <label>3c) For BE faculty:</label>
-                        <br />
-                        <label>
-                            Attendance Record
-                            <input type="number" value={attendanceRecordBE} onChange={handleAttendanceRecordChangeBE} />
-                        </label>
-                        <br />
-                        <label>
-                            Meetings Conducted
-                            <input type="number" value={meetingsConductedBE} onChange={handleMeetingsConductedChangeBE} />
-                        </label>
-                        <br />
-                        <label>
-                            Phone Calls, Letter Communication and Parent Connect
-                            <input type="number" value={communicationBE} onChange={handleCommunicationChangeBE} />
-                        </label>
-                        <br />
-                        <label>
-                            Counseling
-                            <input type="number" value={counselingBE} onChange={handleCounselingChangeBE} />
-                        </label>
-                        <br />
-                        <label>
-                            Percentage of Adhon courses completed as per guidelines (%):
-                            <input
-                                type="number"
-                                value={adhonCompleted}
-                                onChange={handleAdhonCompletedChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            Percentage of students placed (%):
-                            <input
-                                type="number"
-                                value={placementPercentage}
-                                onChange={handlePlacementPercentageChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            Batch wise evaluation by institute and department T and P coordinator:
-                            <input
-                                type="number"
-                                value={batchEvaluation}
-                                onChange={handleBatchEvaluationChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            Action taken based on evaluation report:
-                            <input
-                                type="number"
-                                value={actionTaken}
-                                onChange={handleActionTakenChange}
-                            />
-                        </label>
-                        <br />
-                        <button type="button" className='btn' onClick={calculateTotalScoreBE}>Calculate Score</button>
-                        <p className='total-score'>Total Score: {totalScoreBE}</p>
-
-
-                    </div>
-
-
-                    <div className="form-group">
-                        <h3> 4. University result analysis:  </h3>
-                        <p>(Max marks 80)</p>
-                        <label htmlFor="file-input" className="drop-container">
-                            <span className="drop-title">Drop files here</span>
-                            or
-                            <input
-                                type="file"
-                                accept="image/*, application/pdf"
-                                required
-                                id="file-input"
-                                onChange={handleFileChange}
-                            />
-
-                            <button className='buttonDownload' onClick={handleUpload4} disabled={uploading4}>
-                                Upload
-                            </button>
-                            {uploading4 && <span>Uploading...</span>}
-                        </label>
-                        <label>
-                            Latest Result:
-                            <input type="number" step="0.01" value={latestResult} onChange={(e) => setLatestResult(e.target.value)} />
-                        </label>
-                        <br />
-                        <label>
-                            Previous Year Result 1:
-                            <input type="number" step="0.01" value={prevYearResult1} onChange={(e) => setPrevYearResult1(e.target.value)} />
-                        </label>
-                        <br />
-                        <label>
-                            Previous Year Result 2:
-                            <input type="number" step="0.01" value={prevYearResult2} onChange={(e) => setPrevYearResult2(e.target.value)} />
-                        </label>
-                        <br />
-                        <label>
-                            Previous Year Result 3:
-                            <input type="number" step="0.01" value={prevYearResult3} onChange={(e) => setPrevYearResult3(e.target.value)} />
-                        </label>
-                        <br />
-                        <button className='btn' type="button" onClick={calculateScore4}>Calculate Score</button>
-
-                        <p className='total-score'>Score: {totalscore4}</p>
-
-
-
-                    </div>
-
-
-
-                    <div className="form-group">
-                        <h3>5. Feedback Analysis : </h3>
-                        <p>(Max marks : 30)</p>
-                        <label htmlFor="file-input" className="drop-container">
-                            <span className="drop-title">Drop files here</span>
-                            or
-                            <input
-                                type="file"
-                                accept="image/*, application/pdf"
-                                required
-                                id="file-input"
-                                onChange={handleFileChange}
-                            />
-
-                            <button className='buttonDownload' onClick={handleUpload5} disabled={uploading5}>
-                                Upload
-                            </button>
-                            {uploading5 && <span>Uploading...</span>}
-                        </label>
-                        <div>
-                            <table class="employee-table">
-                                <thead>
-                                    <tr>
-                                        <th>Grade</th>
-                                        <th>Score (Internal Feedback)</th>
-                                        <th>Score (External Feedback)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>A+ (90 & above)</td>
-                                        <td>10</td>
-                                        <td>20</td>
-                                    </tr>
-                                    <tr>
-                                        <td>A (81 to 89)</td>
-                                        <td>8</td>
-                                        <td>16</td>
-                                    </tr>
-                                    <tr>
-                                        <td>B+ (71 to 80)</td>
-                                        <td>6</td>
-                                        <td>12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>B (61 to 70)</td>
-                                        <td>4</td>
-                                        <td>8</td>
-                                    </tr>
-                                    <tr>
-                                        <td>C  (less than 60)</td>
-                                        <td>0</td>
-                                        <td>0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                        <br />
-                        <label>
-                            Internal Feedback Grade Score(%) :
-                            <input type="number" value={internalFeedback} onChange={handleInternalFeedbackChange} />
-                        </label>
-                        <br />
-                        <label>
-                            External Feedback Grade Score(%) :
-                            <input type="number" value={externalFeedback} onChange={handleExternalFeedbackChange} />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore5}>Calculate Score</button>
-                        <p className="total-score">Total Score: {totalScore5}</p>
-
-                    </div>
-                    <div className="form-group">
-                        <h3>6. Course file and Remedial classes assessment :</h3>
-                        <p>(Max marks :30)</p>
-                        <label htmlFor="file-input" className="drop-container">
-                            <span className="drop-title">Drop files here</span>
-                            or
-                            <input
-                                type="file"
-                                accept="image/*, application/pdf"
-                                required
-                                id="file-input"
-                                onChange={handleFileChange}
-                            />
-
-                            <button className='buttonDownload' onClick={handleUpload6} disabled={uploading6}>
-                                Upload
-                            </button>
-                            {uploading6 && <span>Uploading...</span>}
-                        </label>
-                        <label>
-                            6.a.Handwritten Notes of 03 (three) units*
-                            <input
-                                type="number"
-                                value={handwrittenNotes}
-                                onChange={handleHandwrittenNotesChange}
-                                className="form-control"
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            6.b.Other contents as Accreditation Board
-                            <input
-                                type="number"
-                                value={otherContents}
-                                onChange={handleOtherContentsChange}
-                                className="form-control"
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            6.c.CO-PO-PSO Mapping and Attainment
-                            <input
-                                type="number"
-                                value={coPoPsoMapping}
-                                onChange={handleCoPoPsoMappingChange}
-                                className="form-control"
-                            />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore6}>Calculate Total Score</button>
-                        <p className="total-score" >Total Score: {totalScore6}</p>
-
-                    </div>
+                    <h2>8.b.1 Books authored which are published by International publishers National Publishers Chapter in Edited Book Editor of Book by International Publisher Editor of Book by National Publisher Chapter or Research paper Book</h2>
+                    <br />
+                    <label>
+                        International Publishers
+                        <input type="number" value={international} onChange={handleInternationalChange} />
+                    </label>
+                    <br />
+                    <label>
+                        National Publishers
+                        <input type="number" value={national} onChange={handleNationalChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Chapter in Edited Book
+                        <input type="number" value={chapter} onChange={handleChapterChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Editor of Book by International Publisher
+                        <input type="number" value={editorInternational} onChange={handleEditorInternationalChange} />
+                    </label>
 
                     <br />
-                    <button type="button" className="btnAB" onClick={calculateScoreA}>Calculate Form A Score</button>
-
-                    <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score Form A: {totalScoreformA}</span>
-                </div>
-
-                {/* form B */}
-
-                <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
-                    <h2 style={{ textAlign: "center" }}>PART-B : Research & Publication</h2>
-
-
-                    <div className="form-group">
-                        <h3>7. Faculty Contribution to Department, Institute and organization:</h3>
-                        <p>(Max marks 30 for Professor, Senior Associate Professor, Associate Professor and Max Marks 40 for Senior Assistant Professor and Assistant Professor - Refer Guideline for same)</p>
-                        <label htmlFor="file-input" className="drop-container">
-                            <span className="drop-title">Drop files here</span>
-                            or
-                            <input
-                                type="file"
-                                accept="image/*, application/pdf"
-                                required
-                                id="file-input"
-                                onChange={handleFileChange}
-                            />
-
-                            <button className='buttonDownload' onClick={handleUpload7} disabled={uploading7}>
-                                Upload
-                            </button>
-                            {uploading7 && <span>Uploading...</span>}
-                        </label>
-                        <label>7a) Faculty contribution at department level</label>
-                        <br />
-                        <label>
-                            Short Term based one time Activity:
-                            <input type="number" value={shortTerm7a} onChange={handleShortTermChange7a} />
-                        </label>
-                        <br />
-                        <label>
-                            Semester/ Term based (3 to 6 months):
-                            <input type="number" value={semester7a} onChange={handleSemesterChange7a} />
-                        </label>
-                        <br />
-                        <label>
-                            Academic Year Activity (more than 6 months to one year):
-                            <input type="number" value={academicYear7a} onChange={handleAcademicYearChange7a} />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore7a}>Calculate Score</button>
-                        <br />
-                        <p className="total-score">Total Score: {totalScore7a}</p>
-                    </div>
-                    <div className="form-group">
-                        <label>7b) Faculty contribution at institute level</label>
-                        <br />
-                        <label>
-                            Short Term based one time Activity:
-                            <input type="number" value={shortTerm7b} onChange={handleShortTermChange7b} />
-                        </label>
-                        <br />
-                        <label>
-                            Semester/ Term based (3 to 6 months):
-                            <input type="number" value={semester7b} onChange={handleSemesterChange7b} />
-                        </label>
-                        <br />
-                        <label>
-                            Academic Year Activity (more than 6 months to one year):
-                            <input type="number" value={academicYear7b} onChange={handleAcademicYearChange7b} />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore7b}>Calculate Score</button>
-                        <br />
-                        <p className="total-score">Total Score: {totalScore7b}</p>
-                    </div >
-                    <div className="form-group">
-                        <label>7c) Faculty contribution at Campus Level </label>
-                        <br />
-                        <label>
-                            Short Term based one time Activity:
-                            <input type="number" value={shortTerm7c} onChange={handleShortTermChange7c} />
-                        </label>
-                        <br />
-                        <label>
-                            Semester/ Term based (3 to 6 months):
-                            <input type="number" value={semester7c} onChange={handleSemesterChange7c} />
-                        </label>
-                        <br />
-                        <label>
-                            Academic Year Activity (more than 6 months to one year):
-                            <input type="number" value={academicYear7c} onChange={handleAcademicYearChange7c} />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore7c}>Calculate Score</button>
-                        <br />
-                        <p className="total-score">Total Score: {totalScore7c}</p>
-                    </div>
-                    <div className="form-group">
-                        <h3>8. Faculty contribution in research and publication:</h3>
-                        <p></p>
-                        <label htmlFor="file-input" className="drop-container">
-                            <span className="drop-title">Drop files here</span>
-                            or
-                            <input
-                                type="file"
-                                accept="image/*, application/pdf"
-                                required
-                                id="file-input"
-                                onChange={handleFileChange}
-                            />
-
-                            <button className='buttonDownload' onClick={handleUpload8} disabled={uploading8}>
-                                Upload
-                            </button>
-                            {uploading8 && <span>Uploading...</span>}
-                        </label>
-                        <br />
-                        <label>8a) Publication</label>
-                        <p>(Max marks 60 - Refer Guideline for same)</p>
-                        <label>
-                            International Journal : Scopus, Web of Science, Thomson Router, Clarivate Analytics etc
-                            <input
-                                type="number"
-                                value={internationalJournal}
-                                onChange={handleInternationalJournalChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            Citation in year :
-                            <input type="number" value={citation2022} onChange={handleCitation2022Change} />
-                        </label>
-
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore8a}>Calculate Total Score</button>
-                        <p className="total-score">Total Score: {totalScore8a}</p>
-                    </div>
-                    <div className="form-group">
-                        <label>8b) E-Learning, Books Published and Research Activity</label>
-                        <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
-
-                        <h2>8.b.1 Books authored which are published by International publishers National Publishers Chapter in Edited Book Editor of Book by International Publisher Editor of Book by National Publisher Chapter or Research paper Book</h2>
-                        <br />
-                        <label>
-                            International Publishers
-                            <input type="number" value={international} onChange={handleInternationalChange} />
-                        </label>
-                        <br />
-                        <label>
-                            National Publishers
-                            <input type="number" value={national} onChange={handleNationalChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Chapter in Edited Book
-                            <input type="number" value={chapter} onChange={handleChapterChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Editor of Book by International Publisher
-                            <input type="number" value={editorInternational} onChange={handleEditorInternationalChange} />
-                        </label>
-
-                        <br />
-                        <label>
-                            Editor of Book by National Publisher
-                            <input type="number" value={editorNational} onChange={handleEditorNationalChange} />
-                        </label>
-                        <br />
-                        <label>Translation works in Indian and Foreign Languages by qualified faculties:
-                        </label>
-                        <br />
-                        <label>
-                            Chapter or Research Paper
-                            <input type="number" value={researchPaper} onChange={handleResearchPaperChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Book
-                            <input type="number" value={book} onChange={handleBookChange} />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore8b1}>Calculate Total Score</button>
-                        <p className="total-score">Total Score: {totalScore8b1}</p>
-                        <br />
-                        <h2>8.b.2 Creation of ICT mediated Teaching Learning pedagogy and content and development of new and innovative course and curricula</h2>
-                        <br />
-                        <label>
-                            Development of innovative pedagogy
-                            <input
-                                type="number"
-                                value={innovativePedagogy}
-                                onChange={handleInnovativePedagogyChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            Development of E-Content
-                            <input
-                                type="number"
-                                value={eContentDevelopment}
-                                onChange={handleEContentDevelopmentChange}
-                            />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore8b2}>Calculate Total Score</button>
-                        <p className="total-score">Total Score: {totalScore8b2}</p>
-                        <br />
-
-                        <h2>8.b.3 Research and Consultancy</h2>
-                        <label>
-                            Research guidance Ph.D. (if applicable)
-                            <input type="number" value={phdGuidance} onChange={handlePhdGuidanceChange} />
-                        </label>
-                        <br />
-                        <label>
-                            P.G. dissertation/ BE project
-                            <input type="number" value={pgDissertation} onChange={handlePgDissertationChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Research Projects Completed ( Not Less than 50,000):
-                        </label>
-                        <br />
-                        <label >
-                            More than 10 lakhs
-                            <input type="number" value={completedResearchProjectMoreThan10Lakhs} onChange={handleCompletedResearchProjectMoreThan10LakhsChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Less than 10 lakhs
-                            <input type="number" value={completedResearchProjectLessThan10Lakhs} onChange={handleCompletedResearchProjectLessThan10LakhsChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Research Projects Ongoing ( Not Less than 50,000):
-                        </label>
-                        <br />
-                        <label >
-                            More than 10 lakhs
-                            <input type="number" value={ongoingResearchProjectMoreThan10Lakhs} onChange={handleOngoingResearchProjectMoreThan10LakhsChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Less than 10 lakhs
-                            <input type="number" value={ongoingResearchProjectLessThan10Lakhs} onChange={handleOngoingResearchProjectLessThan10LakhsChange} />
-                        </label>
-                        <br />
-                        <label>
-                            In-house Product Development
-                            <input type="number" value={inHouseProductDevelopment} onChange={handleInHouseProductDevelopmentChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Consultancy ( Any Amount)
-                            <input type="number" value={consultancy} onChange={handleConsultancyChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Editorial Board/Reviewer of Indexed Journals/Solicited Articles
-                            <input type="number" value={editorialBoardReviewer} onChange={handleEditorialBoardReviewerChange} />
-                        </label>
-                        <br />
-                        <label>
-                            Paper Published with Industry person
-                            <input type="number" value={paperPublishedWithIndustryPerson} onChange={handlePaperPublishedWithIndustryPersonChange} />
-                        </label>
-                        <br />
-                        <button type="button" onClick={calculateScore8b3} className="btn btn-primary">Calculate Total Score</button>
-                        <p className="total-score" >Total Score: {totalScore8b3}</p>
-                        <br />
-                        <h2>8.b.4 Patents, Copyrights etc</h2>
-                        <label>
-                            Patents (International)
-                            <input
-                                type="number"
-                                value={internationalPatents}
-                                onChange={handleInternationalPatentsChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            Patents (National)
-                            <input
-                                type="number"
-                                value={nationalPatents}
-                                onChange={handleNationalPatentsChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            Copyrights
-                            <input
-                                type="number"
-                                value={copyrights}
-                                onChange={handleCopyrightsChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            Awards/Fellowship
-                            <input
-                                type="number"
-                                value={awards}
-                                onChange={handleAwardsChange}
-                            />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore8b4}>Calculate Total Score</button>
-                        <p className="total-score">Total Score: {totalScore8b4}</p>
-                        <br />
-                        <h2> 8.b.5 Invited as Resource Persons for conference, seminar, workshop.</h2>
-
-                        <label>
-                            International (abroad)
-                            <input type="number" value={intlAbroad} onChange={handleIntlAbroadChange} />
-                        </label>
-                        <br />
-                        <label>
-                            International (within country)
-                            <input type="number" value={intlWithin} onChange={handleIntlWithinChange} />
-                        </label>
-                        <br />
-                        <label>
-                            National
-                            <input type="number" value={Innational} onChange={handleInNationalChange} />
-                        </label>
-                        <br />
-                        <label>
-                            State/ University
-                            <input type="number" value={stateUni} onChange={handleStateUniChange} />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore8b5}>Calculate Total Score</button>
-                        <p className="total-score">Total Score: {totalScore8b5}</p>
-
-
-                    </div>
-
-                    <div className="form-group">
-                        <h3> 9. Faculty value added courses:</h3>
-                        <h1></h1>
-                        <label htmlFor="file-input" className="drop-container">
-                            <span className="drop-title">Drop files here</span>
-                            or
-                            <input
-                                type="file"
-                                accept="image/*, application/pdf"
-                                required
-                                id="file-input"
-                                onChange={handleFileChange}
-                            />
-
-                            <button className='buttonDownload' onClick={handleUpload9} disabled={uploading9}>
-                                Upload
-                            </button>
-                            {uploading9 && <span>Uploading...</span>}
-                        </label>
-                        <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
-                        <br />
-                        <label>
-                            9.a. STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc organized (one week/two weeks)
-                            <input
-                                type="number"
-                                value={sttpOrganized}
-                                onChange={handleSttpOrganizedChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            9.b. STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc attended (one week/two weeks)
-                            <input
-                                type="number"
-                                value={sttpAttended}
-                                onChange={handleSttpAttendedChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            9.c. Conferences/ Workshops/Symposium/Seminar attended (min. 5 days)
-                            <input
-                                type="number"
-                                value={conferenceAttended}
-                                onChange={handleConferenceAttendedChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            9.d. NPTEL or Equivalent Certification or Technical Graded Certification or ATAL FDP or Mooc's Courses
-                            <input
-                                type="number"
-                                value={nptelCertification}
-                                onChange={handleNptelCertificationChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            9.e. Improvement/Enhanced Academic Qualification (e.g. GATE Qualified, Ph.D registration/ Completion)
-                            <input
-                                type="number"
-                                value={academicQualification}
-                                onChange={handleAcademicQualificationChange}
-                            />
-                        </label>
-                        <br />
-                        <label>
-                            9.f. Active MoU with Industry/ Recognized Institution / University
-                            <input
-                                type="number"
-                                value={mouWithIndustry}
-                                onChange={handleMouWithIndustryChange}
-                            />
-                        </label>
-                        <br />
-                        <button type="button" className="btn" onClick={calculateScore9}>Calculate Total Score</button>
-                        <p className="total-score">Total Score: {totalScore9}</p>
-                    </div>
-
+                    <label>
+                        Editor of Book by National Publisher
+                        <input type="number" value={editorNational} onChange={handleEditorNationalChange} />
+                    </label>
                     <br />
-                    <button type="button" className="btnAB" onClick={calculateScoreB}>Calculate Form B Score</button>
-                    <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score Form B: {totalScoreformB}</span>
+                    <label>Translation works in Indian and Foreign Languages by qualified faculties:
+                    </label>
+                    <br />
+                    <label>
+                        Chapter or Research Paper
+                        <input type="number" value={researchPaper} onChange={handleResearchPaperChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Book
+                        <input type="number" value={book} onChange={handleBookChange} />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore8b1}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8b1}</p>
+                    <br />
+                    <h2>8.b.2 Creation of ICT mediated Teaching Learning pedagogy and content and development of new and innovative course and curricula</h2>
+                    <br />
+                    <label>
+                        Development of innovative pedagogy
+                        <input
+                            type="number"
+                            value={innovativePedagogy}
+                            onChange={handleInnovativePedagogyChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Development of E-Content
+                        <input
+                            type="number"
+                            value={eContentDevelopment}
+                            onChange={handleEContentDevelopmentChange}
+                        />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore8b2}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8b2}</p>
+                    <br />
+
+                    <h2>8.b.3 Research and Consultancy</h2>
+                    <label>
+                        Research guidance Ph.D. (if applicable)
+                        <input type="number" value={phdGuidance} onChange={handlePhdGuidanceChange} />
+                    </label>
+                    <br />
+                    <label>
+                        P.G. dissertation/ BE project
+                        <input type="number" value={pgDissertation} onChange={handlePgDissertationChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Research Projects Completed ( Not Less than 50,000):
+                    </label>
+                    <br />
+                    <label >
+                        More than 10 lakhs
+                        <input type="number" value={completedResearchProjectMoreThan10Lakhs} onChange={handleCompletedResearchProjectMoreThan10LakhsChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Less than 10 lakhs
+                        <input type="number" value={completedResearchProjectLessThan10Lakhs} onChange={handleCompletedResearchProjectLessThan10LakhsChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Research Projects Ongoing ( Not Less than 50,000):
+                    </label>
+                    <br />
+                    <label >
+                        More than 10 lakhs
+                        <input type="number" value={ongoingResearchProjectMoreThan10Lakhs} onChange={handleOngoingResearchProjectMoreThan10LakhsChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Less than 10 lakhs
+                        <input type="number" value={ongoingResearchProjectLessThan10Lakhs} onChange={handleOngoingResearchProjectLessThan10LakhsChange} />
+                    </label>
+                    <br />
+                    <label>
+                        In-house Product Development
+                        <input type="number" value={inHouseProductDevelopment} onChange={handleInHouseProductDevelopmentChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Consultancy ( Any Amount)
+                        <input type="number" value={consultancy} onChange={handleConsultancyChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Editorial Board/Reviewer of Indexed Journals/Solicited Articles
+                        <input type="number" value={editorialBoardReviewer} onChange={handleEditorialBoardReviewerChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Paper Published with Industry person
+                        <input type="number" value={paperPublishedWithIndustryPerson} onChange={handlePaperPublishedWithIndustryPersonChange} />
+                    </label>
+                    <br />
+                    <button type="button" onClick={calculateScore8b3} className="btn btn-primary">Calculate Total Score</button>
+                    <p className="total-score" >Total Score: {totalScore8b3}</p>
+                    <br />
+                    <h2>8.b.4 Patents, Copyrights etc</h2>
+                    <label>
+                        Patents (International)
+                        <input
+                            type="number"
+                            value={internationalPatents}
+                            onChange={handleInternationalPatentsChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Patents (National)
+                        <input
+                            type="number"
+                            value={nationalPatents}
+                            onChange={handleNationalPatentsChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Copyrights
+                        <input
+                            type="number"
+                            value={copyrights}
+                            onChange={handleCopyrightsChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Awards/Fellowship
+                        <input
+                            type="number"
+                            value={awards}
+                            onChange={handleAwardsChange}
+                        />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore8b4}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8b4}</p>
+                    <br />
+                    <h2> 8.b.5 Invited as Resource Persons for conference, seminar, workshop.</h2>
+
+                    <label>
+                        International (abroad)
+                        <input type="number" value={intlAbroad} onChange={handleIntlAbroadChange} />
+                    </label>
+                    <br />
+                    <label>
+                        International (within country)
+                        <input type="number" value={intlWithin} onChange={handleIntlWithinChange} />
+                    </label>
+                    <br />
+                    <label>
+                        National
+                        <input type="number" value={Innational} onChange={handleInNationalChange} />
+                    </label>
+                    <br />
+                    <label>
+                        State/ University
+                        <input type="number" value={stateUni} onChange={handleStateUniChange} />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore8b5}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore8b5}</p>
+
+
                 </div>
+
+                <div className="form-group">
+                    <h3> 9. Faculty value added courses:</h3>
+                    <h1></h1>
+                    <label htmlFor="file-input" className="drop-container">
+                        <span className="drop-title">Drop files here</span>
+                        or
+                        <input
+                            type="file"
+                            accept="image/*, application/pdf"
+                            required
+                            id="file-input"
+                            onChange={handleFileChange}
+                        />
+
+                        <button className='buttonDownload' onClick={handleUpload9} disabled={uploading9}>
+                            Upload
+                        </button>
+                        {uploading9 && <span>Uploading...</span>}
+                    </label>
+                    <p>( Refer Guidelines for Max Marks allotted as per faculty cadre)</p>
+                    <br />
+                    <label>
+                        9.a. STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc organized (one week/two weeks)
+                        <input
+                            type="number"
+                            value={sttpOrganized}
+                            onChange={handleSttpOrganizedChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.b. STTP/ QIP/TTTI/Refresher Courses/ Skill Development Programs/ Faculty Development Programs, etc attended (one week/two weeks)
+                        <input
+                            type="number"
+                            value={sttpAttended}
+                            onChange={handleSttpAttendedChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.c. Conferences/ Workshops/Symposium/Seminar attended (min. 5 days)
+                        <input
+                            type="number"
+                            value={conferenceAttended}
+                            onChange={handleConferenceAttendedChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.d. NPTEL or Equivalent Certification or Technical Graded Certification or ATAL FDP or Mooc's Courses
+                        <input
+                            type="number"
+                            value={nptelCertification}
+                            onChange={handleNptelCertificationChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.e. Improvement/Enhanced Academic Qualification (e.g. GATE Qualified, Ph.D registration/ Completion)
+                        <input
+                            type="number"
+                            value={academicQualification}
+                            onChange={handleAcademicQualificationChange}
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        9.f. Active MoU with Industry/ Recognized Institution / University
+                        <input
+                            type="number"
+                            value={mouWithIndustry}
+                            onChange={handleMouWithIndustryChange}
+                        />
+                    </label>
+                    <br />
+                    <button type="button" className="btn" onClick={calculateScore9}>Calculate Total Score</button>
+                    <p className="total-score">Total Score: {totalScore9}</p>
+                </div>
+
                 <br />
+                <button type="button" className="btnAB" onClick={calculateScoreB}>Calculate Form B Score</button>
+                <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score Form B: {totalScoreformB}</span>
+            </div>
+            <br />
 
-                <button type="button" className="btnAB" onClick={calculateScore}>Calculate Form Score</button>
+            <button type="button" className="btnAB" onClick={calculateScore}>Calculate Form Score</button>
 
-                <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score : {totalScore}</span>
+            <span style={{ marginLeft: "25px" }} className="total-scoreAB">Total Score : {totalScore}</span>
 
-                {/* <br /> */}
-                <button className='btnAB' style={{ marginLeft: "25px" }} type="submit">Submit</button>
+            {/* <br /> */}
+            <button className='btnAB' style={{ marginLeft: "25px" }} type="submit">Submit</button>
 
-            </form>
+        </form>
         </>
     );
 }

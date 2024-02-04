@@ -133,3 +133,75 @@
   #file-input::file-selector-button:hover {
     background: #0d45a5;
   }
+
+
+
+
+
+
+
+  .progress-barx {
+    height: 10px;
+    width: 350px;
+    background-color:#DEE1E1;
+    border-radius: 10px;
+    /* transition: width 3.3s ease-in-out; */
+    position: relative;
+   
+  }
+
+.progress-bar-fillx {
+  height: 10px;
+  background-color: #7cb342;
+  border-radius: 10px;
+  transition: width 3.3s ease-in-out;
+}
+
+
+.progress-bar-notfill {
+  height: 100%;
+  background-color:#DEE1E1;
+  
+  border-radius: 10px;
+  transition: width 3.3s ease-in-out;
+}
+
+.progress-bar-fillx.animated {
+  animation: progress-animation 2s ease-in-out;
+}
+
+
+
+/* styles.css */
+
+.info-banner {
+  display: flex;
+  align-items: center;
+  border-radius: 0.375rem; /* 6px */
+  border-left: 0.25rem solid #000; /* Black border on the left side */
+  background-color: #f0f0f0; /* Light gray background color */
+  padding: 1rem; /* 16px */
+}
+
+.info-banner .flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* 16px */
+}
+
+.info-banner .icon {
+  height: 1.5rem; /* 24px */
+  width: 1.5rem; /* 24px */
+}
+
+.info-banner .close-icon {
+  height: 1.5rem; /* 24px */
+  width: 1.5rem; /* 24px */
+  cursor: pointer;
+}
+
+.info-banner .text {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  margin: 0; /* Remove default margin */
+}

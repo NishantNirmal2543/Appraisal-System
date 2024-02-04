@@ -58,6 +58,8 @@ const feedpostsRoutes = require("./routes/feedposts")
 const createpostRoutes = require("./routes/posts")
 
 const feedRoutes = require("./routes/fetchempfeed")
+
+const fetchemployeeappraisalRoutes = require("./routes/fetchemployeeappraisal")
 // database connection
 connection();
 
@@ -144,5 +146,9 @@ app.use('/api/createposts', createpostRoutes);
 app.use('/api/feedposts' , feedpostsRoutes)
 
 app.use('/api/feed',feedRoutes)
+
+//appraisal
+
+app.use('/api/fetchemployeeappraisal' , fetchemployeeappraisalRoutes ) ;
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

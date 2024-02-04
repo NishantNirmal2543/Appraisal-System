@@ -247,7 +247,7 @@ const Dashboard = () => {
                   <h4>Mobile</h4>
                   <p>{employee.mobile}</p>
                 </div> */}
-                {/* <div className="progress-bar-container">
+                <div className="progress-bar-container">
                   {appraisals.length > 0 ? (
                     <div className="progress-bar">
                       <div
@@ -270,7 +270,7 @@ const Dashboard = () => {
                       </span>
                     </div>
                   )}
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
