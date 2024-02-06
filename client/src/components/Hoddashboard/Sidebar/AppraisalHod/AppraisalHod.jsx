@@ -1331,11 +1331,12 @@ const EmployeeTable = () => {
           params: {
             department,
             college,
+
           },
         });
 
         setEmployees(employeesResponse.data);
-        // console.log(employeesResponse)
+        console.log(employeesResponse)
         setIsLoading(false);
       } catch (error) {
         setError(error.response.data.message);
@@ -1392,6 +1393,7 @@ const EmployeeTable = () => {
                       <th>Employee Name</th>
                       <th>Employee Email</th>
                       <th>Score Appraisal</th>
+                      <th>Appraisal Status</th>
                       <th>Year of Performance Appraisal:</th>
                     </tr>
                   </thead>
@@ -1413,12 +1415,20 @@ const EmployeeTable = () => {
                               }}
                             />
                             {employee.name}
+
                           </div>
 
                         </td>
                         <td>{employee.email}</td>
                         <td>
                           <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewDetails(employee)} >  <BsPencil /> </button>
+                        </td>
+                        <td>
+                          {employee.appraisalStatus ? (
+                            <span style={{ color: 'green' }}>Submitted</span>
+                          ) : (
+                            <span style={{ color: 'red' }}>Not Submitted</span>
+                          )}
                         </td>
                         <td> <label className="department-label">
 
