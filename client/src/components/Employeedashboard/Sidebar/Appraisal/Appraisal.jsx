@@ -21,8 +21,12 @@ const Appraisal = () => {
     const [uploading9, setUploading9] = useState(false);
     const [progress, setProgress] = useState(0)
     const [isLoading, setIsLoading] = useState(true);
-
+    const [show,setShow] = useState(false);
     const [employee, setEmployee] = useState(null);
+    const handleButtonClick = () => {
+        setShow(true);
+      };
+    
 
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
@@ -1606,10 +1610,23 @@ const Appraisal = () => {
                 onLoaderFinished={() => setProgress(0)}
                 height={4}
             />
+              {!show ? <div className='Appraisalcard'>
+
+                <label className="department-label">
+                        <h3>Year of Performance Appraisal:</h3>
+                        <select className="department-select" value={year} onChange={handleYearChange}>
+                            <option value={2023}>2023</option>
+                            <option value={2024}>2024</option>
+                            <option value={2025}>2025</option>
+                        </select>
+                    </label>
+                    <button style={{marginTop:"10px"}} onClick={handleButtonClick} className='buttonDownload'>Show Appraisal Form</button>
 
 
+              </div>:
             <form onSubmit={handleSubmit}>
                 {/* form A */}
+
                 <div style={{ border: "10px solid #ccc", padding: "20px", borderRadius: "10px", marginTop: "100px" }}>
                     <h2 style={{ textAlign: "center" }}>PART-A : Teaching Learning performance</h2>
                     <label className="department-label">
@@ -1620,7 +1637,6 @@ const Appraisal = () => {
                             <option value={2025}>2025</option>
                         </select>
                     </label>
-
                     <br />
 
                     <div className="form-group">
@@ -2462,6 +2478,7 @@ const Appraisal = () => {
                 <button className='btnAB' style={{ marginLeft: "25px" }} type="submit">Submit</button>
 
             </form>
+}
         </>
     );
 }
