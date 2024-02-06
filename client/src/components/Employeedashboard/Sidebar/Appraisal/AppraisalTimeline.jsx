@@ -63,7 +63,7 @@ const AppraisalTimeline = () => {
             <div className="containerg">
 
 
-                <div className='one ' >
+                <div className='one' >
                     <div className="circle circle1">1</div>
                     <div className="circle circle2">2</div>
                     <div className="circle circle3">3</div>

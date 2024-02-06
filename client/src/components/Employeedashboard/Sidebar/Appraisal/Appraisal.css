@@ -219,6 +219,8 @@
 .two {
   position: relative;
   margin-right: 30px;
+  margin-left: 20px;
+  margin-bottom: 30px;
 }
 
 @keyframes progressAnimation {
@@ -234,8 +236,11 @@
 .one {
   position: relative;
   width: 4px;
+ 
+  /* margin-bottom: 30px; */
+
   background-color: #DEE1E1;
-  margin-top: 20px;
+  /* margin-top: 5px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -297,7 +302,7 @@
   border-radius: 20px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
   /* max-width: 300px; */
-  /* height: ; */
+  height:750px ;
   width:600px;
   margin: 10px;
   padding: 20px;
