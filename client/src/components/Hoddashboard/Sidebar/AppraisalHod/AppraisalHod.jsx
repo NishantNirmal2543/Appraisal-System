@@ -1425,11 +1425,28 @@ const EmployeeTable = () => {
                         </td>
                         <td>
                           {employee.appraisalStatus ? (
-                            <span style={{ color: 'green' }}>Submitted</span>
+                            <>
+                              {/* <span style={{ color: 'green' }}>🟢</span> */}
+                              <div className="progress-barx" style={{ width: "100px" }}>
+                                <div
+                                  className={"progress-bar-fillx animated fadeIn"}
+                                  style={{ width: "100%" }}
+                                ></div>
+                              </div>
+                            </>
                           ) : (
-                            <span style={{ color: 'red' }}>Not Submitted</span>
+                            <>
+                              {/* <span style={{ color: 'red' }}>🔴</span> */}
+                              <div className="progress-barx" style={{ width: "100px" }}>
+                                <div
+                                  className='progress-bar-notfill'
+                                  style={{ width: "100%" }}
+                                ></div>
+                              </div>
+                            </>
                           )}
                         </td>
+
                         <td> <label className="department-label">
 
                           <select className="department-select" value={year} onChange={handleYearChange}>
