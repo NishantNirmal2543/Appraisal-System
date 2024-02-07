@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Appraisal.css';
-import { Info, X } from 'lucide-react';
+import { Info } from 'lucide-react';
 
 const AppraisalTimeline = () => {
     const employeeId = localStorage.getItem("employeeid");
     const [appraisals, setAppraisals] = useState([]);
     const [appraisalsh, setAppraisalsh] = useState([]);
+    const [notification, setNotification] = useState([]);
 
     useEffect(() => {
         const fetchAppraisals = async () => {
@@ -56,265 +57,279 @@ const AppraisalTimeline = () => {
         fetchAppraisals();
     }, [employeeId]);
 
+
+    const fetchUserNotification = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/fetchnotification/${employeeId}`);
+            console.log(response.data)
+            setNotification(response.data);
+        } catch (error) {
+            console.error('Error fetching user feed:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserNotification();
+    }, [employeeId]);
+
     return (
         <>
-        <div className='Appraisaltimelinecard'>
-            <h3>Review Timeline</h3>
-            <div className="containerg">
+            <div className='Appraisaltimelinecard'>
+                <h3>Review Timeline</h3>
+                <div className="containerg">
 
 
-                <div className='one' >
-                    <div className="circle circle1">1</div>
-                    <div className="circle circle2">2</div>
-                    <div className="circle circle3">3</div>
-                    <div className="circle circle4">4</div>
-                    <div className="circle circle5">5</div>
-                </div>
-                <div className='two' >
-
-                    <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
-                        {appraisals.length > 0 ? (
-                            <div >
-
-                                {appraisals[0].progress === 100 && (
-                                    <>
-                                        <span>🟢  </span>
-
-                                        <span  style={{ color: "black" }}>Review cycle started</span>
-                                    </>
-                                )}
-                                <div style={{ padding: '20px' }} >
-
-                                    <div className="progress-barx">
-                                        <div
-                                            className={`progress-bar-fillx ${appraisals[0].progress === 100 ? "animated" : ""
-                                                }`}
-                                            style={{ width: `${appraisals[0].progress}%` }}
-                                        ></div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        ) : (
-                            <div >
-                                <>
-                                    <span>🔴  </span>
-                                    <span style={{ color: "Grey" }}>Review cycle started</span>
-                                </>
-                                <div style={{ padding: '20px' }} >
-                                    <div className="progress-barx">
-                                        <div
-                                            className='progress-bar-notfill'
-
-                                            style={{ width: "100%" }}
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-
+                    <div className='one' >
+                        <div className="circle circle1">1</div>
+                        <div className="circle circle2">2</div>
+                        <div className="circle circle3">3</div>
+                        <div className="circle circle4">4</div>
+                        <div className="circle circle5">5</div>
                     </div>
-                    <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
-                        {appraisals.length > 0 ? (
-                            <div >
+                    <div className='two' >
 
-                                {appraisals[0].progress === 100 && (
+                        <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
+                            {appraisals.length > 0 ? (
+                                <div >
+
+                                    {appraisals[0].progress === 100 && (
+                                        <>
+                                            <span>🟢  </span>
+
+                                            <span style={{ color: "black" }}>Review cycle started</span>
+                                        </>
+                                    )}
+                                    <div style={{ padding: '20px' }} >
+
+                                        <div className="progress-barx">
+                                            <div
+                                                className={`progress-bar-fillx ${appraisals[0].progress === 100 ? "animated" : ""
+                                                    }`}
+                                                style={{ width: `${appraisals[0].progress}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            ) : (
+                                <div >
                                     <>
-                                        <span>🟢  </span>
-                                        <span style={{ color: "black" }}>Self review completed</span>
+                                        <span>🔴  </span>
+                                        <span style={{ color: "Grey" }}>Review cycle started</span>
                                     </>
-                                )}
-                                <div style={{ padding: '20px' }} >
+                                    <div style={{ padding: '20px' }} >
+                                        <div className="progress-barx">
+                                            <div
+                                                className='progress-bar-notfill'
 
-                                    <div className="progress-barx">
-                                        <div
-                                            className={`progress-bar-fillx ${appraisals[0].progress === 100 ? "animated" : ""
-                                                }`}
-                                            style={{ width: `${appraisals[0].progress}%` }}
-                                        ></div>
+                                                style={{ width: "100%" }}
+                                            ></div>
+                                        </div>
                                     </div>
                                 </div>
+                            )}
 
-                            </div>
-                        ) : (
-                            <div >
-                                <>
-                                    <span>🔴  </span>
-                                    <span style={{ color: "Grey" }}>Self review completed</span>
-                                </>
-                                <div style={{ padding: '20px' }} >
-                                    <div className="progress-barx">
-                                        <div
-                                            className='progress-bar-notfill'
+                        </div>
+                        <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
+                            {appraisals.length > 0 ? (
+                                <div >
 
-                                            style={{ width: "100%" }}
-                                        ></div>
+                                    {appraisals[0].progress === 100 && (
+                                        <>
+                                            <span>🟢  </span>
+                                            <span style={{ color: "black" }}>Self review completed</span>
+                                        </>
+                                    )}
+                                    <div style={{ padding: '20px' }} >
+
+                                        <div className="progress-barx">
+                                            <div
+                                                className={`progress-bar-fillx ${appraisals[0].progress === 100 ? "animated" : ""
+                                                    }`}
+                                                style={{ width: `${appraisals[0].progress}%` }}
+                                            ></div>
+                                        </div>
                                     </div>
+
                                 </div>
-
-                            </div>
-                        )}
-
-                    </div>
-                    <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
-                        {appraisalsh.length > 0 ? (
-                            <div >
-
-                                {appraisalsh[0].progress === 100 && (
+                            ) : (
+                                <div >
                                     <>
-                                        <span>🟢  </span>
-                                        <span style={{ color: "black" }}>HOD review completed</span>
+                                        <span>🔴  </span>
+                                        <span style={{ color: "Grey" }}>Self review completed</span>
                                     </>
-                                )}
-                                <div style={{ padding: '20px' }} >
+                                    <div style={{ padding: '20px' }} >
+                                        <div className="progress-barx">
+                                            <div
+                                                className='progress-bar-notfill'
 
-                                    <div className="progress-barx">
-                                        <div
-                                            className={`progress-bar-fillx ${appraisalsh[0].progress === 100 ? "animated" : ""
-                                                }`}
-                                            style={{ width: `${appraisalsh[0].progress}%` }}
-                                        ></div>
+                                                style={{ width: "100%" }}
+                                            ></div>
+                                        </div>
                                     </div>
+
                                 </div>
+                            )}
 
-                            </div>
-                        ) : (
-                            <div >
-                                <>
-                                    <span>🔴  </span>
-                                    <span style={{ color: "Grey" }}>HOD review completed</span>
-                                </>
-                                <div style={{ padding: '20px' }} >
-                                    <div className="progress-barx">
-                                        <div
-                                            className='progress-bar-notfill'
+                        </div>
+                        <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
+                            {appraisalsh.length > 0 ? (
+                                <div >
 
-                                            style={{ width: "100%" }}
-                                        ></div>
+                                    {appraisalsh[0].progress === 100 && (
+                                        <>
+                                            <span>🟢  </span>
+                                            <span style={{ color: "black" }}>HOD review completed</span>
+                                        </>
+                                    )}
+                                    <div style={{ padding: '20px' }} >
+
+                                        <div className="progress-barx">
+                                            <div
+                                                className={`progress-bar-fillx ${appraisalsh[0].progress === 100 ? "animated" : ""
+                                                    }`}
+                                                style={{ width: `${appraisalsh[0].progress}%` }}
+                                            ></div>
+                                        </div>
                                     </div>
+
                                 </div>
+                            ) : (
+                                <div >
+                                    <>
+                                        <span>🔴  </span>
+                                        <span style={{ color: "Grey" }}>HOD review completed</span>
+                                    </>
+                                    <div style={{ padding: '20px' }} >
+                                        <div className="progress-barx">
+                                            <div
+                                                className='progress-bar-notfill'
 
-                            </div>
-                        )}
+                                                style={{ width: "100%" }}
+                                            ></div>
+                                        </div>
+                                    </div>
 
-                    </div>
-                    <div className="info-banner">
-                        <div className="flex">
-                            <div>
-                                <Info className="icon" />
+                                </div>
+                            )}
+
+                        </div>
+                        <div className="info-banner">
+                            <div className="flex">
+                                <div>
+                                    <Info className="icon" />
+                                </div>
+                                <div>
+                                    <p className="text">
+                                        {notification.map((notification) => (
+                                            <div>{notification.message}</div>
+                                        ))}
+                                    </p>
+                                </div>
                             </div>
-                            <div>
-                                <p className="text">
-                                    This is some informational text that you can use to show some informational content
-                                </p>
-                            </div>
-                            {/* <div>
+                        </div>
+                        <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
+                            {appraisalsh.length > 0 ? (
+                                <div >
+
+                                    {appraisalsh[0].progress === 100 && (
+                                        <>
+                                            <span>🟢  </span>
+                                            <span style={{ color: "black" }}>External review completed</span>
+                                        </>
+                                    )}
+                                    <div style={{ padding: '20px' }} >
+
+                                        <div className="progress-barx">
+                                            <div
+                                                className={`progress-bar-fillx ${appraisalsh[0].progress === 100 ? "animated" : ""
+                                                    }`}
+                                                style={{ width: `${appraisalsh[0].progress}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            ) : (
+                                <div >
+                                    <>
+                                        <span>🔴  </span>
+                                        <span style={{ color: "Grey" }}>External review completed</span>
+                                    </>
+                                    <div style={{ padding: '20px' }} >
+                                        <div className="progress-barx">
+                                            <div
+                                                className='progress-bar-notfill'
+
+                                                style={{ width: "100%" }}
+                                            ></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            )}
+
+                        </div>
+                        <div className="info-banner">
+                            <div className="flex">
+                                <div>
+                                    <Info className="icon" />
+                                </div>
+                                <div>
+                                    <p className="text">
+                                        This is some informational text that you can use to show some informational content
+                                    </p>
+                                </div>
+                                {/* <div>
           <X className="close-icon" />
         </div> */}
+                            </div>
                         </div>
-                    </div>
-                    <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
-                        {appraisalsh.length > 0 ? (
-                            <div >
+                        <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
+                            {appraisalsh.length > 0 ? (
+                                <div >
 
-                                {appraisalsh[0].progress === 100 && (
+                                    {appraisalsh[0].progress === 100 && (
+                                        <>
+                                            <span>🟢  </span>
+                                            <span style={{ color: "black" }}>Review cycle ended</span>
+                                        </>
+                                    )}
+                                    <div style={{ padding: '20px' }} >
+
+                                        <div className="progress-barx">
+                                            <div
+                                                className={`progress-bar-fillx ${appraisalsh[0].progress === 100 ? "animated" : ""
+                                                    }`}
+                                                style={{ width: `${appraisalsh[0].progress}%` }}
+                                            ></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            ) : (
+                                <div >
                                     <>
-                                        <span>🟢  </span>
-                                        <span style={{ color: "black" }}>External review completed</span>
+                                        <span>🔴  </span>
+                                        <span style={{ color: "Grey" }}>Review cycle ended</span>
                                     </>
-                                )}
-                                <div style={{ padding: '20px' }} >
+                                    <div style={{ padding: '20px' }} >
+                                        <div className="progress-barx">
+                                            <div
+                                                className='progress-bar-notfill'
 
-                                    <div className="progress-barx">
-                                        <div
-                                            className={`progress-bar-fillx ${appraisalsh[0].progress === 100 ? "animated" : ""
-                                                }`}
-                                            style={{ width: `${appraisalsh[0].progress}%` }}
-                                        ></div>
+                                                style={{ width: "100%" }}
+                                            ></div>
+                                        </div>
                                     </div>
+
                                 </div>
+                            )}
 
-                            </div>
-                        ) : (
-                            <div >
-                                <>
-                                    <span>🔴  </span>
-                                    <span style={{ color: "Grey" }}>External review completed</span>
-                                </>
-                                <div style={{ padding: '20px' }} >
-                                    <div className="progress-barx">
-                                        <div
-                                            className='progress-bar-notfill'
-
-                                            style={{ width: "100%" }}
-                                        ></div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        )}
-
-                    </div>
-                    <div className="info-banner">
-                        <div className="flex">
-                            <div>
-                                <Info className="icon" />
-                            </div>
-                            <div>
-                                <p className="text">
-                                    This is some informational text that you can use to show some informational content
-                                </p>
-                            </div>
-                            {/* <div>
-          <X className="close-icon" />
-        </div> */}
                         </div>
-                    </div>
-                    <div style={{ padding: '20px', fontWeight: 'bold', fontSize: "20px" }}>
-                        {appraisalsh.length > 0 ? (
-                            <div >
-
-                                {appraisalsh[0].progress === 100 && (
-                                    <>
-                                        <span>🟢  </span>
-                                        <span style={{ color: "black" }}>Review cycle ended</span>
-                                    </>
-                                )}
-                                <div style={{ padding: '20px' }} >
-
-                                    <div className="progress-barx">
-                                        <div
-                                            className={`progress-bar-fillx ${appraisalsh[0].progress === 100 ? "animated" : ""
-                                                }`}
-                                            style={{ width: `${appraisalsh[0].progress}%` }}
-                                        ></div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        ) : (
-                            <div >
-                                <>
-                                    <span>🔴  </span>
-                                    <span style={{ color: "Grey" }}>Review cycle ended</span>
-                                </>
-                                <div style={{ padding: '20px' }} >
-                                    <div className="progress-barx">
-                                        <div
-                                            className='progress-bar-notfill'
-
-                                            style={{ width: "100%" }}
-                                        ></div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        )}
-
                     </div>
                 </div>
-            </div>
             </div>
         </>
     );
