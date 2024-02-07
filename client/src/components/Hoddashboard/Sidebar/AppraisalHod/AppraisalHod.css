@@ -49,3 +49,50 @@
       height: auto;
     }
   }
+
+
+
+  .dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Add backdrop filter for blur effect */
+  }
+  
+  .dialog-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    height: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .close-button {
+    
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+
+  .dialbutton {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .bflex {
+    display: flex;
+    justify-content: space-between;
+  }
+  

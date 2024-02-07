@@ -11,6 +11,8 @@ import NoDoc from "../AppraisalHod/NoDoc.pdf";
 import profilePhoto from "../AppraisalHod/profile.jpg";
 
 const EmployeeTable = () => {
+  const [isDialogOpen, setDialogOpen] = useState(false);
+
   const [employees, setEmployees] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,6 +27,7 @@ const EmployeeTable = () => {
   const [openDialog7, setOpenDialog7] = useState(false);
   const [openDialog8, setOpenDialog8] = useState(false);
   const [openDialog9, setOpenDialog9] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
 
 
@@ -1336,7 +1339,7 @@ const EmployeeTable = () => {
         });
 
         setEmployees(employeesResponse.data);
-        console.log(employeesResponse)
+        // console.log(employeesResponse)
         setIsLoading(false);
       } catch (error) {
         setError(error.response.data.message);
@@ -1369,6 +1372,53 @@ const EmployeeTable = () => {
   const handleGoBack = () => {
     setSelectedEmployee(null);
     setSelectedEmployeeAppraisal(null);
+  };
+
+
+  const handleOpen = () => {
+    setDialogOpen(true);
+  };
+
+  const handleClose = () => {
+    setDialogOpen(false);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubmitNotification = async () => {
+
+    try {
+      const employeeId = selectedEmployee._id;
+
+      // console.log(employeeId);
+      const response = await fetch('http://localhost:8080/api/notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          employeeid: employeeId,
+          message: inputValue,
+        }),
+      });
+
+      if (response.ok) {
+        // Handle success, maybe close the dialog or show a success message
+        console.log('Notification submitted successfully');
+        handleClose();
+        toast.success("Review submitted successfully");
+
+      } else {
+        // Handle errors, maybe show an error message
+        console.error('Failed to submit notification');
+        toast.error("Review not submitted ");
+
+      }
+    } catch (error) {
+      console.error('Error submitting notification:', error);
+    }
   };
 
   return (
@@ -1467,7 +1517,39 @@ const EmployeeTable = () => {
 
         <div className="containerEmpl">
           <div className="profile1">
-            <button className='btnZ' onClick={handleGoBack}>Go Back</button>
+            <div className='bflex'>
+              <button className='btnZ' onClick={handleGoBack}>Go Back</button>
+              <button className='btnZ' onClick={handleOpen}>Review</button>
+            </div>
+
+            <div>
+              {isDialogOpen && (
+                <div className="dialog-overlay">
+                  <div className="dialog-box">
+                    <span className="close-button" onClick={handleClose}>
+                      &times;
+                    </span>
+                    <h2>Review</h2>
+                    <div>
+                      {/* Hidden input field for selectedEmployee._id */}
+                      <input type="hidden" id="employeeId" value={selectedEmployee._id} />
+                    </div>
+                    <div>
+                      {/* <label htmlFor="dialogInput">Input:</label> */}
+                      <input
+                        type="text"
+                        id="dialogInput"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <button className='dialbutton' onClick={handleSubmitNotification}>
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {selectedEmployeeAppraisal && year ? (
               <form onSubmit={handleSubmit}>

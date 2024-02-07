@@ -60,11 +60,14 @@ const createpostRoutes = require("./routes/posts")
 const feedRoutes = require("./routes/fetchempfeed")
 
 const fetchemployeeappraisalRoutes = require("./routes/fetchemployeeappraisal")
+
+const notificationRoutes = require("./routes/Notification")
 // database connection
 connection();
 
 // middlewares
 app.use(express.json());
+
 app.use(cors());
 
 //user auth
@@ -150,5 +153,10 @@ app.use('/api/feed',feedRoutes)
 //appraisal
 
 app.use('/api/fetchemployeeappraisal' , fetchemployeeappraisalRoutes ) ;
+
+//notification
+
+app.use('/api/notification', notificationRoutes); 
+
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));
