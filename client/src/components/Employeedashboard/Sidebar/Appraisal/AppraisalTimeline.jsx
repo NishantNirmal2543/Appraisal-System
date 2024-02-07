@@ -223,7 +223,13 @@ const AppraisalTimeline = () => {
                                 <div>
                                     <p className="text">
                                         {notification.map((notification) => (
-                                            <div>{notification.message}</div>
+                                            <>
+                                                <div>{notification.message}</div>
+                                                <div style={{ color: '#555', fontSize: '12px', }}>
+                                                    {new Date(notification.timestamp).toLocaleString()}
+                                                </div>
+                                            </>
+
                                         ))}
                                     </p>
                                 </div>
