@@ -28,6 +28,7 @@ const EmployeeTable = () => {
   const [openDialog8, setOpenDialog8] = useState(false);
   const [openDialog9, setOpenDialog9] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
 
 
 
@@ -1384,13 +1385,16 @@ const EmployeeTable = () => {
   };
 
   const handleInputChange = (e) => {
+
     setInputValue(e.target.value);
   };
+
 
   const handleSubmitNotification = async () => {
 
     try {
       const employeeId = selectedEmployee._id;
+
 
       // console.log(employeeId);
       const response = await fetch('http://localhost:8080/api/notification', {
@@ -1531,25 +1535,34 @@ const EmployeeTable = () => {
                     </span>
                     <h2>Review</h2>
                     <div>
-                      {/* Hidden input field for selectedEmployee._id */}
                       <input type="hidden" id="employeeId" value={selectedEmployee._id} />
                     </div>
                     <div>
-                      {/* <label htmlFor="dialogInput">Input:</label> */}
                       <input
                         type="text"
                         id="dialogInput"
                         value={inputValue}
-                        onChange={handleInputChange}
+                        onChange={(e) => {
+                          handleInputChange(e);
+
+                          setIsSubmitDisabled(!e.target.value.trim());
+                        }}
                       />
                     </div>
-                    <button className='dialbutton' onClick={handleSubmitNotification}>
+                    <button
+                      className='dialbutton'
+                      onClick={handleSubmitNotification}
+                      style={{ backgroundColor: isSubmitDisabled ? 'red' : 'black', color: 'white' }}
+
+                      disabled={isSubmitDisabled}
+                    >
                       Submit
                     </button>
                   </div>
                 </div>
               )}
             </div>
+
 
             {selectedEmployeeAppraisal && year ? (
               <form onSubmit={handleSubmit}>
