@@ -35,7 +35,7 @@ const Dashboard = () => {
   const fetchPosts = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/feedposts');
-      console.log(response.data)
+      // console.log(response.data)
       setPosts(response.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
@@ -179,7 +179,7 @@ const Dashboard = () => {
   const fetchUserNotification = async () => {
     try {
       const response = await axios.get(`http://localhost:8080/api/fetchnotification/${employeeId}`);
-      console.log(response.data)
+      // console.log(response.data)
       setNotification(response.data);
     } catch (error) {
       console.error('Error fetching user feed:', error);

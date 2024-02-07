@@ -32,7 +32,9 @@ const Notification = ({ notifications }) => {
        {notifications.map((notification) => (
           <div key={notification.id} style={notificationCardStyles}>
             <div style={iconStyles}>{notification.icon}</div>
-            <div>{notification.message}</div>
+         {notification.message}
+            <div style={dateStyles}>{new Date(notification.timestamp).toLocaleString()}</div>
+
           </div>
         ))}
        </div>
@@ -101,4 +103,10 @@ const dialogStyles = {
   padding: '20px',
 };
 
+const dateStyles = {
+  color: '#555',
+  fontSize: '12px',
+  // marginTop: '5px',
+  marginLeft: '15px',
+};
 export default Notification;
