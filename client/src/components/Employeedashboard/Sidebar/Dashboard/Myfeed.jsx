@@ -288,9 +288,9 @@ const Myfeed = () => {
                         </div>
                     </div>
                 )}
-                  {!isLoading && employee && (
-      <Notification/>
-      )}
+                  {/* {!isLoading && employee && (
+      <Notification notifications={notification} />
+      )} */}
             </div>
         </div>
     </>

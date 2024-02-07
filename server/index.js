@@ -62,6 +62,8 @@ const feedRoutes = require("./routes/fetchempfeed")
 const fetchemployeeappraisalRoutes = require("./routes/fetchemployeeappraisal")
 
 const notificationRoutes = require("./routes/Notification")
+
+const fetchnotificationRoutes = require("./routes/fetchnotification")
 // database connection
 connection();
 
@@ -157,6 +159,7 @@ app.use('/api/fetchemployeeappraisal' , fetchemployeeappraisalRoutes ) ;
 //notification
 
 app.use('/api/notification', notificationRoutes); 
+app.use('/api/fetchnotification', fetchnotificationRoutes); 
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));
