@@ -236,16 +236,19 @@
 .one {
   position: relative;
   width: 4px;
- 
-  /* margin-bottom: 30px; */
-
   background-color: #DEE1E1;
-  /* margin-top: 5px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   animation: progressAnimation 3s ease forwards;
+}
+.line{
+  width: 4px;
+  height: 700px;
+  background-color: #DEE1E1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .circle {
@@ -262,26 +265,27 @@
   justify-content: center;
   color: rgb(255, 255, 255);
   z-index: 1;
+  
 }
 
 .circle1 {
-  margin-top: -340px;
+  margin-top: -320px;
 }
 
 .circle2 {
-  margin-top: -220px;
+  margin-top: -200px;
 }
 
 .circle3 {
-  margin-top: -100px;
+  margin-top: -85px;
 }
 
 .circle4 {
-  margin-top: 70px;
+  margin-top: 125px;
 }
 
 .circle5 {
-  margin-top: 250px;
+  margin-top: 305px;
 }
 
 

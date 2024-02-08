@@ -78,13 +78,16 @@ const AppraisalTimeline = () => {
                 <h3>Review Timeline</h3>
                 <div className="containerg">
 
+                    <div className='line'>
 
-                    <div className='one' >
-                        <div className="circle circle1">1</div>
-                        <div className="circle circle2">2</div>
-                        <div className="circle circle3">3</div>
-                        <div className="circle circle4">4</div>
-                        <div className="circle circle5">5</div>
+
+                        <div className='one' >
+                            <div className="circle circle1">1</div>
+                            <div className="circle circle2">2</div>
+                            <div className="circle circle3">3</div>
+                            <div className="circle circle4">4</div>
+                            <div className="circle circle5">5</div>
+                        </div>
                     </div>
                     <div className='two' >
 
