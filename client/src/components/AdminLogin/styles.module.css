@@ -62,7 +62,7 @@
 	width: 370px;
 	padding: 15px;
 	border-radius: 10px;
-	background-color: #edf5f3;
+	background-color:#ECF0F0;
 	margin: 5px 0;
 	font-size: 14px;
 }
@@ -226,4 +226,17 @@
 	width: 340px;
 	padding: 15px;
    
+  }
+
+
+  .password_container {
+	position: relative;
+  }
+  
+  .eye_icon {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	cursor: pointer;
   }

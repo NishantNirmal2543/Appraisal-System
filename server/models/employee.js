@@ -64,6 +64,10 @@ const employeeSchema = new mongoose.Schema({
   URL9: {
     type: String,
   },
+  appraisalStatus: {
+    type: Boolean,
+    default: false, // Default value is false, change it accordingly
+  },
 });
 
 employeeSchema.methods.generateAuthToken = function () {

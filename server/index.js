@@ -56,12 +56,15 @@ const feedpostsRoutes = require("./routes/feedposts");
 
 const createpostRoutes = require("./routes/posts");
 
+const createpostRoutes = require("./routes/posts");
+
 const feedRoutes = require("./routes/fetchempfeed");
 // database connection
 connection();
 
 // middlewares
 app.use(express.json());
+
 app.use(cors());
 
 //user auth
@@ -131,6 +134,8 @@ app.use("/api/fetchhodappraisal", fetchhodappraisalRoutes);
 // posts
 
 app.use("/api/createposts", createpostRoutes);
+
+app.use("/api/feedposts", feedpostsRoutes);
 
 app.use("/api/feedposts", feedpostsRoutes);
 

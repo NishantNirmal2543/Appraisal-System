@@ -17,7 +17,7 @@ import { FaEdit } from 'react-icons/fa';
 
 const Dashboard = () => {
   const [isHovered, setIsHovered] = useState(false);
-
+  const [notification, setNotification] = useState([]);
   const [employee, setEmployee] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +35,7 @@ const Dashboard = () => {
   const fetchPosts = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/feedposts');
-      console.log(response.data)
+      // console.log(response.data)
       setPosts(response.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
@@ -175,6 +175,24 @@ const Dashboard = () => {
     setProfilePhotoURL(URL.createObjectURL(file));
   };
 
+
+  const fetchUserNotification = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/api/fetchnotification/${employeeId}`);
+      // console.log(response.data)
+      setNotification(response.data);
+    } catch (error) {
+      console.error('Error fetching user feed:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserNotification();
+  }, [employeeId]);
+
+
+
+
   return (
     <div className="dashboard">
       {error && <div className="error">{error}</div>}
@@ -247,7 +265,7 @@ const Dashboard = () => {
                   <h4>Mobile</h4>
                   <p>{employee.mobile}</p>
                 </div> */}
-                {/* <div className="progress-bar-container">
+                <div className="progress-bar-container">
                   {appraisals.length > 0 ? (
                     <div className="progress-bar">
                       <div
@@ -270,7 +288,7 @@ const Dashboard = () => {
                       </span>
                     </div>
                   )}
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
@@ -281,7 +299,7 @@ const Dashboard = () => {
           className="social"
         >
           <AddPost profilePhotoURL={profilePhotoURL} employeeName={employee.name} designation={employee.designation} updatePosts={updatePosts} />
-         
+
           <div>
             {posts.map((post, index) => (
               <Post
@@ -298,8 +316,8 @@ const Dashboard = () => {
 
         </div>
       )}
-       {!isLoading && employee && (
-      <Notification/>
+      {!isLoading && employee && (
+        <Notification notifications={notification} />
       )}
     </div>
 
