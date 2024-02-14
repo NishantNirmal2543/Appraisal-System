@@ -56,7 +56,7 @@ const feedpostsRoutes = require("./routes/feedposts");
 
 const createpostRoutes = require("./routes/posts");
 
-const createpostRoutes = require("./routes/posts");
+// const createpostRoutes = require("./routes/posts");
 
 const feedRoutes = require("./routes/fetchempfeed");
 // database connection
