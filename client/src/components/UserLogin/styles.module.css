@@ -230,3 +230,17 @@
 	padding: 15px;
    
   }
+
+
+
+  .password_container {
+	position: relative;
+  }
+  
+  .eye_icon {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	cursor: pointer;
+  }

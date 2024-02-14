@@ -1,19 +1,22 @@
-import {  useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import {toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Adminsignin = (props) => {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
-	
+	const [showPassword, setShowPassword] = useState(false);
+
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	};
 
-	 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
@@ -21,11 +24,11 @@ const Adminsignin = (props) => {
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			// console.log(res)
-			if(res.role === "hod"){window.location = "/Hoddashboard";}
-			else if(res.role === "principle"){window.location = "/Principaldashboard";}
-			else if(res.role === "Admin"){window.location = "/Admindashboard";}
+			if (res.role === "hod") { window.location = "/Hoddashboard"; }
+			else if (res.role === "principle") { window.location = "/Principaldashboard"; }
+			else if (res.role === "Admin") { window.location = "/Admindashboard"; }
 
-			
+
 		} catch (error) {
 			if (
 				error.response &&
@@ -63,25 +66,34 @@ const Adminsignin = (props) => {
 							<option value="hod">HOD</option>
 							<option value="principal">Principle</option>
 						</select> */}
-						
-						<input
-							type="email"
-							placeholder="Email"
-							name="email"
-							onChange={handleChange}
-							value={data.email}
-							required
-							className={styles.input}
-						/>
-						<input
-							type="password"
-							placeholder="Password"
-							name="password"
-							onChange={handleChange}
-							value={data.password}
-							required
-							className={styles.input}
-						/>
+
+						<div className={styles.input_container}>
+							<input
+								type="email"
+								placeholder="Email"
+								name="email"
+								onChange={handleChange}
+								value={data.email}
+								required
+								className={styles.input}
+							/>
+							<div className={styles.password_container}>
+								<input
+									type={!showPassword ? "text" : "password"}
+									placeholder="Password"
+									name="password"
+									onChange={handleChange}
+									value={data.password}
+									required
+									className={styles.input}
+								/>
+								<i
+									onClick={togglePasswordVisibility}
+									className={`${!showPassword ? "fas fa-eye" : "fas fa-eye-slash"
+										} ${styles.eye_icon}`}
+								></i>
+							</div>
+						</div>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
 							Sign In
