@@ -8,14 +8,14 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-	const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
   const togglePasswordVisibility = () => {
-		setShowPassword(!showPassword);
-	};
+    setShowPassword(!showPassword);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -42,32 +42,32 @@ const Login = () => {
           <form className={styles.form_container} onSubmit={handleSubmit}>
             <h1>Employee Login</h1>
             <div className={styles.input_container}>
-							<input
-								type="email"
-								placeholder="Email"
-								name="email"
-								onChange={handleChange}
-								value={data.email}
-								required
-								className={styles.input}
-							/>
-							<div className={styles.password_container}>
-								<input
-									type={!showPassword ? "text" : "password"}
-									placeholder="Password"
-									name="password"
-									onChange={handleChange}
-									value={data.password}
-									required
-									className={styles.input}
-								/>
-								<i
-									onClick={togglePasswordVisibility}
-									className={`${!showPassword ? "fas fa-eye" : "fas fa-eye-slash"
-										} ${styles.eye_icon}`}
-								></i>
-							</div>
-						</div>
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={handleChange}
+                value={data.email}
+                required
+                className={styles.input}
+              />
+              <div className={styles.password_container}>
+                <input
+                  type={!showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  name="password"
+                  onChange={handleChange}
+                  value={data.password}
+                  required
+                  className={styles.input}
+                />
+                <i
+                  onClick={togglePasswordVisibility}
+                  className={`${
+                    !showPassword ? "fas fa-eye" : "fas fa-eye-slash"
+                  } ${styles.eye_icon}`}></i>
+              </div>
+            </div>
             {error && <div className={styles.error_msg}>{error}</div>}
             <button type="submit" className={styles.green_btn}>
               Sign In
@@ -78,7 +78,7 @@ const Login = () => {
           <h1>Admin</h1>
           <Link to="/adminsignin">
             <button type="button" className={styles.white_btn}>
-              Sing In
+              Sign In
             </button>
           </Link>
         </div>
