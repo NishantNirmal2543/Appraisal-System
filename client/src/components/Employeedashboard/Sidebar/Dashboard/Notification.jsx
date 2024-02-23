@@ -15,6 +15,7 @@ const Notification = ({ notifications }) => {
         <div style={notificationCountStyles} onClick={handleBellClick}>
           {notificationCount > 0 && (
             <span>
+            
               <i className="fas fa-bell"></i> {notificationCount}
             </span>
           )}
