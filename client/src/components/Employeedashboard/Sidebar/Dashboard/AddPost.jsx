@@ -248,5 +248,6 @@ const AddPost = ({ profilePhotoURL, employeeName, designation, updatePosts }) =>
     );
 };
 
+
 export default AddPost;
 
