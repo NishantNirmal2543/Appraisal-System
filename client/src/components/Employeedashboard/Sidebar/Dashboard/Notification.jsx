@@ -1,49 +1,40 @@
 import React, { useState } from 'react';
 
 const Notification = ({ notifications }) => {
-  const [showDialog, setShowDialog] = useState(false);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   const notificationCount = notifications.length;
 
   const handleBellClick = () => {
-    setShowDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-    setShowDialog(false);
+    setDropdownOpen(!isDropdownOpen);
   };
 
   return (
     <div style={dashboardStyles}>
       <div style={notificationContainerStyles}>
         <div style={notificationCountStyles} onClick={handleBellClick}>
-          {notificationCount > -1 && (
+          {notificationCount > 0 && (
             <span>
-              <i className="fas fa-bell"></i> {notificationCount}
             
+              <i className="fas fa-bell"></i> {notificationCount}
             </span>
           )}
         </div>
-        
-      </div>
-      {showDialog && 
-       <div style={dialogOverlayStyles} onClick={handleCloseDialog}>
-       <div style={dialogStyles}>
-       {notifications.map((notification) => (
-          <div key={notification.id} style={notificationCardStyles}>
-            <div style={iconStyles}>{notification.icon}</div>
-         {notification.message}
-            <div style={dateStyles}>{new Date(notification.timestamp).toLocaleString()}</div>
-
+        {isDropdownOpen && (
+          <div style={notificationDropdownStyles}>
+            {notifications.map((notification) => (
+              <div key={notification.id} style={notificationCardStyles}>
+                <div style={iconStyles}>{notification.icon}</div>
+                {notification.message}
+                <div style={dateStyles}>{new Date(notification.timestamp).toLocaleString()}</div>
+              </div>
+            ))}
           </div>
-        ))}
-       </div>
-     </div>}
+        )}
+      </div>
     </div>
   );
 };
-
-
 
 const dashboardStyles = {
   margin: '10px',
@@ -52,12 +43,10 @@ const dashboardStyles = {
   boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
   padding: '10px',
   marginBottom: 'auto',
-  
-
-
 };
 
 const notificationContainerStyles = {
+  position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -68,6 +57,16 @@ const notificationCountStyles = {
   fontSize: '18px',
   fontWeight: 'bold',
   cursor: 'pointer',
+};
+
+const notificationDropdownStyles = {
+  position: 'absolute',
+  top: '100%',
+  right: "10px",
+  backgroundColor: '#fff',
+  borderRadius: '5px',
+  boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+  marginTop: '15px',
 };
 
 const notificationCardStyles = {
@@ -84,29 +83,9 @@ const iconStyles = {
   marginRight: '10px',
 };
 
-const dialogOverlayStyles = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  width: '100%',
-  height: '100%',
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-};
-
-const dialogStyles = {
-  backgroundColor: '#fff',
-  borderRadius: '10px',
-  boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
-  padding: '20px',
-};
-
 const dateStyles = {
   color: '#555',
   fontSize: '12px',
-  // marginTop: '5px',
-  marginLeft: '15px',
 };
+
 export default Notification;
