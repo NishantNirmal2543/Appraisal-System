@@ -14,6 +14,10 @@ const deleteemployeeRoutes = require("./routes/deleteemployee");
 
 const updateemployeeRoutes = require("./routes/updateemployee");
 
+// updates
+
+const updates = require("./routes/updates");
+
 const adminhodRoutes = require("./routes/hod");
 
 const deletehodRoutes = require("./routes/deletehod");
@@ -151,6 +155,9 @@ app.use("/api/fetchemployeeappraisal", fetchemployeeappraisalRoutes);
 
 app.use("/api/notification", notificationRoutes);
 app.use("/api/fetchnotification", fetchnotificationRoutes);
+
+//update
+app.use("/api/updates", updates);
 
 const port = process.env.PORT || 8080;
 app.listen(port, console.log(`Listening on port ${port}...`));

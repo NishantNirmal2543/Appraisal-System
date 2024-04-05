@@ -11,9 +11,9 @@ import { v4 } from "uuid";
 import AddPost from "./AddPost";
 import Post from "./Post";
 import { Link } from "react-router-dom";
-import Notification from "./Notification"
+import Notification from "./Notification";
 
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit } from "react-icons/fa";
 
 const Dashboard = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -34,20 +34,17 @@ const Dashboard = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/feedposts');
+      const response = await axios.get("http://localhost:8080/api/feedposts");
       // console.log(response.data)
       setPosts(response.data);
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      console.error("Error fetching posts:", error);
     }
   };
 
   useEffect(() => {
     fetchPosts();
   }, []);
-
-
-
 
   const handleUpload = async () => {
     if (selectedFile) {
@@ -153,7 +150,6 @@ const Dashboard = () => {
       } catch (error) {
         console.error("Failed to fetch employee data:", error);
         setError(error.message);
-
       }
     };
 
@@ -161,8 +157,8 @@ const Dashboard = () => {
   }, [employeeId]);
 
   const handleImageClick = (e) => {
-    if (e.target.className === 'profile-photo') {
-      const fileInput = document.getElementById('file-input');
+    if (e.target.className === "profile-photo") {
+      const fileInput = document.getElementById("file-input");
       if (fileInput) {
         fileInput.click();
       }
@@ -175,23 +171,21 @@ const Dashboard = () => {
     setProfilePhotoURL(URL.createObjectURL(file));
   };
 
-
   const fetchUserNotification = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/fetchnotification/${employeeId}`);
+      const response = await axios.get(
+        `http://localhost:8080/api/fetchnotification/${employeeId}`
+      );
       // console.log(response.data)
       setNotification(response.data);
     } catch (error) {
-      console.error('Error fetching user feed:', error);
+      console.error("Error fetching user feed:", error);
     }
   };
 
   useEffect(() => {
     fetchUserNotification();
   }, [employeeId]);
-
-
-
 
   return (
     <div className="dashboard">
@@ -209,22 +203,19 @@ const Dashboard = () => {
                 <div
                   className="profileA-photo"
                   onClick={handleImageClick}
-                  style={{ cursor: "pointer" }}
-
-                >
+                  style={{ cursor: "pointer" }}>
                   <div
                     className="image-container"
                     onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                  > <img src={profilePhotoURL || profilePhoto} alt="Profile" />
+                    onMouseLeave={() => setIsHovered(false)}>
+                    {" "}
+                    <img src={profilePhotoURL || profilePhoto} alt="Profile" />
                     {isHovered && (
                       <div className="image-overlay">
                         <FaEdit className="edit-icon" />
                       </div>
                     )}
                   </div>
-
-
                 </div>
               </label>
               <input
@@ -237,12 +228,22 @@ const Dashboard = () => {
               />
               {uploading && <span>Uploading...</span>}
 
-
-              <button className="buttonDownload" onClick={handleUpload} disabled={uploading}>
+              <button
+                className="buttonDownload"
+                onClick={handleUpload}
+                disabled={uploading}>
                 Upload Profile Photo
               </button>
-              <h1 style={{ color: "black", textAlign: "center", overflow: "hidden", textOverflow: "ellipsis" }}>
-                <Link style={{ color: "black", display: "block" }} to="/Employeedashboard/profile">
+              <h1
+                style={{
+                  color: "black",
+                  textAlign: "center",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}>
+                <Link
+                  style={{ color: "black", display: "block" }}
+                  to="/Employeedashboard/profile">
                   {employee.name}
                 </Link>
               </h1>
@@ -269,10 +270,10 @@ const Dashboard = () => {
                   {appraisals.length > 0 ? (
                     <div className="progress-bar">
                       <div
-                        className={`progress-bar-fill ${appraisals[0].progress === 100 ? "animated" : ""
-                          }`}
-                        style={{ width: `${appraisals[0].progress}%` }}
-                      ></div>
+                        className={`progress-bar-fill ${
+                          appraisals[0].progress === 100 ? "animated" : ""
+                        }`}
+                        style={{ width: `${appraisals[0].progress}%` }}></div>
                       {appraisals[0].progress === 100 && (
                         <span className="appraisal-done">Appraisal done!</span>
                       )}
@@ -281,8 +282,7 @@ const Dashboard = () => {
                     <div className="progress-bar">
                       <div
                         className="progress-bar-fill"
-                        style={{ width: "0%" }}
-                      ></div>
+                        style={{ width: "0%" }}></div>
                       <span className="appraisal-pending">
                         Appraisal pending
                       </span>
@@ -295,32 +295,33 @@ const Dashboard = () => {
         </div>
       )}
       {!isLoading && employee && (
-        <div
-          className="social"
-        >
-          <AddPost profilePhotoURL={profilePhotoURL} employeeName={employee.name} designation={employee.designation} updatePosts={updatePosts} />
+        <div className="social">
+          <AddPost
+            profilePhotoURL={profilePhotoURL}
+            employeeName={employee.name}
+            designation={employee.designation}
+            updatePosts={updatePosts}
+          />
 
           <div>
-            {posts.map((post, index) => (
-              <Post
-                key={index}
-                profilePhotoURL={post.profilePhotoURL}
-                description={post.description}
-                picturePath={post.picturePath}
-                designation={post.designation}
-                employeeName={post.employeeName}
-              />
-            ))}
+            {posts
+              .sort((a, b) => new Date(b.postedAt) - new Date(a.postedAt))
+              .map((post, index) => (
+                <Post
+                  key={index}
+                  profilePhotoURL={post.profilePhotoURL}
+                  description={post.description}
+                  picturePath={post.picturePath}
+                  designation={post.designation}
+                  employeeName={post.employeeName}
+                  postedAt={post.postedAt}
+                />
+              ))}
           </div>
-
-
         </div>
       )}
-      {!isLoading && employee && (
-        <Notification notifications={notification} />
-      )}
+      {!isLoading && employee && <Notification notifications={notification} />}
     </div>
-
   );
 };
 

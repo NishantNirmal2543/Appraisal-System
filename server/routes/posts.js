@@ -1,55 +1,49 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { Post } = require('../models/post'); 
-const { v4: uuidv4 } = require('uuid'); 
+const { Post } = require("../models/post");
+const { v4: uuidv4 } = require("uuid");
 
-router.post('/', async (req, res) => {
-    try {
-      const { employeeid,  description, picturePath ,profilePhotoURL ,designation ,employeeName} = req.body;
-  
-      const newPost = new Post({
-        _id: uuidv4(),
-        employeeid,
-        profilePhotoURL,
-        description,
-        picturePath,
-        designation,
-        employeeName
-      
-      });
-  
-    
-      const savedPost = await newPost.save();
-  
-      res.status(201).json(savedPost);
-    } catch (error) {
-      console.error('Error creating post:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
-  
+router.post("/", async (req, res) => {
+  try {
+    const {
+      employeeid,
+      description,
+      picturePath,
+      profilePhotoURL,
+      designation,
+      employeeName,
+      classification_tag,
+    } = req.body;
 
-  
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getFullYear()}-${String(
+      currentDate.getMonth() + 1
+    ).padStart(2, "0")}-${String(currentDate.getDate()).padStart(
+      2,
+      "0"
+    )} ${String(currentDate.getHours()).padStart(2, "0")}:${String(
+      currentDate.getMinutes()
+    ).padStart(2, "0")}:${String(currentDate.getSeconds()).padStart(2, "0")}`;
 
-// // Like a post
-// router.post('/likePost/:postId', async (req, res) => {
-//   try {
-//     const { postId } = req.params;
-//     const post = await Post.findById(postId);
-    
-//     if (!post) {
-//       return res.status(404).json({ error: 'Post not found' });
-//     }
+    const newPost = new Post({
+      _id: uuidv4(),
+      employeeid,
+      profilePhotoURL,
+      description,
+      picturePath,
+      designation,
+      employeeName,
+      classification_tag,
+      postedAt: formattedDate, // Set postedAt field to formatted date and time string
+    });
 
-//     // Update the likes object in the post
-//     const { userId } = req.body;
-//     post.likes[userId] = true;
+    const savedPost = await newPost.save();
 
-//     const updatedPost = await post.save();
-//     res.status(200).json(updatedPost);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Could not like the post' });
-//   }
-// });
+    res.status(201).json(savedPost);
+  } catch (error) {
+    console.error("Error creating post:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 module.exports = router;
