@@ -1,9 +1,9 @@
-const { string } = require('joi');
-const mongoose = require('mongoose');
+const { string } = require("joi");
+const mongoose = require("mongoose");
 
 const appraisalSchema = new mongoose.Schema({
   employeeid: {
-    type:  String,
+    type: String,
     required: true,
   },
   year: {
@@ -66,354 +66,352 @@ const appraisalSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  attendanceRecordTE:{
+  attendanceRecordTE: {
     type: Number,
     required: true,
   },
-  meetingsConductedTE:{
+  meetingsConductedTE: {
     type: Number,
     required: true,
   },
-  communicationTE:{
+  communicationTE: {
     type: Number,
     required: true,
   },
-  counselingTE:{
+  counselingTE: {
     type: Number,
     required: true,
   },
-  adhonScore:{
+  adhonScore: {
     type: Number,
     required: true,
   },
-  otherScore:{
+  otherScore: {
     type: Number,
     required: true,
   },
-  allClearScore:{
+  allClearScore: {
     type: Number,
     required: true,
   },
-  totalScoreTE:{
-    type: Number,
-    default: 0,
-  },
-  attendanceRecordBE:{
-    type: Number,
-    required: true,
-  },
-  meetingsConductedBE:{
-    type: Number,
-    required: true,
-  },
-  communicationBE:{
-    type: Number,
-    required: true,
-  },
-  counselingBE:{
-    type: Number,
-    required: true,
-  },
-  adhonCompleted:{
-    type: Number,
-    required: true,
-  },
-  placementPercentage:{
-    type: Number,
-    required: true,
-  },
-  batchEvaluation:{
-    type: Number,
-    required: true,
-  },
-  actionTaken:{
-    type: Number,
-    required: true,
-  },
-  totalScoreBE:{
+  totalScoreTE: {
     type: Number,
     default: 0,
   },
-  latestResult:{
+  attendanceRecordBE: {
     type: Number,
     required: true,
   },
-  prevYearResult1:{
+  meetingsConductedBE: {
     type: Number,
     required: true,
   },
-  prevYearResult2:{
+  communicationBE: {
     type: Number,
     required: true,
   },
-  prevYearResult3:{
+  counselingBE: {
     type: Number,
     required: true,
   },
-  totalscore4:{
-    type: Number,
-    default:0,
-  },
-  internalFeedback:{
+  adhonCompleted: {
     type: Number,
     required: true,
   },
-  externalFeedback:{
+  placementPercentage: {
     type: Number,
     required: true,
   },
-  totalScore5:{
-    type: Number,
-    default:0,
-  },
-  handwrittenNotes:{
+  batchEvaluation: {
     type: Number,
     required: true,
   },
-  otherContents:{
+  actionTaken: {
     type: Number,
     required: true,
   },
-  coPoPsoMapping:{
+  totalScoreBE: {
+    type: Number,
+    default: 0,
+  },
+  latestResult: {
     type: Number,
     required: true,
   },
-  totalScore6:{
-    type: Number,
-    default:0,
-  },
-  shortTerm7a:{
+  prevYearResult1: {
     type: Number,
     required: true,
   },
-  semester7a:{
+  prevYearResult2: {
     type: Number,
     required: true,
   },
-  academicYear7a:{
+  prevYearResult3: {
     type: Number,
     required: true,
   },
-  totalScore7a:{
+  totalscore4: {
     type: Number,
-    default:0,
+    default: 0,
   },
-  shortTerm7b:{
+  internalFeedback: {
     type: Number,
     required: true,
   },
-  semester7b:{
+  externalFeedback: {
     type: Number,
     required: true,
   },
-  academicYear7b:{
+  totalScore5: {
+    type: Number,
+    default: 0,
+  },
+  handwrittenNotes: {
     type: Number,
     required: true,
   },
-  totalScore7b:{
-    type: Number,
-    default:0,
-  },
-  shortTerm7c:{
+  otherContents: {
     type: Number,
     required: true,
   },
-  semester7c:{
+  coPoPsoMapping: {
     type: Number,
     required: true,
   },
-  academicYear7c:{
+  totalScore6: {
+    type: Number,
+    default: 0,
+  },
+  shortTerm7a: {
     type: Number,
     required: true,
   },
-  totalScore7c:{
-    type: Number,
-    default:0,
-  },
-  internationalJournal:{
+  semester7a: {
     type: Number,
     required: true,
   },
-  citation2022:{
+  academicYear7a: {
     type: Number,
     required: true,
   },
-  totalScore8a:{
+  totalScore7a: {
     type: Number,
-    default:0,
+    default: 0,
   },
-  international:{
+  shortTerm7b: {
     type: Number,
     required: true,
   },
-  national:{
+  semester7b: {
     type: Number,
     required: true,
   },
-  chapter:{
+  academicYear7b: {
     type: Number,
     required: true,
   },
-  editorInternational:{
+  totalScore7b: {
+    type: Number,
+    default: 0,
+  },
+  shortTerm7c: {
     type: Number,
     required: true,
   },
-  editorNational:{
+  semester7c: {
     type: Number,
     required: true,
   },
-  researchPaper:{
+  academicYear7c: {
     type: Number,
     required: true,
   },
-  book:{
+  totalScore7c: {
+    type: Number,
+    default: 0,
+  },
+  internationalJournal: {
     type: Number,
     required: true,
   },
-  totalScore8b1:{
-    type: Number,
-    default:0,
-  },
-  innovativePedagogy:{
+  citation2022: {
     type: Number,
     required: true,
   },
-  eContentDevelopment:{
+  totalScore8a: {
+    type: Number,
+    default: 0,
+  },
+  international: {
     type: Number,
     required: true,
   },
-  totalScore8b2:{
-    type: Number,
-    default:0,
-  },
-  phdGuidance:{
+  national: {
     type: Number,
     required: true,
   },
-  pgDissertation:{
+  chapter: {
     type: Number,
     required: true,
   },
-  completedResearchProjectMoreThan10Lakhs:{
+  editorInternational: {
     type: Number,
     required: true,
   },
-  completedResearchProjectLessThan10Lakhs:{
+  editorNational: {
     type: Number,
     required: true,
   },
-  ongoingResearchProjectMoreThan10Lakhs:{
+  researchPaper: {
     type: Number,
     required: true,
   },
-  ongoingResearchProjectLessThan10Lakhs:{
+  book: {
     type: Number,
     required: true,
   },
-  inHouseProductDevelopment:{
+  totalScore8b1: {
+    type: Number,
+    default: 0,
+  },
+  innovativePedagogy: {
     type: Number,
     required: true,
   },
-  consultancy:{
+  eContentDevelopment: {
     type: Number,
     required: true,
   },
-  editorialBoardReviewer:{
+  totalScore8b2: {
+    type: Number,
+    default: 0,
+  },
+  phdGuidance: {
     type: Number,
     required: true,
   },
-  paperPublishedWithIndustryPerson:{
+  pgDissertation: {
     type: Number,
     required: true,
   },
-  totalScore8b3:{
-    type: Number,
-    default:0,
-  },
-  internationalPatents:{
+  completedResearchProjectMoreThan10Lakhs: {
     type: Number,
     required: true,
   },
-  nationalPatents:{
+  completedResearchProjectLessThan10Lakhs: {
     type: Number,
     required: true,
   },
-  copyrights:{
+  ongoingResearchProjectMoreThan10Lakhs: {
     type: Number,
     required: true,
   },
-  awards:{
+  ongoingResearchProjectLessThan10Lakhs: {
     type: Number,
     required: true,
   },
-  totalScore8b4:{
-    type: Number,
-    default:0,
-  },
-  intlAbroad:{
+  inHouseProductDevelopment: {
     type: Number,
     required: true,
   },
-  intlWithin:{
+  consultancy: {
     type: Number,
     required: true,
   },
-  Innational:{
+  editorialBoardReviewer: {
     type: Number,
     required: true,
   },
-  stateUni:{
+  paperPublishedWithIndustryPerson: {
     type: Number,
     required: true,
   },
-  totalScore8b5:{
+  totalScore8b3: {
     type: Number,
-    default:0,
+    default: 0,
   },
-  sttpOrganized:{
+  internationalPatents: {
     type: Number,
     required: true,
   },
-  sttpAttended:{
+  nationalPatents: {
     type: Number,
     required: true,
   },
-  conferenceAttended:{
+  copyrights: {
     type: Number,
     required: true,
   },
-  nptelCertification:{
+  awards: {
     type: Number,
     required: true,
   },
-  academicQualification:{
+  totalScore8b4: {
+    type: Number,
+    default: 0,
+  },
+  intlAbroad: {
     type: Number,
     required: true,
   },
-  mouWithIndustry:{
+  intlWithin: {
     type: Number,
     required: true,
   },
-  totalScore9:{
+  Innational: {
     type: Number,
-    default:0,
+    required: true,
   },
-  totalScoreformA:{
+  stateUni: {
     type: Number,
-    default:0,
+    required: true,
   },
-  totalScoreformB:{
+  totalScore8b5: {
     type: Number,
-    default:0,
+    default: 0,
   },
-  totalScore:{
+  sttpOrganized: {
     type: Number,
-    default:0,
-  }
-
-
+    required: true,
+  },
+  sttpAttended: {
+    type: Number,
+    required: true,
+  },
+  conferenceAttended: {
+    type: Number,
+    required: true,
+  },
+  nptelCertification: {
+    type: Number,
+    required: true,
+  },
+  academicQualification: {
+    type: Number,
+    required: true,
+  },
+  mouWithIndustry: {
+    type: Number,
+    required: true,
+  },
+  totalScore9: {
+    type: Number,
+    default: 0,
+  },
+  totalScoreformA: {
+    type: Number,
+    default: 0,
+  },
+  totalScoreformB: {
+    type: Number,
+    default: 0,
+  },
+  totalScore: {
+    type: Number,
+    default: 0,
+  },
 });
 
-const Appraisal = mongoose.model('appraisal', appraisalSchema);
+const Appraisal = mongoose.model("appraisals", appraisalSchema);
 
-module.exports = {Appraisal};
+module.exports = { Appraisal };

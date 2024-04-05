@@ -1,21 +1,19 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-// Define a schema for your data
 const postSchema = new mongoose.Schema({
   _id: {
     type: String,
     required: true,
   },
   employeeid: {
-    type:  String,
+    type: String,
     required: true,
   },
   employeeName: {
     type: String,
-   
   },
-  designation:{
-    type:String
+  designation: {
+    type: String,
   },
   description: {
     type: String,
@@ -23,7 +21,6 @@ const postSchema = new mongoose.Schema({
   },
   picturePath: {
     type: String,
-    // required: true,
   },
   profilePhotoURL: {
     type: String,
@@ -32,9 +29,15 @@ const postSchema = new mongoose.Schema({
     type: Object,
     default: {},
   },
+  classification_tag: {
+    type: String,
+  },
+  postedAt: {
+    type: String, // Change type to String
+    default: new Date().toISOString(), // Set default value to current date and time in ISO 8601 format
+  },
 });
 
-// Create a MongoDB model using the schema
-const Post = mongoose.model('post', postSchema);
+const Post = mongoose.model("post", postSchema);
 
-module.exports ={Post} ;
+module.exports = { Post };
