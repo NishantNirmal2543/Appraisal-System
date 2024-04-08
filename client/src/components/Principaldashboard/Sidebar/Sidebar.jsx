@@ -42,10 +42,10 @@ const Sidebar = () => {
                                 <i className='fas fa-tachometer-alt nav-link-icon'></i>
                                 <span className='nav-link-name'>Dashboard</span>
                             </div>
-                            <div className={`nav-link ${activeComponent === 'Appraisal' ? 'active' : ''}`} onClick={() => handleClick('Appraisal')}>
+                            {/* <div className={`nav-link ${activeComponent === 'Appraisal' ? 'active' : ''}`} onClick={() => handleClick('Appraisal')}>
                                 <i className='fas fa-hotel nav-link-icon'></i>
                                 <span className='nav-link-name'>Appraisal</span>
-                            </div>
+                            </div> */}
                             <div className={`nav-link ${activeComponent === 'AppraisalSummary' ? 'active' : ''}`} onClick={() => handleClick('AppraisalSummary')}>
                                 <i className='fas fa-image nav-link-icon'></i>
                                 <span className='nav-link-name'>Summary</span>
@@ -67,7 +67,7 @@ const Sidebar = () => {
 
             <div className="main-content">
                 {activeComponent === 'Dashboard' && <Dashboard />}
-                {activeComponent === 'Appraisal' && <Appraisalprinciple />}
+                {/* {activeComponent === 'Appraisal' && <Appraisalprinciple />} */}
                 {activeComponent === 'AppraisalSummary' && <AppraisalSummary/>}
                 {/* {activeComponent === 'Chart' && <Chart />}
                 {activeComponent === 'Appraisals' && <Appraisals />} */}
