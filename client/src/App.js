@@ -15,11 +15,12 @@ import ResetPassword from "./components/Admindashboard/Sidebar/Employee/ResetPas
 import Myfeed from "./components/Employeedashboard/Sidebar/Dashboard/Myfeed";
 import ResetPasswordHod from "./components/Admindashboard/Sidebar/HOD/ResetPasswordHod";
 
+import Landingpage from "./components/Landingpage/Landingpage";
 
 function App() {
 	const [adminState, setAdminState] = useState('');
 
-	const getAdminState = (adminState)=>{
+	const getAdminState = (adminState) => {
 		setAdminState(adminState);
 	}
 
@@ -28,30 +29,32 @@ function App() {
 
 	return (
 		<>
-		<ToastContainer position="top-center" />
-		<Routes>
-			{user && <Route path="/Employeedashboard" exact element={<Main1 />} />}
-			{admin && <Route path="/Hoddashboard" exact element={<Main2 />} />}
-			{admin && <Route path="/Principaldashboard" exact element={<Main3 />} />}
-			{admin && <Route path="/Admindashboard" exact element={<Main4 />} />}
+			<ToastContainer position="top-center" />
+			<Routes>
+				{user && <Route path="/Employeedashboard" exact element={<Main1 />} />}
+				{admin && <Route path="/Hoddashboard" exact element={<Main2 />} />}
+				{admin && <Route path="/Principaldashboard" exact element={<Main3 />} />}
+				{admin && <Route path="/Admindashboard" exact element={<Main4 />} />}
 
-			/ResetPasswordHod
-			<Route path="/ResetPasswordHod" exact element={<ResetPasswordHod />} />
+				/ResetPasswordHod
+				<Route path="/ResetPasswordHod" exact element={<ResetPasswordHod />} />
 
-			<Route path="/ResetPassword" exact element={<ResetPassword />} />
-			<Route path="/Employeedashboard/profile" exact element={<Myfeed />} />
+				<Route path="/ResetPassword" exact element={<ResetPassword />} />
+				<Route path="/Employeedashboard/profile" exact element={<Myfeed />} />
 
-			<Route path="/" exact element={<Login />} />
-			<Route path="/adminsignin" exact element={<Adminsignin  getAdminState = {getAdminState}/>} />
- 
-			<Route path="/Employeedashboard" element={<Navigate replace to="/" />} />
-			<Route path="/Hoddashboard" element={<Navigate replace to="/adminsignin" />} />
-			<Route path="/Principaldashboard" element={<Navigate replace to="/adminsignin" />} />
-			<Route path="/Admindashboard" element={<Navigate replace to="/adminsignin" />} />
+				<Route path="/Loginpage" exact element={<Login />} />
+				<Route path="/adminsignin" exact element={<Adminsignin getAdminState={getAdminState} />} />
 
-		</Routes>
+				<Route path="/Employeedashboard" element={<Navigate replace to="/Loginpage" />} />
+				<Route path="/Hoddashboard" element={<Navigate replace to="/adminsignin" />} />
+				<Route path="/Principaldashboard" element={<Navigate replace to="/adminsignin" />} />
+				<Route path="/Admindashboard" element={<Navigate replace to="/adminsignin" />} />
+
+
+				<Route path="/" exact element={<Landingpage />} />
+			</Routes>
 		</>
 	);
 }
 
-export default  App ;
+export default App;

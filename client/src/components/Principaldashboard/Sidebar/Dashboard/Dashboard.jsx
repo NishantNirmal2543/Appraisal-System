@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { storage } from "../../../firebase";
 import { v4 } from "uuid";
+import Post from "../../../Employeedashboard/Sidebar/Dashboard/Post";
+import { FaEdit } from 'react-icons/fa';
 
 
 const Dashboard = () => {
@@ -19,6 +21,22 @@ const Dashboard = () => {
   const [uploading, setUploading] = useState(false);
   const [profilePhotoURL, setProfilePhotoURL] = useState(null);
   const Adminid = localStorage.getItem("Adminid");
+  const [posts, setPosts] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/feedposts');
+      console.log(response.data)
+      setPosts(response.data);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
 
   const handleUpload = async () => {
@@ -34,7 +52,7 @@ const Dashboard = () => {
         console.log("Image uploaded");
 
         const downloadURL = await getDownloadURL(storageRef);
-        const updatedPrinciple= { ...admin, profilePhotoURL: downloadURL };
+        const updatedPrinciple = { ...admin, profilePhotoURL: downloadURL };
 
         try {
           const response = await axios.put(`http://localhost:8080/api/updatehod/${Adminid}`, updatedPrinciple
@@ -116,50 +134,60 @@ const Dashboard = () => {
   };
   return (
     <>
-     
-     <div className="dashboard">
-      {error && <div className="error">{error}</div>}
-      {isLoading ? (
-        <div className="loaderEmp"></div>
-      ) : (
-        <div className="container3">
-          <div className="profile">
+
+      <div className="dashboard">
+        {error && <div className="error">{error}</div>}
+        {isLoading ? (
+          <div className="loaderEmp"></div>
+        ) : (
+
+          <div className="profileH">
             <div className="cover-photo">
               <img src={coverPhoto} alt="Cover" />
             </div>
-            <div className="profile-details">
-            <label htmlFor="file-input">
+            <div className="profileH-details">
+              <label htmlFor="file-input">
+                <div
+                  className="profileH-photo"
+                  onClick={handleImageClick}
+                  style={{ cursor: "pointer" }}
+                >
                   <div
-                    className="profile-photo"
-                    onClick={handleImageClick}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <img src={profilePhotoURL || profilePhoto} alt="Profile" />
+                    className="image-container"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                  > <img src={profilePhotoURL || profilePhoto} alt="Profile" />
+                    {isHovered && (
+                      <div className="image-overlay">
+                        <FaEdit className="edit-icon" />
+                      </div>
+                    )}
                   </div>
-                </label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  required
-                  id="file-input"
-                  style={{ display: "none" }}
-                  onChange={handleFileChange}
-                />
-                {uploading && <span>Uploading...</span>}
+                </div>
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                required
+                id="file-input"
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+              />
+              {uploading && <span>Uploading...</span>}
 
 
-                <button className="buttonDownload" onClick={handleUpload} disabled={uploading}>
-                  Upload Profile Photo
-                </button>
+              <button className="buttonDownload" onClick={handleUpload} disabled={uploading}>
+                Upload Profile Photo
+              </button>
               <h1>{admin.name}</h1>
-              <h3>{admin.role}</h3>  
+              <h3>{admin.role}</h3>
               <hr />
               <div className="info">
                 <div className="info-item">
                   <h4>College</h4>
                   <p>{admin.college}</p>
                 </div>
-       
+
                 <div className="info-item">
                   <h4>Email</h4>
                   <p>{admin.email}</p>
@@ -171,9 +199,30 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+
+        )}
+        {!isLoading && (
+          <div
+            className="social"
+          >
+
+            <div>
+              {posts.map((post, index) => (
+                <Post
+                  key={index}
+                  profilePhotoURL={post.profilePhotoURL}
+                  description={post.description}
+                  picturePath={post.picturePath}
+                  designation={post.designation}
+                  employeeName={post.employeeName}
+                />
+              ))}
+            </div>
+
+
+          </div>
+        )}
+      </div>
     </>
   );
 };
