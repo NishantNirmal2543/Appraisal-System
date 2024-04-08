@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ResetPassword from "./components/Admindashboard/Sidebar/Employee/ResetPassword";
 import Myfeed from "./components/Employeedashboard/Sidebar/Dashboard/Myfeed";
 import ResetPasswordHod from "./components/Admindashboard/Sidebar/HOD/ResetPasswordHod";
-
+import NotFound from './components/NotFound/NotFound'
 import Landingpage from "./components/Landingpage/Landingpage";
 
 function App() {
@@ -52,6 +52,9 @@ function App() {
 
 
 				<Route path="/" exact element={<Landingpage />} />
+
+				<Route path="*" element={<NotFound />} /> {/* Catch all undefined routes */}
+
 			</Routes>
 		</>
 	);
