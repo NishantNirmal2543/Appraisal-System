@@ -488,7 +488,7 @@ const Appraisal = () => {
             appraisalData.paperPublishedWithIndustryPerson
           );
           setTotalScore8b3(appraisalData.totalScore8b3);
-          setInternationalPatents(appraisalData.internationalPatents);
+          setInternationalPatents2(appraisalData.internationalPatents);
           setNationalPatents(appraisalData.nationalPatents);
           setCopyrights(appraisalData.copyrights);
           setAwards(appraisalData.awards);
@@ -589,7 +589,7 @@ const Appraisal = () => {
           setEditorialBoardReviewer("");
           setPaperPublishedWithIndustryPerson("");
           setTotalScore8b3("");
-          setInternationalPatents("");
+          // setInternationalPatents("");
           setNationalPatents("");
           setCopyrights("");
           setAwards("");
@@ -754,29 +754,33 @@ const Appraisal = () => {
   const [totalScore8b3, setTotalScore8b3] = useState(0);
 
   //8b.4
-  const { classificationTag } = useClassification();
-  const [internationalPatents, setInternationalPatents] = useState(0);
-  const [prevInternationalPatents, setPrevInternationalPatents] = useState(0);
+  const { classificationTag, setClassificationTag } = useClassification();
+  const [internationalPatents, setInternationalPatents] = useState();
+  const [internationalPatents2, setInternationalPatents2] = useState(0);
+  const [userInputInternationalPatents, setUserInputInternationalPatents] =
+    useState("");
   const [nationalPatents, setNationalPatents] = useState();
   const [copyrights, setCopyrights] = useState();
   const [awards, setAwards] = useState();
   const [totalScore8b4, setTotalScore8b4] = useState();
 
-  console.log("Classification Tag Value:", classificationTag);
-
   useEffect(() => {
+    console.log("Inside useEffect for classificationTag");
     if (classificationTag) {
       if (classificationTag === "patent") {
-        setInternationalPatents(70);
-      } else {
-        setInternationalPatents(0);
+        setInternationalPatents(30);
+        console.log("International patent value updated!!!");
+        setClassificationTag("");
       }
     }
   }, [classificationTag]);
 
   useEffect(() => {
+    console.log("International Patents:", internationalPatents);
+    // Define the second useEffect inside the callback function of the first useEffect
     const updateInternationalPatents = async () => {
       try {
+        console.log("Updating international patents...");
         // Make the HTTP request to update the international patents data in the database
         const response = await axios.put(
           `http://localhost:8080/api/updates/${employeeId}`,
@@ -793,17 +797,11 @@ const Appraisal = () => {
       }
     };
 
-    // Only call the function to update international patents if the value has changed
-    if (internationalPatents !== prevInternationalPatents) {
+    // Call the function to update international patents only when internationalPatents changes
+    if (internationalPatents !== undefined) {
       updateInternationalPatents();
-      setPrevInternationalPatents(internationalPatents); // Update prevInternationalPatents after the update
     }
-  }, [internationalPatents, prevInternationalPatents, employeeId]);
-  useEffect(() => {
-    setPrevInternationalPatents(internationalPatents);
-  }, [internationalPatents]);
-
-  console.log("International Patents:", internationalPatents);
+  }, [internationalPatents, employeeId]); // Include internationalPatents and employeeId as dependencies
 
   //8b.5
   const [intlAbroad, setIntlAbroad] = useState();
@@ -1341,6 +1339,10 @@ const Appraisal = () => {
   //   setInternationalPatents(Number(event.target.value));
   // };
 
+  const handleInternationalPatentsChange = (event) => {
+    setUserInputInternationalPatents(event.target.value);
+  };
+
   const handleNationalPatentsChange = (event) => {
     setNationalPatents(Number(event.target.value));
   };
@@ -1620,7 +1622,7 @@ const Appraisal = () => {
       editorialBoardReviewer,
       paperPublishedWithIndustryPerson,
       totalScore8b3,
-      internationalPatents,
+      internationalPatents: userInputInternationalPatents,
       nationalPatents,
       copyrights,
       awards,
@@ -2711,8 +2713,12 @@ const Appraisal = () => {
                 Patents (International)
                 <input
                   type="number"
-                  value={internationalPatents}
-                  //  onChange={handleInternationalPatentsChange}
+                  value={
+                    userInputInternationalPatents !== ""
+                      ? userInputInternationalPatents
+                      : internationalPatents2
+                  }
+                  onChange={handleInternationalPatentsChange}
                 />
               </label>
               <br />
