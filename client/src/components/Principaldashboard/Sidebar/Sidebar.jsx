@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './sidebar.css';
 import Dashboard from './Dashboard/Dashboard';
-import Appraisalprinciple from './Appraisalprinciple/Appraisalprinciple'
+import Chart from './Chart/Chart'
 import AppraisalSummary from './AppraisalSummary/AppraisalSummary'
 
 const Sidebar = () => {
@@ -20,13 +20,13 @@ const Sidebar = () => {
 
     return (
         <main className={show ? 'space-toggle' : null}>
-             
+
             <header className={`header ${show ? 'space-toggle' : null}`}>
-            
+
                 <div className='header-toggle' onClick={() => setShow(!show)}>
                     <i className={`fas fa-bars ${show ? 'fa-solid fa-xmark' : null}`}></i>
                 </div>
-               
+
             </header>
 
             <aside className={`sidebar ${show ? 'show' : null}`}>
@@ -50,10 +50,10 @@ const Sidebar = () => {
                                 <i className='fas fa-image nav-link-icon'></i>
                                 <span className='nav-link-name'>Summary</span>
                             </div>
-                            {/* <div className={`nav-link ${activeComponent === 'Create' ? 'active' : ''}`} onClick={() => handleClick('Create')}>
+                            <div className={`nav-link ${activeComponent === 'Chart' ? 'active' : ''}`} onClick={() => handleClick('Chart')}>
                                 <i className='fa-solid fa-spinner fa-pulse'></i>
-                                <span className='nav-link-name'>Status</span>
-                            </div> */}
+                                <span className='nav-link-name'>Chart</span>
+                            </div>
                         </div>
                     </div>
 
@@ -68,8 +68,9 @@ const Sidebar = () => {
             <div className="main-content">
                 {activeComponent === 'Dashboard' && <Dashboard />}
                 {/* {activeComponent === 'Appraisal' && <Appraisalprinciple />} */}
-                {activeComponent === 'AppraisalSummary' && <AppraisalSummary/>}
-                {/* {activeComponent === 'Chart' && <Chart />}
+                {activeComponent === 'AppraisalSummary' && <AppraisalSummary />}
+                {activeComponent === 'Chart' && <Chart />}
+                {/*
                 {activeComponent === 'Appraisals' && <Appraisals />} */}
                 {/* {activeComponent === 'Create' && <Create />} */}
             </div>

@@ -136,6 +136,7 @@ const EmployeeTable = () => {
                     <tr>
                       <th>Employee Name</th>
                       <th>Employee Email</th>
+                      <th>Appraisal Status</th>
                       <th>View Appraisal</th>
                     </tr>
                   </thead>
@@ -145,7 +146,34 @@ const EmployeeTable = () => {
                         <td>{employee.name}</td>
                         <td>{employee.email}</td>
                         <td>
-                          <button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewDetails(employee)} >  <AiOutlineEye /> </button>
+                          {employee.appraisalStatus ? (
+                            <>
+                              {/* <span style={{ color: 'green' }}>🟢</span> */}
+                              <div className="progress-barx" style={{ width: "100px" }}>
+                                <div
+                                  className={"progress-bar-fillx animated fadeIn"}
+                                  style={{ width: "100%" }}
+                                ></div>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {/* <span style={{ color: 'red' }}>🔴</span> */}
+                              <div className="progress-barx" style={{ width: "100px" }}>
+                                <div
+                                  className='progress-bar-notfill'
+                                  style={{ width: "100%" }}
+                                ></div>
+                              </div>
+                            </>
+                          )}
+                        </td>
+                        <td>
+                          {employee.appraisalStatus ?
+                            (<button style={{ marginRight: "10px", color: "#e63900", backgroundColor: "white", border: '2px solid #ccc', borderRadius: "10px" }} onClick={() => handleViewDetails(employee)} >  <AiOutlineEye /> </button>
+                            )
+                            :
+                            ("")}
                         </td>
                       </tr>
                     ))}
