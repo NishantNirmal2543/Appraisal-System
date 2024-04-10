@@ -1339,9 +1339,9 @@ const Appraisal = () => {
   //   setInternationalPatents(Number(event.target.value));
   // };
 
-  const handleInternationalPatentsChange = (event) => {
-    setUserInputInternationalPatents(event.target.value);
-  };
+  // const handleInternationalPatentsChange = (event) => {
+  //   setUserInputInternationalPatents(event.target.value);
+  // };
 
   const handleNationalPatentsChange = (event) => {
     setNationalPatents(Number(event.target.value));
@@ -1357,19 +1357,20 @@ const Appraisal = () => {
 
   const calculateScore8b4 = () => {
     const score8b4 =
-      internationalPatents + nationalPatents + copyrights + awards;
+      // internationalPatents +
+      nationalPatents + copyrights + awards;
     setTotalScore8b4(score8b4);
   };
 
   //8b5
 
-  const handleIntlAbroadChange = (event) => {
-    setIntlAbroad(Number(event.target.value));
-  };
+  // const handleIntlAbroadChange = (event) => {
+  //   setIntlAbroad(Number(event.target.value));
+  // };
 
-  const handleIntlWithinChange = (event) => {
-    setIntlWithin(Number(event.target.value));
-  };
+  // const handleIntlWithinChange = (event) => {
+  //   setIntlWithin(Number(event.target.value));
+  // };
 
   const handleInNationalChange = (event) => {
     setInNational(Number(event.target.value));
@@ -1380,7 +1381,9 @@ const Appraisal = () => {
   };
 
   const calculateScore8b5 = () => {
-    const score8b5 = intlAbroad + intlWithin + Innational + stateUni;
+    const score8b5 = 
+    // intlAbroad + intlWithin +
+     Innational + stateUni;
     setTotalScore8b5(score8b5);
   };
 
@@ -1506,13 +1509,13 @@ const Appraisal = () => {
       editorialBoardReviewer,
       paperPublishedWithIndustryPerson,
 
-      internationalPatents,
+      // internationalPatents,
       nationalPatents,
       copyrights,
       awards,
       totalScore8b4,
-      intlAbroad,
-      intlWithin,
+      // intlAbroad,
+      // intlWithin,
       Innational,
       stateUni,
 
@@ -1622,13 +1625,13 @@ const Appraisal = () => {
       editorialBoardReviewer,
       paperPublishedWithIndustryPerson,
       totalScore8b3,
-      internationalPatents: userInputInternationalPatents,
+      // internationalPatents: userInputInternationalPatents,
       nationalPatents,
       copyrights,
       awards,
       totalScore8b4,
-      intlAbroad,
-      intlWithin,
+      // intlAbroad,
+      // intlWithin,
       Innational,
       stateUni,
       totalScore8b5,
@@ -2709,7 +2712,7 @@ const Appraisal = () => {
               <p className="total-score">Total Score: {totalScore8b3}</p>
               <br />
               <h2>8.b.4 Patents, Copyrights etc</h2>
-              <label>
+              {/* <label>
                 Patents (International)
                 <input
                   type="number"
@@ -2720,10 +2723,11 @@ const Appraisal = () => {
                   }
                   onChange={handleInternationalPatentsChange}
                 />
-              </label>
+              </label> */}
               <br />
               <label>
-                Patents (National)
+                Patents
+                {/* (National) */}
                 <input
                   type="number"
                   value={nationalPatents}
@@ -2760,7 +2764,7 @@ const Appraisal = () => {
                 workshop.
               </h2>
 
-              <label>
+              {/* <label>
                 International (abroad)
                 <input
                   type="number"
@@ -2768,15 +2772,15 @@ const Appraisal = () => {
                   onChange={handleIntlAbroadChange}
                 />
               </label>
-              <br />
-              <label>
+              <br /> */}
+              {/* <label>
                 International (within country)
                 <input
                   type="number"
                   value={intlWithin}
                   onChange={handleIntlWithinChange}
                 />
-              </label>
+              </label> */}
               <br />
               <label>
                 National
